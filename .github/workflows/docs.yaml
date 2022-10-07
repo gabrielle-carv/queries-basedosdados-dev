@@ -1,0 +1,55 @@
+name: Deploy docs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docs:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Import Secrets
+        id: import_secrets
+        uses: hashicorp/vault-action@v2.4.1
+        with:
+          url: https://vault.basedosdados.org
+          token: ${{ secrets.VAULT_TOKEN}}
+          secrets: |
+            secret/data/queries_credentials/<GCP_PROJECT_NAME>    GCP_SA_KEY | GCP_SA_KEY;
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9.x"
+
+      - name: Upgrade pip
+        run: |
+          pip install -U pip
+
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements-actions.txt -r requirements.txt
+
+      - name: Setup credentials
+        run: |
+          echo ${{ steps.import_secrets.outputs.GCP_SA_KEY }} > dbt-sa.json
+          python3 .github/workflows/scripts/modify_profiles.py
+
+      - name: Generate docs
+        run: |
+          dbt docs generate --profiles-dir .
+
+      - name: Delete credentials
+        run: |
+          rm dbt-sa.json
+
+      - name: Deploy docs
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          branch: gh-pages
+          folder: target
