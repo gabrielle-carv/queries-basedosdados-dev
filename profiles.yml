@@ -4,7 +4,7 @@ default:
     dev:
       type: bigquery
       method: service-account
-      project: <GCP_PROJECT_NAME>
+      project: basedosdados-dev
       dataset: dbt
       location: US
       threads: 2
@@ -12,7 +12,7 @@ default:
     prod:
       type: bigquery
       method: service-account
-      project: <GCP_PROJECT_NAME>
+      project: basedosdados-dev
       dataset: dbt
       location: US
       threads: 2
