@@ -43,3 +43,48 @@ models:
     example:
       +materialized: table # Materialization type (table, table or incremental)
       +schema: example # Overrides the default schema (defaults to what is set on profiles.yml)
+    br_bd_indicadores:
+      +materialized: table
+      +schema: br_bd_indicadores
+    br_bd_metadados:
+      +materialized: table
+      +schema: br_bd_metadados
+    br_cgu_pessoal_executivo_federal:
+      +materialized: table
+      +schema: br_cgu_pessoal_executivo_federal
+    br_cvm_administradores_carteira:
+      +materialized: table
+      +schema: br_cvm_administradores_carteira
+    br_cvm_oferta_publica_distribuicao:
+      +materialized: table
+      +schema: br_cvm_oferta_publica_distribuicao
+    br_fgv_igp:
+      +materialized: table
+      +schema: br_fgv_igp
+    br_ibge_inpc:
+      +materialized: table
+      +schema: br_ibge_inpc
+    br_ibge_ipca:
+      +materialized: table
+      +schema: br_ibge_ipca
+    br_ibge_ipca15:
+      +materialized: table
+      +schema: br_ibge_ipca15
+    br_ibge_pnadc:
+      +materialized: table
+      +schema: br_ibge_pnadc
+    br_poder360_pesquisas:
+      +materialized: table
+      +schema: br_poder360_pesquisas
+    br_sp_saopaulo_dieese_icv:
+      +materialized: table
+      +schema: br_sp_saopaulo_dieese_icv
+    br_tse_eleicoes:
+      +materialized: table
+      +schema: br_tse_eleicoes
+    br_tse_eleicoes_2022:
+      +materialized: table
+      +schema: br_tse_eleicoes_2022
+    fundacao_lemann:
+      +materialized: table
+      +schema: fundacao_lemann
