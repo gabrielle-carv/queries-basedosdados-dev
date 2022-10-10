@@ -21,4 +21,4 @@ SAFE_CAST(sigla_orgao_trabalho AS STRING) sigla_orgao_trabalho,
 SAFE_CAST(nome_orgao_trabalho AS STRING) nome_orgao_trabalho,
 SAFE_CAST(codigo_siafi_trabalho AS STRING) codigo_siafi_trabalho,
 SAFE_CAST(codigo_siape_trabalho AS STRING) codigo_siape_trabalho
-FROM basedosdados-staging.br_cgu_pessoal_executivo_federal_staging.terceirizados AS t
+FROM basedosdados-dev.br_cgu_pessoal_executivo_federal_staging.terceirizados AS t

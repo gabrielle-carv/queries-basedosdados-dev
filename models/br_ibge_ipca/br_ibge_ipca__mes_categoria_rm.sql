@@ -10,4 +10,4 @@ SAFE_CAST(peso_mensal AS FLOAT64) peso_mensal,
 SAFE_CAST(variacao_mensal AS FLOAT64) variacao_mensal,
 SAFE_CAST(variacao_anual AS FLOAT64) variacao_anual,
 SAFE_CAST(variacao_doze_meses AS FLOAT64) variacao_doze_meses
-FROM basedosdados-staging.br_ibge_ipca_staging.mes_categoria_rm AS t
+FROM basedosdados-dev.br_ibge_ipca_staging.mes_categoria_rm AS t

@@ -23,4 +23,4 @@ SAFE_CAST(nome_candidato AS STRING) nome_candidato,
 SAFE_CAST(sigla_partido AS STRING) sigla_partido,
 SAFE_CAST(condicao AS INT64) condicao,
 SAFE_CAST(percentual AS FLOAT64) percentual
-FROM basedosdados-staging.br_poder360_pesquisas_staging.microdados AS t
+FROM basedosdados-dev.br_poder360_pesquisas_staging.microdados AS t
