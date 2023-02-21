@@ -470,4 +470,5 @@ FROM pnadc_microdados
   trimestre > (SELECT max(trimestre) FROM {{ this }} WHERE ano = {{ max_year }})
 
 {% endif %}
+
 -- end: jinja section
