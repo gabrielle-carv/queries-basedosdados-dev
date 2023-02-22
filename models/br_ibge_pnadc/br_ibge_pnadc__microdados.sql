@@ -1,10 +1,5 @@
 {{ config(
-    alias='microdados',
-
-    schema='br_ibge_pnadc',
-
     materialized='incremental',
-
     partition_by={
       "field": "ano",
       "data_type": "int64",
