@@ -1,19 +1,4 @@
-{{ config(
-    materialized='incremental',
-    partition_by={
-      "field": "ano",
-      "data_type": "int64",
-      "range": {
-        "start": 2012,
-        "end": 2025,
-        "interval": 1
-      }
-    },
-    
-    cluster_by = ["ano", "sigla_uf", "id_uf"]
-)}}
-
-WITH pnadc_microdados AS (
+{{ config(alias='microdados', schema='br_ibge_pnadc') }}
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(trimestre AS INT64) trimestre,
@@ -439,31 +424,3 @@ SAFE_CAST(V1028200 AS FLOAT64) V1028200,
 SAFE_CAST(habitual AS FLOAT64) habitual,
 SAFE_CAST(efetivo AS FLOAT64) efetivo
 FROM basedosdados-dev.br_ibge_pnadc_staging.microdados AS t
-)
-
-SELECT 
-    * 
-FROM pnadc_microdados
-
-{% if is_incremental() %}
-  -- this filter will only be applied on an incremental run
-
-  -- selecting the maximum year in the materialized table (if already exists) if it is
-  -- greater than current year. Else, it brings the current year
-  {% set max_year = run_query(
-    "SELECT max_year from (
-      SELECT 
-        IF(MAX(ano) > EXTRACT(YEAR FROM CURRENT_DATE('America/Sao_Paulo')),
-          EXTRACT(YEAR FROM CURRENT_DATE('America/Sao_Paulo')), 
-          MAX(ano)) AS max_year 
-      FROM" ~ this ~")"
-    ).columns[0].values()[0]
-  %}
-
-  WHERE ano = {{ max_year }} AND
-
-  trimestre > (SELECT max(trimestre) FROM {{ this }} WHERE ano = {{ max_year }})
-
-{% endif %}
-
--- end: jinja section
