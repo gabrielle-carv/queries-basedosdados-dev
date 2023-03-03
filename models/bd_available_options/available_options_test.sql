@@ -1,5 +1,4 @@
-{{ config(materialized='view') }}
-SELECT 
+SELECT
     SAFE_CAST(elemento AS string) elemento, 
     SAFE_CAST(chave AS string) chave,
     SAFE_CAST(valor AS string) valor,
