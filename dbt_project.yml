@@ -46,7 +46,7 @@ models:
     br_anatel_banda_larga_fixa:
       +materialized: table
       +schema: br_anatel_banda_larga_fixa
-    br_available_options:
+    bd_available_options:
       +materialized: table
       +schema: bd_available_options
     br_bd_indicadores:
