@@ -2,18 +2,17 @@
     alias='microdados',
     schema='br_ibge_pnadc',
     materialized='table',
-    partition_by={
+     partition_by={
       "field": "ano",
       "data_type": "int64",
       "range": {
         "start": 2012,
-        "end": 2025,
-        "interval": 1
-      }
+        "end": 2015,
+        "interval": 1}
     },
-    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'}), --teste    
-    cluster_by = ["ano", "sigla_uf"]
-)}}
+    cluster_by = ["ano", "sigla_uf"],
+    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+ }}
 
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
