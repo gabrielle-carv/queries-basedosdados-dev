@@ -13,6 +13,7 @@ SELECT
   SAFE_CAST(outdated AS INT64) outdated
   SAFE_CAST(metadata AS DATE) metadata
   SAFE_CAST(data AS DATE) data
+  SAFE_CAST(release AS DATE) release
   SAFE_CAST(published_by AS STRING) published_by
   SAFE_CAST(cleaned_by AS STRING) cleaned_by
   SAFE_CAST(missing_metadata AS STRING) missing_metadata
