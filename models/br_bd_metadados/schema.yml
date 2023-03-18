@@ -158,7 +158,9 @@ models:
       - name: published_by
         description: ""
       - name: cleaned_by
-        description: ""        
+        description: ""
+      - name: missing_metadata
+        description: ""     
   - name: columns
     description: "Metadata on columns in the BD+ platform."
     columns:
