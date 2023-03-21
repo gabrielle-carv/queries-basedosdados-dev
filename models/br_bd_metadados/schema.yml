@@ -127,6 +127,8 @@ models:
     columns:
       - name: dataset_id
         description: ""
+      - name: dataset_name
+        description: ""
       - name: id
         description: ""
       - name: table_id
