@@ -188,3 +188,12 @@ models:
         description: ""
       - name: is_partition
         description: ""
+  - name: available_options
+    description: "Metadata on available options in the BD platform."
+    columns:
+      - name: elemento
+        description: ""
+      - name: chave
+        description: ""
+      - name: valor
+        description: ""
