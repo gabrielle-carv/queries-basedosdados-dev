@@ -1,5 +1,6 @@
 SELECT
   SAFE_CAST(dataset_id AS STRING) dataset_id,
+  SAFE_CAST(dataset_name AS STRING) dataset_name,  
   SAFE_CAST(id AS STRING) id,
   SAFE_CAST(name AS STRING) name,
   SAFE_CAST(date_created AS DATE) date_created,
