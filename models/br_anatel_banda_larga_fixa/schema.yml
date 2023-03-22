@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: microdados
-    description: dbt model for table microdados
+    description: Microdados de banda larga fixa (também conhecido como Serviço de Comunicação Multimídia) a partir de 2007 que traz dados mensais acerca da empresa ofertante e das especificações técnicas do serviço.
     columns:
       - name: ano
         description: Ano
@@ -27,7 +27,7 @@ models:
       - name: acessos
         description: Número total de contratos
   - name: densidade_brasil
-    description: dbt model for table densidade_brasil
+    description: Total de acessos e densidade por domicílio da Banda Larga Fixa no Brasil por mês e ano desde março de 2007
     columns:
       - name: ano
         description: Ano
@@ -38,7 +38,7 @@ models:
       - name: densidade
         description: Densidade de acessos por 100 domicílios
   - name: densidade_uf
-    description: dbt model for table densidade_uf
+    description: Total de acessos e densidade por domicílio da Banda Larga Fixa nos estados por mês e ano desde março de 2007
     columns:
       - name: ano
         description: Ano
@@ -51,7 +51,7 @@ models:
       - name: densidade
         description: Densidade de acessos por 100 domicílios
   - name: densidade_municipio
-    description: dbt model for table densidade_municipio
+    description: Total de acessos e densidade por domicílio da Banda Larga Fixa nos municípios brasileiros por mês e ano desde março de 2007
     columns:
       - name: ano
         description: Ano
