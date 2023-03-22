@@ -193,9 +193,9 @@ models:
   - name: available_options
     description: "Metadata on available options in the BD platform."
     columns:
-      - name: elemento
+      - name: element
         description: ""
-      - name: chave
+      - name: key
         description: ""
-      - name: valor
+      - name: value
         description: ""
