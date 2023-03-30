@@ -45,10 +45,13 @@ models:
       +schema: example # Overrides the default schema (defaults to what is set on profiles.yml)
     bd_available_options:
       +materialized: table
-      +schema: bd_available_options
+      +schema: bd_available_options  
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_bcb_estban:
+      +materialized: table
+      +schema: br_bcb_estban  
     br_bd_metadados:
       +materialized: table
       +schema: br_bd_metadados
@@ -91,3 +94,4 @@ models:
     fundacao_lemann:
       +materialized: table
       +schema: fundacao_lemann
+    
