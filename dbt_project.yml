@@ -91,3 +91,6 @@ models:
     fundacao_lemann:
       +materialized: table
       +schema: fundacao_lemann
+    br_inmet_bdmep: ## aqui é o seu <dataset_id>
+      +materialized: table # Materialization type (table, view or incremental)
+      +schema: br_inmet_bdmep # Overrides the default schema (defaults to what is set on profiles.yml)
