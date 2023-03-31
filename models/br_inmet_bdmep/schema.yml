@@ -5,11 +5,11 @@ models:
     description: "Microdados do Instituto Nacional de Meteorologia"
     columns:
       - name: ano
-        description: "ano"
+        description: "Ano"
       - name: data
-        description: "data"
+        description: "Data"
       - name: hora
-        description: "Hora UTC"        
+        description: "Hora (UTC)"        
       - name: id_estacao
         description: "ID da estação meteorológica"
       - name: precipitacao_total
