@@ -24,44 +24,7 @@ models:
         description: Meios de transmissão
       - name: velocidade
         description: Velocidade contratada
+      - name: produto
+        description: Tipo de Produto
       - name: acessos
         description: Número total de contratos
-  - name: densidade_brasil
-    description: Total de acessos e densidade por domicílio da Banda Larga Fixa no Brasil por mês e ano desde março de 2007
-    columns:
-      - name: ano
-        description: Ano
-      - name: mes
-        description: Mês
-      - name: acessos
-        description: Total de acessos
-      - name: densidade
-        description: Densidade de acessos por 100 domicílios
-  - name: densidade_uf
-    description: Total de acessos e densidade por domicílio da Banda Larga Fixa nos estados por mês e ano desde março de 2007
-    columns:
-      - name: ano
-        description: Ano
-      - name: mes
-        description: Mês
-      - name: sigla_uf
-        description: Sigla da Unidade da Federação
-      - name: acessos
-        description: Total de acessos
-      - name: densidade
-        description: Densidade de acessos por 100 domicílios
-  - name: densidade_municipio
-    description: Total de acessos e densidade por domicílio da Banda Larga Fixa nos municípios brasileiros por mês e ano desde março de 2007
-    columns:
-      - name: ano
-        description: Ano
-      - name: mes
-        description: Mês
-      - name: sigla_uf
-        description: Sigla da Unidade da Federação
-      - name: id_municipio
-        - description: ID Município - IBGE 7 Dígitos
-      - name: acessos
-        description: Total de acessos
-      - name: densidade
-        description: Densidade de acessos por 100 domicílios
