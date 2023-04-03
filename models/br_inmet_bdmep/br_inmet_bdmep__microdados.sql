@@ -1,3 +1,4 @@
+{{ config(alias='microdados', schema='br_inmet_bdmep') }}
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(data AS DATE) data,

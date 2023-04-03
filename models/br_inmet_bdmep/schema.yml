@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: microdados_inmet.sql ## modelo dbt.sql que está no diretório
+  - name: br_inmet_bdmep__microdados ## modelo dbt.sql que está no diretório
     description: "Microdados do Instituto Nacional de Meteorologia"
     columns:
       - name: ano
