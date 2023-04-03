@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: microdados
+  - name: br_anatel_banda_larga_fixa__microdados
     description: Microdados de banda larga fixa (também conhecido como Serviço de Comunicação Multimídia) a partir de 2007 que traz dados mensais acerca da empresa ofertante e das especificações técnicas do serviço.
     columns:
       - name: ano
