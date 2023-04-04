@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: municipio
+  - name: br_bcb_estban__municipio
     description: "dbt model for municipio month table"
     columns:
       - name: ano
@@ -24,7 +24,7 @@ models:
         description: Código do verbete
       - name: valor
         description: Valores
-  - name: agencia
+  - name: br_bcb_estban__agencia
     description: "dbt model for agencia month table"
     columns:
       - name: ano
