@@ -1,3 +1,4 @@
+{{ config(alias = 'agencia'), schema = 'br_bcb_estban' }}
 
 SELECT 
     SAFE_CAST(ano AS INT64) ano,
