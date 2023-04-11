@@ -131,8 +131,8 @@ models:
         description: ""
       - name: id
         description: ""
-      - name: table_id
-        description: ""
+      - name: name
+        description: ""        
       - name: date_created
         description: ""
       - name: date_last_modified
