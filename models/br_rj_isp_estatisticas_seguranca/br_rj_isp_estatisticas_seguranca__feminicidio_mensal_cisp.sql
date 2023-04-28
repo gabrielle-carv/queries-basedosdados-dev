@@ -1,6 +1,5 @@
 {{ config(alias='feminicidio_mensal_uf', schema='br_rj_isp_estatisticas_seguranca') }}
 
-CREATE VIEW basedosdados-dev.br_rj_isp_estatisticas_seguranca.feminicidio_mensal_uf AS
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,

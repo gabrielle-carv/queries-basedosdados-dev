@@ -1,6 +1,5 @@
 {{ config(alias='armas_apreendidas_mensal', schema='br_rj_isp_estatisticas_seguranca') }}
 
-CREATE VIEW basedosdados-dev.br_rj_isp_estatisticas_seguranca.armas_apreendidas_mensal AS
 SELECT 
 SAFE_CAST(ano AS STRING) ano,
 SAFE_CAST(mes AS STRING) mes,
