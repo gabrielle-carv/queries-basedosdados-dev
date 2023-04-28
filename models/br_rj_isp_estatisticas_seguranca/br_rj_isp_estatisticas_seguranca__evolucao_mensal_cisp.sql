@@ -1,6 +1,5 @@
 {{ config(alias='evolucao_mensal_cisp', schema='br_rj_isp_estatisticas_seguranca') }}
 
-CREATE VIEW basedosdados-dev.br_rj_isp_estatisticas_seguranca.evolucao_mensal_cisp AS
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
