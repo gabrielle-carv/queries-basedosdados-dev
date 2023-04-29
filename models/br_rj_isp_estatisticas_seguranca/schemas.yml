@@ -12,42 +12,42 @@ version: 2
 # ! modelo dbt armas_apreendidas_mensal
 models: 
   - name: br_rj_isp_estatisticas_seguranca__armas_apreendidas_mensal
-  description: Série histórica mensal por área de delegacia desde 01/2007
-  columns:
-    - name: ano
-      description: "Ano"
-    - name: mes
-      description: "Mês"
-    - name: id_cisp
-      description: "Número da circunscrição onde ocorreu o fato "   
-    - name: id_aisp
-      description: "Número da Área Integrada de Segurança Pública"     
-    - name: id_risp
-      description: "Número da Região Integrada de Segurança Pública"
-    - name: quantidade_arma_fabricacao_caseira
-      description: "Arma de fabricação caseira"
-    - name: quantidade_carabina
-      description: "Carabinas"
-    - name: quantidade_espingarda
-      description: "Espingardas"
-    - name: quantidade_fuzil
-      description: "Fuzils"
-    - name: quantidade_garrucha
-      description: "Garruchas" 
-    - name: quantidade_garruchao
-      description: "Garruchãos" 
-    - name: quantidade_metralhadora
-      description: "Metralhadoras" 
-    - name: quantidade_outros
-      description: "Outros" 
-    - name: quantidade_pistola
-      description: "Pistolas" 
-    - name: quantidade_revolver
-      description: "Revolvers" 
-    - name: quantidade_submetralhadora
-      description: "Submetralhadoras"
-    - name: total
-      description: "Total"
+    description: Série histórica mensal por área de delegacia desde 01/2007
+    columns:
+      - name: ano
+        description: "Ano"
+      - name: mes
+        description: "Mês"
+      - name: id_cisp
+        description: "Número da circunscrição onde ocorreu o fato "   
+      - name: id_aisp
+        description: "Número da Área Integrada de Segurança Pública"     
+      - name: id_risp
+        description: "Número da Região Integrada de Segurança Pública"
+      - name: quantidade_arma_fabricacao_caseira
+        description: "Arma de fabricação caseira"
+      - name: quantidade_carabina
+        description: "Carabinas"
+      - name: quantidade_espingarda
+        description: "Espingardas"
+      - name: quantidade_fuzil
+        description: "Fuzils"
+      - name: quantidade_garrucha
+        description: "Garruchas" 
+      - name: quantidade_garruchao
+        description: "Garruchãos" 
+      - name: quantidade_metralhadora
+        description: "Metralhadoras" 
+      - name: quantidade_outros
+        description: "Outros" 
+      - name: quantidade_pistola
+        description: "Pistolas" 
+      - name: quantidade_revolver
+        description: "Revolvers" 
+      - name: quantidade_submetralhadora
+        description: "Submetralhadoras"
+      - name: total
+        description: "Total"
 
 
 # ! modelo dbt evolucao_mensal_cisp
