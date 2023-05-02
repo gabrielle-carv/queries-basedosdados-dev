@@ -52,6 +52,9 @@ models:
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_bcb_agencia:
+      +materialized: table
+      +schema: br_bcb_agencia
     br_bcb_estban:
       +materialized: table
       +schema: br_bcb_estban  
