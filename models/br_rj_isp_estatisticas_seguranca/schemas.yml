@@ -143,7 +143,7 @@ models:
       - name: quantidade_apreensao_drogas
         description: "Apreensão de drogas"
       - name: quantidade_registro_posse_drogas
-        description: "Número de registros que possuem algum título referente a posse de drogas
+        description: "Número de registros que possuem algum título referente a posse de drogas"
       - name: quantidade_registro_trafico_drogas
         description: "Número de registros que possuem algum título referente a tráfico de drogas"
       - name: quantidade_registro_apreensao_drogas_sem_autor
@@ -211,7 +211,7 @@ models:
       - name: quantidade_roubo_transeunte
         description: "Roubo a transeunte"
       - name: quantidade_roubo_celular
-        description: Roubo ao telefone celular
+        description: "Roubo ao telefone celular"
       - name: quantidade_roubo_corporal_coletivo
         description: "Roubo coletivo"
       - name: quantidade_roubo_rua
@@ -261,7 +261,7 @@ models:
       - name: quantidade_apreensao_drogas
         description: "Apreensão de drogas"
       - name: quantidade_registro_posse_drogas
-        description: "Número de registros que possuem algum título referente a posse de drogas
+        description: "Número de registros que possuem algum título referente a posse de drogas"
       - name: quantidade_registro_trafico_drogas
         description: "Número de registros que possuem algum título referente a tráfico de drogas"
       - name: quantidade_registro_apreensao_drogas_sem_autor
@@ -377,7 +377,7 @@ models:
       - name: quantidade_apreensao_drogas
         description: "Apreensão de drogas"
       - name: quantidade_registro_posse_drogas
-        description: "Número de registros que possuem algum título referente a posse de drogas
+        description: "Número de registros que possuem algum título referente a posse de drogas"
       - name: quantidade_registro_trafico_drogas
         description: "Número de registros que possuem algum título referente a tráfico de drogas"
       - name: quantidade_registro_apreensao_drogas_sem_autor
