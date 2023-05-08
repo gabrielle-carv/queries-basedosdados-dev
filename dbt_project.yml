@@ -57,7 +57,10 @@ models:
       +schema: br_bcb_agencia
     br_bcb_estban:
       +materialized: table
-      +schema: br_bcb_estban  
+      +schema: br_bcb_estban
+    br_me_comex_stat:
+      +materialized: table
+      +schema: br_me_comex_stat    
     br_bd_metadados:
       +materialized: table
       +schema: br_bd_metadados
