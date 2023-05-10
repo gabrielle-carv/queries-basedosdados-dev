@@ -1,3 +1,14 @@
+{{ config(
+    schema='br_me_comex_stat',
+    materialized='table',
+     partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "granularity": "year", 
+    },
+    cluster_by = ["mes","sigla_uf_ncm", "id_ncm"],
+    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+ }}
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
