@@ -4,7 +4,6 @@
      partition_by={
       "field": "ano",
       "data_type": "int64",
-      "granularity": "year", 
     },
     cluster_by = ["mes","sigla_uf_ncm", "id_ncm"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})

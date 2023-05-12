@@ -4,9 +4,8 @@
      partition_by={
       "field": "ano",
       "data_type": "int64",
-      "granularity": "year", 
     },
-    cluster_by = ["mes","sigla_uf", "id_municipio"],
+    cluster_by = ["mes","sigla_uf"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
  }}
 SELECT 
