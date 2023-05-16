@@ -3,7 +3,7 @@
     materialized='table',
      partition_by={
       "field": "ano",
-      "data_type": "int64",
+      "data_type": "int64"
     },
     cluster_by = ["mes","sigla_uf"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
