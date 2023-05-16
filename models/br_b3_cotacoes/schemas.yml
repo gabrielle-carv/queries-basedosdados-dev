@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: cotacoes
+    description: "dados de metricas de tweets"
+    columns:
+      - name: data_referencia
+        description: "Data de referência"
+      - name: codigo_instrumento
+        description: "Código instrumento"
+      - name: acao_atualizacao
+        description: "Ação atualizada"
+      - name: preco_negocio
+        description: "Preço negociado"
+      - name: quantidade_negociada
+        description: "Quantidade de ações negociadas"
+      - name: hora_fechamento
+        description: "Hora fechamento"
+      - name: codigo_identificador_negocio
+        description: "Código negociação"
+      - name: tipo_sessao_pregao
+        description: "Tipo sessão"
+      - name: data_negocio
+        description: "Data negociação"
+      - name: codigo_participante_comprador
+        description: "Código comprador"
+      - name: codigo_participante_vendedor
+        description: "Código vendedor"
