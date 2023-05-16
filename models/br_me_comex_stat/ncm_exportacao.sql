@@ -3,7 +3,11 @@
     materialized='table',
      partition_by={
       "field": "ano",
-      "data_type": "int64"
+      "data_type": "int64",
+      "range": {
+        "start": 1997,
+        "end": 2023,
+        "interval": 1}
     },
     cluster_by = ["mes","sigla_uf_ncm", "id_ncm"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})

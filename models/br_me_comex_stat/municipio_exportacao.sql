@@ -1,9 +1,14 @@
-{{ config(
+{{ 
+  config(
     schema='br_me_comex_stat',
     materialized='table',
-    partition_by={
+     partition_by={
       "field": "ano",
-      "data_type": "int64"
+      "data_type": "int64",
+      "range": {
+        "start": 1997,
+        "end": 2023,
+        "interval": 1}
     },
     cluster_by = ["mes", "sigla_uf", "id_municipio"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
