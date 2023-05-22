@@ -11,4 +11,4 @@ SAFE_CAST(hora_fechamento AS INT64) hora_fechamento,
 SAFE_CAST(codigo_participante_comprador AS STRING) codigo_participante_comprador,
 SAFE_CAST(codigo_participante_vendedor AS STRING) codigo_participante_vendedor
 
-FROM basedosdados-dev.br_b3_cotacoes_staging.pessoas AS t
+FROM basedosdados-dev.br_b3_cotacoes_staging.cotacoes AS t
