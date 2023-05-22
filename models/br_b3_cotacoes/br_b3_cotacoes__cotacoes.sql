@@ -1,3 +1,5 @@
+{{ config(alias='cotacoes', schema='br_b3_cotacoes') }}
+
 SELECT
 SAFE_CAST(data_referencia AS DATE) data_referencia,
 SAFE_CAST(tipo_sessao_pregao AS INT64) tipo_sessao_pregao,
