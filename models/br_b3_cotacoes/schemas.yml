@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: br_b3_cotacoes__cotacoes
+  - name: cotacoes
     description: "Dados de negociação de ativos listados na B3"
     columns:
       - name: data_referencia
