@@ -9,7 +9,7 @@
         "end": 2023,
         "interval": 1}
     },
-    cluster_by = ["mes","sigla_uf"],
+    cluster_by = ["mes","sigla_uf", "id_municipio"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
  }}
 SELECT 
