@@ -72,5 +72,5 @@ SAFE_CAST(codigo_ativo_bolsa_mercado_balcao_local_aquisicao AS STRING) codigo_at
 SAFE_CAST(descricao_ativo_exterior AS STRING) descricao_ativo_exterior,
 SAFE_CAST(quantidade_ativos_exterior AS INT64) quantidade_ativos_exterior,
 SAFE_CAST(valor_ativo_exterior AS FLOAT64) valor_ativo_exterior,
-FROM basedosdados-staging.br_cvm_fi_staging.documentos_carteira_fundos_investimento AS t
+FROM basedosdados-dev.br_cvm_fi_staging.documentos_carteira_fundos_investimento AS t
 
