@@ -27,6 +27,8 @@ models:
         description: Mês       
       - name: id_fundo
         description: Tipo do Fundo
+      - name: bloco
+        description: Bloco   
       - name: cnpj
         description: CNPJ do Fundo
       - name: denominacao_social
