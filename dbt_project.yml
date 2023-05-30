@@ -112,6 +112,9 @@ models:
     fundacao_lemann:
       +materialized: table
       +schema: fundacao_lemann
+    br_cvm_fi:
+      +materialized: table
+      +schema: br_cvm_fi
     br_ons_estimativa_custos:
       +materialized: table
       +schema: br_ons_estimativa_custos
