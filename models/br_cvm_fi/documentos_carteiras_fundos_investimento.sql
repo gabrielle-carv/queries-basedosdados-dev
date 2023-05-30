@@ -17,6 +17,7 @@ SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
 SAFE_CAST(id_fundo AS STRING) id_fundo,
+SAFE_CAST(bloco AS STRING) bloco,
 SAFE_CAST(cnpj AS STRING) cnpj,
 SAFE_CAST(denominacao_social AS STRING) denominacao_social,
 SAFE_CAST(data_competencia AS DATE) data_competencia,
