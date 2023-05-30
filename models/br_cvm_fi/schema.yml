@@ -18,8 +18,8 @@ models:
         description: Código da conta
       - name: saldo_conta
         description: Saldo da Conta
-  - name: documentos_carteira_fundos_investimento
-    description: "Insert `documentos_carteira_fundos_investimento` table description here"
+  - name: documentos_carteiras_fundos_investimento
+    description: "Insert `documentos_carteiras_fundos_investimento` table description here"
     columns:
       - name: ano
         description: Ano
