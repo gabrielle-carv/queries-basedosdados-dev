@@ -9,4 +9,4 @@ SAFE_CAST(geracao_eolica_verificada AS FLOAT64) geracao_eolica_verificada,
 SAFE_CAST(geracao_fotovoltaica_verificada AS FLOAT64) geracao_fotovoltaica_verificada,
 SAFE_CAST(carga_verificada AS FLOAT64) carga_verificada,
 SAFE_CAST(intercambio_verificado AS FLOAT64) intercambio_verificado
-FROM basedosdados-dev.br_ons_estimativa_custos.balanco_energia_subsistemas AS t
+FROM basedosdados-dev.br_ons_estimativa_custos_staging.balanco_energia_subsistemas AS t
