@@ -2,14 +2,6 @@
   config(
     schema='br_cvm_fi',
     materialized='table',
-     partition_by={
-      "field": "ano",
-      "data_type": "int64",
-      "range": {
-        "start": 2015,
-        "end": 2023,
-        "interval": 1}
-    },
     cluster_by = ["mes", "data_competencia"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
  }}
