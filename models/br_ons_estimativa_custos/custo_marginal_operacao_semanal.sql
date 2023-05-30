@@ -1,6 +1,5 @@
 SELECT
 SAFE_CAST(data AS DATE) data,
-SAFE_CAST(hora AS TIME) hora,
 SAFE_CAST(id_subsistema AS STRING) id_subsistema,
 SAFE_CAST(subsistema AS STRING) subsistema,
 SAFE_CAST(custo_marginal_operacao_semanal AS FLOAT64) custo_marginal_operacao_semanal,
