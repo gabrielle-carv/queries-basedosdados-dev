@@ -1,3 +1,18 @@
+{{ 
+  config(
+    schema='br_cvm_fi',
+    materialized='table',
+     partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "range": {
+        "start": 2005,
+        "end": 2023,
+        "interval": 1}
+    },
+    cluster_by = ["mes", "data_competencia"],
+    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+ }}
 SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
