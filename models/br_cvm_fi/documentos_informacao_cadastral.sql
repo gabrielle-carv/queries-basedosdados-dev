@@ -2,7 +2,7 @@
   config(
     schema='br_cvm_fi',
     materialized='table',
-    cluster_by = ["mes", "data_competencia"],
+    cluster_by = "data_competencia",
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
  }}
 SELECT
