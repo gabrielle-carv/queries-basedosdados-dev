@@ -1,6 +1,6 @@
 {{ config(alias='cotacoes', schema='br_b3_cotacoes') }}
 
-{ 
+{
   config(
     schema='br_b3_cotacoes',
     materialized='table',
@@ -9,6 +9,7 @@
       "data_type": "date",
       "granularity": "day"
     })
+}
 
 SELECT 
 SAFE_CAST(data_referencia AS DATE) data_referencia,
