@@ -2,7 +2,6 @@
 
 {
   config(
-    schema='br_b3_cotacoes',
     materialized='table',
      partition_by={
       "field": "data_referencia",
@@ -11,6 +10,14 @@
     })
 }
 
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "data_referencia",
+      "data_type": "date",
+      "granularity": "day"
+    }
+)}}
 SELECT 
 SAFE_CAST(data_referencia AS DATE) data_referencia,
 SAFE_CAST(data_negocio AS DATE) data_negocio,
