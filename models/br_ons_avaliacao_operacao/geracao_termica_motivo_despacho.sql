@@ -1,6 +1,6 @@
 SELECT
 SAFE_CAST(data AS DATE) data,
-SAFE_CAST(hora AS STRING) hora,
+SAFE_CAST(hora AS TIME) hora,
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
 SAFE_CAST(id_subsistema AS STRING) id_subsistema,
@@ -34,4 +34,4 @@ SAFE_CAST(geracao_reserva_potencia_verificada AS FLOAT64) geracao_reserva_potenc
 SAFE_CAST(geracao_substituicao_verificada AS FLOAT64) geracao_substituicao_verificada,
 SAFE_CAST(geracao_unit_commitment_verificada AS FLOAT64) geracao_unit_commitment_verificada,
 SAFE_CAST(geracao_constrained_off_verificada AS FLOAT64) geracao_constrained_off_verificada
-FROM basedosdados-dev.br_ons_avaliacao_operacao.geracao_termica_motivo_despacho AS t
+FROM basedosdados-dev.br_ons_avaliacao_operacao_staging.geracao_termica_motivo_despacho AS t

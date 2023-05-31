@@ -1,7 +1,7 @@
 SELECT
-SAFE_CAST(data AS INT64) data,
-SAFE_CAST(nan AS nan) nan,
-SAFE_CAST(nan AS nan) nan,
+SAFE_CAST(data AS DATE) data,
+SAFE_CAST(ano AS INT64) ano,
+SAFE_CAST(mes AS INT64) mes,
 SAFE_CAST(reservatorio AS STRING) reservatorio,
 SAFE_CAST(tipo_reservatorio AS STRING) tipo_reservatorio,
 SAFE_CAST(id_reservatorio_planejamento AS STRING) id_reservatorio_planejamento,
@@ -26,4 +26,4 @@ SAFE_CAST(proporcao_contribuicao_energia_armazenada_subsistema_jusante AS FLOAT6
 SAFE_CAST(proporcao_contribuicao_energia_maxima_armazenada_subsistema_jusante AS FLOAT64) proporcao_contribuicao_energia_maxima_armazenada_subsistema_jusante,
 SAFE_CAST(proporcao_contribuicao_energia_armazenada_sin AS FLOAT64) proporcao_contribuicao_energia_armazenada_sin,
 SAFE_CAST(proporcao_contribuicao_energia_armazenada_maxima_sin AS FLOAT64) proporcao_contribuicao_energia_armazenada_maxima_sin
-FROM basedosdados-dev.br_ons.energia_armazenada_reservatorio_dia AS t
+FROM basedosdados-dev.br_ons_avaliacao_operacao_staging.energia_armazenada_reservatorio AS t

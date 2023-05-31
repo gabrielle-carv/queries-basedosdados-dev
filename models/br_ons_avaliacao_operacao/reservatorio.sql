@@ -22,4 +22,4 @@ SAFE_CAST(tipo_perda AS STRING) tipo_perda,
 SAFE_CAST(perda_carga AS FLOAT64) perda_carga,
 SAFE_CAST(latitude AS FLOAT64) latitude,
 SAFE_CAST(longitude AS FLOAT64) longitude
-FROM basedosdados-dev.br_ons_avaliacao_operacao.reservatorio AS t
+FROM basedosdados-dev.br_ons_avaliacao_operacao_staging.reservatorio AS t

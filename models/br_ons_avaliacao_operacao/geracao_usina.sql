@@ -12,4 +12,4 @@ SAFE_CAST(tipo_usina AS STRING) tipo_usina,
 SAFE_CAST(tipo_modalidade_operacao AS STRING) tipo_modalidade_operacao,
 SAFE_CAST(tipo_combustivel AS STRING) tipo_combustivel,
 SAFE_CAST(geracao AS FLOAT64) geracao
-FROM basedosdados-dev.br_ons_avaliacao_operacao.geracao_usina AS t
+FROM basedosdados-dev.br_ons_avaliacao_operacao_staging.geracao_usina AS t
