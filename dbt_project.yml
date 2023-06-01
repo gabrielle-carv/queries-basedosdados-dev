@@ -118,3 +118,6 @@ models:
     br_ons_estimativa_custos:
       +materialized: table
       +schema: br_ons_estimativa_custos
+    br_me_caged:
+      +materialized: table
+      +schema: br_me_caged
