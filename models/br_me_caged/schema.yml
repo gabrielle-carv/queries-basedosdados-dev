@@ -164,5 +164,7 @@ models:
         description: Indicador de trabalhador aprendiz
       - name: origem_informacao
         description: Origem da Informação
+      - name: indicador_exclusao
+        description: Indicador Exclusão       
       - name: indicador_fora_prazo
         description: Indicador fora do prazo
