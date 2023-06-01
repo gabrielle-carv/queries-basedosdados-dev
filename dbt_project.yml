@@ -112,6 +112,9 @@ models:
     fundacao_lemann:
       +materialized: table
       +schema: fundacao_lemann
+    br_ons_avaliacao_operacao:
+      +materialized: table
+      +schema: br_ons_avaliacao_operacao
     br_cvm_fi:
       +materialized: table
       +schema: br_cvm_fi
@@ -121,3 +124,4 @@ models:
     br_me_caged:
       +materialized: table
       +schema: br_me_caged
+
