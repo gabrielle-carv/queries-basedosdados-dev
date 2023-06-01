@@ -25,5 +25,5 @@ SAFE_CAST(quantidade_estatistica AS FLOAT64) quantidade_estatistica,
 SAFE_CAST(peso_liquido_kg AS FLOAT64) peso_liquido_kg,
 SAFE_CAST(valor_fob_dolar AS FLOAT64) valor_fob_dolar,
 SAFE_CAST(valor_frete AS FLOAT64) valor_frete,
-SAFE_CAST(valor_fob_dolar AS FLOAT64) valor_fob_dolar
+SAFE_CAST(valor_seguro AS FLOAT64) valor_seguro
 FROM basedosdados-dev.br_me_comex_stat_staging.ncm_importacao AS t
