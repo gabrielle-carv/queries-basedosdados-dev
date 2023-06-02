@@ -70,7 +70,7 @@ models:
         description: Fax (con DDD)
       - name: email
         description: Email
-  - name: empresas_teste
+  - name: empresa_teste
     description: Insert `empresas_acre` table description here
     columns:
       - name: cnpj
