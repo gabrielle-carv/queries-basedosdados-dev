@@ -64,6 +64,11 @@ models:
         description: Peso Líquido
       - name: valor_fob_dolar
         description: Valor Livre a Bordo
+      - name: valor_frete
+        description: Valor do Frete
+      - name: valor_seguro
+        description: Valor do Seguro
+        
   - name: ncm_exportacao
     description: Base de dados detalhada de exportação por NCM. Os arquivos auxiliares com todos os dicionários e valores de variáveis se encontram em https://storage.googleapis.com/basedosdados/auxiliary_files/br_me_comex_stat.zip.
     columns:
