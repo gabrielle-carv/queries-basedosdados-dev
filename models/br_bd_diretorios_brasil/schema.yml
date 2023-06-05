@@ -139,7 +139,7 @@ models:
         description: Fax (con DDD)
       - name: email
         description: Email        
- - name: empresa
+  - name: empresa
     description: A tabela apresenta informações do Cadastro Nacional da Pessoa Jurídica (CNPJ), que é um banco de dados administrado pela Secretaria Especial da Receita Federal do Brasil (RFB). Esse cadastro armazena detalhes cadastrais de pessoas jurídicas e outras entidades relevantes para as administrações tributárias do governo federal, dos estados, do Distrito Federal e dos municípios.
     columns:
       - name: cnpj
