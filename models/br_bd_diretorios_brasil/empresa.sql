@@ -1,6 +1,7 @@
 {{ 
   config(
     schema='br_bd_diretorios_brasil',
+    alias='empresas',
     materialized='table',
     cluster_by =    ['id_municipio', 'sigla_uf'],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
