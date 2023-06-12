@@ -125,7 +125,6 @@ SELECT
     complemento,
     bairro,
     id_municipio,
-    id_municipio_rf,
     a.sigla_uf,
     id_code_iso3,
     id_pais_me,
