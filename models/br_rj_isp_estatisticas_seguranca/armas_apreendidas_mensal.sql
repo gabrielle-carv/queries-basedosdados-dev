@@ -17,4 +17,4 @@ SAFE_CAST(quantidade_pistola AS INT64) quantidade_pistola,
 SAFE_CAST(quantidade_revolver AS INT64) quantidade_revolver,
 SAFE_CAST(quantidade_submetralhadora AS INT64) quantidade_submetralhadora,
 SAFE_CAST(total AS INT64) total
-FROM basedosdados-staging.br_rj_isp_estatisticas_seguranca_staging.armas_apreendidas_mensal AS t
+FROM basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.armas_apreendidas_mensal AS t
