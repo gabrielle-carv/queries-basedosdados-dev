@@ -1,14 +1,10 @@
-{{ config(alias='evolucao_mensal_municipio', schema='br_rj_isp_estatisticas_seguranca') }}
-
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
-SAFE_CAST(id_municipio AS STRING) id_municipio,
-SAFE_CAST(regiao AS STRING) regiao,
 SAFE_CAST(quantidade_homicidio_doloso AS INT64) quantidade_homicidio_doloso,
 SAFE_CAST(quantidade_latrocinio AS INT64) quantidade_latrocinio,
 SAFE_CAST(quantidade_lesao_corporal_morte AS INT64) quantidade_lesao_corporal_morte,
-SAFE_CAST(quantidade_crimes_violento_letal_intencional AS INT64) quantidade_crimes_violento_letal_intencional,
+SAFE_CAST(quantidade_crimes_violentos_letais_intencionais AS INT64) quantidade_crimes_violentos_letais_intencionais,
 SAFE_CAST(quantidade_homicidio_intervencao_policial AS INT64) quantidade_homicidio_intervencao_policial,
 SAFE_CAST(quantidade_letalidade_violenta AS INT64) quantidade_letalidade_violenta,
 SAFE_CAST(quantidade_tentativa_homicidio AS INT64) quantidade_tentativa_homicidio,
@@ -16,7 +12,7 @@ SAFE_CAST(quantidade_lesao_corporal_dolosa AS INT64) quantidade_lesao_corporal_d
 SAFE_CAST(quantidade_estupro AS INT64) quantidade_estupro,
 SAFE_CAST(quantidade_homicidio_culposo AS INT64) quantidade_homicidio_culposo,
 SAFE_CAST(quantidade_lesao_corporal_culposa AS INT64) quantidade_lesao_corporal_culposa,
-SAFE_CAST(quantidade_roubo_ AS INT64) quantidade_roubo_,
+SAFE_CAST(quantidade_roubo_transeunte AS INT64) quantidade_roubo_transeunte,
 SAFE_CAST(quantidade_roubo_celular AS INT64) quantidade_roubo_celular,
 SAFE_CAST(quantidade_roubo_corporal_coletivo AS INT64) quantidade_roubo_corporal_coletivo,
 SAFE_CAST(quantidade_roubo_rua AS INT64) quantidade_roubo_rua,
@@ -42,10 +38,10 @@ SAFE_CAST(quantidade_sequestro AS INT64) quantidade_sequestro,
 SAFE_CAST(quantidade_extorsao AS INT64) quantidade_extorsao,
 SAFE_CAST(quantidade_sequestro_relampago AS INT64) quantidade_sequestro_relampago,
 SAFE_CAST(quantidade_estelionato AS INT64) quantidade_estelionato,
-SAFE_CAST(quantidade_apreensao_drogas AS INT64) quantidade_apreensao_drogas,
-SAFE_CAST(quantidade_registro_posse_droga AS INT64) quantidade_registro_posse_droga,
-SAFE_CAST(quantidade_registro_trafico_droga AS INT64) quantidade_registro_trafico_droga,
-SAFE_CAST(quantidade_registro_apreensao_droga_sem_autor AS INT64) quantidade_registro_apreensao_droga_sem_autor,
+SAFE_CAST(quantidade_apreensao_droga AS INT64) quantidade_apreensao_droga,
+SAFE_CAST(quantidade_registro_posse_drogas AS INT64) quantidade_registro_posse_drogas,
+SAFE_CAST(quantidade_registro_trafico_drogas AS INT64) quantidade_registro_trafico_drogas,
+SAFE_CAST(quantidade_registro_apreensao_drogas_sem_autor AS INT64) quantidade_registro_apreensao_drogas_sem_autor,
 SAFE_CAST(quantidade_registro_veiculo_recuperado AS INT64) quantidade_registro_veiculo_recuperado,
 SAFE_CAST(quantidade_apf AS INT64) quantidade_apf,
 SAFE_CAST(quantidade_aaapai AS INT64) quantidade_aaapai,
@@ -59,4 +55,5 @@ SAFE_CAST(quantidade_policial_militar_morto_servico AS INT64) quantidade_policia
 SAFE_CAST(quantidade_policial_civil_morto_servico AS INT64) quantidade_policial_civil_morto_servico,
 SAFE_CAST(quantidade_registro_ocorrencia AS INT64) quantidade_registro_ocorrencia,
 SAFE_CAST(tipo_fase AS STRING) tipo_fase
-FROM basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.evolucao_mensal_municipio AS t
+
+FROM basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.evolucao_mensal_uf AS t
