@@ -23,3 +23,4 @@ SAFE_CAST(codigo_conta AS STRING) codigo_conta,
 SAFE_CAST(saldo_conta AS FLOAT64) saldo_conta,
 FROM basedosdados-dev.br_cvm_fi_staging.documentos_balancete AS t
 
+

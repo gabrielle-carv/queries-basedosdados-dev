@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: documentos_balancete
-    description: "Insert `documentos_balancete` table description here"
+    description: O balancete é um documento gerado mensalmente pela contabilidade do fundo.
     columns:
       - name: ano
         description: Ano
@@ -13,13 +13,13 @@ models:
       - name: data_competencia
         description: Data de competência
       - name: plano_contabil_balancete
-        description: Plano contábil utilizado no balancete
+        description: Plano contábil utilizado no balancete 
       - name: codigo_conta
         description: Código da conta
       - name: saldo_conta
         description: Saldo da Conta
   - name: documentos_carteiras_fundos_investimento
-    description: "Insert `documentos_carteiras_fundos_investimento` table description here"
+    description: A Composição e Diversificação das Aplicações (CDA) descreve os ativos que compõem as carteiras de fundos de investimento.
     columns:
       - name: ano
         description: Ano
@@ -140,7 +140,7 @@ models:
       - name: valor_ativo_exterior
         description: Valor do ativo no exterior
   - name: documentos_extratos_informacoes
-    description: "Insert `documentos_extratos_informacoes` table description here"
+    description: O conjunto de dados disponibiliza os Extratos das Informações (versão 2.0), referentes aos Fundos de Investimento da ICVM 555, nos últimos cinco anos.
     columns:
       - name: ano
         description: Ano
@@ -379,7 +379,7 @@ models:
       - name: porcentagem_exposicao_maxima_cotas_ficfip
         description: Exposição máxima permitida pelo Regulamento para ativo do tipo Cotas de FICFIP - art. 109, §8º, ICVM 555
   - name: documentos_informacao_cadastral
-    description: "Insert `documentos_informacao_cadastral` table description here"
+    description: Dados cadastrais de fundos de investimento estruturados e não estruturados (ICVM 555), tais como CNPJ, data de registro e situação do fundo.
     columns:
       - name: id_fundo
         description: Tipo do Fundo
@@ -462,7 +462,7 @@ models:
       - name: indicador_aplicacao_total_recursos_exterior
         description: Indica se o fundo pode aplicar 100% dos recursos no exterior
   - name: documentos_informe_diario
-    description: "Insert `documentos_informe_diario` table description here"
+    description: O Informe Diário é um demonstrativo que contém as seguintes informações do fundo, relativas à data de competência - Valor total da carteira do fundo; Patrimônio líquido; Valor da cota; Captações realizadas no dia; Resgates pagos no dia; Número de cotistas.
     columns:
       - name: ano
         description: Ano
@@ -482,12 +482,12 @@ models:
         description: Valor do patrimônio líquido
       - name: captacao_dia
         description: Captação do dia
-      - name: regate_dia
+      - name: resgate_dia
         description: Resgate no dia
       - name: quantidade_cotistas
         description: Número de cotistas
   - name: documentos_perfil_mensal
-    description: "Insert `documentos_perfil_mensal` table description here"
+    description: O conjunto de dados disponibiliza os perfis mensais referentes aos Fundos de Investimento da ICVM 555, nos últimos doze meses, a partir de janeiro/2019.
     columns:
       - name: ano
         description: Ano
