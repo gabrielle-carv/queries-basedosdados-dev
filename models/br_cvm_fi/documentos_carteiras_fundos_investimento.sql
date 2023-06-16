@@ -11,7 +11,7 @@
         "interval": 1}
     },
     cluster_by = ["mes", "id_fundo"],
-    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+    labels = {'project_id': 'basedosdados', 'tema': 'economia'})
  }}
 SELECT
 SAFE_CAST(ano AS INT64) ano,
