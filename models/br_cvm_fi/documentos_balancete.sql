@@ -11,7 +11,7 @@
         "interval": 1}
     },
     cluster_by = ["mes", "data_competencia"],
-    labels = {'project_id': 'basedosdados', 'tema': 'economia'})
+    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
  }}
 SELECT
 SAFE_CAST(ano AS INT64) ano,
