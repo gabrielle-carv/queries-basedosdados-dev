@@ -43,4 +43,4 @@ SAFE_CAST(ano_inicio_vida_contribuinte AS INT64) ano_inicio_vida_contribuinte,
 SAFE_CAST(mes_inicio_vida_contribuinte AS INT64) mes_inicio_vida_contribuinte,
 SAFE_CAST(fator_obsolescencia AS FLOAT64) fator_obsolescencia
 
-FROM basedosdados-staging.br_sp_saopaulo_geosampa_iptu_staging.iptu AS t
+FROM basedosdados-dev.br_sp_saopaulo_geosampa_iptu_staging.iptu AS t

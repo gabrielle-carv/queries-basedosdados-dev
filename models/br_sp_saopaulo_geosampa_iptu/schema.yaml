@@ -1,4 +1,6 @@
-models :
+version: 2
+
+models:
   - name: iptu
     description: "O Geosampa disponibiliza a base completa do cadastro imobiliário fiscal relativo ao IPTU (Imposto Predial e Territorial Urbano) da cidade. São mais de 3 milhões de registros e 120 Mb de informações sobre os imóveis de São Paulo."
     columns:
