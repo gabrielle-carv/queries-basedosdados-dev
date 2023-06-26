@@ -14,8 +14,6 @@ models:
         description: Número da notificação de lançamento (NL)
       - name: numero_condominio
         description: Número do condomínio
-      - name: codigo_logradouro
-        description: Código de Logradouro do imóvel
       - name: logradouro
         description: Logradouro
       - name: numero_imovel
