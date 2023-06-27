@@ -7,7 +7,7 @@
 # ? No dbt, os esquemas são definidos nos arquivos YAML e geralmente são associados a modelos específicos. O dbt cria esquemas automaticamente quando você executa uma operação de criação de modelo (como "dbt run" ou "dbt test") e pode ser configurado para usar diferentes tipos de esquemas, dependendo do seu ambiente de dados e requisitos específicos.
 
 version: 2
-# ! modelo dbt armas_apreendidas_mensal
+
 models: 
   - name: armas_apreendidas_mensal
     description: "Série histórica mensal por área de delegacia desde 01/2007"
@@ -48,7 +48,7 @@ models:
         description: Total
 
 
-# ! modelo dbt evolucao_mensal_cisp
+
   - name: evolucao_mensal_cisp
     description: "Evolução mensal CISP"
     columns:
@@ -174,7 +174,7 @@ models:
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
 
-# ! modelo dbt evolucao_mensal_municipio
+
   - name: evolucao_mensal_municipio
     description: "Série histórica mensal por município desde 2014"
     columns:
@@ -292,7 +292,7 @@ models:
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
 
-# ! modelo dbt evolucao_mensal_uf
+
   - name: evolucao_mensal_uf
     description: "Série histórica mensal no estado desde 01/1991"
     columns:
@@ -408,7 +408,7 @@ models:
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
 
-# ! modelo dbt evolucao_policial_morto_servico_mensal
+
   - name: evolucao_policial_morto_servico_mensal
     description: Série histórica mensal por área de delegacia desde 01/2003
     columns:
@@ -424,7 +424,7 @@ models:
         description: Policiais Civis mortos em serviço
 
 
-# ! modelo dbt feminicidio_mensal_cisp
+
   - name: feminicidio_mensal_cisp
     description: "Feminicídio (Lei 7.448/2016) série histórica mensal por área de delegacia desde 10/2016"
     columns:
@@ -442,7 +442,6 @@ models:
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
 
-# ! modelo dbt taxa_evolucao_mensal_municipio
   - name: taxa_evolucao_mensal_municipio
     description: "Série histórica mensal por município desde 01/2014 (taxas por 100 mil habitantes)"
     columns:
@@ -561,8 +560,6 @@ models:
       - name: tipo_fase
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
-# ! model dbt taxa_letalidade
-
   - name: taxa_letalidade
     description: "Taxa de evolução mensal no Estado por 100 mil habitantes"
     columns:
@@ -579,8 +576,6 @@ models:
       - name: taxa_cem_mil_habitantes
         description: Taxa de delito por 100 mil habitantes
 
-
-# ! modelo dbt taxa_evolucao_mensal_uf
   - name: taxa_evolucao_mensal_uf
     description: "Taxa de evolução mensal no Estado por 100 mil habitantes"
     columns:
@@ -695,7 +690,6 @@ models:
       - name: tipo_fase
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
-# ! armas_fogo_apreendidas_mensal
   - name: armas_fogo_apreendidas_mensal
     description: "Série histórica mensal por área de delegacia (01/2003 a 12/2006)"
     columns: 
@@ -712,7 +706,6 @@ models:
       - name: quantidade_arma_fogo_apreendida
         description: Quantidade de armas de fogo apreendidas mensalmente
 
-# ! evolucao_mensal_upp
   - name: evolucao_mensal_upp
     description: Série histórica mensal por área de Unidade de Polícia Pacificadora (01/2007 a 06/2021)
     columns: 
@@ -793,7 +786,6 @@ models:
       - name: quantidade_registro_ocorrencia
         description: Registro de ocorrências
 
-# ! taxa_evolucao_anual_municipio
   - name: evolucao_mensal_municipio
     description: "Série histórica mensal por município desde 2014"
     columns:
@@ -910,7 +902,6 @@ models:
       - name: tipo_fase
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
 
-# ! taxa_evolucao_anual_uf
   - name: evolucao_mensal_municipio
     description: "Série histórica mensal por município desde 2014"
     columns:
@@ -1022,6 +1013,7 @@ models:
         description: Registro de ocorrências por 100 mil habitantes
       - name: tipo_fase
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
+
   - name: taxa_evolucao_anual_municipio
     description: Série histórica anual por município desde 2014 (taxas por 100 mil
       habitantes)
@@ -1146,6 +1138,7 @@ models:
         description: Taxa Total de roubos por 100 mil habitantes
       - name: tipo_fase
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
+
   - name: taxa_evolucao_anual_uf
     description: Série histórica anual no estado desde 1991 (taxas por 100 mil habitantes)
     columns:
@@ -1267,7 +1260,7 @@ models:
         description: Taxa Total de roubos por 100 mil habitantes
       - name: tipo_fase
         description: Tipo de fase (e.g. Consolidado sem errata, Consolidado com errata)
-        
+
   - name: relacao_cisp_aisp_risp
     description: "Relação entre Circunscrição Integrada de Segurança Pública (CISP), Área Integrada de Segurança Pública (AISP) e Região Integrada de Segurança Pública (RISP) no estado do Rio de Janeiro"
     columns:
