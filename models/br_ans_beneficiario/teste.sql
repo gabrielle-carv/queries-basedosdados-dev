@@ -1,6 +1,7 @@
 -- Arquivo: tabela_temporaria.sql
 
 {% set columns = ['modalidade_operadora', 'faixa_etaria'] %}
+{% set sufixo = 'teste_' %}
 
 {% for column in columns %}
   {% if loop.index > 1 %}
@@ -9,7 +10,7 @@
   
   SELECT
     tabela_mae.*,
-    dicionario.chave AS {{ column }}
+    dicionario.chave AS {{ sufixo ~ column }}
   FROM
     `basedosdados-dev.br_ans_beneficiario.microdados_teste` AS tabela_mae
   JOIN
