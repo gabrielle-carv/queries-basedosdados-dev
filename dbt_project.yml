@@ -133,3 +133,6 @@ models:
     br_sp_saopaulo_geosampa_iptu:
       +materialized: table
       +schema: br_sp_saopaulo_geosampa_iptu
+    br_ans_beneficiario:
+      +materialized: table
+      +schema: br_ans_beneficiario
