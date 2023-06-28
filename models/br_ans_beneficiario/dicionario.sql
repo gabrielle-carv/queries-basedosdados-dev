@@ -7,7 +7,7 @@ SELECT
   modalidade_operadora AS valor,
   'modalidade_operadora' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
   modalidade_operadora
 
@@ -19,7 +19,7 @@ SELECT
   faixa_etaria AS valor,
   'faixa_etaria' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
   faixa_etaria
 
@@ -31,7 +31,7 @@ SELECT
   contratacao_beneficiario AS valor,
   'contratacao_beneficiario' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
   contratacao_beneficiario
 
@@ -43,7 +43,7 @@ SELECT
   segmentacao_beneficiario AS valor,
   'segmentacao_beneficiario' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
   segmentacao_beneficiario  
 
@@ -55,9 +55,9 @@ SELECT
   abrangencia_beneficiario AS valor,
   'abrangencia_beneficiario' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
-  abrangencia_beneficiario
+  abrangencia_beneficiario  
 
 UNION ALL
 
@@ -67,7 +67,7 @@ SELECT
   cobertura_assistencia_beneficiario AS valor,
   'cobertura_assistencia_beneficiario' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
   cobertura_assistencia_beneficiario  
 
@@ -79,6 +79,6 @@ SELECT
   tipo_vinculo AS valor,
   'tipo_vinculo' AS coluna
 FROM
-  `basedosdados-dev.br_ans_beneficiario.microdados`
+  `basedosdados-dev.br_ans_beneficiario.microdados_teste`
 GROUP BY
   tipo_vinculo    
