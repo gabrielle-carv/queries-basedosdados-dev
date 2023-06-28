@@ -1,7 +1,4 @@
--- Consulta para a primeira coluna
--- segmentacao_beneficiario,
--- testar tamanho da tabela com e sem dicionario
--- padronizar cm primeira letra maiuscula
+{{ config(alias = 'dicionario', schema = 'br_ans_beneficiario')}}
 SELECT
   ROW_NUMBER() OVER(ORDER BY modalidade_operadora) AS chave,
   modalidade_operadora AS valor,
