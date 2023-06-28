@@ -127,10 +127,12 @@ models:
     columns:
       - name: dataset_id
         description: ""
+      - name: dataset_name
+        description: ""
       - name: id
         description: ""
-      - name: table_id
-        description: ""
+      - name: name
+        description: ""        
       - name: date_created
         description: ""
       - name: date_last_modified
@@ -149,6 +151,18 @@ models:
         description: ""
       - name: outdated
         description: ""
+      - name: metadata
+        description: ""
+      - name: data
+        description: "" 
+      - name: release
+        description: ""               
+      - name: published_by
+        description: ""
+      - name: cleaned_by
+        description: ""
+      - name: missing_metadata
+        description: ""     
   - name: columns
     description: "Metadata on columns in the BD+ platform."
     columns:
@@ -175,4 +189,13 @@ models:
       - name: is_in_staging
         description: ""
       - name: is_partition
+        description: ""
+  - name: available_options
+    description: "Metadata on available options in the BD platform."
+    columns:
+      - name: element
+        description: ""
+      - name: key
+        description: ""
+      - name: value
         description: ""
