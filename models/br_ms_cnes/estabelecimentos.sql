@@ -14,7 +14,8 @@ cnes_add_muni AS (
 ),
 formatted_cnes AS (
   -- Apply data wrangling using the macro
-  SELECT {{ data_wrangling(cnes_add_muni) }}
+  SELECT * 
+  FROM {{ data_wrangling(cnes_add_muni) }}
 )
   -- 3. padronização, ordenação de colunas
 
