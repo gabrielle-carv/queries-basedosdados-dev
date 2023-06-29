@@ -130,3 +130,6 @@ models:
     br_bd_diretorios_brasil:
       +materialized: table
       +schema: br_bd_diretorios_brasil
+    br_ms_cnes:
+      +materialized: table
+      +schema: br_ms_cnes 
