@@ -1,8 +1,7 @@
-{{ config(alias='armas_apreendidas_mensal', schema='br_rj_isp_estatisticas_seguranca') }}
-
 SELECT 
-SAFE_CAST(ano AS STRING) ano,
-SAFE_CAST(mes AS STRING) mes,
+
+SAFE_CAST(ano AS INT64) ano,
+SAFE_CAST(mes AS INT64) mes,
 SAFE_CAST(id_cisp AS STRING) id_cisp,
 SAFE_CAST(id_aisp AS STRING) id_aisp,
 SAFE_CAST(id_risp AS STRING) id_risp,
