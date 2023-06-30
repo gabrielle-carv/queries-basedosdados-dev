@@ -100,6 +100,9 @@ models:
     br_poder360_pesquisas:
       +materialized: table
       +schema: br_poder360_pesquisas
+    br_anatel_telefonia_movel:
+      +materialized: table # Materialization type (table, view or incremental)
+      +schema: br_anatel_telefonia_movel    
     br_sp_saopaulo_dieese_icv:
       +materialized: table
       +schema: br_sp_saopaulo_dieese_icv
