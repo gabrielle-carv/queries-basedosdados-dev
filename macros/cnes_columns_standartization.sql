@@ -1,11 +1,9 @@
-{% macro data_wrangling(df) -%}
-    {%- set strip = ['REGSAUDE', 'MICR_REG', 'DISTRSAN', 'DISTRADM', 'PF_PJ', 'NIV_DEP', 'COD_IR',
-                     'ESFERA_A', 'ATIVIDAD', 'TP_UNID', 'TURNO_AT', 'NIV_HIER', 'TP_PREST', 'ORGEXPED',
-                     'AV_ACRED', 'AV_PNASS'] -%}
+{%- macro clean_cols(df_col) -%}
+    {# pass a column that will be standadirzed #}
     
-    {%- for x in strip -%}
-        {% set _ = df.update({x: df[x].replace(',', '').replace('¿', '').rstrip('ª').rstrip('º').lstrip('0')}) %}
-    {%- endfor -%}
+    --{%- for column in columns_to_wrang -%}
+    {%- df_col | replace(',','') | replace('¿', '') | replace('ª', '') | replace('º', '')  -%}
+       -- {% set _ = df.update({x: df[x].replace(',', '').replace('¿', '').rstrip('ª').rstrip('º').lstrip('0')}) %}
     
-    {{ df }}
+    --{{ df_col }}
 {% endmacro %}
