@@ -42,7 +42,7 @@ cnes_add_muni AS (
   SAFE_CAST(RETENCAO AS STRING) tipo_retencao_tributos,
   SAFE_CAST({{clean_cols('ATIVIDAD')}} AS STRING) tipo_atividade_ensino_pesquisa,
   SAFE_CAST(NATUREZA AS STRING) tipo_natureza_administrativa,
-  SAFE_CAST(NAT_JUR AS STRING) id_natureza_juridica,
+  --SAFE_CAST(NAT_JUR AS STRING) id_natureza_juridica,
   SAFE_CAST(CLIENTEL AS STRING) tipo_fluxo_atendimento,
   SAFE_CAST({{clean_cols('TP_UNID')}} AS STRING) tipo_unidade,
   SAFE_CAST({{clean_cols('TURNO_AT')}} AS STRING) tipo_turno,
