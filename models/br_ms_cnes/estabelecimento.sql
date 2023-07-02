@@ -52,11 +52,11 @@ cnes_add_muni AS (
   SAFE_CAST(CO_AGENC AS STRING) agencia,
   SAFE_CAST(C_CORREN AS STRING) conta_corrente,
   SAFE_CAST(CONTRATM AS STRING) id_contrato_municipio_sus,
-  PARSE_DATE('%Y%m%d', DT_PUBLM) AS DATE,#data_publicacao_contrato_municipal
-  PARSE_DATE('%Y%m%d', DT_PUBLE) AS DATE,#data_publicacao_contrato_estadual
+  SAFE_CAST(PARSE_DATE('%Y%m%d', DT_PUBLM) AS DATE) data_publicacao_contrato_municipal,
+  SAFE_CAST(PARSE_DATE('%Y%m%d', DT_PUBLE) AS DATE) data_publicacao_contrato_estadual,
   SAFE_CAST(CONTRATE AS STRING) id_contrato_estado_sus,
   SAFE_CAST(ALVARA AS STRING) numero_alvara,
-  PARSE_DATE('%Y%m%d', DT_EXPED) AS DATE,#data_expedicao_alvara
+  SAFE_CAST(PARSE_DATE('%Y%m%d', DT_EXPED) AS DATE) data_expedicao_alvara,
   SAFE_CAST({{clean_cols('ORGEXPED')}} AS STRING) tipo_orgao_expedidor,
   SAFE_CAST({{clean_cols('AV_ACRED')}} AS STRING) tipo_avaliacao_acreditacao_hospitalar,
   SAFE_CAST(CLASAVAL AS STRING) tipo_classificacao_acreditacao_hospitalar,
