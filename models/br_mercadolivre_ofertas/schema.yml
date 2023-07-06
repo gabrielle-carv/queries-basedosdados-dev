@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: item
+    description: informações de itens em oferta no Mercado Livre
+    columns:
+      - name: ano
+        description: Competência dos dados (AAAA)
+
+  - name: vendedor
+    description: informações de vendedores dos itens na tabela de oferta
+    columns:
+      - name: chave
+        description: Chave
