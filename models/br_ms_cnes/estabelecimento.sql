@@ -15,7 +15,6 @@ cnes_add_muni AS (
   -- 3. padronização, ordenação de colunas e conversão de tipos
   -- 4. Aplica macro clean_cols em certas colunas 
   SELECT
-  -- atencao ele usa um lstrip 00 
   CAST(SUBSTR(DT_ATUAL, 1, 4) AS INT64) AS ano,
   CAST(SUBSTR(DT_ATUAL, 5, 2) AS INT64) AS mes,
   CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano_competencia,
@@ -42,7 +41,7 @@ cnes_add_muni AS (
   SAFE_CAST(RETENCAO AS STRING) tipo_retencao_tributos,
   SAFE_CAST({{clean_cols('ATIVIDAD')}} AS STRING) tipo_atividade_ensino_pesquisa,
   SAFE_CAST(NATUREZA AS STRING) tipo_natureza_administrativa,
-  --SAFE_CAST(NAT_JUR AS STRING) id_natureza_juridica,
+  SAFE_CAST(NAT_JUR AS STRING) id_natureza_juridica,
   SAFE_CAST(CLIENTEL AS STRING) tipo_fluxo_atendimento,
   SAFE_CAST({{clean_cols('TP_UNID')}} AS STRING) tipo_unidade,
   SAFE_CAST({{clean_cols('TURNO_AT')}} AS STRING) tipo_turno,
