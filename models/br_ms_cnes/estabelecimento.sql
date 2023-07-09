@@ -1,3 +1,18 @@
+{{ 
+  config(
+    schema='br_ms_cnes',
+    materialized='table',
+     partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "range": {
+        "start": 2005,
+        "end": 2023,
+        "interval": 1}
+     }  
+    )
+ }}
+
 WITH raw_cnes AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
@@ -15,8 +30,8 @@ cnes_add_muni AS (
   -- 3. padronização, ordenação de colunas e conversão de tipos
   -- 4. Aplica macro clean_cols em certas colunas 
   SELECT
-  CAST(SUBSTR(DT_ATUAL, 1, 4) AS INT64) AS ano,
-  CAST(SUBSTR(DT_ATUAL, 5, 2) AS INT64) AS mes,
+  CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
+  CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
   CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano_competencia,
   CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes_competencia,
   SAFE_CAST(sigla_uf AS STRING) sigla_uf, 
