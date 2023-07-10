@@ -142,6 +142,9 @@ models:
     br_ans_beneficiario:
       +materialized: table
       +schema: br_ans_beneficiario
+    br_mercadolivre_ofertas:
+      +materialized: table
+      +schema: br_mercadolivre_ofertas
     mundo_transfermarkt_competicoes:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes
