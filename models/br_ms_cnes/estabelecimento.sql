@@ -46,9 +46,11 @@ cnes_add_muni AS (
   SAFE_CAST(COD_CEP AS STRING) cep,
   SAFE_CAST(CNES AS STRING) id_estabelecimento_cnes,
   SAFE_CAST({{clean_cols('PF_PJ')}} AS STRING) tipo_pessoa,
-  SAFE_CAST(CPF_CNPJ  AS STRING) cpf_cnpj,
+  -- fazer replace em valores de linha com 14 zeros para null. 14 zeros é o tamanho de um cpf/cnpj nulo
+  SAFE_CAST(regexp_replace(CPF_CNPJ, '0{14}', '') AS STRING) cpf_cnpj,
   SAFE_CAST({{clean_cols('NIV_DEP')}} AS STRING) tipo_grau_dependencia,
-  SAFE_CAST(CNPJ_MAN AS STRING) cnpj_mantenedora,
+  -- fazer replace em valores de linha com 14 zeros para null. 14 zeros é o tamanho de um cpf/cnpj nulo
+  SAFE_CAST(regexp_replace(CNPJ_MAN, '0{14}', '') AS STRING) cnpj_mantenedora,
   SAFE_CAST({{clean_cols('COD_IR')}} AS STRING) tipo_retencao_tributos_mantenedora,
   SAFE_CAST(VINC_SUS AS INT64) indicador_vinculo_sus,
   SAFE_CAST(TPGESTAO AS STRING) tipo_gestao,
