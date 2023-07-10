@@ -30,7 +30,7 @@ cnes_add_muni AS (
   FROM raw_cnes_estabelecimento_without_duplicates  
   LEFT JOIN (SELECT id_municipio, id_municipio_6, sigla_uf,
   FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON raw_cnes.CODUFMUN = mun.id_municipio_6
+  ON raw_cnes_estabelecimento_without_duplicates.CODUFMUN = mun.id_municipio_6
 )
   -- 4. padronização, ordenação de colunas e conversão de tipos
   -- 5. Aplica macro clean_cols em certas colunas 
