@@ -19,21 +19,21 @@ WITH raw_cnes AS (
   FROM `basedosdados-dev.br_ms_cnes_staging.estabelecimento`
   WHERE CNES IS NOT NULL
 ),
-  -- 3. distinct nas linhas 
-raw_cnes_without_diplicates as(
+  -- 2. distinct nas linhas 
+raw_cnes_without_duplicates as(
   SELECT DISTINCT *
-  FROM `basedosdados-dev.br_ms_cnes_staging.estabelecimento`
-)
+  FROM raw_cnes
+),
 cnes_add_muni AS (
-  -- 4. Adicionar id_municipio e sigla_uf
+  -- 3. Adicionar id_municipio e sigla_uf
   SELECT *
-  FROM raw_cnes_without_diplicates  
+  FROM raw_cnes_without_duplicates  
   LEFT JOIN (SELECT id_municipio, id_municipio_6, sigla_uf,
   FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
   ON raw_cnes.CODUFMUN = mun.id_municipio_6
 )
-  -- 5. padronização, ordenação de colunas e conversão de tipos
-  -- 6. Aplica macro clean_cols em certas colunas 
+  -- 4. padronização, ordenação de colunas e conversão de tipos
+  -- 5. Aplica macro clean_cols em certas colunas 
   SELECT
   CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
   CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
