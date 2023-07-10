@@ -13,21 +13,21 @@
     )
  }}
 
-WITH raw_cnes AS (
+WITH raw_cnes_estabelecimento AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.estabelecimento`
   WHERE CNES IS NOT NULL
 ),
+raw_cnes_estabelecimento_without_duplicates as(
   -- 2. distinct nas linhas 
-raw_cnes_without_duplicates as(
   SELECT DISTINCT *
-  FROM raw_cnes
+  FROM raw_cnes_estabelecimento
 ),
 cnes_add_muni AS (
   -- 3. Adicionar id_municipio e sigla_uf
   SELECT *
-  FROM raw_cnes_without_duplicates  
+  FROM raw_cnes_estabelecimento_without_duplicates  
   LEFT JOIN (SELECT id_municipio, id_municipio_6, sigla_uf,
   FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
   ON raw_cnes.CODUFMUN = mun.id_municipio_6
