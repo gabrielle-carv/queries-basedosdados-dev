@@ -10,7 +10,7 @@
         "end": 2023,
         "interval": 1}
     },
-    labels = {'project_id': 'basedosdados'})
+    labels = {'project_id': 'basedosdados-dev'})
  }}
 SELECT 
 SAFE_CAST(REPLACE (ano_campeonato,".0","") AS INT64) ano_campeonato,
