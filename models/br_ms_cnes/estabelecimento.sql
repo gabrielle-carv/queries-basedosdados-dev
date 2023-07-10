@@ -1,24 +1,42 @@
-WITH raw_cnes AS (
+{{ 
+  config(
+    schema='br_ms_cnes',
+    materialized='table',
+     partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "range": {
+        "start": 2005,
+        "end": 2023,
+        "interval": 1}
+     }  
+    )
+ }}
+
+WITH raw_cnes_estabelecimento AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-dev.br_ms_cnes_test_staging.estabelecimento`
+  FROM `basedosdados-dev.br_ms_cnes_staging.estabelecimento`
   WHERE CNES IS NOT NULL
 ),
+raw_cnes_estabelecimento_without_duplicates as(
+  -- 2. distinct nas linhas 
+  SELECT DISTINCT *
+  FROM raw_cnes_estabelecimento
+),
 cnes_add_muni AS (
-  -- 2. Adicionar id_municipio e sigla_uf
+  -- 3. Adicionar id_municipio e sigla_uf
   SELECT *
-  FROM raw_cnes  
+  FROM raw_cnes_estabelecimento_without_duplicates  
   LEFT JOIN (SELECT id_municipio, id_municipio_6, sigla_uf,
   FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON raw_cnes.CODUFMUN = mun.id_municipio_6
+  ON raw_cnes_estabelecimento_without_duplicates.CODUFMUN = mun.id_municipio_6
 )
-  -- 3. padronização, ordenação de colunas e conversão de tipos
-  -- 4. Aplica macro clean_cols em certas colunas 
+  -- 4. padronização, ordenação de colunas e conversão de tipos
+  -- 5. Aplica macro clean_cols em certas colunas 
   SELECT
-  CAST(SUBSTR(DT_ATUAL, 1, 4) AS INT64) AS ano,
-  CAST(SUBSTR(DT_ATUAL, 5, 2) AS INT64) AS mes,
-  CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano_competencia,
-  CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes_competencia,
+  CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
+  CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
   SAFE_CAST(sigla_uf AS STRING) sigla_uf, 
   CAST(SUBSTR(DT_ATUAL, 1, 4) AS INT64) AS ano_atualizacao,
   CAST(SUBSTR(DT_ATUAL, 5, 2) AS INT64) AS mes_atualizacao,
@@ -31,9 +49,11 @@ cnes_add_muni AS (
   SAFE_CAST(COD_CEP AS STRING) cep,
   SAFE_CAST(CNES AS STRING) id_estabelecimento_cnes,
   SAFE_CAST({{clean_cols('PF_PJ')}} AS STRING) tipo_pessoa,
-  SAFE_CAST(CPF_CNPJ  AS STRING) cpf_cnpj,
+  -- fazer replace em valores de linha com 14 zeros para null. 14 zeros é o tamanho de um valor nulo na variável cpf/cnpj
+  SAFE_CAST(regexp_replace(CPF_CNPJ, '0{14}', '') AS STRING) cpf_cnpj,
   SAFE_CAST({{clean_cols('NIV_DEP')}} AS STRING) tipo_grau_dependencia,
-  SAFE_CAST(CNPJ_MAN AS STRING) cnpj_mantenedora,
+  -- fazer replace em valores de linha com 14 zeros para null. 14 zeros é o tamanho de um cpf/cnpj nulo
+  SAFE_CAST(regexp_replace(CNPJ_MAN, '0{14}', '') AS STRING) cnpj_mantenedora,
   SAFE_CAST({{clean_cols('COD_IR')}} AS STRING) tipo_retencao_tributos_mantenedora,
   SAFE_CAST(VINC_SUS AS INT64) indicador_vinculo_sus,
   SAFE_CAST(TPGESTAO AS STRING) tipo_gestao,
