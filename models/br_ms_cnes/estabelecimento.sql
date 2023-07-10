@@ -32,8 +32,6 @@ cnes_add_muni AS (
   SELECT
   CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
   CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
-  CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano_competencia,
-  CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes_competencia,
   SAFE_CAST(sigla_uf AS STRING) sigla_uf, 
   CAST(SUBSTR(DT_ATUAL, 1, 4) AS INT64) AS ano_atualizacao,
   CAST(SUBSTR(DT_ATUAL, 5, 2) AS INT64) AS mes_atualizacao,
