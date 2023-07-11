@@ -1,5 +1,5 @@
 {{ config(alias='densidade_municipio', schema='br_anatel_telefonia_movel') }}
-
+ 
 SELECT
 
 SAFE_CAST(ano AS INT64) ano,
