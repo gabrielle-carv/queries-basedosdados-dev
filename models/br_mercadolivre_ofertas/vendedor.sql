@@ -1,3 +1,13 @@
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "dia",
+      "data_type": "date",
+      "granularity": "day"
+    }
+)}}
+
+
 with main as (
   select lpad(id_vendor, 12, '0') as vendedor_id,
   dia,
