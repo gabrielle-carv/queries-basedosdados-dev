@@ -1,4 +1,14 @@
-select 
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "dia",
+      "data_type": "date",
+      "granularity": "day"
+    }
+)}}
+
+select
+dia,
 parse_datetime('%Y-%m-%d %H:%M:%S', data_hora) as data_hora,
 titulo,
 lpad(item_id, 12, '0') as item_id,
@@ -16,7 +26,11 @@ SAFE_CAST(envio_pais AS BOOL) envio_pais,
 SAFE_CAST(estrelas AS FLOAT64) estrelas,
 SAFE_CAST(preco AS FLOAT64) preco,
 SAFE_CAST(preco_original AS FLOAT64) preco_original,
-vendedor,
+case
+  when vendedor='None' then null
+  else vendedor end as vendedor,
 secao_site,
-caracteristicas,
+case
+  when caracteristicas='{}' then null
+  else caracteristicas end as caracteristicas,
 from `basedosdados-dev.br_mercadolivre_ofertas_staging.item`
