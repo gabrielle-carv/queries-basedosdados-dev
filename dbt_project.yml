@@ -133,9 +133,9 @@ models:
     br_bd_diretorios_brasil:
       +materialized: table
       +schema: br_bd_diretorios_brasil
-    br_ms_cnes_test:
+    br_ms_cnes:
       +materialized: table
-      +schema: br_ms_cnes_test 
+      +schema: br_ms_cnes 
     br_sp_saopaulo_geosampa_iptu:
       +materialized: table
       +schema: br_sp_saopaulo_geosampa_iptu
@@ -145,4 +145,6 @@ models:
     br_mercadolivre_ofertas:
       +materialized: table
       +schema: br_mercadolivre_ofertas
-
+    mundo_transfermarkt_competicoes:
+      +materialized: table
+      +schema: mundo_transfermarkt_competicoes
