@@ -1,6 +1,4 @@
-{{ config(alias='cotacoes', schema='br_b3_cotacoes') }}
-
-{{ config(
+{{ config((alias='cotacoes', schema='br_b3_cotacoes')
     materialized='table',
     partition_by={
       "field": "data_referencia",
@@ -22,4 +20,4 @@ SAFE_CAST(tipo_sessao_pregao AS STRING) tipo_sessao_pregao,
 SAFE_CAST(quantidade_negociada AS INT64) quantidade_negociada,
 SAFE_CAST(preco_negocio AS FLOAT64) preco_negocio
 
-FROM basedosdados-dev.br_b3_cotacoes_staging.cotacoes AS t
+FROM basedosdados-dev.br_b3_cotacoes_staging.cotacoes AS t 
