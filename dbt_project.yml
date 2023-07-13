@@ -152,5 +152,5 @@ models:
                     FILTER USING ( (EXTRACT(WEEK from data) <= (EXTRACT( WEEK from CURRENT_DATE())-6) ) OR ano_campeonato<EXTRACT(YEAR from  CURRENT_DATE()))'
         - 'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
                     ON  {{this}}
-                    GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
+                    GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org", "group:gabrielle.carvalho@basedosdados.org")
                     FILTER USING (ano_campeonato=EXTRACT(YEAR from  CURRENT_DATE()))'
