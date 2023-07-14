@@ -1,7 +1,8 @@
-{{ config
-    ((alias='microdados', schema='br_anatel_telefonia_movel')
-    materialized='table',
-    partition_by: [
+{{ config(
+  alias = 'microdados',
+  schema = 'br_anatel_telefonia_movel',
+  materialized= 'table',
+  partition_by= [
     {
       "field": "ano",
       "data_type": "int64",
@@ -13,7 +14,7 @@
       "granularity": "month"
     }
   ]
-}
+) }}
 
 
 SELECT 
