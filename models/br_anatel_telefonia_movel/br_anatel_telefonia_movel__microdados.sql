@@ -1,4 +1,21 @@
-{{ config(alias='microdados', schema='br_anatel_telefonia_movel') }}
+{{ config
+    ((alias='microdados', schema='br_anatel_telefonia_movel')
+    materialized='table',
+    partition_by: [
+    {
+      "field": "ano",
+      "data_type": "int64",
+      "granularity": "year"
+    },
+    {
+      "field": "mes",
+      "data_type": "int64",
+      "granularity": "month"
+    }
+  ]
+}
+
+
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
@@ -14,5 +31,6 @@ SAFE_CAST(modalidade AS STRING) modalidade,
 SAFE_CAST(pessoa AS STRING) pessoa,
 SAFE_CAST(produto AS STRING) produto,
 SAFE_CAST(acessos AS INT64) acessos
+
 FROM basedosdados-dev.br_anatel_telefonia_movel_staging.microdados AS t
 
