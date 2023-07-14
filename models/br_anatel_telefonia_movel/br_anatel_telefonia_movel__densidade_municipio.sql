@@ -1,19 +1,12 @@
 {{ config(
-  alias = 'densidade_municipio',
-  schema = 'br_anatel_telefonia_movel',
-  materialized= 'table',
-  partition_by= [
-    {
+    alias='densidade_municipio',
+    schema='br_anatel_telefonia_movel',
+    materialized='table',
+    partition_by={
       "field": "ano",
       "data_type": "int64",
       "granularity": "year"
-    },
-    {
-      "field": "mes",
-      "data_type": "int64",
-      "granularity": "month"
     }
-  ]
 ) }}
  
 SELECT
