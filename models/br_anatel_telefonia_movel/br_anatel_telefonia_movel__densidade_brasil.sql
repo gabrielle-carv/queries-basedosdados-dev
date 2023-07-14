@@ -1,13 +1,4 @@
-{{ config(
-    alias='densidade_brasil',
-    schema='br_anatel_telefonia_movel',
-    materialized='table',
-    partition_by={
-      "field": "ano",
-      "data_type": "int64",
-      "granularity": "year"
-    }
-) }}
+{{ config(alias='densidade_brasil', schema='br_anatel_telefonia_movel') }}
  
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
