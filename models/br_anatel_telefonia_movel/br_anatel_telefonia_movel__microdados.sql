@@ -1,20 +1,18 @@
 {{ config(
-  alias = 'microdados',
-  schema = 'br_anatel_telefonia_movel',
-  materialized= 'table',
-  partition_by= [
-    {
+    alias='microdados',
+    schema='br_anatel_telefonia_movel',
+    materialized='table',
+     partition_by={
       "field": "ano",
       "data_type": "int64",
-      "granularity": "year"
+      "range": {
+        "start": 2019,
+        "end": 2023,
+        "interval": 1}
     },
-    {
-      "field": "mes",
-      "data_type": "int64",
-      "granularity": "month"
-    }
-  ]
-) }}
+    cluster_by = ["id_municipio", "mes"],
+    labels = {'project_id': 'basedosdados-dev'})
+ }}
 
 
 SELECT 
