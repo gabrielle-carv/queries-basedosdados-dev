@@ -43,6 +43,9 @@ models:
     example:
       +materialized: table # Materialization type (table, table or incremental)
       +schema: example # Overrides the default schema (defaults to what is set on profiles.yml)
+    br_b3_cotacoes:
+      +materialized: table
+      +schema: br_b3_cotacoes
     br_rj_isp_estatisticas_seguranca:
       +materialized: table
       +schema: br_rj_isp_estatisticas_seguranca
@@ -55,9 +58,15 @@ models:
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_bcb_agencia:
+      +materialized: table
+      +schema: br_bcb_agencia
     br_bcb_estban:
       +materialized: table
-      +schema: br_bcb_estban  
+      +schema: br_bcb_estban
+    br_me_comex_stat:
+      +materialized: table
+      +schema: br_me_comex_stat    
     br_bd_metadados:
       +materialized: table
       +schema: br_bd_metadados
@@ -85,12 +94,15 @@ models:
     br_ibge_pnadc:
       +materialized: table
       +schema: br_ibge_pnadc
-    br_inmet_bdmep: ## aqui é o seu <dataset_id>
-      +materialized: table # Materialization type (table, view or incremental)
-      +schema: br_inmet_bdmep # Overrides the default schema (defaults to what is set on profiles.yml)
+    br_inmet_bdmep: 
+      +materialized: table 
+      +schema: br_inmet_bdmep 
     br_poder360_pesquisas:
       +materialized: table
       +schema: br_poder360_pesquisas
+    br_anatel_telefonia_movel:
+      +materialized: table # Materialization type (table, view or incremental)
+      +schema: br_anatel_telefonia_movel    
     br_sp_saopaulo_dieese_icv:
       +materialized: table
       +schema: br_sp_saopaulo_dieese_icv
@@ -103,3 +115,45 @@ models:
     fundacao_lemann:
       +materialized: table
       +schema: fundacao_lemann
+    br_ons_avaliacao_operacao:
+      +materialized: table
+      +schema: br_ons_avaliacao_operacao
+    br_cvm_fi:
+      +materialized: table
+      +schema: br_cvm_fi
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    br_ons_estimativa_custos:
+      +materialized: table
+      +schema: br_ons_estimativa_custos
+    br_me_caged:
+      +materialized: table
+      +schema: br_me_caged
+    br_bd_diretorios_brasil:
+      +materialized: table
+      +schema: br_bd_diretorios_brasil
+    br_ms_cnes:
+      +materialized: table
+      +schema: br_ms_cnes 
+    br_sp_saopaulo_geosampa_iptu:
+      +materialized: table
+      +schema: br_sp_saopaulo_geosampa_iptu
+    br_ans_beneficiario:
+      +materialized: table
+      +schema: br_ans_beneficiario
+    br_mercadolivre_ofertas:
+      +materialized: table
+      +schema: br_mercadolivre_ofertas
+    mundo_transfermarkt_competicoes:
+      +materialized: table
+      +schema: mundo_transfermarkt_competicoes
+      +post-hook:
+        - 'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
+                    ON {{this}}
+                    GRANT TO ("allUsers")
+                    FILTER USING ( (EXTRACT(WEEK from data) <= (EXTRACT( WEEK from CURRENT_DATE())-6) ) OR ano_campeonato<EXTRACT(YEAR from  CURRENT_DATE()))'
+        - 'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
+                    ON  {{this}}
+                    GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org", "user:gabrielle.carvalho@basedosdados.org")
+                    FILTER USING (ano_campeonato=EXTRACT(YEAR from  CURRENT_DATE()))'
