@@ -1,5 +1,5 @@
 {{ config(
-    alias='microdados',
+    alias='microdados_atualizado',
     schema='br_anatel_telefonia_movel',
     materialized='table',
      partition_by={
