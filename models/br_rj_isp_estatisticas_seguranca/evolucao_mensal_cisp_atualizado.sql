@@ -1,3 +1,6 @@
+{{ config(post_hook=['REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+                'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"']) }}
+
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
@@ -62,3 +65,4 @@ SAFE_CAST(quantidade_registro_ocorrencia AS INT64) quantidade_registro_ocorrenci
 SAFE_CAST(tipo_fase AS STRING) tipo_fase
 
 FROM basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.evolucao_mensal_cisp AS t
+WHERE DATE_DIFF(CURRENT_DATE(),DATE(SAFE_CAST(ano AS INT64),SAFE_CAST(mes AS INT64),01),month) >= 6
