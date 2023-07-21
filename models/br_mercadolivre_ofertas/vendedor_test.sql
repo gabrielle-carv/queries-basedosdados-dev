@@ -10,7 +10,7 @@
 
 WITH tabela_deduplicada AS (
     SELECT
-        FORMAT_TIMESTAMP('%Y-%m-%d', dia) as data_consulta,
+        PARSE_DATE('%Y-%m-%d', FORMAT_TIMESTAMP('%Y-%m-%d', dia)) AS data_consulta
         id_municipio,
         vendedor_id as id_vendedor,
         nome as vendedor,

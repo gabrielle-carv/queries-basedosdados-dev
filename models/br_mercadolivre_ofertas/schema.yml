@@ -52,7 +52,7 @@ models:
         description: opiniões ou avaliações sobre o vendedor
       - name: data
         description: data relacionada ao vendedor, como a data de criação da conta
-        
+
   - name: item_test
     description: Informações de itens em oferta no Mercado Livre. Valores missing podem se dar por instabiliade do site no momento da coleta.
     columns:
@@ -70,7 +70,7 @@ models:
         description: ID vendedor
       - name: vendedor
         description: Nome do vendedor
-      - name: primeira_categoria
+      - name: categoria_principal
         description: Primeira categoria do item classificada no site
       - name: categorias
         description: Todas as categorias descritas no site em relação ao item

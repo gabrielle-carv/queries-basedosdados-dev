@@ -19,7 +19,7 @@ WITH tabela AS (
       WHEN vendedor = 'None' THEN NULL 
       ELSE vendedor 
     END AS vendedor,
-    REGEXP_EXTRACT(categoria, r'^([^,]+)') AS primeira_categoria, 
+    REGEXP_EXTRACT(categoria, r'^([^,]+)') AS categoria_principal, 
     REGEXP_EXTRACT(categoria, r'^([^\n]+)') AS categorias,
     envio_pais as envio_nacional,
     caracteristicas,
