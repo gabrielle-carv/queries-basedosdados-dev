@@ -92,6 +92,8 @@ models:
         description: Roubo de veículo
       - name: quantidade_roubo_carga
         description: Roubo de carga
+      - name: quantidade_roubo_comercio
+        description: Roubo a estabelecimento comercial
       - name: quantidade_roubo_residencia
         description: Roubo a residência
       - name: quantidade_roubo_banco
@@ -198,7 +200,7 @@ models:
         description: Homicídio culposo (trânsito)
       - name: quantidade_lesao_corporal_culposa
         description: Lesão corporal culposa (trânsito)
-      - name: quantidade_roubo_transeunte
+      - name: quantidade_roubo_
         description: Roubo a transeunte
       - name: quantidade_roubo_celular
         description: Roubo ao telefone celular
@@ -210,6 +212,8 @@ models:
         description: Roubo de veículo
       - name: quantidade_roubo_carga
         description: Roubo de carga
+      - name: quantidade_roubo_comercio
+        description: Roubo a estabelecimento comercial      
       - name: quantidade_roubo_residencia
         description: Roubo a residência
       - name: quantidade_roubo_banco
