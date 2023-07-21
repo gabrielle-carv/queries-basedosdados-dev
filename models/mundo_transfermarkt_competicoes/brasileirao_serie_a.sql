@@ -15,7 +15,6 @@
 SELECT 
 SAFE_CAST(REPLACE (ano_campeonato,".0","") AS INT64) ano_campeonato,
 SAFE_CAST(data AS DATE) data,
-SAFE_CAST(horario AS STRING) horario,
 SAFE_CAST(REPLACE (rodada,".0","") AS INT64) rodada,
 SAFE_CAST(estadio AS STRING) estadio,
 SAFE_CAST(arbitro AS STRING) arbitro,
