@@ -64,7 +64,7 @@ SELECT
   titulo,
   id_vendedor,
   vendedor,
-  primeira_categoria,
+  categoria_principal,
   categorias,
   caracteristicas,
   envio_nacional,
