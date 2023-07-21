@@ -1,6 +1,15 @@
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "data_consulta",
+      "data_type": "date",
+      "granularity": "day"
+    }
+)}}
+
 WITH tabela AS (
   SELECT 
-    FORMAT_TIMESTAMP('%Y-%m-%d', data_hora) AS data_consulta,
+    PARSE_DATE('%Y-%m-%d', FORMAT_TIMESTAMP('%Y-%m-%d', data_hora)) AS data_consulta,
     FORMAT_TIMESTAMP('%H:%M:%S', data_hora) AS hora_consulta,
     secao_site,
     item_id as id_item,
@@ -47,16 +56,6 @@ FROM
     `basedosdados.br_mercadolivre_ofertas.vendedor`)  b
 ON a.vendedor = b.nome and FORMAT_TIMESTAMP('%Y-%m-%d', data_hora) = FORMAT_TIMESTAMP('%Y-%m-%d', dia)
 )
-
-{{ config(
-    materialized='table',
-    partition_by={
-      "field": "data_consulta",
-      "data_type": "date",
-      "granularity": "day"
-    }
-)}}
-
 SELECT 
   data_consulta,
   hora_consulta,
