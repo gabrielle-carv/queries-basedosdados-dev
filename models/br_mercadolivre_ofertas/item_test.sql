@@ -1,11 +1,3 @@
-{{ config(
-    materialized='table',
-    partition_by={
-      "field": "data_consulta",
-      "data_type": "date",
-      "granularity": "day"
-    }
-)}}
 WITH tabela AS (
   SELECT 
     FORMAT_TIMESTAMP('%Y-%m-%d', data_hora) AS data_consulta,
@@ -55,6 +47,16 @@ FROM
     `basedosdados.br_mercadolivre_ofertas.vendedor`)  b
 ON a.vendedor = b.nome and FORMAT_TIMESTAMP('%Y-%m-%d', data_hora) = FORMAT_TIMESTAMP('%Y-%m-%d', dia)
 )
+
+{{ config(
+    materialized='table',
+    partition_by={
+      "field": "data_consulta",
+      "data_type": "date",
+      "granularity": "day"
+    }
+)}}
+
 SELECT 
   data_consulta,
   hora_consulta,
