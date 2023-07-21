@@ -10,7 +10,7 @@
 WITH tabela AS (
   SELECT 
     PARSE_DATE('%Y-%m-%d', FORMAT_TIMESTAMP('%Y-%m-%d', data_hora)) AS data_consulta,
-    TIME(FORMAT_TIMESTAMP('%H:%M:%S', data_hora)) AS hora_consulta,
+    PARSE_TIME('%H:%M:%S', FORMAT_TIMESTAMP('%H:%M:%S', data_hora)) AS hora_consulta,
     secao_site,
     item_id as id_item,
     titulo,
