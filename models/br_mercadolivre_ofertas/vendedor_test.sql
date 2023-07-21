@@ -1,7 +1,7 @@
 {{ config(
     materialized='table',
     partition_by={
-      "field": "dia",
+      "field": "data_consulta",
       "data_type": "date",
       "granularity": "day"
     }
