@@ -1,4 +1,4 @@
-SELECT 
+SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
 SAFE_CAST(id_municipio AS STRING) id_municipio,
@@ -6,7 +6,7 @@ SAFE_CAST(regiao AS STRING) regiao,
 SAFE_CAST(quantidade_homicidio_doloso AS INT64) quantidade_homicidio_doloso,
 SAFE_CAST(quantidade_latrocinio AS INT64) quantidade_latrocinio,
 SAFE_CAST(quantidade_lesao_corporal_morte AS INT64) quantidade_lesao_corporal_morte,
-SAFE_CAST(quantidade_crimes_violento_letal_intencional AS INT64) quantidade_crimes_violento_letal_intencional,
+SAFE_CAST(quantidade_crimes_violentos_letais_intencionais AS INT64) quantidade_crimes_violentos_letais_intencionais,
 SAFE_CAST(quantidade_homicidio_intervencao_policial AS INT64) quantidade_homicidio_intervencao_policial,
 SAFE_CAST(quantidade_letalidade_violenta AS INT64) quantidade_letalidade_violenta,
 SAFE_CAST(quantidade_tentativa_homicidio AS INT64) quantidade_tentativa_homicidio,
@@ -14,7 +14,7 @@ SAFE_CAST(quantidade_lesao_corporal_dolosa AS INT64) quantidade_lesao_corporal_d
 SAFE_CAST(quantidade_estupro AS INT64) quantidade_estupro,
 SAFE_CAST(quantidade_homicidio_culposo AS INT64) quantidade_homicidio_culposo,
 SAFE_CAST(quantidade_lesao_corporal_culposa AS INT64) quantidade_lesao_corporal_culposa,
-SAFE_CAST(quantidade_roubo AS INT64) quantidade_roubo,
+SAFE_CAST(quantidade_roubo_transeunte AS INT64) quantidade_roubo_transeunte,
 SAFE_CAST(quantidade_roubo_celular AS INT64) quantidade_roubo_celular,
 SAFE_CAST(quantidade_roubo_corporal_coletivo AS INT64) quantidade_roubo_corporal_coletivo,
 SAFE_CAST(quantidade_roubo_rua AS INT64) quantidade_roubo_rua,
