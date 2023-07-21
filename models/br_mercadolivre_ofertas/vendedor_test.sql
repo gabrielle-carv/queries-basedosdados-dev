@@ -57,6 +57,28 @@ WITH tabela_deduplicada AS (
     HAVING
         COUNT(*) = 1
 )
-SELECT * FROM tabela_unicos
+SELECT 
+    data_consulta,
+    id_municipio,
+    id_vendedor,
+    vendedor,
+    classificacao,
+    reputacao,
+    anos_experiencia,
+    SAFE_CAST(avaliacao_bom AS INT64) AS avaliacao_bom,
+    SAFE_CAST(avaliacao_regular AS INT64) AS avaliacao_regular,
+    SAFE_CAST(avaliacao_ruim AS INT64) AS avaliacao_ruim    
+FROM tabela_unicos
 UNION ALL
-SELECT * FROM tabela_deduplicada
+SELECT 
+    data_consulta,
+    id_municipio,
+    id_vendedor,
+    vendedor,
+    classificacao,
+    reputacao,
+    anos_experiencia,
+    SAFE_CAST(avaliacao_bom AS INT64) AS avaliacao_bom,
+    SAFE_CAST(avaliacao_regular AS INT64) AS avaliacao_regular,
+    SAFE_CAST(avaliacao_ruim AS INT64) AS avaliacao_ruim   
+FROM tabela_deduplicada
