@@ -9,7 +9,7 @@
 
 WITH tabela_ordenada as (
 SELECT
-  dia AS data_consulta,
+  PARSE_DATE('%Y-%m-%d', dia) AS data_consulta,
 TIME(
   EXTRACT(HOUR FROM PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora)),
   EXTRACT(MINUTE FROM PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora)),
@@ -22,12 +22,23 @@ TIME(
     ELSE vendedor
   END vendedor,
   titulo,
+  categorias,
   CASE 
     WHEN categorias = '[]' THEN null
+    WHEN  TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(1)], '"') = '...' THEN 
+      TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(2)], '"')
+    WHEN TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(0)], '"') = '...' THEN 
+      TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(1)], '"')
     ELSE TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(0)], '"')  
   END as categoria_principal,
   CASE 
-    WHEN categorias = '[]' THEN null
+    when categorias = '[]' then null
+    WHEN TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(1)], '"') = '...' THEN 
+      ARRAY_TO_STRING(ARRAY(SELECT x FROM UNNEST(JSON_EXTRACT_ARRAY(categorias)) AS x WITH OFFSET
+                              WHERE OFFSET > 3), ', ')    
+    WHEN TRIM(JSON_EXTRACT_ARRAY(categorias)[OFFSET(0)], '"') = '...' THEN 
+      ARRAY_TO_STRING(ARRAY(SELECT x FROM UNNEST(JSON_EXTRACT_ARRAY(categorias)) AS x WITH OFFSET
+                              WHERE OFFSET > 1), ', ')
     ELSE ARRAY_TO_STRING(ARRAY(SELECT x FROM UNNEST(JSON_EXTRACT_ARRAY(categorias)) AS x WITH OFFSET
                               WHERE OFFSET > 0), ', ')
   END as outras_categorias,
@@ -50,7 +61,9 @@ TIME(
     ELSE preco
   END AS FLOAT64) AS preco_final,
 FROM
-  `basedosdados-dev.br_mercadolivre_ofertas_staging.item`)
+  `basedosdados-staging.br_mercadolivre_ofertas_staging.item`
+
+)
 
 SELECT 
   data_consulta,
@@ -60,7 +73,8 @@ SELECT
   titulo,
   id_vendor as id_vendedor,
   vendedor,
-  categoria_principal,
+  categorias,
+  a.categoria_principal,
   REGEXP_REPLACE(
     TRIM(outras_categorias, '"'),
     r'("([^"]+)")',
@@ -96,8 +110,8 @@ LEFT JOIN
     id_vendor,
     nome
 FROM
-    `basedosdados-dev.br_mercadolivre_ofertas_staging.vendedor`)  b
-ON a.vendedor = b.nome and data_consulta = dia
+    `basedosdados-staging.br_mercadolivre_ofertas_staging.vendedor`)  b
+ON a.vendedor = b.nome and data_consulta = PARSE_DATE('%Y-%m-%d', dia)
 WHERE NOT (preco_original IS NULL AND preco_final IS NULL)
   AND NOT (preco_final IS NULL AND desconto IS NULL)
   AND NOT (preco_original IS NULL AND desconto IS NULL)
