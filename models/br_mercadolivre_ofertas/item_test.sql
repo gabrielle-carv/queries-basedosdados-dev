@@ -73,7 +73,6 @@ SELECT
   titulo,
   id_vendor as id_vendedor,
   vendedor,
-  categorias,
   a.categoria_principal,
   REGEXP_REPLACE(
     TRIM(outras_categorias, '"'),
