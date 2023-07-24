@@ -1,4 +1,16 @@
+{{ config(
+    alias='microdados',
+    schema='br_cnpq_bolsas',
+    materialized='table',
+    partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "granularity": "year"
+    }
+) }}
+
 SELECT 
+
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(processo AS STRING) processo,
 SAFE_CAST(data_inicio_processo AS DATE) data_inicio_processo,
