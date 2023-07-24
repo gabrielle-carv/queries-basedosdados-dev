@@ -10,13 +10,11 @@
 WITH tabela_ordenada as (
 SELECT
   dia AS data_consulta,
-  FORMAT('%02d:%02d:%02d', EXTRACT(HOUR
-    FROM
-      PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora)), EXTRACT(MINUTE
-    FROM
-      PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora)), EXTRACT(SECOND
-    FROM
-      PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora))) AS hora_consulta,
+TIME(
+  EXTRACT(HOUR FROM PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora)),
+  EXTRACT(MINUTE FROM PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora)),
+  EXTRACT(SECOND FROM PARSE_DATETIME('%Y-%m-%d %H:%M:%S', data_hora))
+) AS hora_consulta,
   secao_site,
   LPAD(item_id, 12, '0') AS id_item,
   CASE
