@@ -1,4 +1,4 @@
-{{ config(alias='microdados', schema='br_cnpq_bolsas') }}
+{{config(alias='microdados', schema='br_cnpq_bolsas')}}
 
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
