@@ -58,6 +58,12 @@ models:
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_bd_diretorios_brasil:
+      +materialized: table
+      +schema: br_bd_diretorios_brasil
+    br_bd_diretorios_mundo:
+      +materialized: table
+      +schema: br_bd_diretorios_mundo
     br_bcb_agencia:
       +materialized: table
       +schema: br_bcb_agencia
@@ -133,9 +139,6 @@ models:
     br_mercadolivre_ofertas:
       +materialized: table
       +schema: br_mercadolivre_ofertas
-    br_bd_diretorios_brasil:
-      +materialized: table
-      +schema: br_bd_diretorios_brasil
     br_ms_cnes:
       +materialized: table
       +schema: br_ms_cnes 
