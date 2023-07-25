@@ -142,6 +142,12 @@ models:
     br_mercadolivre_ofertas:
       +materialized: table
       +schema: br_mercadolivre_ofertas
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    br_bd_diretorios_brasil:
+      +materialized: table
+      +schema: br_bd_diretorios_brasil
     br_ms_cnes:
       +materialized: table
       +schema: br_ms_cnes 
