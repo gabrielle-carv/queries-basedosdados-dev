@@ -9,8 +9,8 @@
 
 SELECT 
 SAFE_CAST(id_pais_m49 AS STRING) id_pais_m49,
-SAFE_CAST(id_pais_fao AS STRING) id_pais_fao,
-SAFE_CAST(id_pais_gaul AS STRING) id_pais_gaul,
+SAFE_CAST(REPLACE(id_pais_fao,".0","") AS STRING) id_pais_fao,
+SAFE_CAST(REPLACE(id_pais_gaul,".0","") AS STRING) id_pais_gaul,
 SAFE_CAST(sigla_pais_iso3 AS STRING) sigla_pais_iso3,
 SAFE_CAST(sigla_pais_iso2 AS STRING) sigla_pais_iso2,
 SAFE_CAST(sigla_pais_pnud AS STRING) sigla_pais_pnud,
