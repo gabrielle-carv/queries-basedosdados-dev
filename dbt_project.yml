@@ -130,6 +130,9 @@ models:
     br_me_caged:
       +materialized: table
       +schema: br_me_caged
+    br_ms_sim:
+      +materialized: table
+      +schema: br_ms_sim    
     br_bd_diretorios_brasil:
       +materialized: table
       +schema: br_bd_diretorios_brasil
