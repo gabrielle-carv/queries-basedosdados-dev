@@ -58,6 +58,12 @@ models:
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_bd_diretorios_brasil:
+      +materialized: table
+      +schema: br_bd_diretorios_brasil
+    br_bd_diretorios_mundo:
+      +materialized: table
+      +schema: br_bd_diretorios_mundo
     br_bcb_agencia:
       +materialized: table
       +schema: br_bcb_agencia
@@ -73,6 +79,9 @@ models:
     br_cgu_pessoal_executivo_federal:
       +materialized: table
       +schema: br_cgu_pessoal_executivo_federal
+    br_cnpq_bolsas:
+      +materialized: table
+      +schema: br_cnpq_bolsas
     br_cvm_administradores_carteira:
       +materialized: table
       +schema: br_cvm_administradores_carteira
@@ -133,9 +142,12 @@ models:
     br_ms_sim:
       +materialized: table
       +schema: br_ms_sim    
-    br_bd_diretorios_brasil:
+    br_mercadolivre_ofertas:
       +materialized: table
-      +schema: br_bd_diretorios_brasil
+      +schema: br_mercadolivre_ofertas
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
     br_ms_cnes:
       +materialized: table
       +schema: br_ms_cnes
@@ -145,9 +157,6 @@ models:
     br_ans_beneficiario:
       +materialized: table
       +schema: br_ans_beneficiario
-    br_mercadolivre_ofertas:
-      +materialized: table
-      +schema: br_mercadolivre_ofertas
     mundo_transfermarkt_competicoes:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes
