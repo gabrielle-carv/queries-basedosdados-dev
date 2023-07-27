@@ -50,4 +50,5 @@ SAFE_CAST(REPLACE (chutes_vis,".0","") AS INT64) chutes_vis,
 SAFE_CAST(REPLACE (chutes_fora_man,".0","") AS INT64) chutes_fora_man,
 SAFE_CAST(REPLACE (chutes_fora_vis,".0","") AS INT64) chutes_fora_vis
 FROM basedosdados-dev.mundo_transfermarkt_competicoes_staging.brasileirao_serie_a AS t
-WHERE (EXTRACT(WEEK from data) <= (EXTRACT( WEEK from CURRENT_DATE())-6) ) OR ano_campeonato<EXTRACT(YEAR from  CURRENT_DATE())
+WHERE (EXTRACT(WEEK FROM SAFE_CAST(data AS DATE)) <= (EXTRACT( WEEK FROM CURRENT_DATE())-6) ) 
+OR SAFE_CAST(ano_campeonato AS INT64)<EXTRACT(YEAR from  CURRENT_DATE())
