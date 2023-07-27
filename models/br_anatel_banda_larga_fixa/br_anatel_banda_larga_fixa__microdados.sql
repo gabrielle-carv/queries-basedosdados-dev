@@ -28,3 +28,4 @@ SAFE_CAST(velocidade AS STRING) velocidade,
 SAFE_CAST(produto AS STRING) produto,
 SAFE_CAST(acessos AS INT64) acessos
 FROM basedosdados-dev.br_anatel_banda_larga_fixa_staging.microdados AS t
+WHERE DATE_DIFF(CURRENT_DATE(),DATE(SAFE_CAST(ano AS INT64),SAFE_CAST(mes AS INT64),01),month) >= 6
