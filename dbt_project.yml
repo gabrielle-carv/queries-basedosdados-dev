@@ -138,7 +138,7 @@ models:
       +schema: br_bd_diretorios_brasil
     br_ms_cnes:
       +materialized: table
-      +schema: br_ms_cnes 
+      +schema: br_ms_cnes
     br_sp_saopaulo_geosampa_iptu:
       +materialized: table
       +schema: br_sp_saopaulo_geosampa_iptu
