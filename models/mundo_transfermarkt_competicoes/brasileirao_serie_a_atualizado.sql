@@ -11,7 +11,8 @@
         "interval": 1}
     },
     labels = {'project_id': 'basedosdados-dev'},
-    )
+    post_hook=['REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+                'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'])
  }}
 SELECT 
 SAFE_CAST(REPLACE (ano_campeonato,".0","") AS INT64) ano_campeonato,
@@ -51,4 +52,3 @@ SAFE_CAST(REPLACE (chutes_vis,".0","") AS INT64) chutes_vis,
 SAFE_CAST(REPLACE (chutes_fora_man,".0","") AS INT64) chutes_fora_man,
 SAFE_CAST(REPLACE (chutes_fora_vis,".0","") AS INT64) chutes_fora_vis
 FROM basedosdados-dev.mundo_transfermarkt_competicoes_staging.brasileirao_serie_a AS t
-WHERE (EXTRACT(WEEK from data) <= (EXTRACT( WEEK from CURRENT_DATE())-6) ) OR ano_campeonato<EXTRACT(YEAR from  CURRENT_DATE())
