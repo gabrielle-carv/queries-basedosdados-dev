@@ -1,8 +1,8 @@
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
-SAFE_CAST(sigla_uf AS STRING) sigla_uf,
-SAFE_CAST(id_municipio AS STRING) id_municipio,
-SAFE_CAST(id_municipio_tse AS STRING) id_municipio_tse,
+SAFE_CAST(sigla_uf_diretorio AS STRING) sigla_uf,
+SAFE_CAST(id_municipio_diretorio AS STRING) id_municipio,
+SAFE_CAST(id_municipio_tse_diretorio AS STRING) id_municipio_tse,
 SAFE_CAST(tipo_eleicao AS STRING) tipo_eleicao,
 SAFE_CAST(esfera_partidaria AS STRING) esfera_partidaria,
 SAFE_CAST(tipo_diretorio AS STRING) tipo_diretorio,
