@@ -13,7 +13,7 @@ models:
       - name: id_municipio
         description: ID Município - IBGE 7 Dígitos 
       - name: id_municipio_tse
-        description: ID Município - TSE
+        description: ID Município - Tribunal Superior Eleitoral (TSE)
       - name: id_candidato_bd
         description: ID Candidato no Banco de Dados
       - name: cpf
