@@ -3,12 +3,16 @@
     alias = 'microdados',
     schema = 'br_ms_sim',
     materialized = 'table',
-    partition_by = {
-        "field": [
-          "ano": "integer",
-          "sigla_uf": "string"]
-    }
-) 
+     partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "range": {
+        "start": 1996,
+        "end": 2022,
+        "interval": 1}
+    },
+    cluster_by = "sigla_uf",
+    ) 
 }}
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
