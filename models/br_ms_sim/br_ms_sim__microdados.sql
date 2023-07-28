@@ -4,7 +4,9 @@
     schema = 'br_ms_sim',
     materialized = 'table',
     partition_by = {
-        "field": ["ano", "sigla_uf"]
+        "field": [
+          "ano": "integer",
+          "sigla_uf": "string"]
     }
 ) 
 }}
