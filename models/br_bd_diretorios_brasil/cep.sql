@@ -10,7 +10,7 @@
 }}
 
 SELECT 
-SAFE_CAST(cep AS STRING) cep,
+SAFE_CAST(lpad(cep, 8, '0') AS STRING) cep,
 SAFE_CAST(logradouro AS STRING) logradouro,
 SAFE_CAST(complemento AS STRING) complemento,
 SAFE_CAST(bairro AS STRING) bairro,
