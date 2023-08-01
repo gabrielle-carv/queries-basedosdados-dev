@@ -365,7 +365,7 @@ models:
       - name: cnae_2_doador
         description: CNAE 2 do Doador
       - name: cpf_cnpj_doador_orig
-        description: cpf_cnpj_doador_orig
+        description: CPF ou CNPJ do doador originário
       - name: nome_doador_orig
         description: Nome do doador originário
       - name: tipo_doador_orig
