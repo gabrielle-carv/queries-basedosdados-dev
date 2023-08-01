@@ -95,6 +95,8 @@ models:
         description: "tipo de despesa"
       - name: frequencia
         description: "frequência de pagamento"
+      - name: equipe
+        description: "equipe relacionada a despesa"
       - name: valor
         description: "valor da despesa"
   - name: receitas_planejadas
