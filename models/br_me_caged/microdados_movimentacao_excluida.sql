@@ -13,7 +13,6 @@
     cluster_by = ["mes", "sigla_uf"],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
 }} 
-with caged as(
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
@@ -44,12 +43,4 @@ SAFE_CAST(indicador_fora_prazo AS INT64) indicador_fora_prazo
 FROM `basedosdados-dev.br_me_caged_staging.microdados_movimentacao_excluida` a
 LEFT JOIN `basedosdados.br_bd_diretorios_brasil.municipio` b
   ON a.id_municipio =  b.id_municipio_6
-),
-a as (
-select *
-from caged
-where ano < EXTRACT(YEAR from  CURRENT_DATE() )
-or ((mes < (SELECT MAX(mes) FROM caged where ano = EXTRACT(YEAR from  CURRENT_DATE())) - 5) or mes < 5)
-)
-select * from a
-
+WHERE (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6 OR  DATE_DIFF(DATE(2023,5,1),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 0)  
