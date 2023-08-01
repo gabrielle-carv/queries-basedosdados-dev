@@ -11,9 +11,11 @@
         "interval": 1}
     },
     cluster_by = ["mes", "sigla_uf"],
-    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'},
+    post_hook=['REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+                'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"']
+    )
  }}
-with caged as(
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
@@ -42,11 +44,4 @@ SAFE_CAST(origem_informacao AS STRING) origem_informacao,
 SAFE_CAST(indicador_fora_prazo AS INT64) indicador_fora_prazo
 FROM `basedosdados-dev.br_me_caged_staging.microdados_movimentacao` a
 LEFT JOIN `basedosdados.br_bd_diretorios_brasil.municipio` b
-  ON a.id_municipio =  b.id_municipio_6 ),
-a as (
-select *
-from caged
-where ano < EXTRACT(YEAR from  CURRENT_DATE() )
-or mes < (SELECT MAX(mes) FROM caged where ano = EXTRACT(YEAR from  CURRENT_DATE())) - 1
-)
-select * from a
+  ON a.id_municipio =  b.id_municipio_6 
