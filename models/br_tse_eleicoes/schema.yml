@@ -177,7 +177,7 @@ models:
       - name: descricao_cnae_2_doador
         description: Descrição da Classificação Nacional de Atividades Econômicas 2.0 do doador
       - name: cpf_cnpj_doador_orig
-        description: CPF ou CNPJ do doador originário
+        description: cpf_cnpj_doador_orig
       - name: nome_doador_orig
         description: Nome do doador originário
       - name: nome_doador_orig_rf
