@@ -49,7 +49,7 @@ a as (
 select *
 from caged
 where ano < EXTRACT(YEAR from  CURRENT_DATE() )
-or ((mes < (SELECT MAX(mes) FROM teste where ano = EXTRACT(YEAR from  CURRENT_DATE())) - 5) or mes < 5)
+or ((mes < (SELECT MAX(mes) FROM caged where ano = EXTRACT(YEAR from  CURRENT_DATE())) - 5) or mes < 5)
 )
 select * from a
 
