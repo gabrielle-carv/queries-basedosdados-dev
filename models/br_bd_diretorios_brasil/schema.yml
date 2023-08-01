@@ -207,11 +207,11 @@ models:
       - name: email
         description: Email
   - name: cep
-    description: Na tabela, é possível encontrar a numeração dos CEPs, juntamente com
+    description: "Na tabela, é possível encontrar a numeração dos CEPs, juntamente com
     informações sobre suas localidades, tais como logradouros, bairros e cidades,
     além de complementos e identificação geográfica compostos pela latitude e longitude.
     Os dados foram obtidos através de uma base aberta no Kaggle e validados em relação
-    aos seus pontos de geolocalização.
+    aos seus pontos de geolocalização."
     columns:
       - name: cep
         description: Número do CEP
