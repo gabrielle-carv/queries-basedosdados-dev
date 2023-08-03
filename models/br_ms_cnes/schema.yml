@@ -626,7 +626,7 @@ models:
         description: Especialidade do Leito
       - name: tipo_leito
         description: Tipo do Leito  
-      - name: quantidade
+      - name: quantidade_total
         description: Quantidade de leitos existentes
       - name: quantidade_contratado
         description: Quantidade de leitos contratados

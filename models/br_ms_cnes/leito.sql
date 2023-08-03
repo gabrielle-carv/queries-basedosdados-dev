@@ -31,7 +31,7 @@ SAFE_CAST(sigla_uf AS STRING) AS sigla_uf,
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
 SAFE_CAST(CODLEITO AS STRING) AS id_especialidade,
 SAFE_CAST(TP_LEITO AS STRING) AS tipo_leito,
-SAFE_CAST(QT_EXIST AS STRING) AS quantidade,
+SAFE_CAST(QT_EXIST AS STRING) AS quantidade_total,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus
 FROM cnes_leito_without_duplicates
