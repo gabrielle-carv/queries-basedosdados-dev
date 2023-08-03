@@ -18,9 +18,8 @@ WITH raw_cnes_leito AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.leito`
-  WHERE CNES IS NOT NULL
-
-cnes_leito_duplicates(
+  WHERE CNES IS NOT NULL)
+cnes_leito_duplicates AS (
     SELECT DISTINCT *
     FROM raw_cnes_leito
 )  
