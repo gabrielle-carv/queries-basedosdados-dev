@@ -29,6 +29,6 @@ models:
       - name: unidade_medida
         description: Unidade de medida
       - name: valor_compra
-        description: Preço de distribuição (preço de venda da distribuidora para o posto revendedor de combustível)
+        description: Preço de venda da distribuidora para o posto revendedor de combustível
       - name: valor_venda
-        description: Preço de venda ao consumidor final praticado pelo revendedor, na data da coleta
+        description: Preço de venda ao consumidor final praticado pelo revendedor na data da coleta
