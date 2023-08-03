@@ -19,28 +19,19 @@ WITH raw_cnes_leito AS (
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.leito`
   WHERE CNES IS NOT NULL),
-cnes_leito_duplicates AS (
+cnes_leito_without_duplicates AS (
     SELECT DISTINCT *
     FROM raw_cnes_leito
-),
-cnes_add_muni AS (
-  -- 3. Adicionar id_municipio 
-  SELECT *
-  FROM cnes_leito_duplicates  
-  LEFT JOIN (SELECT id_municipio, id_municipio_6,
-  FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON cnes_leito_duplicates.CODUFMUN = mun.id_municipio_6
 )
 
 SELECT 
-SAFE_CAST(ano AS INT64),
-SAFE_CAST(mes AS INT64),
-SAFE_CAST(sigla_uf AS STRING),
-SAFE_CAST(id_municipio AS STRING),
+SAFE_CAST(ano AS INT64) AS ano,
+SAFE_CAST(mes AS INT64) AS mes,
+SAFE_CAST(sigla_uf AS STRING) AS sigla_uf,
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
 SAFE_CAST(CODLEITO AS STRING) AS id_especialidade,
 SAFE_CAST(TP_LEITO AS STRING) AS tipo_leito,
 SAFE_CAST(QT_EXIST AS STRING) AS quantidade,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus
-FROM cnes_add_muni
+FROM cnes_leito_without_duplicates

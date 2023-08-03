@@ -28,10 +28,10 @@ cnes_add_muni AS (
   ON raw_cnes_equipamento.CODUFMUN = mun.id_municipio_6
 )
 SELECT 
-SAFE_CAST(ano AS INT64),
-SAFE_CAST(mes AS INT64),
-SAFE_CAST(sigla_uf AS STRING),
-SAFE_CAST(id_municipio AS STRING),
+SAFE_CAST(ano AS INT64) AS ano,
+SAFE_CAST(mes AS INT64) AS mes,
+SAFE_CAST(sigla_uf AS STRING) AS sigla_uf,
+SAFE_CAST(id_municipio AS STRING) AS id_municipio,
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
 SAFE_CAST(CODEQUIP AS STRING) AS id_equipamento,
 SAFE_CAST(TIPEQUIP AS STRING) AS tipo_equipamento,
