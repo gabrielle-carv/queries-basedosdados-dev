@@ -35,11 +35,11 @@ cnes_add_muni AS (
 SELECT 
 SAFE_CAST(ano AS INT64),
 SAFE_CAST(mes AS INT64),
-SAFE_CAST(id_municipio AS STRING),
 SAFE_CAST(sigla_uf AS STRING),
+SAFE_CAST(id_municipio AS STRING),
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
+SAFE_CAST(CODLEITO AS STRING) AS id_especialidade,
 SAFE_CAST(TP_LEITO AS STRING) AS tipo_leito,
-SAFE_CAST(CODLEITO AS STRING) AS especialidade,
 SAFE_CAST(QT_EXIST AS STRING) AS quantidade,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus

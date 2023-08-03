@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: equipamento
-    description: #todo
+    description: catálogo de equipamentos em atividade ou não nos estabelecimentos de saúde
     columns:
       - name: ano
         description: Ano
@@ -11,13 +11,13 @@ models:
       - name: sigla_uf
         description: Sigla da Unidade da Federação
       - name: id_municipio
-        description: ID Município IBGE - 7 Dígitos
+        description: ID Município IBGE - 7 Dígitos  
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
-      - name: tipo_equipamento
-        description: Identificador do tipo de equipamento
       - name: id_equipamento
         description: Identificador do equipamento
+      - name: tipo_equipamento
+        description: Identificador do tipo de equipamento
       - name: quantidade_equipamentos
         description: Quantidade existente do equipamento
       - name: quantidade_equipamentos_ativos
@@ -27,7 +27,7 @@ models:
       - name: indicador_equipamento_indisponivel_sus
         description: Indicador de equipamento não disponível para o SUS
   - name: equipe
-    description: #todo
+    description: equipes em atividade ou não nos estabelecimentos de saúde
     columns:
       - name: ano
         description: Ano
@@ -50,12 +50,12 @@ models:
         description: Código da Área da Equipe
       - name: area
         description: Nome da Área
-      - name: segmento
+      - name: id_segmento
         description: Código do Segmento
+      - name: tipo_segmento
+        description: Tipo do Segmento  
       - name: descricao_segmento
         description: Descrição do Segmento
-      - name: tipo_segmento
-        description: Tipo do Segmento
       - name: ano_ativacao_equipe
         description: Ano de ativação da Equipe
       - name: mes_ativacao_equipe
@@ -610,7 +610,7 @@ models:
         description: Indica a existência de atendimento prestado regulação/convênio
             plano de saúde privado
   - name: leito
-    description: #todo
+    description: leitos disponíveis nos estabelecimentos de saúde
     columns:
       - name: ano
         description: Ano
@@ -622,10 +622,10 @@ models:
         description: ID Município IBGE - 7 Dígitos
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
-      - name: tipo_leito
-        description: Tipo do Leito
       - name: id_especialidade
         description: Especialidade do Leito
+      - name: tipo_leito
+        description: Tipo do Leito  
       - name: quantidade
         description: Quantidade de leitos existentes
       - name: quantidade_contratado
