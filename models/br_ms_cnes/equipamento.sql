@@ -30,8 +30,8 @@ cnes_add_muni AS (
 SELECT 
 SAFE_CAST(ano AS INT64),
 SAFE_CAST(mes AS INT64),
-SAFE_CAST(id_municipio AS STRING),
 SAFE_CAST(sigla_uf AS STRING),
+SAFE_CAST(id_municipio AS STRING),
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
 SAFE_CAST(CODEQUIP AS STRING) AS id_equipamento,
 SAFE_CAST(TIPEQUIP AS STRING) AS tipo_equipamento,

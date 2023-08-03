@@ -11,13 +11,13 @@ models:
       - name: sigla_uf
         description: Sigla da Unidade da Federação
       - name: id_municipio
-        description: ID Município IBGE - 7 Dígitos
+        description: ID Município IBGE - 7 Dígitos  
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
-      - name: tipo_equipamento
-        description: Identificador do tipo de equipamento
       - name: id_equipamento
         description: Identificador do equipamento
+      - name: tipo_equipamento
+        description: Identificador do tipo de equipamento
       - name: quantidade_equipamentos
         description: Quantidade existente do equipamento
       - name: quantidade_equipamentos_ativos
@@ -50,12 +50,12 @@ models:
         description: Código da Área da Equipe
       - name: area
         description: Nome da Área
-      - name: segmento
+      - name: id_segmento
         description: Código do Segmento
+      - name: tipo_segmento
+        description: Tipo do Segmento  
       - name: descricao_segmento
         description: Descrição do Segmento
-      - name: tipo_segmento
-        description: Tipo do Segmento
       - name: ano_ativacao_equipe
         description: Ano de ativação da Equipe
       - name: mes_ativacao_equipe
