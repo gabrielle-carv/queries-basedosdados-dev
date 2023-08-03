@@ -622,10 +622,10 @@ models:
         description: ID Município IBGE - 7 Dígitos
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
-      - name: tipo_leito
-        description: Tipo do Leito
       - name: id_especialidade
         description: Especialidade do Leito
+      - name: tipo_leito
+        description: Tipo do Leito  
       - name: quantidade
         description: Quantidade de leitos existentes
       - name: quantidade_contratado
