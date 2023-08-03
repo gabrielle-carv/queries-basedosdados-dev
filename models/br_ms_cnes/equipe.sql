@@ -29,15 +29,14 @@ cnes_add_muni AS (
 )
 
 SELECT 
-SAFE_CAST(ano AS INT64),
-SAFE_CAST(mes AS INT64),
-SAFE_CAST(id_municipio AS STRING),
-SAFE_CAST(sigla_uf AS STRING),
+SAFE_CAST(ano AS INT64) AS ano,
+SAFE_CAST(mes AS INT64) AS mes,
+SAFE_CAST(sigla_uf AS STRING) AS sigla_uf,
+SAFE_CAST(id_municipio AS STRING) AS id_municipio,
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
 SAFE_CAST(ID_EQUIPE AS STRING) AS id_equipe,
 SAFE_CAST(TIPO_EQP AS STRING) AS tipo_equipe,
 SAFE_CAST(NOME_EQP AS STRING) AS equipe,
-SAFE_CAST(AREA_EQP AS STRING) AS tipo_area_equipe,
 SAFE_CAST(NOMEAREA AS STRING) AS area,
 SAFE_CAST(ID_SEGM AS STRING) AS id_segmento,
 SAFE_CAST(TIPOSEGM AS STRING) AS tipo_segmento,
