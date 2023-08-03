@@ -1,6 +1,85 @@
 version: 2
 
 models:
+  - name: equipamento
+    description: #todo
+    columns:
+      - name: ano
+        description: Ano
+      - name: mes
+        description: Mes
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+      - name: id_municipio
+        description: ID Município IBGE - 7 Dígitos
+      - name: id_estabelecimento_cnes
+        description: ID Estabelecimento - CNES
+      - name: tipo_equipamento
+        description: Identificador do tipo de equipamento
+      - name: id_equipamento
+        description: Identificador do equipamento
+      - name: quantidade_equipamentos
+        description: Quantidade existente do equipamento
+      - name: quantidade_equipamentos_ativos
+        description: Quantidade de equipamentos em uso
+      - name: indicador_equipamento_disponivel_sus
+        description: Indicador de equipamento disponível para o SUS
+      - name: indicador_equipamento_indisponivel_sus
+        description: Indicador de equipamento não disponível para o SUS
+  - name: equipe
+    description: #todo
+    columns:
+      - name: ano
+        description: Ano
+      - name: mes
+        description: Mês
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+      - name: id_municipio
+        description: ID Município IBGE - 7 Dígitos
+      - name: id_estabelecimento_cnes
+        description: Número nacional do estabelecimento de saúde
+      - name: id_equipe
+        description: ID da equipe dado pelo código do Município, Área e Sequencial
+            da Equipe
+      - name: tipo_equipe
+        description: Tipo de Equipe
+      - name: equipe
+        description: Nome da Equipe
+      - name: tipo_area_equipe
+        description: Código da Área da Equipe
+      - name: area
+        description: Nome da Área
+      - name: segmento
+        description: Código do Segmento
+      - name: descricao_segmento
+        description: Descrição do Segmento
+      - name: tipo_segmento
+        description: Tipo do Segmento
+      - name: ano_ativacao_equipe
+        description: Ano de ativação da Equipe
+      - name: mes_ativacao_equipe
+        description: Mês de ativação da Equipe
+      - name: motivo_desativacao_equipe
+        description: Código do Motivo de Desativação da Equipe
+      - name: tipo_desativacao_equipe
+        description: Código do Tipo de Desativação da Equipe
+      - name: ano_desativacao_equipe
+        description: Ano de desativação da Equipe
+      - name: mes_desativacao_equipe
+        description: Mês de desativação da Equipe
+      - name: indicador_atende_populacao_assistida_quilombolas
+        description: Atende População Assistida Quilombolas
+      - name: indicador_atende_populacao_assistida_assentados
+        description: Atende População Assistida Assentados
+      - name: indicador_atende_populacao_assistida_geral
+        description: Atende População Assistida Geral
+      - name: indicador_atende_populacao_assistida_escolares
+        description: Atende População Assistida Escolares
+      - name: indicador_atende_populacao_assistida_indigena
+        description: Atende População Assistida Indígena
+      - name: indicador_atende_populacao_assistida_pronasci
+        description: Atende População Assistida Pronasci
   - name: profissional
     description: Cadastro dos profissionais de saúde
     columns:
@@ -530,3 +609,26 @@ models:
       - name: indicador_atendimento_regulacao_plano_saude_privado
         description: Indica a existência de atendimento prestado regulação/convênio
             plano de saúde privado
+  - name: leito
+    description: #todo
+    columns:
+      - name: ano
+        description: Ano
+      - name: mes
+        description: Mês
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+      - name: id_municipio
+        description: ID Município IBGE - 7 Dígitos
+      - name: id_estabelecimento_cnes
+        description: ID Estabelecimento - CNES
+      - name: tipo_leito
+        description: Tipo do Leito
+      - name: id_especialidade
+        description: Especialidade do Leito
+      - name: quantidade
+        description: Quantidade de leitos existentes
+      - name: quantidade_contratado
+        description: Quantidade de leitos contratados
+      - name: quantidade_sus
+        description: Quantidade de leitos para o SUS
