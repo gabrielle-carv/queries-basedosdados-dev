@@ -18,14 +18,14 @@ WITH raw_cnes_equipamento AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.equipamento`
-  WHERE CNES IS NOT NULL
+  WHERE CNES IS NOT NULL),
 cnes_add_muni AS (
   -- 3. Adicionar id_municipio 
   SELECT *
   FROM raw_cnes_equipamento  
   LEFT JOIN (SELECT id_municipio, id_municipio_6,
   FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON raw_cnes_estabelecimento_without_duplicates.CODUFMUN = mun.id_municipio_6
+  ON raw_cnes_equipamento.CODUFMUN = mun.id_municipio_6
 )
 SELECT 
 SAFE_CAST(ano AS INT64),
