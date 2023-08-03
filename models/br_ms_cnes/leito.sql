@@ -18,18 +18,18 @@ WITH raw_cnes_leito AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.leito`
-  WHERE CNES IS NOT NULL)
+  WHERE CNES IS NOT NULL),
 cnes_leito_duplicates AS (
     SELECT DISTINCT *
     FROM raw_cnes_leito
-)  
+),
 cnes_add_muni AS (
   -- 3. Adicionar id_municipio 
   SELECT *
   FROM cnes_leito_duplicates  
   LEFT JOIN (SELECT id_municipio, id_municipio_6,
   FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON raw_cnes_estabelecimento_without_duplicates.CODUFMUN = mun.id_municipio_6
+  ON cnes_leito_duplicates.CODUFMUN = mun.id_municipio_6
 )
 
 SELECT 
