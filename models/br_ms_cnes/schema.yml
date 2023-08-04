@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: equipamento
-    description: catálogo de equipamentos em atividade ou não nos estabelecimentos de saúde
+    description: Esta tabela contém o catálogo de equipamentos em atividade ou não nos estabelecimentos de saúde
     columns:
       - name: ano
         description: Ano
@@ -17,7 +17,7 @@ models:
       - name: id_equipamento
         description: Identificador do equipamento
       - name: tipo_equipamento
-        description: Identificador do tipo de equipamento
+        description: Categoria do equipamento
       - name: quantidade_equipamentos
         description: Quantidade existente do equipamento
       - name: quantidade_equipamentos_ativos
@@ -27,7 +27,7 @@ models:
       - name: indicador_equipamento_indisponivel_sus
         description: Indicador de equipamento não disponível para o SUS
   - name: equipe
-    description: equipes em atividade ou não nos estabelecimentos de saúde
+    description: Esta tabela contém o cadastro de equipes em atividade ou não nos estabelecimentos de saúde. 
     columns:
       - name: ano
         description: Ano
@@ -38,50 +38,48 @@ models:
       - name: id_municipio
         description: ID Município IBGE - 7 Dígitos
       - name: id_estabelecimento_cnes
-        description: Número nacional do estabelecimento de saúde
+        description: ID Estabelecimento - CNES
       - name: id_equipe
-        description: ID da equipe dado pelo código do Município, Área e Sequencial
-            da Equipe
+        description: ID da equipe dado pelo código do Município, area e sequencial
+            da equipe
       - name: tipo_equipe
-        description: Tipo de Equipe
+        description: Tipo de equipe
       - name: equipe
-        description: Nome da Equipe
-      - name: tipo_area_equipe
-        description: Código da Área da Equipe
+        description: Nome da equipe
       - name: area
-        description: Nome da Área
+        description: Nome da área
       - name: id_segmento
-        description: Código do Segmento
+        description: Código do segmento
       - name: tipo_segmento
-        description: Tipo do Segmento  
+        description: Tipo do segmento  
       - name: descricao_segmento
-        description: Descrição do Segmento
+        description: Descrição do segmento
       - name: ano_ativacao_equipe
-        description: Ano de ativação da Equipe
+        description: Ano de ativação da equipe
       - name: mes_ativacao_equipe
-        description: Mês de ativação da Equipe
+        description: Mês de ativação da equipe
       - name: motivo_desativacao_equipe
-        description: Código do Motivo de Desativação da Equipe
+        description: Código do motivo de desativação da equipe
       - name: tipo_desativacao_equipe
-        description: Código do Tipo de Desativação da Equipe
+        description: Código do tipo de desativação da equipe
       - name: ano_desativacao_equipe
-        description: Ano de desativação da Equipe
+        description: Ano de desativação da equipe
       - name: mes_desativacao_equipe
-        description: Mês de desativação da Equipe
+        description: Mês de desativação da equipe
       - name: indicador_atende_populacao_assistida_quilombolas
-        description: Atende População Assistida Quilombolas
+        description: Indicador de atendimento a população Quilombolas
       - name: indicador_atende_populacao_assistida_assentados
-        description: Atende População Assistida Assentados
+        description: Indicador de atendimento a população Assentados
       - name: indicador_atende_populacao_assistida_geral
-        description: Atende População Assistida Geral
+        description: Indicador de atendimento a população Geral
       - name: indicador_atende_populacao_assistida_escolares
-        description: Atende População Assistida Escolares
+        description: Indicador de atendimento a população Escolares
       - name: indicador_atende_populacao_assistida_indigena
-        description: Atende População Assistida Indígena
+        description: Indicador de atendimento a população Indígena
       - name: indicador_atende_populacao_assistida_pronasci
-        description: Atende População Assistida Pronasci
+        description: Indicador de atendimento a população Pronasci
   - name: profissional
-    description: Cadastro dos profissionais de saúde
+    description: A tabela fornece o cadastro dos profissionais de saúde nos estabelecimentos.
     columns:
       - name: ano
         description: Ano
@@ -618,14 +616,12 @@ models:
         description: Mês
       - name: sigla_uf
         description: Sigla da Unidade da Federação
-      - name: id_municipio
-        description: ID Município IBGE - 7 Dígitos
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
-      - name: id_especialidade
-        description: Especialidade do Leito
+      - name: tipo_especialidade_leito
+        description: Especialidade do leito
       - name: tipo_leito
-        description: Tipo do Leito  
+        description: Tipo do leito  
       - name: quantidade_total
         description: Quantidade de leitos existentes
       - name: quantidade_contratado
