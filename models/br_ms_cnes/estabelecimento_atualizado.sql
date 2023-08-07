@@ -38,8 +38,8 @@ cnes_add_muni AS (
   -- 4. padronização, ordenação de colunas e conversão de tipos
   -- 5. Aplica macro clean_cols em certas colunas 
   SELECT
-  CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
-  CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
+  SAFE_CAST(ano AS INT64) AS ano,
+  SAFE_CAST(mes  AS INT64) AS mes,
   SAFE_CAST(sigla_uf AS STRING) sigla_uf, 
   CAST(SUBSTR(DT_ATUAL, 1, 4) AS INT64) AS ano_atualizacao,
   CAST(SUBSTR(DT_ATUAL, 5, 2) AS INT64) AS mes_atualizacao,
