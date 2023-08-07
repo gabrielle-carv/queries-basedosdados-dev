@@ -46,7 +46,7 @@ SAFE_CAST(VINCULAC AS STRING) id_vinculo,
 SAFE_CAST(REGISTRO AS STRING) id_registro_conselho,
 SAFE_CAST(CONSELHO AS STRING) id_conselho,
 -- replace de valores de linha com 15 zeros para null. 15 zeros é valor do campo CNS_PROF que indica null
-SAFE_CAST(regexp_replace(CNS_PROF,'0{15}', '') A\S STRING) cartao_nacional_saude,
+SAFE_CAST(regexp_replace(CNS_PROF,'0{15}', '') AS STRING) cartao_nacional_saude,
 SAFE_CAST(CBO AS STRING) cbo_2002,
 SAFE_CAST(TERCEIRO AS STRING) indicador_estabelecimento_terceiro,
 SAFE_CAST(VINCUL_C AS STRING) indicador_vinculo_contratado_sus,

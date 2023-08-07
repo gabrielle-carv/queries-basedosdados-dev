@@ -33,7 +33,7 @@ leito_x_estabelecimento as(
   SELECT *
   FROM cnes_leito_without_duplicates as lt
   LEFT JOIN (SELECT id_municipio, CAST(ano as STRING) ano1,CAST(mes as STRING) mes1, id_estabelecimento_cnes,id_municipio AS IDDD from `basedosdados-dev.br_ms_cnes.estabelecimento`) as st
-  ON lt.id_estabelecimento_cnes = st.IDDD AND lt.ano = st.ano1 AND lt.mes = st.mes1 
+  ON lt.CNES = st.IDDD AND lt.ano = st.ano1 AND lt.mes = st.mes1 
 )
 
 SELECT 
