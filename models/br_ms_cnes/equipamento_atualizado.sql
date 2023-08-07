@@ -9,8 +9,9 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
-    )
+     },
+    post_hook=['REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+                'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'])
  }}
 
 
@@ -39,8 +40,7 @@ SAFE_CAST(QT_EXIST AS STRING) AS quantidade_equipamentos,
 SAFE_CAST(QT_USO AS STRING) AS quantidade_equipamentos_ativos,
 SAFE_CAST(IND_SUS AS INT64) AS indicador_equipamento_disponivel_sus,
 SAFE_CAST(IND_NSUS AS INT64) AS indicador_equipamento_indisponivel_sus
-FROM cnes_add_muni 
-WHERE (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6
-  OR  DATE_DIFF(DATE(2023,5,1),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 0) 
+FROM cnes_add_muni
+ 
 
 
