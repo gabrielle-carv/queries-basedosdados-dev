@@ -57,4 +57,4 @@ SAFE_CAST(PROFNSUS AS STRING) indicador_atende_nao_sus,
 SAFE_CAST(HORAOUTR AS INT64) carga_horaria_outros,
 SAFE_CAST(HORAHOSP AS INT64) carga_horaria_hospitalar,
 SAFE_CAST(HORA_AMB AS INT64) carga_horaria_ambulatorial
-FROM raw_cnes_profissional_dir 
+FROM profissional_x_estabelecimento 

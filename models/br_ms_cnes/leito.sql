@@ -29,7 +29,7 @@ leito_x_estabelecimento as(
   SELECT *
   FROM cnes_leito_without_duplicates as lt
   LEFT JOIN (SELECT id_municipio, CAST(ano as STRING) ano1,CAST(mes as STRING) mes1, id_estabelecimento_cnes,id_municipio AS IDDD from `basedosdados-dev.br_ms_cnes.estabelecimento`) as st
-  ON lt.id_estabelecimento_cnes = st.IDDD AND lt.ano = st.ano1 AND lt.mes = st.mes1 
+  ON lt.CNES = st.IDDD AND lt.ano = st.ano1 AND lt.mes = st.mes1 
 )
 
 SELECT 
@@ -42,6 +42,6 @@ SAFE_CAST(TP_LEITO AS STRING) AS tipo_leito,
 SAFE_CAST(QT_EXIST AS STRING) AS quantidade_total,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus
-FROM cnes_leito_without_duplicates
+FROM leito_x_estabelecimento
 WHERE (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6
   OR  DATE_DIFF(DATE(2023,5,1),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 0) 
