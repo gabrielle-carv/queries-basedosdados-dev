@@ -48,7 +48,10 @@ models:
       +schema: br_anatel_banda_larga_fixa
     bd_available_options:
       +materialized: table
-      +schema: bd_available_options  
+      +schema: bd_available_options 
+    br_anp_precos_combustiveis:
+      +materialized: table
+      +schema: br_anp_precos_combustiveis      
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
