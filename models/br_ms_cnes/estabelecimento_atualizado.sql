@@ -9,8 +9,11 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
-    )
+     },
+    post_hook=[
+      'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+      'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    ])   
  }}
 
 WITH raw_cnes_estabelecimento AS (
