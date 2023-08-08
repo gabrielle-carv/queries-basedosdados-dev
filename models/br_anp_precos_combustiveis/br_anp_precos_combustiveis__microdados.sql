@@ -1,4 +1,15 @@
-{{ config(alias='microdados', schema='br_anp_precos_combustiveis') }}
+{{ config(
+    alias='microdados',
+    schema='br_anp_precos_combustiveis',
+    materialized='table',
+    partition_by={
+      "field": "data_coleta",
+      "data_type": "date",
+      "granularity": "day"
+    },
+    cluster_by = ["ano", "sigla_uf", "id_municipio"],
+    labels = {'project_id': 'basedosdados-dev'})
+ }}
 
 SELECT
 

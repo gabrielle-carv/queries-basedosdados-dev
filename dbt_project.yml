@@ -43,27 +43,45 @@ models:
     example:
       +materialized: table # Materialization type (table, table or incremental)
       +schema: example # Overrides the default schema (defaults to what is set on profiles.yml)
+    br_b3_cotacoes:
+      +materialized: table
+      +schema: br_b3_cotacoes
+    br_rj_isp_estatisticas_seguranca:
+      +materialized: table
+      +schema: br_rj_isp_estatisticas_seguranca
     br_anatel_banda_larga_fixa:
       +materialized: table
       +schema: br_anatel_banda_larga_fixa
     bd_available_options:
       +materialized: table
-      +schema: bd_available_options 
-    br_anp_precos_combustiveis:
-      +materialized: table
-      +schema: br_anp_precos_combustiveis      
+      +schema: bd_available_options  
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_bd_diretorios_brasil:
+      +materialized: table
+      +schema: br_bd_diretorios_brasil
+    br_bd_diretorios_mundo:
+      +materialized: table
+      +schema: br_bd_diretorios_mundo
+    br_bcb_agencia:
+      +materialized: table
+      +schema: br_bcb_agencia
     br_bcb_estban:
       +materialized: table
-      +schema: br_bcb_estban  
+      +schema: br_bcb_estban
+    br_me_comex_stat:
+      +materialized: table
+      +schema: br_me_comex_stat    
     br_bd_metadados:
       +materialized: table
       +schema: br_bd_metadados
     br_cgu_pessoal_executivo_federal:
       +materialized: table
       +schema: br_cgu_pessoal_executivo_federal
+    br_cnpq_bolsas:
+      +materialized: table
+      +schema: br_cnpq_bolsas
     br_cvm_administradores_carteira:
       +materialized: table
       +schema: br_cvm_administradores_carteira
@@ -85,12 +103,15 @@ models:
     br_ibge_pnadc:
       +materialized: table
       +schema: br_ibge_pnadc
-    br_inmet_bdmep: ## aqui é o seu <dataset_id>
-      +materialized: table # Materialization type (table, view or incremental)
-      +schema: br_inmet_bdmep # Overrides the default schema (defaults to what is set on profiles.yml)
+    br_inmet_bdmep: 
+      +materialized: table 
+      +schema: br_inmet_bdmep 
     br_poder360_pesquisas:
       +materialized: table
       +schema: br_poder360_pesquisas
+    br_anatel_telefonia_movel:
+      +materialized: table # Materialization type (table, view or incremental)
+      +schema: br_anatel_telefonia_movel    
     br_sp_saopaulo_dieese_icv:
       +materialized: table
       +schema: br_sp_saopaulo_dieese_icv
@@ -103,3 +124,42 @@ models:
     fundacao_lemann:
       +materialized: table
       +schema: fundacao_lemann
+    br_ons_avaliacao_operacao:
+      +materialized: table
+      +schema: br_ons_avaliacao_operacao
+    br_cvm_fi:
+      +materialized: table
+      +schema: br_cvm_fi
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    br_ons_estimativa_custos:
+      +materialized: table
+      +schema: br_ons_estimativa_custos
+    br_me_caged:
+      +materialized: table
+      +schema: br_me_caged
+    br_ms_sim:
+      +materialized: table
+      +schema: br_ms_sim    
+    br_mercadolivre_ofertas:
+      +materialized: table
+      +schema: br_mercadolivre_ofertas
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    br_ms_cnes:
+      +materialized: table
+      +schema: br_ms_cnes
+    br_sp_saopaulo_geosampa_iptu:
+      +materialized: table
+      +schema: br_sp_saopaulo_geosampa_iptu
+    br_ans_beneficiario:
+      +materialized: table
+      +schema: br_ans_beneficiario
+    mundo_transfermarkt_competicoes:
+      +materialized: table
+      +schema: mundo_transfermarkt_competicoes
+    br_anp_precos_combustiveis:
+      +materialized: table
+      +schema: br_anp_precos_combustiveis
