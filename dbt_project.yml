@@ -163,3 +163,4 @@ models:
     br_anp_precos_combustiveis:
       +materialized: table
       +schema: br_anp_precos_combustiveis
+
