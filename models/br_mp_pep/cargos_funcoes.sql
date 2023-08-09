@@ -29,7 +29,7 @@ SELECT
     SAFE_CAST(subnivel_funcao as STRING) as subnivel_funcao,
     SAFE_CAST(sigla_uf as STRING) as sigla_uf,
     SAFE_CAST(faixa_etaria as STRING) as faixa_etaria,
-    SAFE_CAST(nome_cor_origem_etnica as STRING) as raca_cor,
+    SAFE_CAST(raca_cor as STRING) as raca_cor,
     SAFE_CAST(cce_e_fce as INT64) as cce_e_fce,
     SAFE_CAST(das_e_correlatas as INT64) as das_e_correlatas
 FROM `basedosdados-dev.br_mp_pep_staging.cargos_funcoes`
