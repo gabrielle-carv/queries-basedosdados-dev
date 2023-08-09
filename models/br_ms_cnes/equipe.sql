@@ -56,4 +56,4 @@ SAFE_CAST(ESCOLA AS STRING) AS indicador_atende_populacao_assistida_escolares,
 SAFE_CAST(INDIGENA AS STRING) AS indicador_atende_populacao_assistida_indigena,
 SAFE_CAST(PRONASCI AS STRING) AS indicador_atende_populacao_assistida_pronasci,
 FROM cnes_add_muni
-WHERE max(concat(ano,mes)) < 202303
+WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')

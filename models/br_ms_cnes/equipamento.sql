@@ -17,7 +17,7 @@
 WITH raw_cnes_equipamento AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-dev.br_ms_cnes_staging.equipamento`
+  FROM `basedosdados-staging.br_ms_cnes_staging.equipamento`
   WHERE CNES IS NOT NULL),
 cnes_add_muni AS (
   -- 2. Adicionar id_municipio de 7 dígitos
@@ -40,7 +40,7 @@ SAFE_CAST(QT_USO AS STRING) AS quantidade_equipamentos_ativos,
 SAFE_CAST(IND_SUS AS INT64) AS indicador_equipamento_disponivel_sus,
 SAFE_CAST(IND_NSUS AS INT64) AS indicador_equipamento_indisponivel_sus
 FROM cnes_add_muni 
-WHERE max(concat(ano,mes)) < 202303
+WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')
 
 
 
