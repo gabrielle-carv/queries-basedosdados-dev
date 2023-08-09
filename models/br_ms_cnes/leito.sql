@@ -17,7 +17,7 @@
 WITH raw_cnes_leito AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-dev.br_ms_cnes_staging.leito`
+  FROM `basedosdados-staging.br_ms_cnes_staging.leito`
   WHERE CNES IS NOT NULL),
 cnes_leito_without_duplicates AS (
     SELECT DISTINCT *
@@ -28,7 +28,7 @@ leito_x_estabelecimento as(
   -- ps: a coluna id_municipio não vem por padrão na tabela leito extraída do FTP do Datasus
   SELECT *
   FROM cnes_leito_without_duplicates as lt
-  LEFT JOIN (SELECT id_municipio, CAST(ano as STRING) ano1,CAST(mes as STRING) mes1, id_estabelecimento_cnes,id_municipio AS IDDD from `basedosdados-dev.br_ms_cnes.estabelecimento`) as st
+  LEFT JOIN (SELECT id_municipio, CAST(ano as STRING) ano1,CAST(mes as STRING) mes1, id_estabelecimento_cnes,id_municipio AS IDDD from `basedosdados.br_ms_cnes.estabelecimento`) as st
   ON lt.CNES = st.IDDD AND lt.ano = st.ano1 AND lt.mes = st.mes1 
 )
 
@@ -43,4 +43,4 @@ SAFE_CAST(QT_EXIST AS STRING) AS quantidade_total,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus
 FROM leito_x_estabelecimento
-WHERE max(concat(ano,mes)) < 202303
+WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')

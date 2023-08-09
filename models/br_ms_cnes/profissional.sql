@@ -16,7 +16,7 @@
 WITH raw_cnes_profissional AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-dev.br_ms_cnes_staging.profissional`
+  FROM `basedosdados-staging.br_ms_cnes_staging.profissional`
   WHERE CNES IS NOT NULL
 ),
 profissional_x_estabelecimento as(
@@ -55,4 +55,4 @@ SAFE_CAST(HORAOUTR AS INT64) carga_horaria_outros,
 SAFE_CAST(HORAHOSP AS INT64) carga_horaria_hospitalar,
 SAFE_CAST(HORA_AMB AS INT64) carga_horaria_ambulatorial
 FROM profissional_x_estabelecimento 
-WHERE max(concat(ano,mes)) < 202303
+WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')
