@@ -13,9 +13,11 @@
             }
         },
         cluster_by='mes',
-        post_hook=['REVOKE roles/bigquery.dataViewer ON TABLE {{ this }} FROM "specialGroup:allUsers"',
-                'GRANT roles/bigquery.dataViewer ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'])
-        
+        post_hook=[
+            'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+            'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+        ]
+    )    
 }}
 
 SELECT 
