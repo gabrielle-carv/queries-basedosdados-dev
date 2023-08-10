@@ -26,4 +26,4 @@ SAFE_CAST(unidade_medida AS STRING) unidade_medida,
 SAFE_CAST(preco_compra AS FLOAT64) preco_compra,
 SAFE_CAST(preco_venda AS FLOAT64) preco_venda
 FROM basedosdados-dev.br_anp_precos_combustiveis_staging.microdados AS t
-WHERE DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6
+WHERE DATE_DIFF(CURRENT_DATE(), DATE(data_coleta), MONTH) > 6
