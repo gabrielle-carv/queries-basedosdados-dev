@@ -10,7 +10,6 @@
     cluster_by = ["ano", "sigla_uf", "id_municipio"],
     labels = {'project_id': 'basedosdados-dev'})
 }}
-
 SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(sigla_uf AS STRING) sigla_uf,
