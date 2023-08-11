@@ -5,11 +5,15 @@
     partition_by={
       "field": "ano",
       "data_type": "int64",
-      "granularity": "year"
+      "range": {
+        "start": 2004,
+        "end": 2023,
+        "interval": 1}
     },
-    cluster_by = ["ano", "sigla_uf", "id_municipio"],
+    cluster_by = ["id_municipio", "sigla_uf"],
     labels = {'project_id': 'basedosdados-dev'})
 }}
+
 SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(sigla_uf AS STRING) sigla_uf,
