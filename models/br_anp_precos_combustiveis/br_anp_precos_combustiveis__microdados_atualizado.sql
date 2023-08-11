@@ -11,7 +11,9 @@
         "interval": 1}
     },
     cluster_by = ["id_municipio", "sigla_uf"],
-    labels = {'project_id': 'basedosdados-dev'})
+    labels = {'project_id': 'basedosdados-dev'},
+    post_hook = ['REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+              'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'])
 }}
 
 SELECT
