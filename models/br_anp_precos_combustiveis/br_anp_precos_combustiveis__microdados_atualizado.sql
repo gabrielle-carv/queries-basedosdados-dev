@@ -29,4 +29,4 @@ INITCAP(produto) AS produto,
 SAFE_CAST(unidade_medida AS STRING) unidade_medida,
 SAFE_CAST(preco_compra AS FLOAT64) preco_compra,
 SAFE_CAST(preco_venda AS FLOAT64) preco_venda
-FROM basedosdados-dev.br_anp_precos_combustiveis_staging.microdados_atualizado AS t
+FROM basedosdados-dev.br_anp_precos_combustiveis_staging.microdados AS t
