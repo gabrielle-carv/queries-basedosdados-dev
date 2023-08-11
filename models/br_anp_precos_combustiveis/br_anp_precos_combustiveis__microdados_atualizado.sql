@@ -5,11 +5,15 @@
     partition_by={
       "field": "ano",
       "data_type": "int64",
-      "granularity": "year"
+      "range": {
+        "start": 2004,
+        "end": 2023,
+        "interval": 1}
     },
-    cluster_by = ["ano", "sigla_uf", "id_municipio"],
+    cluster_by = ["id_municipio", "sigla_uf"],
     labels = {'project_id': 'basedosdados-dev'})
 }}
+
 SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(sigla_uf AS STRING) sigla_uf,
@@ -25,4 +29,4 @@ INITCAP(produto) AS produto,
 SAFE_CAST(unidade_medida AS STRING) unidade_medida,
 SAFE_CAST(preco_compra AS FLOAT64) preco_compra,
 SAFE_CAST(preco_venda AS FLOAT64) preco_venda
-FROM basedosdados-dev.br_anp_precos_combustiveis_staging.microdados_atualizado AS t
+FROM basedosdados-dev.br_anp_precos_combustiveis_staging.microdados AS t
