@@ -14,4 +14,4 @@ SAFE_CAST(arborizacao AS STRING) arborizacao,
 SAFE_CAST(latitude AS float64) latitude,
 SAFE_CAST(longitude AS float64) longitude,
 SAFE_CAST(valor AS float64) valor
-FROM basedosdados-dev.br_ce_sefin_iptu_staging.face_quadra AS t
+FROM basedosdados-dev.br_ce_sefin_dados_imobiliarios_staging.face_quadra AS t
