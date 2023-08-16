@@ -142,6 +142,9 @@ models:
     br_me_caged:
       +materialized: table
       +schema: br_me_caged
+    br_me_cnpj:
+      +materialized: table
+      +schema: br_me_cnpj   
     br_ms_sim:
       +materialized: table
       +schema: br_ms_sim    
@@ -151,6 +154,9 @@ models:
       +post-hook: 
         - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
         - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    br_mp_pep:
+      +materialized: table
+      +schema: br_mp_pep
     br_ms_cnes:
       +materialized: table
       +schema: br_ms_cnes
@@ -158,7 +164,7 @@ models:
       +materialized: table
       +schema: br_sp_saopaulo_geosampa_iptu
     br_ans_beneficiario:
-      +materialized: table
+      +materialized: incremental
       +schema: br_ans_beneficiario
     mundo_transfermarkt_competicoes:
       +materialized: table
@@ -166,4 +172,12 @@ models:
     br_ms_sinan:
       +materialized: table
       +schema: br_ms_sinan
-
+    br_anp_precos_combustiveis:
+      +materialized: table
+      +schema: br_anp_precos_combustiveis
+    br_ce_fortaleza_sefin_dados_imobiliarios:
+      +materialized: table
+      +schema: br_ce_fortaleza_sefin_dados_imobiliarios
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'

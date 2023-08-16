@@ -9,23 +9,26 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
-    )
+     },
+    post_hook=[
+      'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+      'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    ])   
  }}
 
 WITH raw_cnes_estabelecimento AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-staging.br_ms_cnes_staging.estabelecimento`
+  FROM `basedosdados-dev.br_ms_cnes_staging.estabelecimento`
   WHERE CNES IS NOT NULL
 ),
 raw_cnes_estabelecimento_without_duplicates as(
-  -- 2. Distinct nas linhas 
+  -- 2. distinct nas linhas 
   SELECT DISTINCT *
   FROM raw_cnes_estabelecimento
 ),
 cnes_add_muni AS (
-  -- 3. Adicionar id_municipio
+  -- 3. Adicionar id_municipio e sigla_uf
   SELECT *
   FROM raw_cnes_estabelecimento_without_duplicates  
   LEFT JOIN (SELECT id_municipio, id_municipio_6,
@@ -245,5 +248,3 @@ cnes_add_muni AS (
   SAFE_CAST(AP07CV05 AS INT64) indicador_atendimento_regulacao_plano_saude_publico,
   SAFE_CAST(AP07CV06 AS INT64) indicador_atendimento_regulacao_plano_saude_privado
   FROM cnes_add_muni AS t
-  WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')
-

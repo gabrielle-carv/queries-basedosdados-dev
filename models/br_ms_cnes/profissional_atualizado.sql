@@ -9,14 +9,17 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
-    )
+     },
+     post_hook=[
+      'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
+      'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    ])
  }}
 
 WITH raw_cnes_profissional AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-staging.br_ms_cnes_staging.profissional`
+  FROM `basedosdados-dev.br_ms_cnes_staging.profissional`
   WHERE CNES IS NOT NULL
 ),
 profissional_x_estabelecimento as(
@@ -55,4 +58,3 @@ SAFE_CAST(HORAOUTR AS INT64) carga_horaria_outros,
 SAFE_CAST(HORAHOSP AS INT64) carga_horaria_hospitalar,
 SAFE_CAST(HORA_AMB AS INT64) carga_horaria_ambulatorial
 FROM profissional_x_estabelecimento 
-WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')
