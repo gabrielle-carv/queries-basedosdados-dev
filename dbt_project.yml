@@ -169,3 +169,6 @@ models:
     br_ce_sefin_iptu:
       +materialized: table
       +schema: br_ce_sefin_iptu
+      +post-hook: 
+        - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
+        - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
