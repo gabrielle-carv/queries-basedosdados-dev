@@ -43,33 +43,36 @@ models:
     example:
       +materialized: table # Materialization type (table, table or incremental)
       +schema: example # Overrides the default schema (defaults to what is set on profiles.yml)
+    br_anatel_banda_larga_fixa:
+      +materialized: table
+      +schema: br_anatel_banda_larga_fixa  
     br_b3_cotacoes:
       +materialized: table
       +schema: br_b3_cotacoes
-    br_rj_isp_estatisticas_seguranca:
-      +materialized: table
-      +schema: br_rj_isp_estatisticas_seguranca
-    br_anatel_banda_larga_fixa:
-      +materialized: table
-      +schema: br_anatel_banda_larga_fixa
-    bd_available_options:
-      +materialized: table
-      +schema: bd_available_options  
-    br_bd_indicadores:
-      +materialized: table
-      +schema: br_bd_indicadores
-    br_bd_diretorios_brasil:
-      +materialized: table
-      +schema: br_bd_diretorios_brasil
-    br_bd_diretorios_mundo:
-      +materialized: table
-      +schema: br_bd_diretorios_mundo
     br_bcb_agencia:
       +materialized: table
       +schema: br_bcb_agencia
     br_bcb_estban:
       +materialized: table
       +schema: br_bcb_estban
+    br_bcb_taxa_cambio:
+      +materialized: table
+      +schema: br_bcb_taxa_cambio
+    br_bcb_taxa_selic:
+      +materialized: table
+      +schema: br_bcb_taxa_selic
+    br_bd_indicadores:
+      +materialized: table
+      +schema: br_bd_indicadores
+    br_rj_isp_estatisticas_seguranca:
+      +materialized: table
+      +schema: br_rj_isp_estatisticas_seguranca 
+    br_bd_diretorios_brasil:
+      +materialized: table
+      +schema: br_bd_diretorios_brasil
+    br_bd_diretorios_mundo:
+      +materialized: table
+      +schema: br_bd_diretorios_mundo
     br_me_comex_stat:
       +materialized: table
       +schema: br_me_comex_stat    
@@ -166,6 +169,9 @@ models:
     mundo_transfermarkt_competicoes:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes
+    br_ms_sinan:
+      +materialized: table
+      +schema: br_ms_sinan
     br_anp_precos_combustiveis:
       +materialized: table
       +schema: br_anp_precos_combustiveis
