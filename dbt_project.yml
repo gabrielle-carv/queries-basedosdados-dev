@@ -158,7 +158,7 @@ models:
       +materialized: table
       +schema: br_sp_saopaulo_geosampa_iptu
     br_ans_beneficiario:
-      +materialized: table
+      +materialized: incremental
       +schema: br_ans_beneficiario
     mundo_transfermarkt_competicoes:
       +materialized: table
