@@ -166,4 +166,6 @@ models:
     br_anp_precos_combustiveis:
       +materialized: table
       +schema: br_anp_precos_combustiveis
-
+    br_ce_sefin_iptu:
+      +materialized: table
+      +schema: br_ce_sefin_iptu
