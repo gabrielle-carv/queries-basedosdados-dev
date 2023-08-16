@@ -2,7 +2,7 @@ SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(id_face_quadra AS STRING) id_face_quadra,
 SAFE_CAST(logradouro AS STRING) logradouro,
-SAFE_CAST(geometria AS GEOGRAPHY) geometria,
+SAFE.ST_GEOGFROMTEXT(geometry) geometria,
 SAFE_CAST(metrica AS STRING) metrica,
 SAFE_CAST(pavimentacao AS STRING) pavimentacao,
 SAFE_CAST(agua AS BOOL) agua,
