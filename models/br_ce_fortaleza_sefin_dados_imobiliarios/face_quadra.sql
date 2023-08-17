@@ -12,6 +12,6 @@ SAFE_CAST(iluminacao_publica AS BOOL) iluminacao_publica,
 SAFE_CAST(arborizacao AS BOOL) arborizacao,
 SAFE_CAST(latitude AS float64) latitude,
 SAFE_CAST(longitude AS float64) longitude,
-SAFE_CAST(geometria AS STRING) geometria,
+SAFE_CAST(geometria AS GEOGRAPHY) geometria,
 SAFE_CAST(valor AS float64) valor
 FROM basedosdados-dev.br_ce_fortaleza_sefin_dados_imobiliarios_staging.face_quadra AS t
