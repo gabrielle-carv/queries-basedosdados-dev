@@ -25,7 +25,6 @@ SELECT
         WHEN qualificacao = '0' THEN '0'
         ELSE SAFE_CAST(REGEXP_REPLACE(qualificacao, '^0', '') AS STRING)
     END AS qualificacao,
-    SAFE_CAST(REGEXP_REPLACE(qualificacao, '^0', '') AS STRING) qualificacao,
     SAFE_CAST(data_entrada_sociedade AS DATE) data_entrada_sociedade,
     SAFE_CAST(REPLACE(id_pais,".0","") AS STRING) id_pais,
     SAFE_CAST(cpf_representante_legal AS STRING) cpf_representante_legal,
