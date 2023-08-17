@@ -7,30 +7,30 @@ models:
       - name: ano
         description: Ano
       - name: id_face_quadra
-        description: Identificador único de identificação da face de Quadra.
-      - name: logradouro.
-        description: Nome oficial do logradouro, sendo este definido na legislação municipal.
+        description: Identificador único da face de quadra.
+      - name: logradouro
+        description: Nome oficial do logradouro.
       - name: geometria
-        description: Polígono referente a região de condomínios com sistema de referência de coordenadas SIRGAS 2000 - UTM Zona 24 Sul.
+        description: Ponto de coordenadas da face da quadra com sistema de referência SIRGAS 2000 - UTM Zona 24 Sul
       - name: metrica
-        description: O sequencial do trecho do logradouro será preenchido inicialmente com múltiplos de 20 a partir do início do logradouro.
+        description: Sequencial do trecho do logradouro (preenchido com múltiplos de 20 a partir do início do logradouro)
       - name: pavimentacao
-        description: Indicar o tipo de pavimentação que reveste a superfície do logradouro.
+        description: Indica o tipo de pavimentação que reveste a superfície do logradouro.
       - name: agua
-        description: Identifica a existência de rede de água ou não no trecho do logradouro.
+        description: Indica a existência de rede de água
       - name: esgoto
-        description: Identifica a existência de rede de coleta de esgoto cloacal ou não no trecho do logradouro.
+        description: Indica a existência de rede de coleta de esgoto
       - name: galeria_pluvial
-        description: Identifica a existência ou não de rede de drenagem pluvial.
+        description: Indica a existência de rede de drenagem pluvial.
       - name: sarjeta
-        description: Identifica a existência ou não de meio-fio.
+        description: Indica a existência de meio-fio.
       - name: iluminacao_publica
-        description: Identifica a existência ou não de rede de iluminação pública.
+        description: Indica a existência de iluminação pública.
       - name: arborizacao
-        description: Identifica a existência ou não de arborização planejada no canteiro central de vias duplas.
+        description: Indica a existência de arborização planejada no canteiro central de vias duplas.
       - name: latitude
         description: Refere-se a latitude do ponto da face de quadra cadastrada no sistema do Cadastro Imobiliário Municipal (CIM) de Fortaleza/CE.
       - name: longitude
         description: Refere-se a longitude do ponto da face de quadra cadastrada no sistema do Cadastro Imobiliário Municipal (CIM) de Fortaleza/CE.
       - name: valor
-        description: Refere-se ao valor da face de quadra no ano respectivos a publicação dos dados da camada.
+        description: Refere-se ao valor das faces de quadras no ano respectivo a publicação dos dados.
