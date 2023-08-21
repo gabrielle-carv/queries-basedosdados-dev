@@ -17,7 +17,7 @@
                     FILTER USING (EXTRACT(YEAR from data) = EXTRACT(YEAR from  CURRENT_DATE()))' ]) 
 
 }}
-WITH cnpj as 
+WITH cnpj_estabelecimentos as 
 (SELECT 
   SAFE_CAST(data AS DATE) data,
   SAFE_CAST(lpad(cnpj,16,"0") AS STRING) cnpj,
@@ -55,7 +55,7 @@ WITH cnpj as
 FROM basedosdados-dev.br_me_cnpj_staging.estabelecimentos a
 LEFT JOIN basedosdados.br_bd_diretorios_brasil.municipio b
     ON a.id_municipio_rf = b.id_municipio_rf)
-SELECT * FROM cnpj
+SELECT * FROM cnpj_estabelecimentos
 {% if is_incremental() %} 
 WHERE data > (SELECT MAX(data) FROM {{ this }} )
 {% endif %}
