@@ -30,7 +30,7 @@ WITH cnpj as
   SAFE_CAST(data_situacao_cadastral AS DATE) data_situacao_cadastral,
   SAFE_CAST(motivo_situacao_cadastral AS STRING) motivo_situacao_cadastral,
   SAFE_CAST(nome_cidade_exterior AS STRING) nome_cidade_exterior,
-  SAFE_CAST(REPLACE (id_pais,".0","") AS STRING) id_pais,
+  SAFE_CAST(CAST(id_pais AS INT64) AS STRING) id_pais,
   SAFE_CAST(data_inicio_atividade AS DATE) data_inicio_atividade,
   SAFE_CAST(cnae_fiscal_principal AS STRING) cnae_fiscal_principal,
   SAFE_CAST(cnae_fiscal_secundaria AS STRING) cnae_fiscal_secundaria,
