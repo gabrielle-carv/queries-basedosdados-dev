@@ -1,12 +1,12 @@
 {{
   config(
     schema='br_me_cnpj',
-    materialized='table',
+    materialized='incremental',
     partition_by={
       "field": "data",
       "data_type": "date",
     },
-    cluster_by='sigla_uf',
+    cluster_by='sigla_uf' ,
     post_hook=['CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
                     GRANT TO ("allUsers")
@@ -15,8 +15,10 @@
                     ON  {{this}}
                     GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
                     FILTER USING (EXTRACT(YEAR from data) = EXTRACT(YEAR from  CURRENT_DATE()))' ]) 
+
 }}
-SELECT 
+WITH cnpj as 
+(SELECT 
   SAFE_CAST(data AS DATE) data,
   SAFE_CAST(lpad(cnpj,16,"0") AS STRING) cnpj,
   SAFE_CAST(lpad(cnpj_basico, 8, '0') AS STRING) cnpj_basico,
@@ -28,7 +30,7 @@ SELECT
   SAFE_CAST(data_situacao_cadastral AS DATE) data_situacao_cadastral,
   SAFE_CAST(motivo_situacao_cadastral AS STRING) motivo_situacao_cadastral,
   SAFE_CAST(nome_cidade_exterior AS STRING) nome_cidade_exterior,
-  SAFE_CAST(CAST(id_pais AS INT64) AS STRING) id_pais,
+  SAFE_CAST(REPLACE (id_pais,".0","") AS STRING) id_pais,
   SAFE_CAST(data_inicio_atividade AS DATE) data_inicio_atividade,
   SAFE_CAST(cnae_fiscal_principal AS STRING) cnae_fiscal_principal,
   SAFE_CAST(cnae_fiscal_secundaria AS STRING) cnae_fiscal_secundaria,
@@ -52,4 +54,8 @@ SELECT
   SAFE_CAST(data_situacao_especial AS DATE) data_situacao_especial
 FROM basedosdados-dev.br_me_cnpj_staging.estabelecimentos a
 LEFT JOIN basedosdados.br_bd_diretorios_brasil.municipio b
-    ON a.id_municipio_rf = b.id_municipio_rf
+    ON a.id_municipio_rf = b.id_municipio_rf)
+SELECT * FROM cnpj
+{% if is_incremental() %} 
+WHERE data > (SELECT MAX(data) FROM {{ this }} )
+{% endif %}
