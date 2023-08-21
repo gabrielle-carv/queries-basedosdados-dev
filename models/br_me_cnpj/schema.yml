@@ -136,3 +136,17 @@ models:
         description: Situação Especial
       - name: data_situacao_especial
         description: Data da Situação Especial
+
+  - name: br_me_cnpj__dicionario
+    description: Dicionário
+    columns:
+      - name: id_tabela
+        description: ID Tabela
+      - name: nome_coluna
+        description: Nome da coluna        
+      - name: chave
+        description: Chave
+      - name: cobertura_temporal
+        description: Cobertura temporal
+      - name: valor
+        description: Valor
