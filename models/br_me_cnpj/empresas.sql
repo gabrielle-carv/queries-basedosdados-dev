@@ -7,6 +7,7 @@
       "field": "data",
       "data_type": "date",
     },
+    pre_hook = "DROP ALL ROW ACCESS POLICIES ON {{ this }}",
     post_hook=['CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
                     GRANT TO ("allUsers")
