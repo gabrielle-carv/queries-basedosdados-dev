@@ -17,7 +17,7 @@
                     FILTER USING (EXTRACT(YEAR from data) = EXTRACT(YEAR from  CURRENT_DATE()))' ]) 
 
 }}
-WITH cnpj_estabelecimentos as 
+WITH cnpj_estabelecimentos AS 
 (SELECT 
   SAFE_CAST(data AS DATE) data,
   SAFE_CAST(lpad(cnpj,16,"0") AS STRING) cnpj,
