@@ -3,3 +3,4 @@ dbt_modules/
 logs/
 .vscode/
 venv-dbt/
+.venv/
