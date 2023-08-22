@@ -9,7 +9,17 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
+     },
+     post_hook = [ 
+      'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
+                    ON {{this}}
+                    GRANT TO ("allUsers")
+                    FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6)',
+      'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
+       ON  {{this}}
+                    GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
+                    FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)'      
+     ]  
     )
  }}
 
@@ -40,7 +50,6 @@ SAFE_CAST(QT_USO AS STRING) AS quantidade_equipamentos_ativos,
 SAFE_CAST(IND_SUS AS INT64) AS indicador_equipamento_disponivel_sus,
 SAFE_CAST(IND_NSUS AS INT64) AS indicador_equipamento_indisponivel_sus
 FROM cnes_add_muni 
-WHERE concat(ano,mes) NOT IN ('20233','20234', '20235', '20236', '20237', '20238','20239','202310')
 
 
 
