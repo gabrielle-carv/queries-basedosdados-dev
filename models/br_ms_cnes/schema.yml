@@ -630,7 +630,6 @@ models:
         description: Quantidade de leitos contratados
       - name: quantidade_sus
         description: Quantidade de leitos para o SUS
-  models:
   - name: dados_complementares
     description: Dados complementares dos estabelecimentos de saúde
     columns:
@@ -646,16 +645,16 @@ models:
         description: ID Estabelecimento - CNES
       - name: cns_medico_responsavel_administrador_responsavel_tecnico
         description: CNS do médico responsável - Administrador ou Responsável Técnico
-      - name: cns_medico_responsavel_oncologista__pediatrico
-        description: 'CNS do médico responsável - Oncologista Pediátrico '
+      - name: cns_medico_responsavel_oncologista_pediatrico
+        description: CNS do médico responsável - Oncologista Pediátrico 
       - name: cns_medico_responsavel_cirurgia_oncologica
-        description: 'CNS do médico responsável - Cirurgia Oncológica '
+        description: CNS do médico responsável - Cirurgia Oncológica 
       - name: cns_medico_responsavel_oncologista_clinico
         description: CNS do médico responsável - Oncologista Clínico
       - name: cns_medico_responsavel_radioterapeuta
-        description: 'CNS do médico responsável - Radioterapeuta '
+        description: CNS do médico responsável - Radioterapeuta 
       - name: cns_medico_responsavel_fisico_nuclear
-        description: 'CNS do médico responsável - Físico Nuclear '
+        description: CNS do médico responsável - Físico Nuclear 
       - name: cns_medico_responsavel_nefrologista
         description: CNS do médico responsável - Nefrologista
       - name: cns_medico_responsavel_hemoterapeuta
@@ -805,8 +804,7 @@ models:
       - name: quantidade_capelas_fluxo_laminar
         description: Quantidade de capelas fluxo laminar
       - name: indicador_existencia_requisito_hemoterapia
-        description: Indica a existência de algum requisito de hemoterapia para este
-        CNES
+        description: Indica a existência de algum requisito de hemoterapia para este CNES
       - name: indicador_tratamento_agua_filtro_areia
         description: Indica se faz tratamento de água com filtro de areia
       - name: indicador_tratamento_agua_filtro_carvao
@@ -822,10 +820,9 @@ models:
       - name: indicador_existencia_requisito_dialise
         description: Indica a existência de algum requisito de diálise para este CNES
       - name: indicador_existencia_requisito_quimio_radio
-        description: Indica a existência de algum requisito de quimio/rádio para este
-        CNES
+        description: Indica a existência de algum requisito de quimio/rádio para este CNES
   - name: estabelecimento_filantropico
-    description: Cadastro de estabelecimentos filantropicos
+    description: Esta tabela apresenta um cadastro de estabelecimentos de saúde filantrópicos.
     columns:
       - name: ano
         description: Ano
@@ -845,10 +842,12 @@ models:
         description: Ano Competência final
       - name: mes_competencia_final
         description: Mês Competência final
-      - name: habilitacao
-        description: Código da habilitação
+      - name: tipo_habilitacao
+        description: Código do tipo de habilitação do estabelecimento
+      - name: tipo_regra_contratual
+        description: Código do tipo da regra contratual do estabalecimento 
       - name: portaria
-        description: Portaria
+        description: Portaria relacionada a regra contratual
       - name: data_portaria
         description: Data da portaria
       - name: ano_portaria
@@ -856,7 +855,7 @@ models:
       - name: mes_portaria
         description: Mês da portaria
   - name: estabelecimento_ensino
-    description: #todo
+    description: Esta tabela apresenta informações sobre os estabelecimentos habilitados para atividades de ensino.
     columns:
       - name: ano
         description: Ano
@@ -876,8 +875,8 @@ models:
         description: Ano Competência final
       - name: mes_competencia_final
         description: Mês Competência final
-      - name: habilitacao
-        description: Código da habilitação
+      - name: tipo_habilitacao
+        description: Código do tipo de habilitação do estabelecimento
       - name: portaria
         description: Portaria
       - name: data_portaria
@@ -887,7 +886,7 @@ models:
       - name: mes_portaria
         description: Mês da portaria
   - name: gestao_metas
-    description: #todo
+    description: Esta tabela apresenta informações sobre os contratos de gestão de metas dos estabelecimentos de sáude.
     columns:
       - name: ano
         description: Ano
@@ -907,8 +906,10 @@ models:
         description: Ano Competência final
       - name: mes_competencia_final
         description: Mês Competência final
-      - name: habilitacao
-        description: Código da habilitação
+      - name: tipo_habilitacao
+        description: Código do tipo de gestão de metas do estabelecimento
+      - name: tipo_gestao_metas
+        description: Código do tipo de gestão de metas do estabalecimento
       - name: portaria
         description: Portaria
       - name: data_portaria
@@ -918,7 +919,7 @@ models:
       - name: mes_portaria
         description: Mês da portaria 
   - name: incentivos
-    description: #todo
+    description: A tabela fornece informações sobre os incentivos do estabelecimento. 
     columns:
       - name: ano
         description: Ano
@@ -938,8 +939,10 @@ models:
         description: Ano Competência final
       - name: mes_competencia_final
         description: Mês Competência final
-      - name: habilitacao
-        description: Código da habilitação
+      - name: tipo_habilitacao
+        description: Código do tipo de incentivo do estabelecimento
+      - name: tipo_incentivo
+        description: Código do tipo de incentivo do estabalecimento
       - name: portaria
         description: Portaria
       - name: data_portaria
@@ -949,7 +952,7 @@ models:
       - name: mes_portaria
         description: Mês da portaria  
   - name: habilitacao
-    description: #todo
+    description: A tabela fornece informações sobre as habilitações do estabelecimento. 
     columns:
       - name: ano
         description: Ano
@@ -971,8 +974,10 @@ models:
         description: Ano Competência final
       - name: mes_competencia_final
         description: Mês Competência final
-      - name: habilitacao
-        description: Código da habilitação
+      - name: tipo_habilitacao
+        description: Código do tipo de incentivo do estabelecimento
+      - name: nivel_habilitacao
+        description: Código do nível de habilitação do estabalecimento
       - name: portaria
         description: Portaria
       - name: data_portaria
@@ -982,7 +987,7 @@ models:
       - name: mes_portaria
         description: Mês da portaria      
   - name: regra_contratual
-    description: #todo
+    description: A tabela fornece informações sobre os contratos dos estabelecimentos. 
     columns:
       - name: ano
         description: Ano
@@ -1013,7 +1018,7 @@ models:
       - name: mes_portaria
         description: Mês da portaria
   - name: servico_especializado
-    description: #todo 
+    description: A tabela fornece informações sobre serviços especializados ofertados pelo estabelecimento. 
     columns:
       - name: ano
         description: Ano
@@ -1025,20 +1030,20 @@ models:
         description: ID Município IBGE - 7 Dígitos
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
-      - name: servico_especializado
+      - name: tipo_servico_especializado
         description: Código do serviço especializado
-      - name: classificacao
+      - name: tipo_classificacao
         description: Código da classificação do serviço
-      - name: servico_especializado_unico
+      - name: tipo_classificacao_bd
+        description: Código da classificação do serviço criado pela equipe da BD
+      - name: tipo_servico_especializado_unico
         description: Código do serviço especializado único
-      - name: caracterizacao
-        description: Caracterização do serviço
-        #todo: ver se nao precisa de dic
-      - name: indicador_servico_ambulatorial_sus
-        description: Indica se o Serviço é Ambulatorial Não SUS/ Ambulatorial SUS
-            / Hospitalar Não SUS / Hospitalar SUS
+      - name: tipo_caracterizacao
+        description: Caracterização do serviço 
+      - name: indicador_servico_ambulatorial_sus 
+        description: Indica se o Serviço Atende Ambulatorial SUS
       - name: indicador_servico_nao_sus
-        description: Indica se o Serviço é Ambulatorial SUS
+        description: Indica se o Serviço Atende Ambulatorial Não SUS
       - name: indicador_servico_hospitalar_nao_sus
         description: Indica se o Serviço é Hospitalar Não SUS
       - name: indicador_servico_hospitalar_sus

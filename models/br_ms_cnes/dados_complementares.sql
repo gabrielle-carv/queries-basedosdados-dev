@@ -9,7 +9,17 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
+     },
+     post_hook = [ 
+      'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
+                    ON {{this}}
+                    GRANT TO ("allUsers")
+                    FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6)',
+      'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
+       ON  {{this}}
+                    GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
+                    FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)'      
+     ]   
     )
  }}
 WITH raw_cnes_dados_complementares AS (
@@ -38,7 +48,7 @@ SAFE_CAST(sigla_uf AS STRING) sigla_uf,
 SAFE_CAST(id_municipio AS STRING) id_municipio,
 SAFE_CAST(CNES AS STRING) id_estabelecimento_cnes,
 SAFE_CAST(CNS_ADM AS STRING) cns_medico_responsavel_administrador_responsavel_tecnico,
-SAFE_CAST(CNS_OPED AS STRING) cns_medico_responsavel_oncologista__pediatrico,
+SAFE_CAST(CNS_OPED AS STRING) cns_medico_responsavel_oncologista_pediatrico,
 SAFE_CAST(CNS_CONC AS STRING) cns_medico_responsavel_cirurgia_oncologica,
 SAFE_CAST(CNS_OCLIN AS STRING) cns_medico_responsavel_oncologista_clinico,
 SAFE_CAST(CNS_MRAD AS STRING) cns_medico_responsavel_radioterapeuta,
