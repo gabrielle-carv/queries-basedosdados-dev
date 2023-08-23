@@ -10,27 +10,23 @@ models:
         description: Identificador único da face de quadra.
       - name: logradouro
         description: Nome oficial do logradouro.
-      - name: geometria
-        description: Ponto de coordenadas da face da quadra com sistema de referência SIRGAS 2000 - UTM Zona 24 Sul
+      - name: centroide
+        description: Centroide da face de quadra.
       - name: metrica
         description: Sequencial do trecho do logradouro (preenchido com múltiplos de 20 a partir do início do logradouro)
       - name: pavimentacao
         description: Indica o tipo de pavimentação que reveste a superfície do logradouro.
-      - name: agua
+      - name: indicador_agua
         description: Indica a existência de rede de água
-      - name: esgoto
+      - name: indicador_esgoto
         description: Indica a existência de rede de coleta de esgoto
-      - name: galeria_pluvial
+      - name: indicador_galeria_pluvial
         description: Indica a existência de rede de drenagem pluvial.
-      - name: sarjeta
+      - name: indicador_sarjeta
         description: Indica a existência de meio-fio.
-      - name: iluminacao_publica
+      - name: indicador_iluminacao_publica
         description: Indica a existência de iluminação pública.
-      - name: arborizacao
+      - name: indicador_arborizacao
         description: Indica a existência de arborização planejada no canteiro central de vias duplas.
-      - name: latitude
-        description: Refere-se a latitude do ponto da face de quadra cadastrada no sistema do Cadastro Imobiliário Municipal (CIM) de Fortaleza/CE.
-      - name: longitude
-        description: Refere-se a longitude do ponto da face de quadra cadastrada no sistema do Cadastro Imobiliário Municipal (CIM) de Fortaleza/CE.
       - name: valor
         description: Refere-se ao valor da face da quadra no ano respectivo a publicação dos dados.
