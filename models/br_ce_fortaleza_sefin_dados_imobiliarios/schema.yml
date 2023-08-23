@@ -28,9 +28,5 @@ models:
         description: Indica a existência de iluminação pública.
       - name: arborizacao
         description: Indica a existência de arborização planejada no canteiro central de vias duplas.
-      - name: latitude
-        description: Refere-se a latitude do ponto da face de quadra cadastrada no sistema do Cadastro Imobiliário Municipal (CIM) de Fortaleza/CE.
-      - name: longitude
-        description: Refere-se a longitude do ponto da face de quadra cadastrada no sistema do Cadastro Imobiliário Municipal (CIM) de Fortaleza/CE.
       - name: valor
         description: Refere-se ao valor da face da quadra no ano respectivo a publicação dos dados.

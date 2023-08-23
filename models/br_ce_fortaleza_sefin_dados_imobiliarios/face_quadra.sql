@@ -10,6 +10,6 @@ SAFE_CAST(indicador_galeria_pluvial AS BOOL) indicador_galeria_pluvial,
 SAFE_CAST(indicador_sarjeta AS BOOL) indicador_sarjeta,
 SAFE_CAST(indicador_iluminacao_publica AS BOOL) indicador_iluminacao_publica,
 SAFE_CAST(indicador_arborizacao AS BOOL) indicador_arborizacao,
-SAFE_CAST(geometria AS GEOGRAPHY) geometria,
+SAFE.ST_GEOGFROMTEXT(geometria) geometria,
 SAFE_CAST(valor AS float64) valor
 FROM basedosdados-dev.br_ce_fortaleza_sefin_dados_imobiliarios_staging.face_quadra AS t
