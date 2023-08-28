@@ -1,7 +1,7 @@
 {{ 
   config(
     schema='br_ms_cnes',
-    materialized='table',
+    materialized='incremental',
      partition_by={
       "field": "ano",
       "data_type": "int64",
@@ -10,6 +10,7 @@
         "end": 2023,
         "interval": 1}
      },
+     pre_hook = "DROP ALL ROW ACCESS POLICIES ON {{ this }}",
      post_hook = [ 
       'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
@@ -19,7 +20,7 @@
        ON  {{this}}
                     GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
                     FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)'      
-     ]  
+     ]   
     )
  }}
 
@@ -27,7 +28,7 @@
 WITH raw_cnes_leito AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-staging.br_ms_cnes_staging.leito`
+  FROM `basedosdados-dev.br_ms_cnes_staging.leito`
   WHERE CNES IS NOT NULL),
 cnes_leito_without_duplicates AS (
     SELECT DISTINCT *
@@ -53,3 +54,6 @@ SAFE_CAST(QT_EXIST AS STRING) AS quantidade_total,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus
 FROM leito_x_estabelecimento
+{% if is_incremental() %} 
+WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+{% endif %}

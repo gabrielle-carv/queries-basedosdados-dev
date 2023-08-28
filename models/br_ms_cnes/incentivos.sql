@@ -1,7 +1,7 @@
 {{ 
   config(
     schema='br_ms_cnes',
-    materialized='table',
+    materialized='incremental',
      partition_by={
       "field": "ano",
       "data_type": "int64",
@@ -10,6 +10,7 @@
         "end": 2023,
         "interval": 1}
      },
+     pre_hook = "DROP ALL ROW ACCESS POLICIES ON {{ this }}",
      post_hook = [ 
       'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
@@ -19,7 +20,7 @@
        ON  {{this}}
                     GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
                     FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)'      
-     ]  
+     ]   
     )
  }}
 WITH raw_cnes_incentivos AS (
@@ -59,3 +60,6 @@ CAST(CONCAT(SUBSTRING(DTPORTAR,-4),'-',SUBSTRING(DTPORTAR,-7,2),'-',SUBSTRING(DT
 CAST(SUBSTR(MAPORTAR, 1, 4) AS INT64) AS ano_portaria,
 CAST(SUBSTR(MAPORTAR, 5, 2) AS INT64) AS mes_portaria,
 FROM cnes_add_muni AS t
+{% if is_incremental() %} 
+WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+{% endif %}
