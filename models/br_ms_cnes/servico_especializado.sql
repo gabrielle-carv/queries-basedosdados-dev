@@ -62,5 +62,5 @@ SAFE_CAST(CONTSRVU AS INT64) indicador_servico_especializado_unico,
 SAFE_CAST(CNESTERC AS INT64) quantidade_nacional_estabelecimento_saude_terceiro
 FROM cnes_add_muni AS t
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}

@@ -52,7 +52,7 @@ SAFE_CAST(IND_SUS AS INT64) AS indicador_equipamento_disponivel_sus,
 SAFE_CAST(IND_NSUS AS INT64) AS indicador_equipamento_indisponivel_sus
 FROM cnes_add_muni 
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}
 
 

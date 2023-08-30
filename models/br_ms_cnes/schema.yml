@@ -87,8 +87,6 @@ models:
         description: Mês
       - name: sigla_uf
         description: Sigla da Unidade da Federação
-      - name: id_municipio
-        description: ID Município IBGE - 7 Dígitos
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
       - name: id_municipio_6_residencia
@@ -615,9 +613,7 @@ models:
       - name: mes
         description: Mês
       - name: sigla_uf
-        description: Sigla da Unidade da Federação
-      - name: id_municipio
-        description: ID Município IBGE - 7 Dígitos  
+        description: Sigla da Unidade da Federação  
       - name: id_estabelecimento_cnes
         description: ID Estabelecimento - CNES
       - name: tipo_especialidade_leito

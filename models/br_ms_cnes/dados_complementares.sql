@@ -140,6 +140,6 @@ SAFE_CAST(DIALISE AS INT64) indicador_existencia_requisito_dialise,
 SAFE_CAST(QUIMRADI AS INT64) indicador_existencia_requisito_quimio_radio
 FROM cnes_add_muni AS t
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}
 

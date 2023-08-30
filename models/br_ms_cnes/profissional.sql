@@ -28,23 +28,12 @@ WITH raw_cnes_profissional AS (
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.profissional`
   WHERE CNES IS NOT NULL
-),
-profissional_x_estabelecimento as(
-  SELECT *
-  FROM raw_cnes_profissional as pf
-  LEFT JOIN (
-    SELECT id_municipio, 
-    CAST(ano AS STRING) as ano1, 
-    CAST(mes AS STRING) as mes1, 
-    id_estabelecimento_cnes AS IDDD 
-    FROM `basedosdados-dev.br_ms_cnes.estabelecimento`) as st
-  ON pf.CNES = st.IDDD AND pf.ano = st.ano1 AND pf.mes = st.mes1
 )
+
 SELECT 
 CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
 CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
 SAFE_CAST(sigla_uf AS STRING) sigla_uf,
-SAFE_CAST(id_municipio AS STRING) id_municipio,
 SAFE_CAST(CNES AS STRING) id_estabelecimento_cnes,
 -- replace de valores de linha com 6 zeros para null. 6 zeros é valor do campo UFMUNRES que indica null
 SAFE_CAST(regexp_replace(UFMUNRES, '0{6}', '') AS STRING) id_municipio_6_residencia,
@@ -64,7 +53,7 @@ SAFE_CAST(PROFNSUS AS STRING) indicador_atende_nao_sus,
 SAFE_CAST(HORAOUTR AS INT64) carga_horaria_outros,
 SAFE_CAST(HORAHOSP AS INT64) carga_horaria_hospitalar,
 SAFE_CAST(HORA_AMB AS INT64) carga_horaria_ambulatorial
-FROM profissional_x_estabelecimento 
+FROM raw_cnes_profissional
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}

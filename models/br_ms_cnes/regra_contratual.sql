@@ -61,5 +61,5 @@ CAST(SUBSTR(MAPORTAR, 1, 4) AS INT64) AS ano_portaria,
 CAST(SUBSTR(MAPORTAR, 5, 2) AS INT64) AS mes_portaria,
 FROM cnes_add_muni AS t
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}

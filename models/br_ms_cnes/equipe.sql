@@ -68,5 +68,5 @@ SAFE_CAST(INDIGENA AS STRING) AS indicador_atende_populacao_assistida_indigena,
 SAFE_CAST(PRONASCI AS STRING) AS indicador_atende_populacao_assistida_pronasci,
 FROM cnes_add_muni
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}

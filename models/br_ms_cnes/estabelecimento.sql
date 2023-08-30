@@ -256,5 +256,5 @@ cnes_add_muni AS (
   SAFE_CAST(AP07CV06 AS INT64) indicador_atendimento_regulacao_plano_saude_privado
   FROM cnes_add_muni AS t
 {% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+WHERE DATE(CAST(ano AS INT64),CAST(mes AS INT64),1) > (SELECT MAX(DATE(CAST(ano AS INT64),CAST(mes AS INT64),1)) FROM {{ this }} )
 {% endif %}
