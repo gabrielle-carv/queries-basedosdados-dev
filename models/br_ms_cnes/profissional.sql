@@ -26,7 +26,7 @@
 WITH raw_cnes_profissional AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-staging.br_ms_cnes_staging.profissional`
+  FROM `basedosdados-dev.br_ms_cnes_staging.profissional`
   WHERE CNES IS NOT NULL
 ),
 profissional_x_estabelecimento as(
@@ -37,7 +37,7 @@ profissional_x_estabelecimento as(
     CAST(ano AS STRING) as ano1, 
     CAST(mes AS STRING) as mes1, 
     id_estabelecimento_cnes AS IDDD 
-    FROM `basedosdados.br_ms_cnes.estabelecimento`) as st
+    FROM `basedosdados-dev.br_ms_cnes.estabelecimento`) as st
   ON pf.CNES = st.IDDD AND pf.ano = st.ano1 AND pf.mes = st.mes1
 )
 SELECT 

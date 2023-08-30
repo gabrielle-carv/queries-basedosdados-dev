@@ -95,18 +95,18 @@ models:
         description: ID Município IBGE - 6 Dígitos do local de residência do profissional 
       - name: nome
         description: Nome do profissional
-      - name: cartao_nacional_saude
-        description: CNS - Cartão Nacional de Saúde
-      - name: cbo_2002
-        description: Código da especialidade 
+      - name: id_vinculo
+        description: Código do vínculo empregatício com o estabelecimento
       - name: id_registro_conselho
         description: Número do registro no conselho de classe
       - name: id_conselho
         description: Código do conselho de classe
+      - name: cartao_nacional_saude
+        description: CNS - Cartão Nacional de Saúde
+      - name: cbo_2002
+        description: Código da especialidade 
       - name: indicador_estabelecimento_terceiro
-        description: Indica se o estabelecimento é de terceiros ou não
-      - name: id_vinculo
-        description: Código do vínculo empregatício com o estabelecimento
+        description: Indica se o estabelecimento é de terceiros ou não 
       - name: indicador_vinculo_contratado_sus
         description: Vínculo empregatício com o estabelecimento - Contratado SUS
       - name: indicador_vinculo_autonomo_sus
