@@ -2,13 +2,14 @@
   config(
     alias='empresa',    
     schema='br_bd_diretorios_brasil',
-    materialized='table',
+    materialized='incremental',
+    unique_key = 'cnpj',
     cluster_by =    ['id_municipio', 'sigla_uf'],
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
 }}
 
+WITH tabela_empresas AS (
 WITH  max_dia AS (
-
     SELECT 
       cnpj,
       MAX(data) AS max_data
@@ -137,4 +138,12 @@ FROM estabelecimento a
 LEFT JOIN empresa b
 ON a.cnpj_basico = b.cnpj_basico
 LEFT JOIN simples c
-ON a.cnpj_basico = c.cnpj_basico
+ON a.cnpj_basico = c.cnpj_basico)
+SELECT * FROM tabela_empresas
+{% if is_incremental() %}
+WHERE cnpj NOT IN (
+  SELECT cnpj
+  FROM {{ this }}
+  WHERE situacao_cadastral = tabela_empresa.situacao_cadastral
+)
+{% endif %}
