@@ -8,7 +8,6 @@
 }}
 
 WITH  max_dia AS (
-
     SELECT 
       cnpj,
       MAX(data) AS max_data
