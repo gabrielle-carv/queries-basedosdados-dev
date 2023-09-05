@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: br_bcb_agencia__agencia
-    description: "dbt model for agencia month table"
+    description: Esta tabela apresenta o cadastro de agências bancárias do Banco Central do Brasil (BCB)
     columns:
       - name: ano
         description: Ano

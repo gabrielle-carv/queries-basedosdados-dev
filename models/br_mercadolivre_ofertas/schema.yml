@@ -86,27 +86,3 @@ models:
         description: Desconto percentual em relação ao preço original de referência 
       - name: preco_final
         description: Preço de oferta
-
-  - name: vendedor_test
-    description: Informações de vendedores dos itens na tabela de oferta. Valores missing podem se dar por instabiliade do site no momento da coleta.
-    columns:
-      - name: data_consulta
-        description: Data consulta
-      - name: id_municipio
-        description: ID Município - IBGE 7 Dígitos
-      - name: id_vendedor
-        description: ID Vendedor
-      - name: vendedor
-        description: Nome vendedor
-      - name: classificacao
-        description: Classificação dada pelo Mercado Livre
-      - name: reputacao
-        description: Reputação medido por quantidade de vendas nos últimos dias
-      - name: anos_experiencia
-        description: Anos de experiência
-      - name: avaliacao_bom
-        description: Quantidade de consumidores avaliando como bom
-      - name: avaliacao_regular
-        description: Quantidade de consumidores avaliando como regular
-      - name: avaliacao_ruim
-        description: Quantidade de consumidores avaliando como ruim
