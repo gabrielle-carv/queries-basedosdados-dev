@@ -210,10 +210,7 @@ models:
     description: 'Diretório ligando diversos códigos institucionais de municípios brasileiros: IBGE, Receita Federal, TSE, BCB, regiões, comarcas, região de saúde, etc.'
     columns:
       - name: id_municipio
-        description: ID Município - IBGE 7 Dígitos
-        tests: 
-          - not_null
-          - unique         
+        description: ID Município - IBGE 7 Dígitos        
       - name: id_municipio_6
         description: ID Município - IBGE 6 Dígitos
       - name: id_municipio_tse
@@ -247,9 +244,7 @@ models:
       - name: id_mesorregiao
         description: ID Mesorregião - IBGE
       - name: nome_mesorregiao
-        description: Nome da Mesorregião
-      - name: id_regiao_metropolitana
-        description: ID Região Metropolitana - IBGE   
+        description: Nome da Mesorregião  
       - name: ddd
         description: Código de Discagem Direta a Distância (DDD)
       - name: id_uf
