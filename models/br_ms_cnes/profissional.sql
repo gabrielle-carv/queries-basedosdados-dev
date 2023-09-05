@@ -1,7 +1,7 @@
 {{ 
   config(
     schema='br_ms_cnes',
-    materialized='table',
+    materialized='incremental',
      partition_by={
       "field": "ano",
       "data_type": "int64",
@@ -9,30 +9,42 @@
         "start": 2005,
         "end": 2023,
         "interval": 1}
-     }  
+     },
+     pre_hook = "DROP ALL ROW ACCESS POLICIES ON {{ this }}",
+     post_hook = [ 
+      'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
+                    ON {{this}}
+                    GRANT TO ("allUsers")
+                    FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6)',
+      'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
+       ON  {{this}}
+                    GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
+                    FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)'      
+     ]   
     )
  }}
-
 WITH raw_cnes_profissional AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
   FROM `basedosdados-dev.br_ms_cnes_staging.profissional`
   WHERE CNES IS NOT NULL
 ),
-raw_cnes_profissional_dir AS (
-  -- 2. Adicionar id_municipio e sigla_uf
+profissional_x_estabelecimento as(
   SELECT *
-  FROM raw_cnes_profissional 
-  LEFT JOIN (SELECT id_municipio, id_municipio_6, sigla_uf,
-  FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON raw_cnes_profissional.CODUFMUN = mun.id_municipio_6
+  FROM raw_cnes_profissional as pf
+  LEFT JOIN (
+    SELECT id_municipio, 
+    CAST(ano AS STRING) as ano1, 
+    CAST(mes AS STRING) as mes1, 
+    id_estabelecimento_cnes AS IDDD 
+    FROM `basedosdados-dev.br_ms_cnes.estabelecimento`) as st
+  ON pf.CNES = st.IDDD AND pf.ano = st.ano1 AND pf.mes = st.mes1
 )
 SELECT 
 CAST(SUBSTR(COMPETEN, 1, 4) AS INT64) AS ano,
 CAST(SUBSTR(COMPETEN, 5, 2) AS INT64) AS mes,
 SAFE_CAST(sigla_uf AS STRING) sigla_uf,
 SAFE_CAST(id_municipio AS STRING) id_municipio,
-SAFE_CAST(id_municipio_6 AS STRING) id_municipio_6,
 SAFE_CAST(CNES AS STRING) id_estabelecimento_cnes,
 -- replace de valores de linha com 6 zeros para null. 6 zeros é valor do campo UFMUNRES que indica null
 SAFE_CAST(regexp_replace(UFMUNRES, '0{6}', '') AS STRING) id_municipio_6_residencia,
@@ -52,4 +64,7 @@ SAFE_CAST(PROFNSUS AS STRING) indicador_atende_nao_sus,
 SAFE_CAST(HORAOUTR AS INT64) carga_horaria_outros,
 SAFE_CAST(HORAHOSP AS INT64) carga_horaria_hospitalar,
 SAFE_CAST(HORA_AMB AS INT64) carga_horaria_ambulatorial
-FROM raw_cnes_profissional_dir 
+FROM profissional_x_estabelecimento 
+{% if is_incremental() %} 
+WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+{% endif %}
