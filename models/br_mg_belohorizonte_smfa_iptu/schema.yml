@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: item
-    description: informações de itens em oferta no Mercado Livre
+  - name: br_mg_belohorizonte_smfa_iptu_iptu
+    description: Dados referente ao cadastro do IPTU na cidade de Belo Horizonte
     columns:
       - name: indice_cadastral
         description: Os imóveis, para inscrição no Cadastro Imobiliário, foram codificados através de sua associação a um código alfanumérico denominado índice cadastral, composto de 15 dígitos.
