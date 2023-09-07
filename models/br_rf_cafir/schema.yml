@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: imoveis_rurais
+    description: Cadastro de imóveis rurais
+    columns:
+      - name: data
+        description: xx
+      - name: data_inscricao
+        description: xx
+      - name: id
+        description: xx
+      - name: nome
+        description: xx
+      - name: situacao
+        description: xx
+      - name: endereco
+        description: xx
+      - name: zona_redefinir
+        description: xx
+      - name: sigla_uf
+        description: xx
+      - name: municipio
+        description: xx
+      - name: cep
+        description: xx
+      - name: status
+        description: xx
+      - name: cd
+        description: xx
