@@ -3,14 +3,16 @@
     schema='br_mg_belohorizonte_smfa_iptu',
     materialized='incremental',
     partition_by={
-    "field": "mes",
+    "field": "ano",
     "data_type": "int64",
-    "granularity": "month"},
+    "range": {
+        "start": 2022,
+        "end": 2023,
+        "interval": 1}
+    },
     cluster_by=['tipo_construtivo', 'tipo_ocupacao', 'tipologia'],
     labels = {'project_id' : 'basedosdados-dev'}
-) }}
-
-WITH iptu AS (
+)}}
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
@@ -37,12 +39,8 @@ SAFE_CAST(indicador_agua AS BOOL) indicador_agua,
 SAFE.ST_GEOGFROMTEXT(poligono) poligono,
 SAFE_CAST(fracao_ideal AS FLOAT64) fracao_ideal,
 SAFE_CAST(area_terreno AS FLOAT64) area_terreno,
-SAFE_CAST(area_construida AS FLOAT64) area_construida,
-FROM basedosdados-dev.br_mg_belohorizonte_smfa_iptu_staging.iptu AS t)
-SELECT * FROM iptu
-
-{% if is_incremental() %}
-
-WHERE ano > (SELECT max(ano) FROM {{ this }}) and mes > (SELECT max(mes) FROM {{ this }})
-
+SAFE_CAST(area_construida AS FLOAT64) area_construida
+FROM basedosdados-dev.br_mg_belohorizonte_smfa_iptu_staging.iptu AS t
+{% if is_incremental() %} 
+WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
 {% endif %}
