@@ -1,7 +1,7 @@
 {{ config(
     alias='iptu',
     schema='br_mg_belohorizonte_smfa_iptu',
-    materialized='incremental',
+    materialized='table',
     partition_by={
     "field": "ano",
     "data_type": "int64",
@@ -41,6 +41,6 @@ SAFE_CAST(fracao_ideal AS FLOAT64) fracao_ideal,
 SAFE_CAST(area_terreno AS FLOAT64) area_terreno,
 SAFE_CAST(area_construida AS FLOAT64) area_construida
 FROM basedosdados-dev.br_mg_belohorizonte_smfa_iptu_staging.iptu AS t
-{% if is_incremental() %} 
-WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
-{% endif %}
+-- {% if is_incremental() %} 
+-- WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+-- {% endif %}
