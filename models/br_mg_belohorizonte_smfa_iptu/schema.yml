@@ -1,9 +1,13 @@
 version: 2
 
 models:
-  - name: br_mg_belohorizonte_smfa_iptu_iptu
+  - name: br_mg_belohorizonte_smfa_iptu__iptu
     description: Dados referente ao cadastro do IPTU na cidade de Belo Horizonte
     columns:
+      - name: ano
+        description: Ano
+      - name: mes
+        description: Mês
       - name: indice_cadastral
         description: Os imóveis, para inscrição no Cadastro Imobiliário, foram codificados através de sua associação a um código alfanumérico denominado índice cadastral, composto de 15 dígitos.
       - name: lote
@@ -52,3 +56,17 @@ models:
         description: Área do terreno
       - name: area_construida
         description: Área construida
+
+  - name: br_mg_belohorizonte_smfa_iptu__iptu_dicionario
+    description: "Dicionário de dados da tabela de IPTU da cidade de Belo Horizonte"
+    columns: 
+      - name: id_coluna
+        description: ID da coluna
+      - name: nome_coluna
+        description: Nome da coluna
+      - name: chave
+        description: Chave
+      - name: cobertura_temporal
+        description: Cobertura temporal
+      - name: valor
+        description: Valor
