@@ -42,5 +42,5 @@ SAFE_CAST(area_terreno AS FLOAT64) area_terreno,
 SAFE_CAST(area_construida AS FLOAT64) area_construida
 FROM basedosdados-dev.br_mg_belohorizonte_smfa_iptu_staging.iptu AS t
 {% if is_incremental() %} 
-WHERE MAX(CONCAT(ano,'-', mes) > (SELECT MAX(CONCAT(ano, '-', mes)) FROM {{ this }} )
+WHERE (CONCAT(ano,'-', mes)) > (SELECT MAX(CONCAT(ano, '-', mes)) FROM {{ this }} )
 {% endif %}
