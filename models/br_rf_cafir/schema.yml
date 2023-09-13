@@ -32,9 +32,6 @@ models:
         description: ID Município - IBGE 7 Dígitos
       - name: sigla_uf
         description: Sigla da Unidade da Federação (UF)
-      - name: coluna_nao_identificada
-        description: Esta coluna não é identifica no dicionário nem nomeada nos arquivos
-
   - name: br_rf_cafir__dicionario
     description: Dicionário de dados da tabela Imóveis Rurais
     columns: 
