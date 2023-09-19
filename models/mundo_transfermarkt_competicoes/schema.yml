@@ -80,7 +80,6 @@ Fonte: https://www.transfermarkt.com/campeonato-brasileiro-serie-a/startseite/we
         description: Chutes fora do time mandante
       - name: chutes_fora_vis
         description: Chutes fora do time visitante
-
   - name: copa_brasil
     description: "Dados da Copa do Brasil a partir do anos de 2020."
     columns:
@@ -158,3 +157,4 @@ Fonte: https://www.transfermarkt.com/campeonato-brasileiro-serie-a/startseite/we
         description: Chutes fora do time mandante
       - name: chutes_fora_vis
         description: Chutes fora do time visitante
+
