@@ -10,7 +10,16 @@
         "end": 2022,
         "interval": 1}
     },
-    labels = {'project_id': 'basedosdados-dev'})
+    labels =  {'tema': 'esporte'},
+    post_hook = ['CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
+                ON {{this}}
+                GRANT TO ("allUsers")
+            FILTER USING (DATE_DIFF(DATE("{{ run_started_at.strftime("%Y-%m-%d") }}"),DATE(data), year) > 1)',
+          'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
+                ON  {{this}}
+                GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
+                FILTER USING (EXTRACT(YEAR from data) = EXTRACT(YEAR from  CURRENT_DATE()))' ]
+    )
  }}
 SELECT 
 SAFE_CAST(REPLACE (ano_campeonato,".0","") AS INT64) ano_campeonato,
