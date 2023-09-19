@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: taxa_selic
+    description: Insert `taxa_selic` table description here
+    columns:
+      - name: data
+        description: Data
+      - name: valor
+        description: Valor

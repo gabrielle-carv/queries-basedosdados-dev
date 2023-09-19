@@ -1,15 +1,15 @@
 {{ 
   config(
     schema='br_bd_diretorios_brasil',
-    materialized='table',
+    materialized='incremental',
+    unique_key = 'cnpj',
     cluster_by =    [' id_municipio', 'sigla_uf'] ,
     labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
 }}
 
 
-
-
-WITH matriz AS (
+WITH tabela_empresa AS (
+  WITH matriz AS (
   SELECT
     DISTINCT cnpj,
     identificador_matriz_filial,
@@ -182,4 +182,12 @@ FROM estabelecimento a
 LEFT JOIN empresa b
 ON a.cnpj_basico = b.cnpj_basico
 LEFT JOIN simples c
-ON a.cnpj_basico = c.cnpj_basico
+ON a.cnpj_basico = c.cnpj_basico)
+SELECT * FROM tabela_empresa
+{% if is_incremental() %}
+WHERE cnpj NOT IN (
+  SELECT cnpj
+  FROM {{ this }}
+  WHERE situacao_cadastral = tabela_empresa.situacao_cadastral
+)
+{% endif %}
