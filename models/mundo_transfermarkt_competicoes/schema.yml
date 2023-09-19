@@ -81,12 +81,14 @@ Fonte: https://www.transfermarkt.com/campeonato-brasileiro-serie-a/startseite/we
       - name: chutes_fora_vis
         description: Chutes fora do time visitante
   - name: copa_brasil
-    description: "Dados da Copa do Brasil a partir do anos de 2020."
+    description: "Com dados coletados via webscraping, a tabela abrange edições a partir de 2020, quando a fonte dos dados, o site da Transfermarkt, começou a fornecer informações detalhadas sobre vencedores e estatísticas de partidas. Entre 2017 e 2020, 91 equipes competiram, com onze já nas oitavas de final, enquanto a edição de 2021 trouxe 92 equipes. A presença de valores nulos reflete a natureza variável da fonte de dados."
     columns:
       - name: ano_campeonato
         description: Ano do campeonato
       - name: data
         description: Data da partida
+      - name: horario
+        description: Horário da partida
       - name: fase
         description: Fase do campeonato
       - name: tipo_fase
