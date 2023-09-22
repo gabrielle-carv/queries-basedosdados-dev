@@ -38,21 +38,3 @@ models:
         description: Data da decisão
       - name: data_baixa_processo
         description: Data de baixa do processo
-
-  - name: br_stf_corte_aberta__partes
-    description: "Decisões de corte aberta do STF"
-    columns:
-      - name: classe
-        description: Tipos da classe
-      - name: numero
-        description: Número de identificação do processo judicial
-      - name: link
-        description: Link
-      - name: polo_ativo
-        description: Autor do processo judicial
-      - name: advogado_polo_ativo
-        description: Advogado do autor do processo judicial
-      - name: polo_passivo
-        description: Réu do processo judicial
-      - name: advogado_polo_passivo
-        description: Advogado do réu do processo judicial

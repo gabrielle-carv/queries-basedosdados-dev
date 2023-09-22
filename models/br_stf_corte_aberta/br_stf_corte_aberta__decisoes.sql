@@ -1,6 +1,6 @@
 {{ 
 config(
-    schema='br_stf_carta_aberta',
+    schema='br_stf_corte_aberta',
     alias='decisoes',
     materialized='table',
     partition_by={
