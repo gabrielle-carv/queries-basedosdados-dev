@@ -1,0 +1,1614 @@
+version: 2
+
+models:
+  - name: br_ibge_censo_demografico__microdados_domicilio_1970
+    description: Microdados de domicílios para o ano 1970.
+    columns:
+      - name: data
+        description: Data
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: id_domicilio
+        description: ID Domicílio
+      - name: numero_familia
+        description: Número da família
+      - name: v001
+        description: Código da microrregião
+      - name: v002
+        description: Código do município
+      - name: v003
+        description: Código do distrito
+      - name: v004
+        description: Código da situação do domicílio
+      - name: v005
+        description: Total de pessoas
+      - name: v006
+        description: Condição da família 
+      - name: v007
+        description: Espécie do domicílio
+      - name: v008
+        description: Tipo do domicílio
+      - name: v009
+        description: Condição de ocupação
+      - name: v010
+        description: Aluguel ou prestação mensal (salário mínimo vigente na época - CR$36.161,60)
+      - name: v011
+        description: Tempo de residência em meses ou anos
+      - name: v012
+        description: Forma de abastecimento de água
+      - name: v013
+        description: Tipo de instalação sanitária
+      - name: v014
+        description: Possui iluminação elétrica
+      - name: v015
+        description: Possui fogão
+      - name: v016
+        description: Possui rádio
+      - name: v017
+        description: Possui geladeira
+      - name: v018
+        description: Possui televisão
+      - name: v019
+        description: Possui automóvel
+      - name: v020
+        description: Total de cômodos
+      - name: v021
+        description: Número de dormitórios
+      - name: v054
+        description: Peso amostral
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_domicilio_1980
+    description: Microdados da amostra de 25% de domicílios em 1980.
+    columns:
+      - name: id_distrito
+        description: ID Distrito - IBGE 9 Dígitos
+      - name: v201
+        description: Espécie do domicílio
+      - name: v202
+        description: Tipo do domicílio
+      - name: v203
+        description: Paredes
+      - name: v204
+        description: Piso
+      - name: v205
+        description: Cobertura
+      - name: v206
+        description: Abastecimento de água
+      - name: v207
+        description: Escoadouro
+      - name: v208
+        description: Uso de instalação sanitária
+      - name: v209
+        description: Condição de ocupação
+      - name: v602
+        description: Aluguel ou prestação mensal
+      - name: v212
+        description: Total de cômodos
+      - name: v213
+        description: Cômodos servindo de dormitório
+      - name: v214
+        description: Para cozinhar usa
+      - name: v215
+        description: Combustível usado para cozinhar
+      - name: v216
+        description: Telefone
+      - name: v217
+        description: Iluminação elétrica
+      - name: v218
+        description: Rádio
+      - name: v219
+        description: Geladeira
+      - name: v220
+        description: Televisão
+      - name: v221
+        description: Automóvel
+      - name: v198
+        description: Situação no domicílio
+      - name: v603
+        description: Peso do domicílio
+      - name: v598
+        description: Situação da pessoa
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_domicilio_1991
+    description: Microdados da amostra de 25% de domicílios em 1991.
+    columns:
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: id_questionario
+        description: ID Questionário
+      - name: peso_amostral
+        description: Peso Amostral
+      - name: v0109
+        description: Número do Domicílio
+      - name: v1061
+        description: Situação do Domicílio
+      - name: v7003
+        description: Região Metropolitana
+      - name: v0111
+        description: Número de Homens no Domicílio
+      - name: v0112
+        description: Número de Mulheres no Domicílio
+      - name: v0201
+        description: Espécie do Domicílio
+      - name: v2012
+        description: Rendimento Nominal Médio Mensal Domiciliar
+      - name: v2013
+        description: Faixas de Rendimento Nominal Médio Mensal Domiciliar
+      - name: v2014
+        description: Faixas de Rendimento Real Médio Mensal Domiciliar
+      - name: v0202
+        description: Localização
+      - name: v0203
+        description: Paredes
+      - name: v0204
+        description: Cobertura
+      - name: v0205
+        description: Abastecimento de Água
+      - name: v0206
+        description: Instalação Sanitária
+      - name: v0207
+        description: Uso da Instalação Sanitária
+      - name: v0208
+        description: Condição de Ocupação do Domicílio
+      - name: v0209
+        description: Aluguel Mensal
+      - name: v2094
+        description: Faixas de Aluguel Mensal
+      - name: v0210
+        description: Combustível Usado para Cozinhar
+      - name: v0211
+        description: Total de Cômodos
+      - name: v2111
+        description: Densidade de Moradores por Cômodo
+      - name: v2112
+        description: Faixas de Densidade de Moradores por Cômodo
+      - name: v0212
+        description: Cômodos Servindo de Dormitório
+      - name: v2121
+        description: Densidade de Moradores por Dormitório
+      - name: v2122
+        description: Faixas de Densidade de Moradores por Dormitório
+      - name: v0213
+        description: Banheiros
+      - name: v0214
+        description: Destino do Lixo
+      - name: v0216
+        description: Filtro de Água
+      - name: v0217
+        description: Telefone
+      - name: v0218
+        description: Automóvel Particular
+      - name: v0219
+        description: Automóvel para Trabalho
+      - name: v0220
+        description: Rádio
+      - name: v0221
+        description: Iluminação
+      - name: v0222
+        description: Geladeira
+      - name: v0223
+        description: Televisão Preto e Branco
+      - name: v0224
+        description: Televisão em Cores
+      - name: v0225
+        description: Freezer
+      - name: v0226
+        description: Máquina de Lavar Roupa
+      - name: v0227
+        description: Aspirador de Pó
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_domicilio_2000
+    description: Microdados da amostra de 10% de domicílios em 2000.
+    columns: 
+      - name: id_regiao
+        description: ID Região - IBGE
+      - name: id_mesorregiao
+        description: ID Mesorregião - IBGE
+      - name: id_microrregiao
+        description: ID Microregião - IBGE
+      - name: id_regiao_metropolitana
+        description: ID Região Metropolitana - IBGE
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: id_distrito
+        description: ID Distrito - IBGE
+      - name: id_subdistrito
+        description: ID Subdistrito - IBGE
+      - name: controle
+        description: Controle
+      - name: situacao_setor
+        description: Situação do setor censitário
+      - name: situacao_domicilio
+        description: Situação do domicílio
+      - name: tipo_setor
+        description: Tipo do setor censitário
+      - name: peso_amostral
+        description: Peso amostral
+      - name: area_ponderacao
+        description: Área de ponderação
+      - name: v0110
+        description: Total de homens
+      - name: v0111
+        description: Total de mulheres
+      - name: v0201
+        description: Espécie do domicílio
+      - name: v0202
+        description: Tipo do domicílio
+      - name: v0203
+        description: Total de cômodos
+      - name: v0204
+        description: Total de cômodos servindo de dormitório
+      - name: v0205
+        description: Condição do domicílio
+      - name: v0206
+        description: Condição do terreno
+      - name: v0207
+        description: Forma de abastecimento de água
+      - name: v0208
+        description: Tipo de canalização
+      - name: v0209
+        description: Total de banheiros
+      - name: v0210
+        description: Existência de sanitário
+      - name: v0211
+        description: Tipo de escoadouro
+      - name: v0212
+        description: Coleta de lixo
+      - name: v0213
+        description: Iluminação elétrica
+      - name: v0214
+        description: Existência de rádio
+      - name: v0215
+        description: Existência de geladeira ou freezer
+      - name: v0216
+        description: Existência de videocassete
+      - name: v0217
+        description: Existência de máquina de lavar roupa
+      - name: v0218
+        description: Existência de forno de microondas
+      - name: v0219
+        description: Existência de linha telefônica instalada
+      - name: v0220
+        description: Existência de microcomputador
+      - name: v0221
+        description: Quantidade existente de televisores
+      - name: v0222
+        description: Quantidade existente de automóveis para uso particular
+      - name: v0223
+        description: Quantidade existente de aparelhos de ar condicionado
+      - name: v7100
+        description: Total de moradores no domicílio
+      - name: v7203
+        description: Densidade de moradores por cômodo
+      - name: v7204
+        description: Densidade de moradores por dormitório
+      - name: v7401
+        description: Número de componentes da família 01
+      - name: v7402
+        description: Número de componentes da família 02
+      - name: v7403
+        description: Número de componentes da família 03
+      - name: v7404
+        description: Número de componentes da família 04
+      - name: v7405
+        description: Número de componentes da família 05
+      - name: v7406
+        description: Número de componentes da família 06
+      - name: v7407
+        description: Número de componentes da família 07
+      - name: v7408
+        description: Número de componentes da família 08
+      - name: v7409
+        description: Número de componentes da família 09
+      - name: v7616
+        description: Total de rendimentos do domicílio particular
+      - name: v7617
+        description: Total de rendimentos do domicílio particular, em salários mínimos
+      - name: v1111
+        description: Existência de identificação
+      - name: v1112
+        description: Existência de iluminação pública
+      - name: v1113
+        description: Existência de calçamento/pavimentação
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_domicilio_2010
+    description: Microdados da amostra de 10% de domicílios em 2010.
+    columns: 
+      - name: id_regiao
+        description: ID Região - IBGE
+      - name: id_mesorregiao
+        description: ID Mesorregião - IBGE
+      - name: id_microrregiao
+        description: ID Microrregião - IBGE
+      - name: id_regiao_metropolitana
+        description: ID Região Metropolitana - IBGE
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: situacao_setor
+        description: Situação do setor censitário
+      - name: situacao_domicilio
+        description: Situação do domicílio 
+      - name: controle
+        description: Controle
+      - name: peso_amostral
+        description: Peso amostral
+      - name: area_ponderacao
+        description: Área de ponderação
+      - name: v4001
+        description: Espécie do domicílio
+      - name: v4002
+        description: Tipo de espécie
+      - name: v0201
+        description: Condição de ocupação do domicílio
+      - name: v2011
+        description: Valor do aluguel (em reais)
+      - name: v2012
+        description: Aluguel em número de salários mínimos
+      - name: v0202
+        description: Material predominante, paredes externas
+      - name: v0203
+        description: Número de cômodos
+      - name: v6203
+        description: Densidade de moradores por cômodo
+      - name: v0204
+        description: Número de dormitórios
+      - name: v6204
+        description: Densidade de moradores por dormitório
+      - name: v0205
+        description: Número de banheiros de uso exclusivo
+      - name: v0206
+        description: Sanitário ou buraco para dejeções
+      - name: v0207
+        description: Esgotamento sanitário
+      - name: v0208
+        description: Abastecimento de água
+      - name: v0209
+        description: Abastecimento de água, canalização
+      - name: v0210
+        description: Coleta de lixo
+      - name: v0211
+        description: Energia elétrica
+      - name: v0212
+        description: Existência de medidor ou relógio, energia elétrica, companhia distribuidora
+      - name: v0213
+        description: Rádio
+      - name: v0214
+        description: Televisão
+      - name: v0215
+        description: Máquina de lavar roupa
+      - name: v0216
+        description: Geladeira
+      - name: v0217
+        description: Telefone celular
+      - name: v0218
+        description: Telefone fixo
+      - name: v0219
+        description: Microcomputador
+      - name: v0220
+        description: Microcomputador com acesso à internet
+      - name: v0221
+        description: Motocicleta para uso particular
+      - name: v0222
+        description: Automóvel para uso particular
+      - name: v0301
+        description: Emigração internacional
+      - name: v0401
+        description: Número do morador
+      - name: v0402
+        description: A responsabilidade pelo domicílio é de
+      - name: v0701
+        description: De agosto de 2009 a julho de 2010, faleceu alguma pessoa que morava com você(s)
+      - name: v6529
+        description: Rendimento mensal domiciliar em julho de 2010
+      - name: v6530
+        description: Rendimento domiciliar, salários mínimos, em julho de 2010
+      - name: v6531
+        description: Rendimento domiciliar per capita, em julho de 2010 (em reais)
+      - name: v6532
+        description: Rendimento domiciliar per capita, em número de salários mínimos, em julho de 2010
+      - name: v6600
+        description: Espécie da unidade doméstica
+      - name: v6210
+        description: Adequação da moradia
+      - name: m0201
+        description: Marca de imputação na v0201
+      - name: m02011
+        description: Marca de imputação na v2011
+      - name: m0202
+        description: Marca de imputação na v0202
+      - name: m0203
+        description: Marca de imputação na v0203
+      - name: m0204
+        description: Marca de imputação na v0204
+      - name: m0205
+        description: Marca de imputação na v0205
+      - name: m0206
+        description: Marca de imputação na v0206
+      - name: m0207
+        description: Marca de imputação na v0207
+      - name: m0208
+        description: Marca de imputação na v0208
+      - name: m0209
+        description: Marca de imputação na v0209
+      - name: m0210
+        description: Marca de imputação na v0210
+      - name: m0211
+        description: Marca de imputação na v0211
+      - name: m0212
+        description: Marca de imputação na v0212
+      - name: m0213
+        description: Marca de imputação na v0213
+      - name: m0214
+        description: Marca de imputação na v0214
+      - name: m0215
+        description: Marca de imputação na v0215
+      - name: m0216
+        description: Marca de imputação na v0216
+      - name: m0217
+        description: Marca de imputação na v0217
+      - name: m0218
+        description: Marca de imputação na v0218
+      - name: m0219
+        description: Marca de imputação na v0219
+      - name: m0220
+        description: Marca de imputação na v0220
+      - name: m0221
+        description: Marca de imputação na v0221
+      - name: m0222
+        description: Marca de imputação na v0222
+      - name: m0301
+        description: Marca de imputação na v0301
+      - name: m0401
+        description: Marca de imputação na v0401
+      - name: m0402
+        description: Marca de imputação na v0402
+      - name: m0701
+        description: Marca de imputação na v0701
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_pessoa_1970
+    description: Microdados da amostra de 25% de pessoas em 1970.
+    columns: 
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: id_domicilio
+        description: ID Domicílio
+      - name: numero_familia
+        description: Número da família
+      - name: ordem
+        description: Ordem
+      - name: v001
+        description: Código da microrregião
+      - name: v002
+        description: Código do município
+      - name: v003
+        description: Código do distrito
+      - name: v022
+        description: Código do informante
+      - name: v023
+        description: Sexo
+      - name: v024
+        description: Condição de presença
+      - name: v025
+        description: Parentesco ou relação com o chefe da família
+      - name: v026
+        description: Tipo de idade
+      - name: v027
+        description: Idade em meses ou anos
+      - name: v028
+        description: Possui religião
+      - name: v029
+        description: Código da nacionalidade
+      - name: v030
+        description: Código da naturalidade
+      - name: v031
+        description: Tempo de residência nessa UF
+      - name: v032
+        description: Tempo de residência nesse município
+      - name: v033
+        description: UF que residia antes de se mudar para esse município
+      - name: v034
+        description: Situação da residência no município onde morava anteriormente
+      - name: v035
+        description: Alfabetização
+      - name: v036
+        description: Frequenta a escola
+      - name: v037
+        description: Última série que concluiu com aprovação neste curso que frequentou anteriormente
+      - name: v038
+        description: Último grau concluído com aprovação
+      - name: v039
+        description: Espécie de curso concluído
+      - name: v040
+        description: Estado conjugal
+      - name: v041
+        description: Rendimento médio mensal
+      - name: v042
+        description: Município onde trabalha ou estuda
+      - name: v043
+        description: Situação principal de emprego
+      - name: v044
+        description: Ocupação principal
+      - name: v045
+        description: Classificação de atividade
+      - name: v046
+        description: Posição na ocupação
+      - name: v047
+        description: Ocupação que exercia na última semana de referência da pesquisa (25/08/1970 a 31/08/1970)
+      - name: v048
+        description: Tempo ou hora de trabalho na última semana
+      - name: v049
+        description: Há quanto tempo procura trabalho
+      - name: v050
+        description: Quantidade de filhos nascidos vivos até a data do censo
+      - name: v051
+        description: Quantidade de filhos nascidos mortos
+      - name: v052
+        description: Quantidade de filhos nascidos no ano anterior ao censo
+      - name: v053
+        description: Quantidade de filhos que nasceram e continuam vivos
+      - name: v054
+        description: Peso da pessoa
+      - name: sigla_uf
+        description: Sigla da unidade da federação
+
+  - name: br_ibge_censo_demografico__microdados_pessoa_1980
+    description: Microdados da amostra de 25% de pessoas em 1980.
+    columns: 
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: numero_ordem
+        description: Número de ordem
+      - name: v211
+        description: Tempo de residência
+      - name: v604
+        description: Peso da pessoa
+      - name: v598
+        description: Situação da pessoa
+      - name: v501
+        description: Sexo
+      - name: v503
+        description: Relação com o chefe do domicílio
+      - name: v504
+        description: Relação com o chefe da família
+      - name: v505
+        description: Família a que pertence
+      - name: v605
+        description: Idade em meses
+      - name: v606
+        description: Idade em anos
+      - name: v508
+        description: Religião
+      - name: v509
+        description: Cor
+      - name: v510
+        description: Tem mãe viva?
+      - name: v511
+        description: Nacionalidade
+      - name: v512
+        description: UF de nascimento
+      - name: v513
+        description: Nasceu neste município?
+      - name: v514
+        description: Onde morou neste município
+      - name: v515
+        description: Município onde morava anteriormente
+      - name: v516
+        description: Tempo de residência na unidade da federação atual
+      - name: v517
+        description: Tempo de residência no município atual
+      - name: v518
+        description: Unidade da Federação do município que morava anteriormente
+      - name: v519
+        description: Sabe ler e escrever?
+      - name: v520
+        description: Série que frequenta
+      - name: v521
+        description: Grau que frequenta
+      - name: v522
+        description: Curso não seriado
+      - name: v523
+        description: Última série concluída
+      - name: v524
+        description: Grau da última série concluída
+      - name: v525
+        description: Tipo do último curso concluído
+      - name: v526
+        description: Estado conjugal
+      - name: v527
+        description: Município que trabalha ou estuda
+      - name: v528
+        description: Trabalhou nos últimos 12 meses?
+      - name: v529
+        description: Ocupação atual
+      - name: v681
+        description: Classe de renda total
+      - name: v530
+        description: Ocupação ou cargo nos últimos 12 meses
+      - name: v532
+        description: Finalidade ou ramo do negócio
+      - name: v533
+        description: Posição no estabelecimento
+      - name: v534
+        description: Contribui para Instituto de  Previdência?
+      - name: v535
+        description: Horas habitualmente trabalhadas por semana na ocupação principal
+      - name: v680
+        description: Classe de rendimentos bruto na ocupação principal
+      - name: v607
+        description: Rendimento bruto na ocupação principal
+      - name: v608
+        description: Rendimentos auferidos pelo recebimento de produtos ou mercadorias na ocupação principal
+      - name: v540
+        description: Quantos salários recebem?
+      - name: v541
+        description: Na última semana estava
+      - name: v682
+        description: Classe de rendimento bruto de todas as ocupações
+      - name: v536
+        description: Horas trabalhadas em todas as ocupações
+      - name: v609
+        description: Renda em dinheiro bruto em outras ocupações
+      - name: v542
+        description: Ocupação não habitual exercida
+      - name: v544
+        description: Finalidade no estabelecimento não habitual
+      - name: v545
+        description: Posição no estabelecimento não habitual
+      - name: v610
+        description: Rendimento recebido do aposentado
+      - name: v611
+        description: Rendimento recebido de aluguel
+      - name: v612
+        description: Rendimento recebido de doações
+      - name: v613
+        description: Rendimento recebido de outros rendimentos
+      - name: v550
+        description: Filhos tidos nascidos vivos
+      - name: v551
+        description: Filhas tidas nascidas vivas
+      - name: v552
+        description: Filhos tidos nascidos mortos
+      - name: v553
+        description: Filhas tidas nascidas mortas
+      - name: v554
+        description: Filhos vivos na data da pesquisa
+      - name: v555
+        description: Filhas vivas na data da pesquisa
+      - name: v556
+        description: Mês de nascimento do último filho nascido vivo
+      - name: v557
+        description: Ano de nascimento do último filho nascido vivo
+      - name: v570
+        description: Idade do último filho
+      - name: sigla_uf
+        description: Sigla da unidade da federação
+
+  - name: br_ibge_censo_demografico__microdados_pessoa_1991
+    description: Microdados da amostra de 25% de pessoas em 1991.
+    columns: 
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: id_questionario
+        description: ID Questionário
+      - name: numero_ordem
+        description: Número de ordem
+      - name: v0301
+        description: Sexo
+      - name: v0302
+        description: Condição no Domicílio
+      - name: v0303
+        description: Condição na Família
+      - name: v0304
+        description: Tipo de Família
+      - name: v2011
+        description: Espécie de Família
+      - name: v3041
+        description: Total de Homens na Família
+      - name: v3042
+        description: Total de Mulheres na Família
+      - name: v3043
+        description: Renda do Casal
+      - name: v3044
+        description: Faixas de Renda do Casal
+      - name: v3045
+        description: Rendimento Nominal Médio Mensal Familiar
+      - name: v3046
+        description: Faixas de Rendimento Nominal Médio Mensal Familiar
+      - name: v3047
+        description: Faixas de Rendimento Real Médio Mensal Familiar
+      - name: v3049
+        description: Faixas de Rendimento Nominal Médio Mensal Familiar Per Capita
+      - name: v3005
+        description: Número de Ordem da Mãe
+      - name: v3071
+        description: Tipo de Idade
+      - name: v3072
+        description: Idade (em anos completos)
+      - name: v3073
+        description: Idade (em meses completos)
+      - name: v0309
+        description: Raça ou Cor
+      - name: v0311
+        description: Deficiência Física ou Mental
+      - name: v0312
+        description: Morou neste Município
+      - name: v0313
+        description: Anos de Moradia na Situação do Domicílio
+      - name: v0314
+        description: Nasceu neste Município
+      - name: v3151
+        description: Nacionalidade
+      - name: v3152
+        description: Ano que fixou residência no País
+      - name: v0316
+        description: Unidade da Federação ou País Estrangeiro de Nascimento
+      - name: v0317
+        description: Anos em que mora na Unidade da Federação
+      - name: v0318
+        description: Anos em que mora no Município
+      - name: v0319
+        description: Unidade da Federação e Município ou País Estrangeiro que morava antes
+      - name: v3191
+        description: Município ou País Estrangeiro em que morava em 01/09/1986 (declarado no quesito 319)
+      - name: v0320
+        description: Situação do Domicílio de Residência Anterior (declarado no quesito 319)
+      - name: v0321
+        description: Unidade da Federação e Município ou País Estrangeiro em que morava em 01/09/1986
+      - name: v3211
+        description: Município ou País Estrangeiro de residência em 01/09/1986 (declarado no quesito 321)
+      - name: v0322
+        description: Situação do Domicílio de Residência em 01/09/86 (declarado no quesito 321)
+      - name: v0323
+        description: Alfabetização
+      - name: v0324
+        description: Série que frequenta
+      - name: v0325
+        description: Grau que frequenta em curso seriado
+      - name: v0326
+        description: Grau que frequenta em curso não seriado
+      - name: v0327
+        description: Última série concluída com aprovação
+      - name: v0328
+        description: Grau da última série concluída com aprovação
+      - name: v3241
+        description: Anos de Estudo
+      - name: v0329
+        description: Curso Concluído
+      - name: v0330
+        description: Vive ou Viveu com Cônjuge
+      - name: v3311
+        description: Idade da Pessoa ao contrair a Primeira União
+      - name: v3312
+        description: Idade da Pessoa ao iniciar a Situação Conjugal Atual
+      - name: v0332
+        description: Estado Conjugal (Natureza da União)
+      - name: v0333
+        description: Estado Conjugal (Situação Conjugal)
+      - name: v3341
+        description: Duração da Situação Conjugal Atual da Pessoa
+      - name: v3342
+        description: Situação Conjugal Atual da Pessoa
+      - name: v0345
+        description: Trabalhou em todos ou em parte dos últimos 12 meses
+      - name: v0346
+        description: Código da Ocupação
+      - name: v3461
+        description: Grupo de Ocupação
+      - name: v0347
+        description: Código da Atividade
+      - name: v3471
+        description: Setor de Atividade
+      - name: v0349
+        description: Posição na Ocupação
+      - name: v0350
+        description: Posse de Carteira de Trabalho Assinada
+      - name: v0351
+        description: Número de Empregados no Estabelecimento, Negócio, Instituição, etc.
+      - name: v0352
+        description: Local de Trabalho
+      - name: v0353
+        description: Contribuição para Instituto de Previdência Pública
+      - name: v0354
+        description: Horas Trabalhadas por Semana na Ocupação Principal
+      - name: v0355
+        description: Horas Trabalhadas em Outras Ocupações
+      - name: v0356
+        description: Rendimento Bruto da Ocupação Principal
+      - name: v3561
+        description: Rendimento Nominal Total
+      - name: v3562
+        description: Faixas de Rendimento Nominal Total
+      - name: v3563
+        description: Faixas de Rendimento Real Total
+      - name: v3564
+        description: Faixas de Rendimento da Ocupação Principal
+      - name: v0357
+        description: Rendimento Bruto de Outras Ocupações
+      - name: v3574
+        description: Faixas de Rendimento de Outras Ocupações
+      - name: v0358
+        description: Condição de Atividade
+      - name: v0359
+        description: Aposentado ou Pensionista
+      - name: v0360
+        description: Rendimento Bruto de Aposentadoria e/ou Pensão
+      - name: v3604
+        description: Faixas de Rendimento de Aposentadoria e/ou Pensão
+      - name: v0361
+        description: Rendimento Bruto ou Média Mensal de Outros Rendimentos
+      - name: v3614
+        description: Faixas de Outros Rendimentos
+      - name: v3351
+        description: Total de Filhos(as) Tidos(as)
+      - name: v3352
+        description: Número de Filhos Tidos (Homens)
+      - name: v3353
+        description: Número de Filhos Tidos (Mulheres)
+      - name: v3354
+        description: Total de Filhos(as) Tidos(as) Nascidos(as) Vivos(as)
+      - name: v3355
+        description: Número de Filhos Tidos Nascidos Vivos(Homens)
+      - name: v3356
+        description: Número de Filhas Tidas Nascidas Vivas (Mulheres)
+      - name: v3360
+        description: Total de Filhos(as) Vivos(as)
+      - name: v3361
+        description: Número de Filhos Vivos (Homens)
+      - name: v3362
+        description: Número de Filhas Vivas (Mulheres)
+      - name: v0335
+        description: Filhos Tidos que moram no domicílio
+      - name: v0336
+        description: Filhas Tidas que moram no domicílio
+      - name: v0337
+        description: Filhos Tidos que moram em outro domicílio (Homens)
+      - name: v0338
+        description: Filhas Tidas que moram em outro domicílio (Mulheres)
+      - name: v0339
+        description: Filhos Tidos Nascidos Vivos que já morreram (Homens)
+      - name: v0340
+        description: Filhas Tidas Nascidas Vivas que já morreram (Mulheres)
+      - name: v3357
+        description: Total de Filhos(as) Tidos(as) Nascidos(as) Mortos(as)
+      - name: v0341
+        description: Filhos Tidos Nascidos Mortos (Homens)
+      - name: v0342
+        description: Filhas Tidas Nascidas Mortas (Mulheres)
+      - name: v0343
+        description: Sexo do Último Filho Nascido Vivo
+      - name: v3443
+        description: Idade Calculada do(a) Último(a) Filho(a) Nascido(a) Vivo(a)
+      - name: v3444
+        description: Tipo de Idade do(a) Último(a) Filho(a) Nascido(a) Vivo(a)
+      - name: v0310
+        description: Religião
+      - name: v7301
+        description: Peso ou Fator para Expansão da Amostra
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_pessoa_2000
+    description: Microdados da amostra de 10% de pessoas em 2000.
+    columns: 
+      - name: id_mesorregiao
+        description: ID Mesorregião - IBGE
+      - name: id_microrregiao
+        description: ID Microrregião - IBGE
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: id_distrito
+        description: ID Distrito - IBGE
+      - name: id_subdistrito
+        description: ID Subdistrito
+      - name: controle
+        description: Controle
+      - name: serie
+        description: Série
+      - name: id_regiao_metropolitana
+        description: ID Região Metropolitana
+      - name: area_ponderacao
+        description: Área de ponderação
+      - name: v1001
+        description: Região geográfica
+      - name: v1005
+        description: Situação do setor
+      - name: v1006
+        description: Situação do domicílio
+      - name: v1007
+        description: Tipo do setor
+      - name: marca
+        description: Se a própria pessoa prestou as informações
+      - name: v0401
+        description: Sexo
+      - name: v0402
+        description: Relação com responsável pelo domicílio
+      - name: v0403
+        description: Relação com responsável pela família
+      - name: v0404
+        description: Número da família
+      - name: v4752
+        description: Idade calculada  em anos completos - a partir de 1 ano
+      - name: v4754
+        description: Idade calculada em meses - menos de um ano
+      - name: v4070
+        description: Indicadora da forma de declaração da idade (data de nascimento, idade informada ou idade estimada)
+      - name: v0408
+        description: Cor ou raça
+      - name: v4090
+        description: Religião
+      - name: v0410
+        description: Problema mental permanente
+      - name: v0411
+        description: Capacidade de enxergar
+      - name: v0412
+        description: Capacidade de ouvir
+      - name: v0413
+        description: Capacidade de caminhar / subir escadas
+      - name: v0414
+        description: Deficiências
+      - name: v0415
+        description: Sempre morou neste município
+      - name: v0416
+        description: Tempo de moradia neste município
+      - name: v0417
+        description: Nasceu neste município
+      - name: v0418
+        description: Nasceu nesta UF
+      - name: v0419
+        description: Nacionalidade
+      - name: v0420
+        description: Ano que fixou residência no brasil
+      - name: v4210
+        description: Código da UF ou país de nascimento
+      - name: v0422
+        description: Tempo de moradia na UF
+      - name: v4230
+        description: Código da UF ou país de residência anterior
+      - name: v0424
+        description: Residência em 31 de julho de 1995
+      - name: v4250
+        description: Código do município de residência
+      - name: v4260
+        description: Código da uf ou país de residência em 31/07/1995 
+      - name: v4276
+        description: Código do município e UF ou país estrangeiro que trabalha ou estuda
+      - name: v0428
+        description: Sabe ler e escrever
+      - name: v0429
+        description: Frequenta escola ou creche
+      - name: v0430
+        description: Curso que frequenta
+      - name: v0431
+        description: Série que frequenta
+      - name: v0432
+        description: Curso mais elevado que frequentou, concluindo pelo menos uma série
+      - name: v0433
+        description: Última série concluída com aprovação
+      - name: v0434
+        description: Concluiu o curso no qual estudou
+      - name: v4355
+        description: Código do curso mais elevado concluído
+      - name: v4300
+        description: Anos de estudo
+      - name: v0436
+        description: Vive em companhia de cônjuge ou companheiro(a)
+      - name: v0437
+        description: Natureza da última união
+      - name: v0438
+        description: Estado civil
+      - name: v0439
+        description: Na semana de 23 a 29 de julho de 2000, trabalhou remunerado
+      - name: v0440
+        description: Na semana, tinha trabalho mas estava afastado
+      - name: v0441
+        description: Na semana, ajudou, sem remuneração, no trabalho exercido por pessoa moradora do domicílio, ou como aprendiz/estagiário
+      - name: v0442
+        description: Na semana, ajudou, sem remuneração, no trabalho exercido por pessoa moradora do domicílio em atividade
+      - name: v0443
+        description: Na semana, trabalhou em cultivo, etc, para alimentação de pessoas moradoras no domicílio
+      - name: v0444
+        description: Quantos trabalhos tinha na semana de 23 a 29 de julho de 2000
+      - name: v4452
+        description: Código novo da ocupação
+      - name: v4462
+        description: Código novo da atividade
+      - name: v0447
+        description: Nesse trabalho era...
+      - name: v0448
+        description: Era empregado pelo RJFP ou como militar
+      - name: v0449
+        description: Quantos empregados trabalhavam nessa firma
+      - name: v0450
+        description: Era contribuinte de instituto de previdência oficial
+      - name: v4511
+        description: Não tem rendimento no trabalho principal
+      - name: v4512
+        description: Rendimento bruto no trabalho principal
+      - name: v4513
+        description: Total de rendimentos no trabalho principal
+      - name: v4514
+        description: Total de rendimentos no trabalho principal, em salários mínimos
+      - name: v4521
+        description: Não tem rendimento nos demais trabalhos
+      - name: v4522
+        description: Rendimento bruto nos demais trabalhos
+      - name: v4523
+        description: Total de rendimentos nos demais trabalhos
+      - name: v4524
+        description: Total de rendimentos nos demais trabalhos, em salários mínimos
+      - name: v4525
+        description: Total de rendimentos em todos os trabalhos
+      - name: v4526
+        description: Total de rendimentos em todos os trabalhos, em salários mínimos
+      - name: v0453
+        description: Horas trabalhadas por semana no trabalho principal
+      - name: v0454
+        description: Horas trabalhadas nos demais trabalhos
+      - name: v4534
+        description: Total de horas trabalhadas
+      - name: v0455
+        description: Providência para conseguir trabalho
+      - name: v0456
+        description: Em julho de 2000, era aposentado de instituto de previdência oficial
+      - name: v4573
+        description: Rendimento de aposentadoria, pensão
+      - name: v4583
+        description: Rendimento de aluguel
+      - name: v4593
+        description: Rendimento de pensão alimentícia, mesada, doação
+      - name: v4603
+        description: Rendimento de renda mínima, bolsa-escola, seguro-desemprego 
+      - name: v4613
+        description: Outros rendimentos
+      - name: v4614
+        description: Total de rendimentos
+      - name: v4615
+        description: Total de rendimentos, em salários mínimos
+      - name: v4620
+        description: Total de filhos nascidos vivos
+      - name: v0463
+        description: Total de filhos nascidos vivos que estavam vivos
+      - name: v4654
+        description: Idade calculada do último filho nascido vivo
+      - name: v4670
+        description: Total de filhos nascidos mortos
+      - name: v4690
+        description: Total de filhos tidos
+      - name: p001
+        description: Peso
+      - name: estr
+        description: Estrato de imputação de renda
+      - name: estrp
+        description: Estrato de imputação de renda parcial
+      - name: v4621
+        description: Filhos nascidos vivos, homens
+      - name: v4622
+        description: Filhos nascidos vivos, mulheres
+      - name: v4631
+        description: Filhos que estavam vivos, homens
+      - name: v4632
+        description: Filhos que estavam vivos, mulheres
+      - name: v0464
+        description: Sexo do último filho nascido vivo
+      - name: v4671
+        description: Filhos nascidos mortos, homens
+      - name: v4672
+        description: Filhos nascidos mortos, mulheres
+      - name: v4354
+        description: Código do curso mais elevado concluído (CONCLA)
+      - name: v4219
+        description: Código da UF ou país de nascimento (ONU)
+      - name: v4239
+        description: Código da UF ou país (ONU) de residência anterior
+      - name: v4269
+        description: Código da UF ou país (ONU) de residência em 31/07/1995 
+      - name: v4279
+        description: Código do país estrangeiro (ONU) que trabalha ou estuda
+      - name: v4451
+        description: Código antigo da ocupação
+      - name: v4461
+        description: Código antigo da atividade
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+
+  - name: br_ibge_censo_demografico__microdados_pessoa_2010
+    description: Microdados da amostra de 10% de pessoas em 2010.
+    columns:  
+      - name: id_regiao
+        description: ID Região - IBGE
+      - name: id_mesorregiao
+        description: ID Mesorregião - IBGE
+      - name: id_microrregiao
+        description: ID Microrregião - IBGE
+      - name: id_regiao_metropolitana
+        description: ID Região Metropolitana - IBGE
+      - name: id_municipio
+        description: ID Município - IBGE 7 Dígitos
+      - name: area_ponderacao
+        description: Área de ponderação
+      - name: situacao_setor
+        description: Situação do setor censitário
+      - name: situacao_domicilio
+        description: Situação do domicílio
+      - name: controle
+        description: Controle
+      - name: numero_ordem
+        description: Número de ordem
+      - name: peso_amostral
+        description: Peso amostral
+      - name: v0502
+        description: Relação de parentesco ou de convivência com a pessoa responsável pelo domicílio
+      - name: v0601
+        description: Sexo
+      - name: v6033
+        description: Variável auxiliar da idade calculada (anos e meses)
+      - name: v6036
+        description: Idade calculada em anos
+      - name: v6037
+        description: Idade calculada em meses - menores de 1 ano
+      - name: v6040
+        description: Indicadora da forma de declaração da idade
+      - name: v0606
+        description: Cor ou raça
+      - name: v0613
+        description: Registro de nascimento
+      - name: v0614
+        description: Dificuldade permanente de enxergar
+      - name: v0615
+        description: Dificuldade permanente de ouvir
+      - name: v0616
+        description: Dificuldade permanente de caminhar ou subir degraus
+      - name: v0617
+        description: Deficiência mental/intelectual permanente
+      - name: v0618
+        description: Nasceu neste município
+      - name: v0619
+        description: Nasceu nesta Unidade da Federação
+      - name: v0620
+        description: Nacionalidade
+      - name: v0621
+        description: Ano que fixou residência no Brasil
+      - name: v0622
+        description: Unidade da Federação ou país estrangeiro de nascimento
+      - name: v6222
+        description: Unidade da Federação de nascimento – Código
+      - name: v6224
+        description: País estrangeiro de nascimento – Código
+      - name: v0623
+        description: Tempo de moradia na UF
+      - name: v0624
+        description: Tempo de moradia no município
+      - name: v0625
+        description: Unidade da Federação e município ou País estrangeiro de moradia antes de  mudar-se para este município
+      - name: v6252
+        description: UF de residência anterior - Código
+      - name: v6254
+        description: Município de residência anterior - Código
+      - name: v6256
+        description: País estrangeiro de residência anterior - Código
+      - name: v0626
+        description: Residência em 31 de julho de 2005
+      - name: v6262
+        description: UF de residência em 31 de julho de 2005 - Código
+      - name: v6264
+        description: Município de residência em 31 de julho de 2005 - Código
+      - name: v6266
+        description: País estrangeiro de residência em 31 de julho de 2005 - Código
+      - name: v0627
+        description: Sabe ler e escrever
+      - name: v0628
+        description: Frequenta escola ou creche
+      - name: v0629
+        description: Curso que frequenta
+      - name: v0630
+        description: Série/ano que frequenta
+      - name: v0631
+        description: Série que frequenta
+      - name: v0632
+        description: Conclusão de outro curso superior de graduação
+      - name: v0633
+        description: Curso mais elevado que frequentou
+      - name: v0634
+        description: Conclusão deste curso
+      - name: v0635
+        description: Espécie do curso mais elevado concluído
+      - name: v6400
+        description: Nível de instrução
+      - name: v6352
+        description: Curso Superior de Graduação – Código
+      - name: v6354
+        description: Curso de Mestrado – Código
+      - name: v6356
+        description: Curso de Doutorado – Código
+      - name: v0636
+        description: Município e Unidade da Federação ou país estrangeiro que frequentava escola ou creche
+      - name: v6362
+        description: Unidade da Federação que frequentava escola ou creche – Código
+      - name: v6364
+        description: Município que frequentava escola ou creche – Código
+      - name: v6366
+        description: País estrangeiro que frequentava escola ou creche – Código
+      - name: v0637
+        description: Vive em companhia de cônjuge ou companheiro(a)
+      - name: v0638
+        description: Número de ordem do cônjuge ou companheiro(a)
+      - name: v0639
+        description: Natureza da união
+      - name: v0640
+        description: Estado civil
+      - name: v0641
+        description: Trabalhou ganhando em dinheiro, produtos, mercadorias ou benefícios
+      - name: v0642
+        description: Tinha trabalho remunerado do qual estava temporariamente afastado(a)
+      - name: v0643
+        description: Ajudou sem qualquer pagamento no trabalho remunerado de morador do domicílio
+      - name: v0644
+        description: Trabalhou na plantação, criação de animais ou pesca, somente para alimentação dos moradores do domicílio (Inclusive caça e extração vegetal)
+      - name: v0645
+        description: Quantos trabalhos tinha
+      - name: v6461
+        description: Ocupação – Código
+      - name: v6471
+        description: Atividade - Código
+      - name: v0648
+        description: Nesse trabalho era
+      - name: v0649
+        description: Quantas pessoas empregava nesse trabalho
+      - name: v0650
+        description: Era contribuinte de Instituto de Previdência Oficial em algum trabalho que tinha na semana de 25 a 31 de julho de 2010
+      - name: v0651
+        description: No trabalho principal, qual era o rendimento bruto (ou retirada) mensal que ganhava habitualmente em julho de 2010
+      - name: v6511
+        description: Valor do rendimento bruto (ou retirada) mensal no trabalho principal
+      - name: v6513
+        description: Rendimento no trabalho principal
+      - name: v6514
+        description: Rendimento no trabalho principal em número de salários mínimos
+      - name: v0652
+        description: Nos demais trabalhos, qual era o rendimento bruto (ou a retirada) mensal que ganhava habitualmente em julho de 2010
+      - name: v6521
+        description: Valor do rendimento bruto (ou retirada) mensal nos demais trabalhos (em reais) 
+      - name: v6524
+        description: Rendimento nos demais trabalhos em número de salários mínimos
+      - name: v6525
+        description: Rendimento em todos os trabalhos, em reais
+      - name: v6526
+        description: Rendimentos em todos os trabalhos em números de salários mínimos
+      - name: v6527
+        description: Rendimento mensal total em julho de 2010, em reais
+      - name: v6528
+        description: Rendimento mensal total em julho de 2010, em salários mínimos
+      - name: v6529
+        description: Rendimento domiciliar (domicílio particular) em julho de 2010, em reais
+      - name: v6530
+        description: Rendimento domiciliar (domicílio particular) em julho de 2010, em número de salários mínimos
+      - name: v6531
+        description: Rendimento domiciliar (domicílio particular) per capita em julho de 2010, em reais
+      - name: v6532
+        description: Rendimento domiciliar (domicílio particular) per capita em julho de 2010, em número de salários mínimos
+      - name: v0653
+        description: No trabalho principal, quantas horas trabalhava habitualmente por semana
+      - name: v0654
+        description: No período de 02 a 31 de julho de 2010, tomou alguma providência, de fato, para conseguir trabalho
+      - name: v0655
+        description: Se tivesse conseguido trabalho, estaria disponível para assumi-lo na semana de 25 a 31 de julho de 2010
+      - name: v0656
+        description: Em julho de 2010, tinha rendimento mensal habitual de aposentadoria ou pensão de instituto de previdência oficial (federal, estadual ou municipal)
+      - name: v0657
+        description: Em julho de 2010, tinha rendimento mensal habitual de Programa Social Bolsa Família ou Programa de Erradicação do Trabalho Infantil – PETI
+      - name: v0658
+        description: Em julho de 2010 tinha rendimento mensal habitual de outros programas sociais ou de transferências
+      - name: v0659
+        description: Em julho de 2010, tinha rendimento mensal habitual de outras fontes (juros de poupança, aplicações financeiras, aluguel, pensão ou aposentadoria de previdência privada, etc.)
+      - name: v6591
+        description: Em julho de 2010, qual foi o valor total deste(s) rendimento(s)
+      - name: v0660
+        description: Em que município e Unidade da Federação ou país estrangeiro trabalha
+      - name: v6602
+        description: Em que Unidade da Federação trabalhava – Código
+      - name: v6604
+        description: Em que município trabalhava – Código
+      - name: v6606
+        description: Em que país estrangeiro trabalhava – Código
+      - name: v0661
+        description: Retorna do trabalho para casa diariamente
+      - name: v0662
+        description: Qual o tempo habitual gasto de deslocamento de sua casa até o trabalho
+      - name: v0663
+        description: Quantos filhos e filhas nascidos vivos teve até 31 de julho de 2010
+      - name: v6631
+        description: Quantos filhos nascidos vivos até 31 de julho de 2010
+      - name: v6632
+        description: Quantas filhas nascidas vivas teve até 31 de julho de 2010
+      - name: v6633
+        description: Total de filhos nascidos vivos que teve até 31 de julho de 2010
+      - name: v0664
+        description: Dos filhos e filhas que teve, quantos estavam vivos em 31 de julho de 2010
+      - name: v6641
+        description: Dos filhos que teve, quantos estavam vivos em 31 de julho de 2010
+      - name: v6642
+        description: Das filhas que teve, quantas estavam vivas em 31 de julho de 2010
+      - name: v6643
+        description: Total de filhos que teve e que estavam vivos em 31 de julho de 2010
+      - name: v0665
+        description: Qual o sexo do último filho tido nascido vivo até 31 de julho de 2010
+      - name: v6660
+        description: Idade do(a) último(a) filho(a) tido(a) nascido(a) vivo(a) até 31 de julho de 2010
+      - name: v6664
+        description: Existência de filho(a) tido(a) nascido(a) vivo(a) no período de referência de 12 meses anteriores a 31/07/2010
+      - name: v0667
+        description: Este(a) filho(a) estava vivo(a) em 31 de julho de 2010
+      - name: v0668
+        description: Qual foi o mês e o ano que este(a) filho(a) faleceu
+      - name: v6681
+        description: Qual foi o mês que este(a) filho(a) faleceu
+      - name: v6682
+        description: Qual foi o ano que este(a) filho(a) faleceu
+      - name: v0669
+        description: Quantos filhos e filhas nascidos mortos teve até 31 de julho de 2010
+      - name: v6691
+        description: Quantos filhos nascidos mortos até 31 de julho de 2010
+      - name: v6692
+        description: Quantas filhas nascidas mortas até 31 de julho de 2010
+      - name: v6693
+        description: Quantos filhos e filhas nascidos mortos teve até 31 de julho de 2010
+      - name: v6800
+        description: Total de filhos tidos nascidos vivos e nascidos mortos
+      - name: v0670
+        description: Assinale quem prestou as informações desta pessoa
+      - name: v0671
+        description: Número de ordem do informante (outro morador)
+      - name: v6900
+        description: Condição de atividade na semana de 25 a 31 de julho de 2010
+      - name: v6910
+        description: Condição de ocupação na semana de 25 a 31 de julho de 2010
+      - name: v6920
+        description: Situação de ocupação na semana de 25 a 31 de julho de 2010
+      - name: v6930
+        description: Posição na ocupação e categoria do emprego no trabalho principal da semana de 25 a 31 de julho de 2010
+      - name: v6940
+        description: Subgrupo e categoria do emprego no trabalho principal da semana de 25 a 31 de julho de 2010
+      - name: v6121
+        description: Descrição não encontrada
+      - name: v0604
+        description: Tem mãe viva
+      - name: v0605
+        description: Número de ordem da mãe da pessoa
+      - name: v5020
+        description: Número da Família
+      - name: v5060
+        description: Número de Pessoas na Família
+      - name: v5070
+        description: Rendimento familiar per capita em julho de 2010
+      - name: v5080
+        description: Rendimento familiar per capita em nº de salários mínimos em julho de 2010
+      - name: v6462
+        description: Ocupação – Código da Classificação Brasileira de Ocupações Domiciliar - CBO-Domiciliar
+      - name: v6472
+        description: Atividade - Código da Classificação Nacional de Atividades Econômicas Domiciliar - CNAE-Domiciliar
+      - name: v5110
+        description: Descrição não encontrada
+      - name: v5120
+        description: Descrição não encontrada
+      - name: v5030
+        description: Tipo de unidade doméstica
+      - name: v5040
+        description: Indicadora de família
+      - name: v5090
+        description: Tipo de composição familiar das famílias únicas e conviventes principais
+      - name: v5100
+        description: Tipo de composição familiar das famílias conviventes secundárias
+      - name: v5130
+        description: Ordem lógica na família  
+      - name: m0502
+        description: Marca de imputação na v0502
+      - name: m0601
+        description: Marca de imputação na v0601
+      - name: m6033
+        description: Marca de imputação na v6033
+      - name: m0606
+        description: Marca de imputação na v0606
+      - name: m0613
+        description: Marca de imputação na v0613
+      - name: m0614
+        description: Marca de imputação na v0614
+      - name: m0615
+        description: Marca de imputação na v0615
+      - name: m0616
+        description: Marca de imputação na v0616
+      - name: m0617
+        description: Marca de imputação na v0617 
+      - name: m0618
+        description: Marca de imputação na v0618 
+      - name: m0619
+        description: Marca de imputação na v0619
+      - name: m0620
+        description: Marca de imputação na v0620
+      - name: m0621
+        description: Marca de imputação na v0621
+      - name: m0622
+        description: Marca de imputação na v0622
+      - name: m6222
+        description: Marca de imputação na v6222
+      - name: m6224
+        description: Marca de imputação na v6224 
+      - name: m0623
+        description: Marca de imputação na v0623
+      - name: m0624
+        description: Marca de imputação na v0624
+      - name: m0625
+        description: Marca de imputação na v0625
+      - name: m6252
+        description: Marca de imputação na v6252
+      - name: m6254
+        description: Marca de imputação na v6254
+      - name: m6256
+        description: Marca de imputação na v6256
+      - name: m0626
+        description: Marca de imputação na v0626  
+      - name: m6262
+        description: Marca de imputação na v6262
+      - name: m6264
+        description: Marca de imputação na v6264
+      - name: m6266
+        description: Marca de imputação na v6266
+      - name: m0627
+        description: Marca de imputação na v0627
+      - name: m0628
+        description: Marca de imputação na v0628
+      - name: m0629
+        description: Marca de imputação na v0629
+      - name: m0630
+        description: Marca de imputação na v0630
+      - name: m0631
+        description: Marca de imputação na v0631
+      - name: m0632
+        description: Marca de imputação na v0632
+      - name: m0633
+        description: Marca de imputação na v0633
+      - name: m0634
+        description: Marca de imputação na v0634
+      - name: m0635
+        description: Marca de imputação na v0635
+      - name: m6352
+        description: Marca de imputação na v6352
+      - name: m6354
+        description: Marca de imputação na v6354
+      - name: m6356
+        description: Marca de imputação na v6356
+      - name: m0636
+        description: Marca de imputação na v0636
+      - name: m6362
+        description: Marca de imputação na v6362
+      - name: m6364
+        description: Marca de imputação na v6364
+      - name: m6366
+        description: Marca de imputação na v6366
+      - name: m0637
+        description: Marca de imputação na v0637
+      - name: m0638
+        description: Marca de imputação na v0638
+      - name: m0639
+        description: Marca de imputação na v0639
+      - name: m0640
+        description: Marca de imputação na v0640
+      - name: m0641
+        description: Marca de imputação na v0641
+      - name: m0642
+        description: Marca de imputação na v0642
+      - name: m0643
+        description: Marca de imputação na v0643
+      - name: m0644
+        description: Marca de imputação na v0644
+      - name: m0645
+        description: Marca de imputação na v0645
+      - name: m6461
+        description: Marca de imputação na v6461
+      - name: m6471
+        description: Marca de imputação na v6471
+      - name: m0648
+        description: Marca de imputação na v0648
+      - name: m0649
+        description: Marca de imputação na v0649
+      - name: m0650
+        description: Marca de imputação na v0650
+      - name: m0651
+        description: Marca de imputação na v0651
+      - name: m6511
+        description: Marca de imputação na v6511
+      - name: m0652
+        description: Marca de imputação na v0652
+      - name: m6521
+        description: Marca de imputação na v6521
+      - name: m0653
+        description: Marca de imputação na v0653
+      - name: m0654
+        description: Marca de imputação na v0654
+      - name: m0655
+        description: Marca de imputação na v0655
+      - name: m0656
+        description: Marca de imputação na v0656
+      - name: m0657
+        description: Marca de imputação na v0657
+      - name: m0658
+        description: Marca de imputação na v0658
+      - name: m0659
+        description: Marca de imputação na v0659
+      - name: m6591
+        description: Marca de imputação na v6591
+      - name: m0660
+        description: Marca de imputação na v0660
+      - name: m6602
+        description: Marca de imputação na v6602
+      - name: m6604
+        description: Marca de imputação na v6604
+      - name: m6606
+        description: Marca de imputação na v6606
+      - name: m0661
+        description: Marca de imputação na v0661
+      - name: m0662
+        description: Marca de imputação na v0662
+      - name: m0663
+        description: Marca de imputação na v0663
+      - name: m6631
+        description: Marca de imputação na v6631
+      - name: m6632
+        description: Marca de imputação na v6632
+      - name: m6633
+        description: Marca de imputação na v6633
+      - name: m0664
+        description: Marca de imputação na v0664
+      - name: m6641
+        description: Marca de imputação na v6641
+      - name: m6642
+        description: Marca de imputação na v6642
+      - name: m6643
+        description: Marca de imputação na v6643
+      - name: m0665
+        description: Marca de imputação na v0665
+      - name: m6660
+        description: Marca de imputação na v6660
+      - name: m0667
+        description: Marca de imputação na v0667
+      - name: m0668
+        description: Marca de imputação na v0668
+      - name: m6681
+        description: Marca de imputação na v6681
+      - name: m6682
+        description: Marca de imputação na v6682
+      - name: m0669
+        description: Marca de imputação na v0669
+      - name: m6691
+        description: Marca de imputação na v6691
+      - name: m6692
+        description: Marca de imputação na v6692
+      - name: m6693
+        description: Marca de imputação na v6693
+      - name: m0670
+        description: Marca de imputação na v0670
+      - name: m0671
+        description: Marca de imputação na v0671
+      - name: m6800
+        description: Marca de imputação na v6800
+      - name: m6121
+        description: Marca de imputação na v6121
+      - name: m0604
+        description: Marca de imputação na v0604
+      - name: m0605
+        description: Marca de imputação na v0605 
+      - name: m6462
+        description: Marca de imputação na v6462
+      - name: m6472
+        description: Marca de imputação na v6472
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
