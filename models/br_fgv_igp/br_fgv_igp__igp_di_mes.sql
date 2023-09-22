@@ -1,3 +1,9 @@
+{{
+    config(
+        alias = 'igp_10_mes',
+        schema = 'br_fgv_igp'
+    )
+}}
 SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(mes AS INT64) mes,
