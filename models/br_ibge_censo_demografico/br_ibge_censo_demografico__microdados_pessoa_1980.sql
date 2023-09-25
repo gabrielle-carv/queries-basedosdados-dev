@@ -3,6 +3,10 @@
     alias='microdados_pessoa_1980',
     schema='br_ibge_censo_demografico',
     materialized='table',
+    partition_by={
+      "field": "sigla_uf",
+      "data_type": "string",
+    },
     )
  }}
 SELECT 

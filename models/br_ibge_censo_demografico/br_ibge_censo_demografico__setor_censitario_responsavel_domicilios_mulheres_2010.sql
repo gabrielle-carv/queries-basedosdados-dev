@@ -3,6 +3,10 @@
     alias='setor_censitario_responsavel_domicilios_mulheres_2010',
     schema='br_ibge_censo_demografico',
     materialized='table',
+    partition_by={
+      "field": "sigla_uf",
+      "data_type": "string",
+    },
     )
  }}
 SELECT 

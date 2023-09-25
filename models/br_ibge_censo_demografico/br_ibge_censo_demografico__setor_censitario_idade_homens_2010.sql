@@ -3,7 +3,10 @@
     alias='setor_censitario_idade_homens_2010',
     schema='br_ibge_censo_demografico',
     materialized='table',
-    )
+    partition_by={
+      "field": "sigla_uf",
+      "data_type": "string",
+    },
  }}
 SELECT 
     SAFE_CAST(id_setor_censitario AS STRING) id_setor_censitario,

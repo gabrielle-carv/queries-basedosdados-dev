@@ -3,6 +3,10 @@
     alias='microdados_pessoa_1970',
     schema='setor_censitario_domicilio_caracteristicas_gerais_2010',
     materialized='table',
+    partition_by={
+      "field": "sigla_uf",
+      "data_type": "string",
+    },
     )
  }}
 SELECT 
