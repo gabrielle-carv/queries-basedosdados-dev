@@ -1,7 +1,7 @@
 {{ 
   config(
-    alias='microdados_pessoa_1970',
-    schema='setor_censitario_domicilio_caracteristicas_gerais_2010',
+    alias='setor_censitario_domicilio_caracteristicas_gerais_2010',
+    schema='br_ibge_censo_demografico',
     materialized='table',
     partition_by={
       "field": "sigla_uf",
