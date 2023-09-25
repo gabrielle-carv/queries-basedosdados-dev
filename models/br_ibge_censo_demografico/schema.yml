@@ -3940,7 +3940,8 @@ models:
           de serviço de limpeza –  Existe lixo acumulado nos logradouros
       - name: v201
         description: Domicílios particulares permanentes com lixo  depositado em caçamba
-          de serviço de limpeza – Não  existe lixo acumulado nos logradouros    - name: v202
+          de serviço de limpeza – Não  existe lixo acumulado nos logradouros    
+      - name: v202
         description: Domicílios particulares permanentes com moradia  adequada – Existe
           identificação do logradouro
       - name: v203
