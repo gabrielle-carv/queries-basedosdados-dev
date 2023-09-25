@@ -1,6 +1,6 @@
 {{
     config(
-        alias = 'igp_10_mes',
+        alias = 'igp_di_mes',
         schema = 'br_fgv_igp'
     )
 }}
