@@ -9,7 +9,6 @@
     },
     )
  }}
-
 SELECT 
     SAFE_CAST(sigla_uf AS STRING) sigla_uf,
     SAFE_CAST(id_municipio AS STRING) id_municipio,
