@@ -130,3 +130,39 @@ models:
         description: Sigla da Unidade da Federação
       - name: geometria
         description: Polígono da Unidade da Federação
+
+  - name: br_geobr_mapas__bioma
+    description: Polígonos de todos o biomas presentes no território brasileiro e área costeira.
+    columns:  
+      - name: id_bioma
+        description: Código do bioma
+      - name: nome_bioma
+        description: Nome do bioma
+      - name: geometria
+        description: Geometria
+      - name: ano
+        description: Ano
+
+  - name: br_geobr_mapas__mesorregiao
+    description: O geobr é um pacote R e Python que permite que os usuários acessem facilmente os shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE) e outros conjuntos oficiais de dados espaciais do Brasil. O pacote inclui uma ampla variedade de conjuntos de dados geográficos como recursos simples, disponíveis em várias escalas geográficas e por vários anos.
+    columns:  
+      - name: id_uf
+        description: ID da Unidade da Federação
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+      - name: id_mesorregiao
+        description: ID da Mesorregião - IBGE
+      - name: geometria
+        description: Polígono da Mesorregião
+
+  - name: br_geobr_mapas__regiao_imediata
+    description: O geobr é um pacote R e Python que permite que os usuários acessem facilmente os shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE) e outros conjuntos oficiais de dados espaciais do Brasil. O pacote inclui uma ampla variedade de conjuntos de dados geográficos como recursos simples, disponíveis em várias escalas geográficas e por vários anos.
+    columns:  
+      - name: id_uf
+        description: ID da Unidade da Federação
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+      - name: id_regiao_imediata
+        description: ID da Região Imediata - IBGE
+      - name: geometria
+        description: Polígono da região imediata
