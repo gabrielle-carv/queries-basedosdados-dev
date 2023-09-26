@@ -38,3 +38,18 @@ models:
         description: Data da decisão
       - name: data_baixa_processo
         description: Data de baixa do processo
+
+
+  - name: br_stf_corte_aberta__dicionario
+    description: "Dicionário de dados referente a tabela de decisões de corte aberta do STF"
+    columns: 
+      - name: id_tabela
+        description: ID da tabela
+      - name: nome_coluna
+        description: Nome da coluna
+      - name: chave
+        description: Chave
+      - name: cobertura_temporal
+        description: Cobertura temporal
+      - name: valor
+        description: Valor
