@@ -1257,11 +1257,11 @@ models:
       - name: v0645
         description: Quantos trabalhos tinha
       - name: v6461
-        description: Ocupação – Código
+        description: Ocupação CBO-Domiciliar – Código
       - name: v6471
-        description: Atividade - Código
+        description: Atividade CNAE-Domiciliar - Código
       - name: v0648
-        description: Nesse trabalho era
+        description: A posição na ocupação desse trabalho era
       - name: v0649
         description: Quantas pessoas empregava nesse trabalho
       - name: v0650
@@ -12036,3 +12036,17 @@ models:
       - name: v132
         description: Total do rendimento nominal mensal das pessoas  responsáveis moradoras
           em domicílios particulares  permanentes do sexo feminino
+
+  - name: br_me_cnpj__dicionario
+    description: Dicionário
+    columns:
+      - name: id_tabela
+        description: ID Tabela
+      - name: nome_coluna
+        description: Nome da coluna        
+      - name: chave
+        description: Chave
+      - name: cobertura_temporal
+        description: Cobertura temporal
+      - name: valor
+        description: Valor
