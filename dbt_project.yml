@@ -181,9 +181,6 @@ models:
     mundo_transfermarkt_competicoes:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes
-    br_ms_sinan:
-      +materialized: table
-      +schema: br_ms_sinan
     br_anp_precos_combustiveis:
       +materialized: table
       +schema: br_anp_precos_combustiveis
