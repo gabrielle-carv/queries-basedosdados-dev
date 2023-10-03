@@ -86,4 +86,4 @@ select
     safe_cast(total_verba_indenizatoria_brl as float64) total_verba_indenizatoria_brl,
     safe_cast(total_verba_indenizatoria_usd as float64) total_verba_indenizatoria_usd,
     safe_cast(origem as string) origem,
-from `basedosdados-staging.br_cgu_servidores_executivo_federal_staging.remuneracao` as t
+from `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.remuneracao` as t

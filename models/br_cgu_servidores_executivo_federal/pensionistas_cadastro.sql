@@ -117,5 +117,5 @@ select
     ) diploma_ingresso_servicopublico_instituidor_pensao,
     safe_cast(origem as string) origem,
 from
-    `basedosdados-staging.br_cgu_servidores_executivo_federal_staging.pensionistas_cadastro`
+    `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.pensionistas_cadastro`
     as t

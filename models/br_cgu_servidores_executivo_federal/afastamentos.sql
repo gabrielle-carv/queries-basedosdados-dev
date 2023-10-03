@@ -31,8 +31,7 @@ select
     safe_cast(id_servidor as string) id_servidor,
     safe_cast(nome as string) nome,
     safe_cast(cpf as string) cpf,
-    safe_cast(data_inicio as date) data_inicio,
-    safe_cast(data_final as date) data_final,
+    -- safe_cast(data_inicio as date) data_inicio,
     (
         case
             when data_inicio = "Não informada"
@@ -40,6 +39,7 @@ select
             else parse_date('%d/%m/%Y', data_inicio)
         end
     ) as data_inicio,
+    -- safe_cast(data_final as date) data_final,
     (
         case
             when data_final = "Não informada"
@@ -49,4 +49,4 @@ select
     ) as data_final,
     safe_cast(origem as string) origem,
 from
-    `basedosdados-staging.br_cgu_servidores_executivo_federal_staging.afastamentos` as t
+    `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.afastamentos` as t

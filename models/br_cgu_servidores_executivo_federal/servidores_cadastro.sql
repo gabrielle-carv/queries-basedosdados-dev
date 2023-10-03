@@ -88,6 +88,6 @@ select
     ) documento_ingresso_servico_publico,
     safe_cast(origem as string) origem,
 from
-    `basedosdados-staging.br_cgu_servidores_executivo_federal_staging.servidores_cadastro`
+    `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.servidores_cadastro`
     as t
 
