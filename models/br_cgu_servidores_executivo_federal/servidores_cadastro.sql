@@ -1,7 +1,33 @@
+{{
+    config(
+        schema = 'br_cgu_servidores_executivo_federal',
+        materialized='table',
+        partition_by={
+            'field': 'ano',
+            'data_type': 'int64',
+            'range': {
+                "start": 2013,
+                "end": 2023,
+                "interval": 1
+            }
+        },
+        cluster_by=['ano', 'mes'],
+        post_hook = [
+          'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter
+                      ON {{this}}
+                      GRANT TO ("allUsers")
+                      FILTER USING (DATE_DIFF(DATE("{{ run_started_at.strftime("%Y-%m-%d") }}"),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6)',
+          'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
+                      ON  {{this}}
+                      GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
+                    FILTER USING (DATE_DIFF(DATE("{{ run_started_at.strftime("%Y-%m-%d") }}"),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)'
+        ]
+    )
+}}
+
 select
     safe_cast(ano as int64) ano,
     safe_cast(mes as int64) mes,
-    safe_cast(sigla_uf as string) sigla_uf,
     safe_cast(id_servidor as string) id_servidor,
     safe_cast(nome as string) nome,
     safe_cast(cpf as string) cpf,
@@ -35,14 +61,16 @@ select
     -- safe_cast(data_inicio_afastamento as date) data_inicio_afastamento,
     (
         case
-            when data_inicio_afastamento = "Não informada" then null
+            when data_inicio_afastamento = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_inicio_afastamento)
         end
     ) as data_inicio_afastamento,
     -- safe_cast(data_termino_afastamento as date) data_termino_afastamento,
     (
         case
-            when data_termino_afastamento = "Não informada" then null
+            when data_termino_afastamento = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_termino_afastamento)
         end
     ) as data_termino_afastamento,
@@ -51,30 +79,34 @@ select
     -- safe_cast(data_ingresso_cargo_funcao as date) data_ingresso_cargo_funcao,
     (
         case
-            when data_ingresso_cargo_funcao = "Não informada" then null
+            when data_ingresso_cargo_funcao = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_ingresso_cargo_funcao)
         end
     ) as data_ingresso_cargo_funcao,
     -- safe_cast(data_nomeacao_cargo_funcao as date) data_nomeacao_cargo_funcao,
     (
         case
-            when data_nomeacao_cargo_funcao = "Não informada" then null
+            when data_nomeacao_cargo_funcao = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_nomeacao_cargo_funcao)
         end
     ) as data_nomeacao_cargo_funcao,
     -- safe_cast(data_ingresso_orgao as date) data_ingresso_orgao,
     (
         case
-            when data_ingresso_orgao = "Não informada" then null
+            when data_ingresso_orgao = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_ingresso_orgao)
         end
     ) as data_ingresso_orgao,
     -- safe_cast(
-    --     data_diploma_ingresso_servico_publico as date
+    -- data_diploma_ingresso_servico_publico as date
     -- ) data_diploma_ingresso_servico_publico,
     (
         case
-            when data_diploma_ingresso_servico_publico = "Não informada" then null
+            when data_diploma_ingresso_servico_publico = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_diploma_ingresso_servico_publico)
         end
     ) as data_diploma_ingresso_servico_publico,
@@ -86,8 +118,9 @@ select
     safe_cast(
         documento_ingresso_servico_publico as string
     ) documento_ingresso_servico_publico,
+    -- safe_cast(sigla_uf as string) sigla_uf,
+    (case when sigla_uf in ("-1", "-3") then null else sigla_uf end) as sigla_uf,
     safe_cast(origem as string) origem,
 from
     `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.servidores_cadastro`
     as t
-
