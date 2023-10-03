@@ -58,7 +58,6 @@ select
     safe_cast(id_tipo_vinculo as string) id_tipo_vinculo,
     safe_cast(tipo_vinculo as string) tipo_vinculo,
     safe_cast(situacao_vinculo as string) situacao_vinculo,
-    -- safe_cast(data_inicio_afastamento as date) data_inicio_afastamento,
     (
         case
             when data_inicio_afastamento = "Não informada"
@@ -66,7 +65,6 @@ select
             else parse_date('%d/%m/%Y', data_inicio_afastamento)
         end
     ) as data_inicio_afastamento,
-    -- safe_cast(data_termino_afastamento as date) data_termino_afastamento,
     (
         case
             when data_termino_afastamento = "Não informada"
@@ -76,7 +74,6 @@ select
     ) as data_termino_afastamento,
     safe_cast(regime_juridico as string) regime_juridico,
     safe_cast(jornada_trabalho as string) jornada_trabalho,
-    -- safe_cast(data_ingresso_cargo_funcao as date) data_ingresso_cargo_funcao,
     (
         case
             when data_ingresso_cargo_funcao = "Não informada"
@@ -84,7 +81,6 @@ select
             else parse_date('%d/%m/%Y', data_ingresso_cargo_funcao)
         end
     ) as data_ingresso_cargo_funcao,
-    -- safe_cast(data_nomeacao_cargo_funcao as date) data_nomeacao_cargo_funcao,
     (
         case
             when data_nomeacao_cargo_funcao = "Não informada"
@@ -92,7 +88,6 @@ select
             else parse_date('%d/%m/%Y', data_nomeacao_cargo_funcao)
         end
     ) as data_nomeacao_cargo_funcao,
-    -- safe_cast(data_ingresso_orgao as date) data_ingresso_orgao,
     (
         case
             when data_ingresso_orgao = "Não informada"
@@ -100,9 +95,6 @@ select
             else parse_date('%d/%m/%Y', data_ingresso_orgao)
         end
     ) as data_ingresso_orgao,
-    -- safe_cast(
-    -- data_diploma_ingresso_servico_publico as date
-    -- ) data_diploma_ingresso_servico_publico,
     (
         case
             when data_diploma_ingresso_servico_publico = "Não informada"
@@ -118,7 +110,6 @@ select
     safe_cast(
         documento_ingresso_servico_publico as string
     ) documento_ingresso_servico_publico,
-    -- safe_cast(sigla_uf as string) sigla_uf,
     (case when sigla_uf in ("-1", "-3") then null else sigla_uf end) as sigla_uf,
     safe_cast(origem as string) origem,
 from

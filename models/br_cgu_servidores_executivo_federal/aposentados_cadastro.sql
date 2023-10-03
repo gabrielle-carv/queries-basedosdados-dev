@@ -47,21 +47,18 @@ select
     safe_cast(situacao_vinculo as string) situacao_vinculo,
     safe_cast(regime_juridico as string) regime_juridico,
     safe_cast(jornada_trabalho as string) jornada_trabalho,
-    -- safe_cast(data_ingresso_cargo_funcao as date) data_ingresso_cargo_funcao,
     (
         case
             when data_ingresso_cargo_funcao = "Não informada" then null
             else parse_date('%d/%m/%Y', data_ingresso_cargo_funcao)
         end
     ) as data_ingresso_cargo_funcao,
-    -- safe_cast(data_nomeacao_cargo_funcao as date) data_nomeacao_cargo_funcao,
     (
         case
             when data_nomeacao_cargo_funcao = "Não informada" then null
             else parse_date('%d/%m/%Y', data_nomeacao_cargo_funcao)
         end
     ) as data_nomeacao_cargo_funcao,
-    -- safe_cast(data_ingresso_orgao as date) data_ingresso_orgao,
     (
         case
             when data_ingresso_orgao = "Não informada" then null
@@ -71,9 +68,6 @@ select
     safe_cast(
         documento_ingresso_servico_publico as string
     ) documento_ingresso_servico_publico,
-    -- safe_cast(
-    --     data_diploma_ingresso_servico_publico as date
-    -- ) data_diploma_ingresso_servico_publico,
     (
         case
             when data_diploma_ingresso_servico_publico = "Não informada" then null

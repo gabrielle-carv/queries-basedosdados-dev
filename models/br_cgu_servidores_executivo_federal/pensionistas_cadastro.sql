@@ -67,36 +67,24 @@ select
     safe_cast(
         jornada_trabalho_instituidor_pensao as string
     ) jornada_trabalho_instituidor_pensao,
-    -- safe_cast(
-    --     data_ingresso_cargo_funcao_instituidor_pensao as date
-    -- ) data_ingresso_cargo_funcao_instituidor_pensao,
     (
         case
             when data_ingresso_cargo_funcao_instituidor_pensao = "Não informada" then null
             else parse_date('%d/%m/%Y', data_ingresso_cargo_funcao_instituidor_pensao)
         end
     ) as data_ingresso_cargo_funcao_instituidor_pensao,
-    -- safe_cast(
-    --     data_nomeacao_cargo_funcao_instituidor_pensao as date
-    -- ) data_nomeacao_cargo_funcao_instituidor_pensao,
     (
         case
             when data_nomeacao_cargo_funcao_instituidor_pensao = "Não informada" then null
             else parse_date('%d/%m/%Y', data_nomeacao_cargo_funcao_instituidor_pensao)
         end
     ) as data_nomeacao_cargo_funcao_instituidor_pensao,
-    -- safe_cast(
-    --     data_ingresso_orgao_instituidor_pensao as date
-    -- ) data_ingresso_orgao_instituidor_pensao,
     (
         case
             when data_ingresso_orgao_instituidor_pensao = "Não informada" then null
             else parse_date('%d/%m/%Y', data_ingresso_orgao_instituidor_pensao)
         end
     ) as data_ingresso_orgao_instituidor_pensao,
-    -- safe_cast(
-    --     data_diploma_ingresso_servico_publico_instituidor_pensao as date
-    -- ) data_diploma_ingresso_servico_publico_instituidor_pensao,
     (
         case
             when data_diploma_ingresso_servico_publico_instituidor_pensao = "Não informada" then null

@@ -347,7 +347,7 @@ models:
       - name: diploma_ingresso_servico_publico
         description: Diploma de ingresso do servidor no serviço público
   - name: servidores_cadastro
-    description: Informações de cadastro de servidores civis e militares
+    description: Informações de cadastro dos servidores civis e militares
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
