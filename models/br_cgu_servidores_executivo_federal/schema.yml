@@ -91,7 +91,7 @@ models:
       - name: origem
         description: Origem do dado (BACEN ou SIAPE)
   - name: observacoes
-    description: Observações para cada servidor, como atraso em pagamentos, entre outras
+    description: Observações para cada servidor, como atraso em pagamentos, entre outros
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
@@ -192,7 +192,7 @@ models:
       - name: origem
         description: Origem do dado (BACEN, SIAPE ou Defesa)
   - name: remuneracao
-    description: Informações de remuneração de servidores, pensionistas, aposentados e militares
+    description: Remuneração dos servidores civis e militares ativos e inativos, pensionistas e aposentados
     columns:
       - name: ano
         description: Ano
@@ -347,7 +347,7 @@ models:
       - name: diploma_ingresso_servico_publico
         description: Diploma de ingresso do servidor no serviço público
   - name: servidores_cadastro
-    description: Informações de cadastro de servidores civis e militar
+    description: Informações de cadastro de servidores civis e militares
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
