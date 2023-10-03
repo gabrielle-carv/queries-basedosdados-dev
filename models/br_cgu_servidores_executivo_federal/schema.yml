@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: afastamentos
-    description: Insert `afastamentos` table description here
+    description: Informações de afastamentos de servidores
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
@@ -24,7 +24,7 @@ models:
       - name: origem
         description: Origem do dado enviado à CGU (SIAPE ou BACEN)
   - name: aposentados_cadastro
-    description: Insert `aposentados_cadastro` table description here
+    description: Informações do cadastro de apossentadorias dos servidores
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
@@ -91,7 +91,7 @@ models:
       - name: origem
         description: Origem do dado (BACEN ou SIAPE)
   - name: observacoes
-    description: Insert `observacoes` table description here
+    description: Observações para cada servidor, como atraso em pagamentos, entre outras
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
@@ -112,7 +112,7 @@ models:
         description: Origem do dado enviado à CGU (Servidores SIAPE, Servidores BACEN,
             Aposentados BACEN, Pensionistas BACEN, etc)
   - name: pensionistas_cadastro
-    description: Insert `pensionistas_cadastro` table description here
+    description: Informações sobre o cadastro de pensionistas
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
@@ -192,7 +192,7 @@ models:
       - name: origem
         description: Origem do dado (BACEN, SIAPE ou Defesa)
   - name: remuneracao
-    description: Insert `remuneracao` table description here
+    description: Informações de remuneração de servidores, pensionistas, aposentados e militares
     columns:
       - name: ano
         description: Ano
@@ -282,7 +282,7 @@ models:
         description: Origem do dado enviado à CGU (Servidores SIAPE, Servidores BACEN,
             Militares, Pensionistas BACEN, etc)
   - name: reserva_reforma_militares_cadastro
-    description: Insert `reserva_reforma_militares_cadastro` table description here
+    description: Informações de cadastro de militares na reserva e reforma
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
@@ -347,7 +347,7 @@ models:
       - name: diploma_ingresso_servico_publico
         description: Diploma de ingresso do servidor no serviço público
   - name: servidores_cadastro
-    description: Insert `servidores_cadastro` table description here
+    description: Informações de cadastro de servidores civis e militar
     columns:
       - name: ano
         description: Ano de referência do cadastro do servidor (ao qual as informações
