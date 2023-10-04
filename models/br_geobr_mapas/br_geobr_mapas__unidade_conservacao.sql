@@ -1,6 +1,6 @@
 {{ 
   config(
-    alias='terra_indigena',
+    alias='unidade_conservacao',
     schema='br_geobr_mapas',
     materialized='table',
     )
@@ -20,4 +20,4 @@ SAFE_CAST(ano_criacao AS INT64) ano_criacao,
 SAFE_CAST(legislacao AS STRING) legislacao,
 SAFE_CAST(data_ultima AS DATE) data_ultima,
 SAFE.ST_GEOGFROMTEXT(geometria) geometria,
-FROM basedosdados-dev.br_geobr_mapas_staging.terra_indigena as t
+FROM basedosdados-dev.br_geobr_mapas_staging.unidade_conservacao as t

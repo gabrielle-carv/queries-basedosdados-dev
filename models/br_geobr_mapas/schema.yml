@@ -243,26 +243,6 @@ models:
       - name: geometria
         description: Polígono da Concentração Urbana
 
-  - name: br_geobr_mapas__concentracao_urbana
-    description: O geobr é um pacote R e Python que permite que os usuários acessem facilmente os shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE) e outros conjuntos oficiais de dados espaciais do Brasil. O pacote inclui uma ampla variedade de conjuntos de dados geográficos como recursos simples, disponíveis em várias escalas geográficas e por vários anos.
-    columns:  
-      - name: id_concentracao_urbana
-        description: ID Concentra Urbana
-      - name: concentracao_urbana
-        description: Nome da Concentração Urbana
-      - name: populacao_urbana_2010
-        description: Populaçãp Urbana 2010
-      - name: populacao_rural_2010
-        description: Populaçãp Rural 2010
-      - name: populacao_2010
-        description: População Total 2010    
-      - name: id_municipio
-        description: ID Município IBGE - 7 Dígitos
-      - name: sigla_uf
-        description: Sigla da Unidade da Federação
-      - name: geometria
-        description: Polígono da Concentração Urbana
-
   - name: br_geobr_mapas__limite_vizinhanca
     description: O geobr é um pacote R e Python que permite que os usuários acessem facilmente os shapefiles do Instituto Brasileiro de Geografia e Estatística (IBGE) e outros conjuntos oficiais de dados espaciais do Brasil. O pacote inclui uma ampla variedade de conjuntos de dados geográficos como recursos simples, disponíveis em várias escalas geográficas e por vários anos.
     columns:  
