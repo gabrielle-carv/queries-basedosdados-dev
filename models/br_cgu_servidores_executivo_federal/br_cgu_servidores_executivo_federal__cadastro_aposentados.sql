@@ -1,6 +1,7 @@
 {{
     config(
         schema = 'br_cgu_servidores_executivo_federal',
+        alias = 'cadastro_aposentados',
         materialized='table',
         partition_by={
             'field': 'ano',
@@ -35,10 +36,8 @@ select
     safe_cast(id_tipo_aposentadoria as string) id_tipo_aposentadoria,
     safe_cast(tipo_aposentadoria as string) tipo_aposentadoria,
     (
-        case
-            when data_aposentadoria = "Não informada" then null
-            else parse_date('%d/%m/%Y', data_aposentadoria)
-        end
+        case when data_aposentadoria = "Não informada" then null
+        else parse_date('%d/%m/%Y', data_aposentadoria)
     ) as data_aposentadoria,
     safe_cast(descricao_cargo as string) descricao_cargo,
     safe_cast(id_uorg_lotacao as string) id_uorg_lotacao,
@@ -70,21 +69,23 @@ select
             else parse_date('%d/%m/%Y', data_ingresso_orgao)
         end
     ) as data_ingresso_orgao,
+    safe_cast(
+        documento_ingresso_servico_publico as string
+    ) documento_ingresso_servico_publico,
     (
         case
             when data_diploma_ingresso_servico_publico = "Não informada" then null
             else parse_date('%d/%m/%Y', data_diploma_ingresso_servico_publico)
         end
     ) as data_diploma_ingresso_servico_publico,
-    safe_cast(
-        documento_ingresso_servico_publico as string
-    ) documento_ingresso_servico_publico,
+
     safe_cast(diploma_ingresso_cargo_funcao as string) diploma_ingresso_cargo_funcao,
     safe_cast(diploma_ingresso_orgao as string) diploma_ingresso_orgao,
     safe_cast(
         diploma_ingresso_servico_publico as string
     ) diploma_ingresso_servico_publico,
+    safe_cast(origem as string) origem,
 from
-    `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.reserva_reforma_militares_cadastro`
+    `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.cadastro_aposentados`
     as t
 

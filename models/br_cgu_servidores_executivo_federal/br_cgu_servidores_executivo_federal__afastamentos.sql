@@ -1,12 +1,13 @@
 {{
     config(
         schema = 'br_cgu_servidores_executivo_federal',
+        alias = 'afastamentos',
         materialized='table',
         partition_by={
             'field': 'ano',
             'data_type': 'int64',
             'range': {
-                "start": 2013,
+                "start": 2015,
                 "end": 2023,
                 "interval": 1
             }
@@ -31,6 +32,20 @@ select
     safe_cast(id_servidor as string) id_servidor,
     safe_cast(nome as string) nome,
     safe_cast(cpf as string) cpf,
-    safe_cast(observacao as string) observacao,
+    (
+        case
+            when data_inicio = "Não informada"
+            then null
+            else parse_date('%d/%m/%Y', data_inicio)
+        end
+    ) as data_inicio,
+    (
+        case
+            when data_final = "Não informada"
+            then null
+            else parse_date('%d/%m/%Y', data_final)
+        end
+    ) as data_final,
     safe_cast(origem as string) origem,
-from `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.observacoes` as t
+from
+    `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.afastamentos` as t

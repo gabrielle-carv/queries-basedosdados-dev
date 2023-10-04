@@ -1,6 +1,7 @@
 {{
     config(
         schema = 'br_cgu_servidores_executivo_federal',
+        alias = 'remuneracao',
         materialized='table',
         partition_by={
             'field': 'ano',
