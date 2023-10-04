@@ -36,8 +36,11 @@ select
     safe_cast(id_tipo_aposentadoria as string) id_tipo_aposentadoria,
     safe_cast(tipo_aposentadoria as string) tipo_aposentadoria,
     (
-        case when data_aposentadoria = "Não informada" then null
-        else parse_date('%d/%m/%Y', data_aposentadoria)
+        case
+            when data_aposentadoria = "Não informada"
+            then null
+            else parse_date('%d/%m/%Y', data_aposentadoria)
+        end
     ) as data_aposentadoria,
     safe_cast(descricao_cargo as string) descricao_cargo,
     safe_cast(id_uorg_lotacao as string) id_uorg_lotacao,
@@ -53,19 +56,22 @@ select
     safe_cast(jornada_trabalho as string) jornada_trabalho,
     (
         case
-            when data_ingresso_cargo_funcao = "Não informada" then null
+            when data_ingresso_cargo_funcao = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_ingresso_cargo_funcao)
         end
     ) as data_ingresso_cargo_funcao,
     (
         case
-            when data_nomeacao_cargo_funcao = "Não informada" then null
+            when data_nomeacao_cargo_funcao = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_nomeacao_cargo_funcao)
         end
     ) as data_nomeacao_cargo_funcao,
     (
         case
-            when data_ingresso_orgao = "Não informada" then null
+            when data_ingresso_orgao = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_ingresso_orgao)
         end
     ) as data_ingresso_orgao,
@@ -74,7 +80,8 @@ select
     ) documento_ingresso_servico_publico,
     (
         case
-            when data_diploma_ingresso_servico_publico = "Não informada" then null
+            when data_diploma_ingresso_servico_publico = "Não informada"
+            then null
             else parse_date('%d/%m/%Y', data_diploma_ingresso_servico_publico)
         end
     ) as data_diploma_ingresso_servico_publico,
@@ -88,4 +95,3 @@ select
 from
     `basedosdados-dev.br_cgu_servidores_executivo_federal_staging.cadastro_aposentados`
     as t
-
