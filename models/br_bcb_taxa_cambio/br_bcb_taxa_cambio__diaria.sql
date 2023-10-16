@@ -1,3 +1,10 @@
+{{ 
+  config(
+    alias = 'diaria',
+    schema='br_bcb_taxa_cambio',
+    materialized='table',
+    labels = {'tema': 'economia'})
+ }}
 SELECT 
 SAFE_CAST(ano AS STRING) ano,
 SAFE_CAST(data_cotacao AS DATE) data_cotacao,
