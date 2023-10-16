@@ -178,9 +178,6 @@ models:
     br_ans_beneficiario:
       +materialized: incremental
       +schema: br_ans_beneficiario
-    mundo_transfermarkt_competicoes:
-      +materialized: table
-      +schema: mundo_transfermarkt_competicoes
     br_ms_sinan:
       +materialized: table
       +schema: br_ms_sinan
@@ -211,6 +208,12 @@ models:
       +post-hook: 
         - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
         - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
+    mundo_transfermarkt_competicoes:
+      +materialized: table
+      +schema: mundo_transfermarkt_competicoes
+    mundo_transfermarkt_competicoes_internacionais:
+      +materialized: table
+      +schema: mundo_transfermarkt_competicoes_internacionais
 
 tests:
   +severity: warn
