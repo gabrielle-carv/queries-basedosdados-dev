@@ -1,6 +1,14 @@
 {{ config(
     alias='restricao_operacao_usinas_eolicas', 
-    schema='br_ons_avaliacao_operacao') 
+    schema='br_ons_avaliacao_operacao',
+    partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "range": {
+        "start": 2021,
+        "end": 2024,
+        "interval": 1}
+     }) 
 }}
 SELECT
 SAFE_CAST(data AS DATE) data,
