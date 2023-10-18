@@ -16,4 +16,4 @@ SAFE_CAST(id_subsistema AS STRING) id_subsistema,
 SAFE_CAST(subsistema AS STRING) subsistema,
 SAFE_CAST(usina AS STRING) usina,
 SAFE_CAST(custo_variavel_unitario AS FLOAT64) custo_variavel_unitario
-FROM basedosdados-dev.br_bcb_sicor_staging.custo_variavel_unitario_usinas_termicas AS t
+FROM basedosdados-dev.br_ons_estimativa_custos_staging.custo_variavel_unitario_usinas_termicas AS t
