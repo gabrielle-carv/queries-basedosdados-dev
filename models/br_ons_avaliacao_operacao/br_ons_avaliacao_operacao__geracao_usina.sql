@@ -1,3 +1,7 @@
+{{ config(
+    alias='geracao_usina', 
+    schema='br_ons_avaliacao_operacao') 
+}}
 SELECT
 SAFE_CAST(data AS DATE) data,
 SAFE_CAST(hora AS TIME) hora,

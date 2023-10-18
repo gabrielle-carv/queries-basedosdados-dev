@@ -1,3 +1,7 @@
+{{ config(
+    alias='geracao_termica_motivo_despacho', 
+    schema='br_ons_avaliacao_operacao') 
+}}
 SELECT
 SAFE_CAST(data AS DATE) data,
 SAFE_CAST(hora AS TIME) hora,

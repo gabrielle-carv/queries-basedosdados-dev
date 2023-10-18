@@ -1,3 +1,7 @@
+{{ config(
+    alias='energia_natural_afluente', 
+    schema='br_ons_avaliacao_operacao') 
+}}
 SELECT
 SAFE_CAST(data AS DATE) data,
 SAFE_CAST(ano AS INT64) ano,
