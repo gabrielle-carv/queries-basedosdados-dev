@@ -30,7 +30,11 @@ spec:
             - name: credentials-prod
               mountPath: /credentials-prod/
               readOnly: true
-          command: 
+          command:
+            - "/bin/sh"
+            - "-c"
+          args:
+            - "dbt deps;"
             - "dbt-rpc"
             - "serve"
             - "--profiles-dir"
@@ -84,7 +88,11 @@ spec:
             - name: credentials-prod
               mountPath: /credentials-prod/
               readOnly: true
-          command: 
+          command:
+            - "/bin/sh"
+            - "-c"
+          args:
+            - "dbt deps;"
             - "dbt-rpc"
             - "serve"
             - "--profiles-dir"
