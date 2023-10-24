@@ -2,5 +2,8 @@ target/
 dbt_modules/
 logs/
 .vscode/
+.venv
 venv-dbt/
 .venv/
+.user.yml
+dbt_packages

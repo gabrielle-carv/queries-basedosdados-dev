@@ -1,15 +1,16 @@
 {{ 
   config(
     schema='br_ms_cnes',
-    materialized='table',
+    materialized='incremental',
      partition_by={
       "field": "ano",
       "data_type": "int64",
       "range": {
-        "start": 2005,
+        "start": 2007,
         "end": 2023,
         "interval": 1}
      },
+     pre_hook = "DROP ALL ROW ACCESS POLICIES ON {{ this }}",
      post_hook = [ 
       'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
@@ -27,7 +28,7 @@
 WITH raw_cnes_leito AS (
   -- 1. Retirar linhas com id_estabelecimento_cnes nulo
   SELECT *
-  FROM `basedosdados-staging.br_ms_cnes_staging.leito`
+  FROM `basedosdados-dev.br_ms_cnes_staging.leito`
   WHERE CNES IS NOT NULL),
 cnes_leito_without_duplicates AS (
     SELECT DISTINCT *
@@ -38,7 +39,10 @@ leito_x_estabelecimento as(
   -- ps: a coluna id_municipio não vem por padrão na tabela leito extraída do FTP do Datasus
   SELECT *
   FROM cnes_leito_without_duplicates as lt
-  LEFT JOIN (SELECT id_municipio, CAST(ano as STRING) ano1,CAST(mes as STRING) mes1, id_estabelecimento_cnes,id_municipio AS IDDD from `basedosdados.br_ms_cnes.estabelecimento`) as st
+  LEFT JOIN (SELECT id_municipio, 
+  CAST(ano as STRING) ano1,
+  CAST(mes as STRING) mes1, 
+  id_estabelecimento_cnes as IDDD from `basedosdados.br_ms_cnes.estabelecimento`) as st
   ON lt.CNES = st.IDDD AND lt.ano = st.ano1 AND lt.mes = st.mes1 
 )
 
@@ -46,6 +50,7 @@ SELECT
 SAFE_CAST(ano AS INT64) AS ano,
 SAFE_CAST(mes AS INT64) AS mes,
 SAFE_CAST(sigla_uf AS STRING) AS sigla_uf,
+SAFE_CAST(id_municipio AS STRING) AS id_municipio,
 SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
 SAFE_CAST(CODLEITO AS STRING) AS tipo_especialidade_leito,
 SAFE_CAST(TP_LEITO AS STRING) AS tipo_leito,
@@ -53,3 +58,6 @@ SAFE_CAST(QT_EXIST AS STRING) AS quantidade_total,
 SAFE_CAST(QT_CONTR AS STRING) AS quantidade_contratado,
 SAFE_CAST(QT_SUS AS STRING) AS quantidade_sus
 FROM leito_x_estabelecimento
+{% if is_incremental() %} 
+WHERE CONCAT(ano,mes) > (SELECT MAX(CONCAT(ano,mes)) FROM {{ this }} )
+{% endif %}
