@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: br_camara_dados_abertos__votacao_microdados
+    description: Identificadores e informações sobre as votações das comissões e do Plenário da Câmara, por ano em que tenham ocorrido.
+    columns:
+      - name: ano
+        description: Ano
+      - name: id_votacao
+        description: ID da votação
+      - name: data
+        description: Data
+      - name: horario
+        description: Horário
+      - name: id_orgao
+        description: ID do órgão
+      - name: sigla_orgao
+        description: Sigla do órgão
+      - name: id_evento
+        description: ID do evento
+      - name: aprovacao
+        description: Indicador se ocorreu a aprovação
+      - name: voto_sim
+        description: Quantidade de votos - Sim
+      - name: voto_nao
+        description: Quantidade de votos - Não
+      - name: voto_outro
+        description: Quantidade de votos - Outros
+      - name: descricao
+        description: Descrição sobre a votação
+      - name: data_hora_ultima_votacao
+        description: Data e hora da última abertura da votação
+      - name: descricao_ultima_votacao
+        description: Descrição da última abertura da votação
+      - name: data_hora_ultima_proposicao
+        description: Data e hora da última apresentação da proposição
+      - name: descricao_ultima_proposicao
+        description: Descrição da última apresentação da proposição
+      - name: id_ultima_proposicao
+        description: ID da última proposição apresentada
+
+models:
+  - name: br_camara_dados_abertos__votacao_objeto
+    description: Cada votação é uma decisão sobre uma e somente uma Proposição, que no Dados Abertos é o chamado objeto da votação. Muitas vezes, porém, a proposição que realmente é votada não é identificada, e em alguns casos não é nem mesmo cadastrada.
+
+
+
+
+    columns:
+      - name: ano
+        description: Ano
+      - name: id_votacao
+        description: ID da votação
+      - name: data_hora
+        description: Data e hora
+      - name: voto
+        description: Voto
+      - name: id_deputado
+        description: ID do deputado
+      - name: nome
+        description: Nome do deputado
+      - name: sigla_partido
+        description: Sigla do partido
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+      - name: id_legislatura
+        description: ID da legislatura
