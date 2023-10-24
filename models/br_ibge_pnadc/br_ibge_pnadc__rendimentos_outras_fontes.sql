@@ -11,7 +11,7 @@
         "interval": 1}
     },
     cluster_by = "sigla_uf",
-    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+    labels = {'project_id': 'basedosdados-dev'})
 }}
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
