@@ -25,4 +25,4 @@ SELECT
   SAFE_CAST(sigla_tipo AS STRING) sigla_tipo,
   SAFE_CAST(numero AS STRING) numero,
   SAFE_CAST(titulo AS STRING) titulo
-FROM basedosdados-dev.br_me_cnpj_staging.votacao_objeto AS t
+FROM basedosdados-dev.br_camara_dados_abertos_staging.votacao_objeto AS t

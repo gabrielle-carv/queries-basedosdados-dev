@@ -23,4 +23,4 @@ SELECT
   SAFE_CAST(sigla_partido AS STRING) sigla_partido,
   SAFE_CAST(sigla_uf AS STRING) sigla_uf,
   SAFE_CAST(id_legislatura AS STRING) id_legislatura,
-FROM basedosdados-dev.br_me_cnpj_staging.voto_parlamentar AS t
+FROM basedosdados-dev.br_camara_dados_abertos_staging.voto_parlamentar AS t

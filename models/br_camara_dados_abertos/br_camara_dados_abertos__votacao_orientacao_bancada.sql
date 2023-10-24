@@ -20,4 +20,4 @@ SELECT
   SAFE_CAST(descricao AS STRING) descricao,
   SAFE_CAST(id_proposicao AS STRING) id_proposicao,
   SAFE_CAST(orientacao AS STRING) orientacao,
-FROM basedosdados-dev.br_me_cnpj_staging.votacao_orientacao_bancada AS t
+FROM basedosdados-dev.br_camara_dados_abertos_staging.votacao_orientacao_bancada AS t

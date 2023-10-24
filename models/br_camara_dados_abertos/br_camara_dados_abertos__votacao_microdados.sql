@@ -32,4 +32,4 @@ SELECT
   SAFE_CAST(data_hora_ultima_proposicao AS DATETIME) data_hora_ultima_proposicao,
   SAFE_CAST(descricao_ultima_proposicao AS STRING) descricao_ultima_proposicao,
   SAFE_CAST(id_ultima_proposicao AS STRING) id_ultima_proposicao,
-FROM basedosdados-dev.br_me_cnpj_staging.votacao_microdados AS t
+FROM basedosdados-dev.br_camara_dados_abertos_staging.votacao_microdados AS t
