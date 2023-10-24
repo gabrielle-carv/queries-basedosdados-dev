@@ -6,6 +6,7 @@
   )
 }}
 
+
 SELECT 
 SAFE_CAST(id_tabela AS STRING) id_tabela,
 SAFE_CAST(nome_coluna AS STRING) nome_coluna,
