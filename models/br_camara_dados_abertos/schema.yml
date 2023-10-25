@@ -6,10 +6,19 @@ models:
     columns:
       - name: ano
         description: Ano
+        tests:
+          - not_null
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano        
       - name: id_votacao
         description: ID da votação
       - name: data
         description: Data
+        tests:
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__data')
+              field: data.data
       - name: horario
         description: Horário
       - name: id_orgao
@@ -45,10 +54,19 @@ models:
     columns:
       - name: ano
         description: Ano
+        tests:
+          - not_null
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano   
       - name: id_votacao
         description: ID da votação
       - name: data
         description: Data
+        tests:
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__data')
+              field: data.data
       - name: descricao
         description: Descrição sobre a votação
       - name: id_proposicao
@@ -72,6 +90,11 @@ models:
     columns:
       - name: ano
         description: Ano
+        tests:
+          - not_null
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano
       - name: id_votacao
         description: ID da votação
       - name: data_hora
@@ -95,6 +118,11 @@ models:
     columns:
       - name: ano
         description: Ano
+        tests:
+          - not_null
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano
       - name: id_votacao
         description: ID da votação
       - name: sigla_orgao
@@ -112,16 +140,29 @@ models:
     columns:
       - name: ano
         description: Ano
+        tests:
+          - not_null
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano
       - name: id_votacao
         description: ID da votação
       - name: data
         description: Data
+        tests:
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__data')
+              field: data.data
       - name: descricao
         description: Descrição sobre a votação
       - name: id_proposicao
         description: ID proposição
       - name: ano_proposicao
         description: Ano da proposição
+        tests:
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano
       - name: titulo
         description: Título da proposição
       - name: ementa
