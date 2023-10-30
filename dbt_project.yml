@@ -169,7 +169,10 @@ models:
       +schema: br_me_cnpj   
     br_ms_sim:
       +materialized: table
-      +schema: br_ms_sim    
+      +schema: br_ms_sim
+    br_ms_sinasc:
+      +materialized: table
+      +schema: br_ms_sinasc       
     br_mercadolivre_ofertas:
       +materialized: table
       +schema: br_mercadolivre_ofertas
