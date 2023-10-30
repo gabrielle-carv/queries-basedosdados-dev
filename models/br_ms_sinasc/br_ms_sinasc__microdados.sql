@@ -7,7 +7,7 @@
       "data_type": "int64",
       "range": {
         "start": 1994,
-        "end": 2022,
+        "end": 2023,
         "interval": 1}
     },
     cluster_by = "sigla_uf",

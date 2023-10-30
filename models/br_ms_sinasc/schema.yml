@@ -6,6 +6,11 @@ models:
     columns:
       - name: ano
         description: Ano
+        tests:
+          - not_null
+          - relationships:
+              to: ref('br_bd_diretorios_data_tempo__ano')
+              field: ano.ano 
       - name: sigla_uf
         description: Sigla da Unidade da Federação
       - name: sequencial_nascimento
