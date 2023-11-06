@@ -221,6 +221,9 @@ models:
     mundo_transfermarkt_competicoes_internacionais:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes_internacionais
+    br_trase_supply_chain:
+      +materialized: table
+      +schema: br_trase_supply_chain
 
 tests:
   +severity: warn

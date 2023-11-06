@@ -1,0 +1,240 @@
+version: 2
+
+models:
+  - name: br_trase_supply_chain__beef
+    description: #TODO
+    columns:
+      - name: year
+        description: Year
+      - name: country_production
+        description: Country of production
+      - name: biome
+        description: biome
+      - name: state
+        description: State
+      - name: municipality_production
+        description: Municipality were the production of Soy Beans occurred
+      - name: municipality_logistics_hub
+        description: Logistics Hub
+      - name: exporter
+        description: Exporter name
+      - name: exporter_group
+        description: Exporter group
+      - name: importer
+        description: Importer name
+      - name: importer_group
+        description: Importer Group
+      - name: country_first_import_iso3
+        description: ISO3 code for the country of destination of the first import
+      - name: country_first_import_name
+        description: Country of destination of the first import
+      - name: economic_bloc
+        description: Economic bloc
+      - name: type
+        description: type
+      - name: cattle_deforestation_exposure
+        description: Cattle deforestation exposure
+      - name: fob_usd
+        description: Free on Board (FOB) total value
+      - name: co2_emissions_deforestation_5
+        description: CO2 emissions caused by cattle deforestation in 5 year period
+      - name: beef_tonnes
+        description: 'Beef '
+      - name: zero_deforestation_commitments
+        description: Zero-deforestation commitments(ZDC) are obtained by Global Canopys
+            annual assessment which determines whether a trader has a commitment to
+            zero deforestation in theirsupply chain (net or gross deforestation are
+            both acceptable) for a given commodity, covering a specific country and
+            time period
+      - name: land_use
+        description: Land Use
+      - name: product_description
+        description: Product Description
+      - name: trase_geocode
+        description: Trase Geocode
+  - name: br_trase_supply_chain__beef_slaughterhouses
+    description: This table contains TRASE slaughterhouses information for the brazilian supply chain 
+    columns:
+      - name: geom_id
+        description: Geom ID
+      - name: cartodb_id
+        description: Cartodb ID
+      - name: geom_webmercator_id
+        description: Geom Webmercator ID
+      - name: slaugtherhouse_id
+        description: TRASE slaugtherhouse ID
+      - name: company
+        description: Company name
+      - name: municipality_id
+        description: Municipality ID
+      - name: municipality_name
+        description: Municipality name
+      - name: state_id
+        description: State ID
+      - name: latitude
+        description: Latitude
+      - name: longitude
+        description: Longitude
+      - name: resolution_id
+        description: Identifies the type of the geom
+      - name: subclass
+        description: Category of the Slaugtherhouse according to TRASE imputation
+            methodology
+      - name: inspection_level
+        description: Identifies inspection level (Eg. System of Federal Inspection
+            (SIF))
+      - name: other_names
+        description: Others names for the company
+      - name: inspection_number
+        description: Inspection number
+      - name: tac
+        description: Unknown
+      - name: status
+        description: Status of the facility
+      - name: address
+        description: Adress of the facility
+      - name: date_sif_registered
+        description: Date of registration of the facility in the System of Federal
+            Inspection (SIF)
+      - name: sif_category
+        description: SIF registration category
+      - name: multifunctions
+        description: Brazil's National Economy Activity Codes (CNAE) and descriptions
+            of the facility
+  - name: br_trase_supply_chain__soy_beans
+    description: #TODO
+    columns:
+      - name: year
+        description: Year
+      - name: country_production_iso3
+        description: Production country 
+      - name: biome
+        description: Biome
+      - name: state
+        description: State
+      - name: municipality_production
+        description: Municipality were the production of soy beans occurred
+      - name: municipality_logistics_hub
+        description: Municipality of aggregation of soy. Either containing a farm
+            of a silo/storage facility that is closest to the municipality of production
+      - name: export_port
+        description: Porf of Export
+      - name: exporter_name
+        description: 'Exporter name '
+      - name: exporter_group
+        description: Exporter group
+      - name: importer_name
+        description: Importer name
+      - name: importer_group
+        description: Importer group
+      - name: country_first_import_iso3
+        description: ISO3 code for the country of destination of the first import
+      - name: country_first_import_name
+        description: Country of destination of the first import
+      - name: economic_bloc_first_import_name
+        description: 'Economic bloc of destination of the first import '
+      - name: type
+        description: type
+      - name: soy_deforestation_exposure
+        description: Soy deforestation exposure estimates how much soy deforestation
+            is associated with the soy supply chain
+      - name: co2_gross_emissions_deforestation_5
+        description: CO2 gross emissions caused by soy deforestation in 5 year period
+      - name: co2_net_emissions_deforestation_5
+        description: CO2 net emissions caused by soy deforestation in 5 year period
+      - name: land_use
+        description: Land Use
+      - name: fob_usd
+        description: 'Freight on Board (FOB) total value '
+      - name: soy_total_export
+        description: Soy total export
+      - name: soy_risk
+        description: Unknown
+      - name: zero_deforestation_commitments
+        description: Zero-deforestation commitments(ZDC) are obtained by Global Canopy’s
+            annual assessment which determines whether a trader has a commitment to
+            zero deforestation in theirsupply chain (net or gross deforestation are
+            both acceptable) for a given commodity, covering a specific country and
+            time period
+      - name: trase_geocode
+        description: Trase Geocode
+  - name: br_trase_supply_chain__soy_beans_storage_facilities
+    description: #TODO
+    columns:
+      - name: geom_id
+        description: Geom ID
+      - name: cartodb_id
+        description: Cartodb ID
+      - name: geom_webmercator_id
+        description: Geom Webmercator ID
+      - name: cnpj
+        description: 'National Registry of Legal Entities (CNPJ) '
+      - name: company
+        description: Company name
+      - name: municipality_id
+        description: Municipality ID
+      - name: state_id
+        description: State ID
+      - name: capacity
+        description: Capacity of the storage facility
+      - name: point
+        description: Geographic location of the refining facility
+      #todo: corrigir descrição e nome 
+      - name: subclass
+        description: Identifies the certance of the classification of the facility
+      - name: date
+        description: Unknown
+      - name: dt
+        description: Unknown
+  - name: br_trase_supply_chain__soy_beans_refining_facilities
+    description: #TODO
+    columns:
+      - name: year
+        description: Year
+      - name: geom_id
+        description: Geom ID
+      - name: cartodb_id
+        description: Cartodb ID
+      - name: geom_webmercator_id
+        description: Geom Webmercator ID
+      - name: municipality_id
+        description: Municipality ID
+      - name: state_id
+        description: State ID
+      - name: company
+        description: Company name
+      - name: refining_facility_Id
+        description: TRASE Soy Beans refining facility  ID
+      - name: capacity
+        description: Capacity of the refining  facility
+      - name: point
+        description: Geographic location of the refining facility
+  - name: br_trase_supply_chain__soy_beans_crushing_facilities
+    description: #TODO
+    columns:
+      - name: geom_id
+        description: Geom ID
+      - name: cartodb_id
+        description: Cartodb ID
+      - name: geom_webmercator_id
+        description: Geom Webmercator ID
+      - name: crushing_facility_Id
+        description: TRASE Soy Beans crushing facility  ID
+      - name: year
+        description: Year
+      - name: cnpj
+        description: 'National Registry of Legal Entities (CNPJ) '
+      - name: company
+        description: Company name
+      - name: municipality_id
+        description: Municipality ID
+      - name: state_id
+        description: State ID
+      - name: capacity
+        description: 'Capacity of the crushing facility '
+      - name: capacity_source
+        description: 'Source of the capacity of the crushing facility '
+      - name: status
+        description: 'Status of the crushing facility '
+      - name: point
+        description: 'Geographic location of the crushing facility '
