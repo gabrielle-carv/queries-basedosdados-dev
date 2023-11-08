@@ -3,21 +3,25 @@
     alias='novo_bolsa_familia',    
     schema='br_cgu_beneficios_cidadao',
     materialized='incremental',
-    partition_by={
+     partition_by={
       "field": "ano",
       "data_type": "int64",
+      "range": {
+        "start": 2023,
+        "end": 2024,
+        "interval": 1}
     },
-    cluster_by='sigla_uf' )
+    cluster_by = ["mes", "sigla_uf"] )
 }}
 with novo_bolsa_familia as (
 SELECT 
 SAFE_CAST(SUBSTR(mes_competencia, 1, 4) AS INT64) ano,
 SAFE_CAST(SUBSTR(mes_competencia, 5, 2) AS INT64) mes,
-SAFE_CAST(mes_referencia AS STRING) mes_referencia,
+SAFE_CAST(mes_referencia AS STRING) data_referencia,
 SAFE_CAST(PARSE_DATE('%Y%m',mes_referencia) AS DATE) data,
 t2.id_municipio,
 t2.nome as nome_municipio,
-SAFE_CAST(sigla_uf AS STRING) sigla_uf,
+SAFE_CAST(t1.sigla_uf AS STRING) sigla_uf,
 SAFE_CAST(cpf AS STRING) cpf_favorecido,
 SAFE_CAST(nis AS STRING) nis_favorecido,
 SAFE_CAST(t1.nome AS STRING) nome_favorecido,
