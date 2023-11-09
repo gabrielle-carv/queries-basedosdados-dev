@@ -230,6 +230,9 @@ models:
     mundo_transfermarkt_competicoes_internacionais:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes_internacionais
+    world_wb_mides:
+      +materialized: table
+      +schema: world_wb_mides
 
 tests:
   +severity: warn
