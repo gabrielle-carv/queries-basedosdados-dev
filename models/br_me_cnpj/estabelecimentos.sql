@@ -11,7 +11,7 @@
     post_hook=['CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
                     GRANT TO ("allUsers")
-                FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(data), MONTH) > 6 OR  DATE_DIFF(DATE(2023,5,1),DATE(data), MONTH) > 0)',
+                FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(data), MONTH) > 6)',
               'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
                     ON  {{this}}
                     GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org", "user:gabrielle.carvalho@basedosdados.org")
@@ -36,7 +36,7 @@ WITH cnpj_estabelecimentos AS
   SAFE_CAST(cnae_fiscal_secundaria AS STRING) cnae_fiscal_secundaria,
   SAFE_CAST(a.sigla_uf AS STRING) sigla_uf,
   SAFE_CAST(b.id_municipio AS STRING) id_municipio,
-  SAFE_CAST(a.id_municipio_rf AS STRING) id_municipio_rf,
+  SAFE_CAST(SAFE_CAST(a.id_municipio_rf AS NUMERIC)AS STRING) id_municipio_rf,
   SAFE_CAST(tipo_logradouro AS STRING) tipo_logradouro,
   SAFE_CAST(logradouro AS STRING) logradouro,
   SAFE_CAST(numero AS STRING) numero,
@@ -54,7 +54,7 @@ WITH cnpj_estabelecimentos AS
   SAFE_CAST(data_situacao_especial AS DATE) data_situacao_especial
 FROM basedosdados-dev.br_me_cnpj_staging.estabelecimentos a
 LEFT JOIN basedosdados.br_bd_diretorios_brasil.municipio b
-    ON a.id_municipio_rf = b.id_municipio_rf)
+    ON SAFE_CAST(SAFE_CAST(a.id_municipio_rf AS NUMERIC)AS STRING)  = b.id_municipio_rf)
 SELECT * FROM cnpj_estabelecimentos
 {% if is_incremental() %} 
 WHERE data > (SELECT MAX(data) FROM {{ this }} )
