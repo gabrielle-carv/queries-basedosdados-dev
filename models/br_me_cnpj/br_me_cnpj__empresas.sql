@@ -2,6 +2,7 @@
   config(
     schema='br_me_cnpj',
     materialized='incremental',
+    alias = 'empresas',
     unique_key='data',
     partition_by={
       "field": "data",

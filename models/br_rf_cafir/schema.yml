@@ -6,6 +6,8 @@ models:
     columns:
       - name: data_referencia
         description: Data de divulgação dos dados pela Receita Federal (RF)
+        tests:
+          - is_row_count_increasing
       - name: data_inscricao
         description: Data de inscrição do imóvel no cadastro de imóveis rurais da Receita Federal (RF)
       - name: id_imovel_receita_federal

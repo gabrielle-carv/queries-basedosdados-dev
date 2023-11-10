@@ -2,6 +2,7 @@
   config(
     schema='br_me_cnpj',
     materialized='incremental',
+    alias = 'estabelecimentos',
     partition_by={
       "field": "data",
       "data_type": "date",
