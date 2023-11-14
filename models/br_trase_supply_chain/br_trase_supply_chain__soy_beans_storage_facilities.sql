@@ -21,4 +21,3 @@ SAFE_CAST(subclass AS STRING) subclass,
 SAFE_CAST(dt AS STRING) dt
 
 FROM basedosdados-dev.br_trase_supply_chain_staging.soy_beans_storage_facilities AS t
-FROM basedosdados-dev.br_trase_supply_chain_staging.soy_beans_storage_facilities AS t

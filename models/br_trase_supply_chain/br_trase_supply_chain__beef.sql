@@ -51,7 +51,7 @@ LEFT JOIN (SELECT LOWER(TRANSLATE(nome_ingles, 'áàâãäéèêëíìîïóòô
     WHEN name_country_first_import = 'dominican republic' AND iso3_country_id IS NULL THEN 'DOM'
     WHEN name_country_first_import = 'philippines' AND iso3_country_id IS NULL THEN 'PHL'
     WHEN name_country_first_import = 'china (hong kong)' AND iso3_country_id IS NULL THEN 'HKG'
-    WHEN name_country_first_import = 'north korea' AND iso3_country_id IS NULL THEN 'PBK'
+    WHEN name_country_first_import = 'north korea' AND iso3_country_id IS NULL THEN 'PRK'
     WHEN name_country_first_import = 'cayman islands' AND iso3_country_id IS NULL THEN 'CYM'
     WHEN name_country_first_import = 'turks and caicos islands' AND iso3_country_id IS NULL THEN 'TCA'
     WHEN name_country_first_import = 'cape verde' AND iso3_country_id IS NULL THEN 'CPV'
@@ -146,16 +146,16 @@ AND diretorio.nome NOT IN ('rio branco', 'belem', 'redencao', 'nova olinda', 'al
 SELECT
 SAFE_CAST(YEAR AS INT64) year,
 SAFE_CAST(BIOME AS STRING) biome,
-SAFE_CAST(`COUNTRY OF PRODUCTION` AS STRING) country_production_iso3_id,
+SAFE_CAST(country_production_iso3_id AS STRING) country_production_iso3_id,
 SAFE_CAST(state_production AS STRING) state_production,
 SAFE_CAST(LOWER(MUNICIPALITY) AS STRING) municipality_name_production,
 SAFE_CAST(municipality_id_production AS STRING) municipality_id_production,
 SAFE_CAST(name_logistics_hub AS STRING) municipality_name_logistics_hub,
 SAFE_CAST(municipality_id_logistics_hub AS STRING) municipality_id_logistics_hub,
-SAFE_CAST(EXPORTER AS STRING) exporter,
-SAFE_CAST(`EXPORTER GROUP` AS STRING) exporter_group,
-SAFE_CAST(IMPORTER AS STRING) importer,
-SAFE_CAST(`IMPORTER GROUP` AS STRING) importer_group,
+SAFE_CAST(REPLACE(EXPORTER, 'UNKNOWN', '') AS STRING) exporter_name,
+SAFE_CAST(REPLACE(`EXPORTER GROUP`, 'UNKNOWN', '') AS STRING) exporter_group,
+SAFE_CAST(REPLACE(IMPORTER, 'UNKNOWN', '') AS STRING) importer_name,
+SAFE_CAST(REPLACE(`IMPORTER GROUP`, 'UNKNOWN', '') AS STRING) importer_group,
 SAFE_CAST(iso3_country_id_ AS STRING) country_first_import_iso3_id,
 SAFE_CAST(`COUNTRY OF DESTINATION` AS STRING) country_first_import_name,
 SAFE_CAST(`ECONOMIC BLOC` AS STRING) economic_bloc,
