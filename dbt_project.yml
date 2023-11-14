@@ -86,6 +86,9 @@ models:
     br_bd_metadados:
       +materialized: table
       +schema: br_bd_metadados
+    br_cgu_beneficios_cidadao:
+      +materialized: incremental
+      +schema: br_cgu_beneficios_cidadao      
     br_cgu_servidores_executivo_federal:
       +materialized: table
       +schema: br_cgu_servidores_executivo_federal
@@ -127,7 +130,10 @@ models:
       +schema: br_inep_saeb
     br_inmet_bdmep: 
       +materialized: table 
-      +schema: br_inmet_bdmep 
+      +schema: br_inmet_bdmep
+    br_inpe_queimadas: 
+      +materialized: table 
+      +schema: br_inpe_queimadas 
     br_poder360_pesquisas:
       +materialized: table
       +schema: br_poder360_pesquisas
@@ -191,9 +197,6 @@ models:
     br_ans_beneficiario:
       +materialized: incremental
       +schema: br_ans_beneficiario
-    br_ms_sinan:
-      +materialized: table
-      +schema: br_ms_sinan
     br_anp_precos_combustiveis:
       +materialized: table
       +schema: br_anp_precos_combustiveis
@@ -230,6 +233,9 @@ models:
     br_trase_supply_chain:
       +materialized: table
       +schema: br_trase_supply_chain
+    world_wb_mides:
+      +materialized: table
+      +schema: world_wb_mides
 
 tests:
   +severity: warn
