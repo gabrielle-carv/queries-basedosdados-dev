@@ -1,6 +1,7 @@
 {{
   config(
     schema='br_me_cnpj',
+    alias = 'simples',
     materialized='table',
   )
 }}

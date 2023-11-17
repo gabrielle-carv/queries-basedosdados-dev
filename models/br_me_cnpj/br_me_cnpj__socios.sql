@@ -1,6 +1,7 @@
 {{
   config(
     schema='br_me_cnpj',
+    alias = 'socios',
     materialized='incremental',
     partition_by={
       "field": "data",
