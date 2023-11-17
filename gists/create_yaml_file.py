@@ -33,7 +33,7 @@ def create_yaml_file(arq_url, output_file, table_id):
                 "Check if your google sheet Share are: Anyone on the internet with this link can view"
             )
     
-    def transformar_string(input_string, delimiter=':', field = bool):
+    def transform_string(input_string, delimiter=':', field = bool):
         parts = input_string.split(delimiter)
     
         if len(parts) == 2:
@@ -52,8 +52,8 @@ def create_yaml_file(arq_url, output_file, table_id):
         relationships = []
         relationship = yaml.comments.CommentedMap()
         relationship['relationships'] = {
-            "to": transformar_string(f"{directory_column}", field=False),
-            "field": transformar_string(f"{directory_column}", field=True)
+            "to": transform_string(f"{directory_column}", field=False),
+            "field": transform_string(f"{directory_column}", field=True)
         }
         relationships.append(relationship)
         return relationships    
