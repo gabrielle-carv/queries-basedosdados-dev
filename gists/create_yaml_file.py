@@ -3,7 +3,7 @@ import ruamel.yaml as yaml
 import requests 
 from io import StringIO
 
-def create_yaml_file(arq_url, output_file, table_id):
+def create_yaml_file(arq_url, output_file, table_id, not_nul_columns):
     """
     Creates a YAML file based on the given input and saves it to the specified output file.
     Args:
@@ -56,7 +56,16 @@ def create_yaml_file(arq_url, output_file, table_id):
             "field": transform_string(f"{directory_column}", field=True)
         }
         relationships.append(relationship)
-        return relationships    
+        return relationships  
+
+    def create_not_null_proportion(at_least):
+        not_null_proportion = []
+        not_null = yaml.comments.CommentedMap()
+        not_null['dbt_utils.not_null_proportion'] = {
+            "at_least": at_least,
+        }
+        not_null_proportion.append(not_null)
+        return not_null_proportion            
 
     if isinstance(table_id, str):
         # If table_id is a string, assume a single input file
@@ -83,6 +92,7 @@ def create_yaml_file(arq_url, output_file, table_id):
                 coluna = yaml.comments.CommentedMap()
                 coluna['name'] = name
                 coluna['description'] = description
+                coluna['tests'] = create_not_null_proportion(at_least=0.05) if name in not_nul_columns else None
                 conjunto['columns'].append(coluna)
 
         data['models'].append(conjunto)
@@ -99,23 +109,24 @@ def create_yaml_file(arq_url, output_file, table_id):
             conjunto['description'] = f"Insert `{id}` table description here"
             conjunto['columns'] = []
 
-        for _, row in dataframe.iterrows():
-            if not pd.isna(row["directory_column"]):
-                name = row['name']
-                description = row['description']
-                directory = row["directory_column"]
-                coluna = yaml.comments.CommentedMap()
-                coluna['name'] = name
-                coluna['description'] = description
-                coluna['tests'] = create_relationships(directory)
-                conjunto['columns'].append(coluna)
-            else:
-                name = row['name']
-                description = row['description']
-                coluna = yaml.comments.CommentedMap()
-                coluna['name'] = name
-                coluna['description'] = description
-                conjunto['columns'].append(coluna)
+            for _, row in dataframe.iterrows():
+                if not pd.isna(row["directory_column"]):
+                    name = row['name']
+                    description = row['description']
+                    directory = row["directory_column"]
+                    coluna = yaml.comments.CommentedMap()
+                    coluna['name'] = name
+                    coluna['description'] = description
+                    coluna['tests'] = create_relationships(directory)
+                    conjunto['columns'].append(coluna)
+                else:
+                    name = row['name']
+                    description = row['description']
+                    coluna = yaml.comments.CommentedMap()
+                    coluna['name'] = name
+                    coluna['description'] = description
+                    coluna['tests'] = create_not_null_proportion(at_least=0.05) if name in not_nul_columns else None
+                    conjunto['columns'].append(coluna)
 
             data['models'].append(conjunto)
 
