@@ -2,8 +2,9 @@ import pandas as pd
 import ruamel.yaml as yaml
 from utils import *
 import os
+from typing import List
 
-def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], unique_keys:list = [], mkdir= True) -> None:
+def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] = [], unique_keys: List[str] = [], mkdir=True) -> None:
     """
     Creates dbt models and schema.yaml files based on the architecture table, with the possibility of including data quality tests automatically.
 
@@ -44,6 +45,7 @@ def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], u
             os.makedirs(f"./models/{dataset_id}/", exist_ok=True)
         else:
             print("Directory for the new model has not been created, saving files in /queries-basedosadados-dev/gists/")    
+        
         # If table_id is a string, assume a single input file
         dataframe = sheet_to_df(arq_url)
         conjunto = yaml.comments.CommentedMap()
@@ -62,19 +64,19 @@ def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], u
                 coluna['tests'] = create_relationships(directory)
                 conjunto['columns'].append(coluna)
             else:
-                    name = row['name']
-                    description = row['description']
-                    coluna = yaml.comments.CommentedMap()
-                    coluna['name'] = name
-                    coluna['description'] = description
-                    tests = []
-                    if name in not_null_columns:
-                        tests += create_not_null_proportion(at_least=0.05)
-                    if name in unique_keys:
-                        tests += create_unique()
-                    if tests:
-                        coluna['tests'] = tests
-                    conjunto['columns'].append(coluna)
+                name = row['name']
+                description = row['description']
+                coluna = yaml.comments.CommentedMap()
+                coluna['name'] = name
+                coluna['description'] = description
+                tests = []
+                if name in not_null_columns:
+                    tests += create_not_null_proportion(at_least=0.05)
+                if name in unique_keys:
+                    tests += create_unique()
+                if tests:
+                    coluna['tests'] = tests
+                conjunto['columns'].append(coluna)
 
         data['models'].append(conjunto)
 
@@ -88,7 +90,6 @@ def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], u
             print("Directory for the new model has not been created, saving files in /queries-basedosadados-dev/gists/")    
 
         for url, id in zip(arq_url, table_id):
-            
             dataframe = sheet_to_df(url)
             conjunto = yaml.comments.CommentedMap()
             conjunto['name'] = f'{id}'
@@ -106,19 +107,19 @@ def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], u
                     coluna['tests'] = create_relationships(directory)
                     conjunto['columns'].append(coluna)
                 else:
-                        name = row['name']
-                        description = row['description']
-                        coluna = yaml.comments.CommentedMap()
-                        coluna['name'] = name
-                        coluna['description'] = description
-                        tests = []
-                        if name in not_null_columns:
-                            tests += create_not_null_proportion(at_least=0.05)
-                        if name in unique_keys:
-                            tests += create_unique()
-                        if tests:
-                            coluna['tests'] = tests
-                        conjunto['columns'].append(coluna)
+                    name = row['name']
+                    description = row['description']
+                    coluna = yaml.comments.CommentedMap()
+                    coluna['name'] = name
+                    coluna['description'] = description
+                    tests = []
+                    if name in not_null_columns:
+                        tests += create_not_null_proportion(at_least=0.05)
+                    if name in unique_keys:
+                        tests += create_unique()
+                    if tests:
+                        coluna['tests'] = tests
+                    conjunto['columns'].append(coluna)
 
             data['models'].append(conjunto)
 
@@ -128,7 +129,6 @@ def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], u
     if mkdir:       
         with open(f"./models/{dataset_id}/schema.yml", 'w') as file:
             yaml_obj.dump(data, file)
-
 
         print(f"{table_id}")
         create_models_from_architectures(arq_url,
@@ -143,4 +143,4 @@ def create_yaml_file(arq_url, table_id,dataset_id, not_null_columns:list = [], u
                                          output_dir=f"./gists/{dataset_id}/",
                                          dataset_id=dataset_id,
                                          table_ids=table_id)           
-    print("Files successfully created!")      
+    print("Files successfully created!")
