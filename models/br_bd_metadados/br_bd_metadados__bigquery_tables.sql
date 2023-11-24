@@ -15,5 +15,5 @@ SELECT
     ,TIMESTAMP_MILLIS(SAFE_CAST(last_modified_time AS INT64)) AS last_modified_time
     ,SAFE_CAST(row_count AS INT64) as row_count 
     ,round(safe_divide(SAFE_CAST(size_bytes AS INT64), (1000*1000)),1) as size_mb
-FROM `basedosdados-dev.br_bd_metadados_staging.bq_tables`
+FROM `basedosdados-dev.br_bd_metadados_staging.bigquery_tables`
 
