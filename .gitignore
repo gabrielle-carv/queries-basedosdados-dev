@@ -7,3 +7,4 @@ venv-dbt/
 .venv/
 .user.yml
 dbt_packages
+profiles.yml

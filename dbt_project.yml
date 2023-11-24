@@ -240,5 +240,3 @@ models:
       +materialized: table
       +schema: world_wb_mides
 
-tests:
-  +severity: warn

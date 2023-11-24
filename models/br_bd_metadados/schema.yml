@@ -1,6 +1,29 @@
 version: 2
 
 models:
+  - name: bigquery_tables
+    description: BigQuery metadata about the tables
+    columns:
+      - name: project_id
+        description: Project Id
+      - name: dataset_id
+        description: Dataset Id
+      - name: table_id
+        description: Table Id
+      - name: type
+        description: 'Type '
+      - name: creation_date
+        description: Creation Date
+      - name: last_modified_date
+        description: Last Modified Date
+      - name: creation_time
+        description: Creation Time
+      - name: last_modified_time
+        description: Last Modified Time
+      - name: row_count
+        description: Row Count
+      - name: size_mb
+        description: Size in Mb
   - name: organizations
     description: "Metadata on organizations in the BD+ platform."
     columns:
