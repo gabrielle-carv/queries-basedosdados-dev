@@ -10,7 +10,7 @@
         "start": 2003,
         "end": 2022,
         "interval": 1}
-    },    
+    },   
   )
 }}
 SELECT 
