@@ -61,10 +61,15 @@ def transform_string(input_string, delimiter=':', field=bool):
 
             if field:
                 return id_coluna
-            else:
+            try:
                 bucket, dataset, table = dataset_coluna.split(".")
                 resultado = f'{dataset}__{table}'
                 return f"ref('{resultado}')"
+            except Exception:
+                print("Bucket id not found in `directory_column`, using dataset_id and table_id instead.")
+                dataset, table = dataset_coluna.split(".")
+                resultado = f'{dataset}__{table}'
+                return f"ref('{resultado}')"                 
         else:
             return None
 
