@@ -159,8 +159,8 @@ models:
         description: Sigla do órgão
       - name: descricao
         description: Descrição sobre a votação 
-      - name: id_proposicao
-        description: ID proposição
+      - name: sigla_bancada
+        description: Sigla da bancada
       - name: orientacao
         description: Orientação da bancada
 
