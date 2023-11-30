@@ -5,7 +5,7 @@ import os
 from typing import List
 #test
 
-def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] = [], unique_keys: List[str] = [], mkdir=True) -> None:
+def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, unique_keys: List[str] = [], mkdir=True) -> None:
     """
     Creates dbt models and schema.yaml files based on the architecture table, with the possibility of including data quality tests automatically.
 
@@ -13,9 +13,8 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
         arq_url (str or list): The URL(s) or file path(s) of the input file(s) containing the data.
         table_id (str or list): The table ID(s) or name(s) to use as the YAML model name(s).
         dataset_id (str): The ID or name of the dataset to be used in the dbt models.
-        not_null_columns (list, optional): A list of column names for which the 'dbt_utils.not_null_proportion' test 
-                                           should be applied. Defaults to [].
-        unique_keys (list, optional): A list of column names for which the 'unique' and 'not_null' tests should be applied.
+        at_least (float): The proportion of non-null values accepted in the columns.
+        unique_keys (list, optional): A list of column names for which the 'dbt_utils.unique_combination_of_columns' test should be applied.
                                       Defaults to [].
         mkdir (bool, optional): If True, creates a directory for the new model(s). Defaults to True.
 
@@ -52,6 +51,7 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
         conjunto = yaml.comments.CommentedMap()
         conjunto['name'] = f'{table_id}'
         conjunto['description'] = f"Insert `{table_id}` table description here"
+        conjunto['tests'] = create_unique_combination(unique_keys)
         conjunto['columns'] = []
 
         for _, row in dataframe.iterrows():
@@ -62,7 +62,10 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
                 coluna = yaml.comments.CommentedMap()
                 coluna['name'] = name
                 coluna['description'] = description
-                coluna['tests'] = create_relationships(directory)
+                tests = []
+                tests += create_not_null_proportion(at_least)
+                tests += create_relationships(directory)
+                coluna['tests'] = tests
                 conjunto['columns'].append(coluna)
             else:
                 name = row['name']
@@ -71,12 +74,8 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
                 coluna['name'] = name
                 coluna['description'] = description
                 tests = []
-                if name in not_null_columns:
-                    tests += create_not_null_proportion(at_least=0.05)
-                if name in unique_keys:
-                    tests += create_unique()
-                if tests:
-                    coluna['tests'] = tests
+                tests += create_not_null_proportion(at_least)
+                coluna['tests'] = tests
                 conjunto['columns'].append(coluna)
 
         data['models'].append(conjunto)
@@ -95,6 +94,7 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
             conjunto = yaml.comments.CommentedMap()
             conjunto['name'] = f'{id}'
             conjunto['description'] = f"Insert `{id}` table description here"
+            conjunto['tests'] = create_unique_combination(unique_keys)
             conjunto['columns'] = []
 
             for _, row in dataframe.iterrows():
@@ -105,7 +105,10 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
                     coluna = yaml.comments.CommentedMap()
                     coluna['name'] = name
                     coluna['description'] = description
-                    coluna['tests'] = create_relationships(directory)
+                    tests = []
+                    tests += create_not_null_proportion(at_least)
+                    tests += create_relationships(directory)
+                    coluna['tests'] = tests
                     conjunto['columns'].append(coluna)
                 else:
                     name = row['name']
@@ -114,12 +117,8 @@ def create_yaml_file(arq_url, table_id, dataset_id, not_null_columns: List[str] 
                     coluna['name'] = name
                     coluna['description'] = description
                     tests = []
-                    if name in not_null_columns:
-                        tests += create_not_null_proportion(at_least=0.05)
-                    if name in unique_keys:
-                        tests += create_unique()
-                    if tests:
-                        coluna['tests'] = tests
+                    tests += create_not_null_proportion(at_least)
+                    coluna['tests'] = tests
                     conjunto['columns'].append(coluna)
 
             data['models'].append(conjunto)

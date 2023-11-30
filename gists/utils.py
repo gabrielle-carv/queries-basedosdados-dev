@@ -54,6 +54,7 @@ def create_models_from_architectures(architectures, output_dir, dataset_id, tabl
         
 
 def transform_string(input_string, delimiter=':', field=bool):
+    try:
         parts = input_string.split(delimiter)
 
         if len(parts) == 2:
@@ -61,17 +62,22 @@ def transform_string(input_string, delimiter=':', field=bool):
 
             if field:
                 return id_coluna
+
             try:
                 bucket, dataset, table = dataset_coluna.split(".")
                 resultado = f'{dataset}__{table}'
                 return f"ref('{resultado}')"
-            except Exception:
-                print("Bucket id not found in `directory_column`, using dataset_id and table_id instead.")
+            except ValueError:
+                print(f"Invalid format on `{input_string}`. Bucket id not found.")
                 dataset, table = dataset_coluna.split(".")
                 resultado = f'{dataset}__{table}'
-                return f"ref('{resultado}')"                 
+                return f"ref('{resultado}')"
         else:
+            print(f"Invalid input format on `{input_string}`. Expected format: 'dataset.column'")
             return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
 
 
 def create_relationships(directory_column):
@@ -83,6 +89,15 @@ def create_relationships(directory_column):
         }
         relationships.append(relationship)
         return relationships
+
+def create_unique_combination(unique_keys):
+        combinations = []
+        combination = yaml.comments.CommentedMap()
+        combination['dbt_utils.unique_combination_of_columns'] = {
+            "combination_of_columns": unique_keys
+        }
+        combinations.append(combination)
+        return combinations        
 
 def create_not_null_proportion(at_least):
         not_null_proportion = []
