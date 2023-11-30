@@ -5,7 +5,7 @@ import os
 from typing import List
 #test
 
-def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, unique_keys: List[str] = [], mkdir=True) -> None:
+def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, unique_keys: List[str] = ["insert unique keys here"], mkdir=True) -> None:
     """
     Creates dbt models and schema.yaml files based on the architecture table, with the possibility of including data quality tests automatically.
 
@@ -88,13 +88,14 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
             os.makedirs(f"./models/{dataset_id}/", exist_ok=True)
         else:
             print("Directory for the new model has not been created, saving files in /queries-basedosadados-dev/gists/")    
-
+        
         for url, id in zip(arq_url, table_id):
+            unique_keys_copy = unique_keys.copy()
             dataframe = sheet_to_df(url)
             conjunto = yaml.comments.CommentedMap()
             conjunto['name'] = f'{id}'
             conjunto['description'] = f"Insert `{id}` table description here"
-            conjunto['tests'] = create_unique_combination(unique_keys)
+            conjunto['tests'] = create_unique_combination(unique_keys_copy)
             conjunto['columns'] = []
 
             for _, row in dataframe.iterrows():
