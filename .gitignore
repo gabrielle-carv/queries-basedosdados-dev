@@ -8,3 +8,4 @@ venv-dbt/
 .user.yml
 dbt_packages
 profiles.yml
+gists/test.py
