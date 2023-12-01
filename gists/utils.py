@@ -9,7 +9,7 @@ def sheet_to_df(columns_config_url_or_path):
     """
     url = columns_config_url_or_path.replace("edit#gid=", "export?format=csv&gid=")
     try:
-        return pd.read_csv(StringIO(requests.get(url, timeout=10).content.decode("utf-8")), dtype= object, na_values= "")
+        return pd.read_csv(StringIO(requests.get(url, timeout=10).content.decode("utf-8")), dtype= str, na_values= "")
     except:
         print(
             "Check if your google sheet Share are: Anyone on the internet with this link can view"
