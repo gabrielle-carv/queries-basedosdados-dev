@@ -9,7 +9,7 @@ def sheet_to_df(columns_config_url_or_path):
     """
     url = columns_config_url_or_path.replace("edit#gid=", "export?format=csv&gid=")
     try:
-        return pd.read_csv(StringIO(requests.get(url, timeout=10).content.decode("utf-8")))
+        return pd.read_csv(StringIO(requests.get(url, timeout=10).content.decode("utf-8")), dtype= object, na_values= "")
     except:
         print(
             "Check if your google sheet Share are: Anyone on the internet with this link can view"
@@ -36,6 +36,7 @@ def create_models_from_architectures(architectures, output_dir, dataset_id, tabl
 
         for architecture, table_id in zip(architectures,  table_ids):
             dataframe = sheet_to_df(architecture)
+            dataframe.dropna(subset = ['bigquery_type'], inplace= True)
             with open(f"{output_dir}/{dataset_id}__{table_id}.sql", 'w') as file:
                 sql_config = "{{ config(alias=" + f"'{table_id}'," + "schema=" + f"'{dataset_id}'" + ") }}\n"
                 file.write(sql_config)

@@ -15,7 +15,7 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
         dataset_id (str): The ID or name of the dataset to be used in the dbt models.
         at_least (float): The proportion of non-null values accepted in the columns.
         unique_keys (list, optional): A list of column names for which the 'dbt_utils.unique_combination_of_columns' test should be applied.
-                                      Defaults to [].
+                                      Defaults to ["insert unique keys here"].
         mkdir (bool, optional): If True, creates a directory for the new model(s). Defaults to True.
 
     Raises:
