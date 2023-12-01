@@ -36,6 +36,8 @@ def create_models_from_architectures(architectures, output_dir, dataset_id, tabl
 
         for architecture, table_id in zip(architectures,  table_ids):
             dataframe = sheet_to_df(architecture)
+            exclude = ['(excluido)', '(apagado)', '(deleteado)']
+            dataframe = dataframe[~dataframe['bigquery_type'].str.contains('|'.join(exclude))]
             dataframe.dropna(subset = ['bigquery_type'], inplace= True)
             with open(f"{output_dir}/{dataset_id}__{table_id}.sql", 'w') as file:
                 sql_config = "{{ config(alias=" + f"'{table_id}'," + "schema=" + f"'{dataset_id}'" + ") }}\n"
