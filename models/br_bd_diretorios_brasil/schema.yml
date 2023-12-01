@@ -286,7 +286,7 @@ models:
         description: Sigla da Unidade da Federação 
       - name: nome_regiao
         description: Nome da Grande Região
-  - name: cep
+  - name: br_bd_diretorios_brasil__cep
     description: "Na tabela, é possível encontrar a numeração dos CEPs, juntamente com
     informações sobre suas localidades, tais como logradouros, bairros e cidades,
     além de complementos e identificação geográfica compostos pela latitude e longitude.
