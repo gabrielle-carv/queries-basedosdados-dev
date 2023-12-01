@@ -68,6 +68,9 @@ models:
     br_bd_indicadores:
       +materialized: table
       +schema: br_bd_indicadores
+    br_denatran_frota:
+      +materialized: table
+      +schema: br_denatran_frota
     br_rj_isp_estatisticas_seguranca:
       +materialized: table
       +schema: br_rj_isp_estatisticas_seguranca 
