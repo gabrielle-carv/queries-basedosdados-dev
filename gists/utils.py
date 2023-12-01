@@ -49,7 +49,7 @@ def create_models_from_architectures(architectures, output_dir, dataset_id, tabl
                     sql_line = f'SAFE_CAST({name} AS {bigquery_type}) {name},\n'
                     file.write(sql_line)
 
-                sql_last_line = f"FROM basedosdados-staging.{dataset_id}_staging.{table_id} AS t\n\n"
+                sql_last_line = f"FROM basedosdados-dev.{dataset_id}_staging.{table_id} AS t\n\n"
                 file.write(sql_last_line)
         
         
