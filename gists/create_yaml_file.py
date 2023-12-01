@@ -44,7 +44,7 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
     data['version'] = 2
     data.yaml_set_comment_before_after_key('models', before='\n\n')
     data['models'] = []            
-
+    exclude = ['(excluido)', '(apagado)', '(deleteado)']
     if isinstance(table_id, str): 
         table_id = [table_id]
         arq_url = [arq_url]
@@ -55,6 +55,8 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
     for url, id in zip(arq_url, table_id):
         unique_keys_copy = unique_keys.copy()
         dataframe = sheet_to_df(url)
+        dataframe.dropna(subset = ['bigquery_type'], inplace= True)
+        dataframe = dataframe[~dataframe['bigquery_type'].apply(lambda x: any(palavra in x.lower() for palavra in exclude))]
         conjunto = yaml.comments.CommentedMap()
         conjunto['name'] = f'{id}'
         conjunto['description'] = f"Insert `{id}` table description here"
