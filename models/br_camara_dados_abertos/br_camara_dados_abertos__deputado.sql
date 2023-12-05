@@ -51,8 +51,7 @@ WITH
     nome_civil,
     data_nascimento
     data_falecimento,
-    id_municipio_nascimento,
-    id_municipio,
+    id_municipio as id_municipio_nascimento,
     sigla_uf_nascimento,
     id_deputado,
     sexo,
@@ -60,7 +59,6 @@ WITH
     id_final_legislatura,
     url_site,
     url_rede_social,
-    sigla_uf 
-    from uniao_valores as t
+    from uniao_valores
 
 
