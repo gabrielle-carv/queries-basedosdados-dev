@@ -49,7 +49,7 @@ WITH
     select 
     nome,
     nome_civil,
-    data_nascimento
+    data_nascimento,
     data_falecimento,
     id_municipio as id_municipio_nascimento,
     sigla_uf_nascimento,
