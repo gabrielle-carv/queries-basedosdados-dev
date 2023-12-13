@@ -1,0 +1,11 @@
+{{ config(alias='domicilios_moradores_terras_indigenas',schema='br_ibge_censo_2022') }}
+SELECT
+SAFE_CAST(sigla_uf AS STRING) sigla_uf,
+SAFE_CAST(terra_indigena AS STRING) terra_indigena,
+SAFE_CAST(domicilios_terras_indigenas AS INT64) domicilios_terras_indigenas,
+SAFE_CAST(moradores_domicilios_terras_indigenas AS INT64) moradores_domicilios_terras_indigenas,
+SAFE_CAST(moradores_indigenas_domicilios_terras_indigenas AS INT64) moradores_indigenas_domicilios_terras_indigenas,
+SAFE_CAST(media_moradores_domicilios_terras_indigenas AS FLOAT64) media_moradores_domicilios_terras_indigenas,
+SAFE_CAST(media_moradores_indigenas_domicilios_terras_indigenas AS FLOAT64) media_moradores_indigenas_domicilios_terras_indigenas,
+FROM basedosdados-dev.br_ibge_censo_2022_staging.domicilios_moradores_terras_indigenas AS t
+

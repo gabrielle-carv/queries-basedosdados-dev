@@ -1,0 +1,7 @@
+{{ config(alias='populacao_residente_territorios_quilombolas',schema='br_ibge_censo_2022') }}
+SELECT
+SAFE_CAST(territorio_quilombola AS STRING) territorio_quilombola,
+SAFE_CAST(pessoas_residentes_territorios_quilombolas AS INT64) pessoas_residentes_territorios_quilombolas,
+SAFE_CAST(pessoas_quilombolas_residentes_territorios_quilombolas AS INT64) pessoas_quilombolas_residentes_territorios_quilombolas,
+FROM basedosdados-dev.br_ibge_censo_2022_staging.populacao_residente_territorios_quilombolas AS t
+

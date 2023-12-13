@@ -1,0 +1,11 @@
+{{ config(alias='quilombolas_domicilios_pelo_menos_um_morador_municipio',schema='br_ibge_censo_2022') }}
+SELECT
+SAFE_CAST(id_municipio AS STRING) id_municipio,
+SAFE_CAST(domicilios_pelo menos_um AS INT64) domicilios_pelo menos_um,
+SAFE_CAST(moradores_domicilios_pelo_menos_um AS INT64) moradores_domicilios_pelo_menos_um,
+SAFE_CAST(moradores_quilombolas_domicilios_pelo_menos_um AS INT64) moradores_quilombolas_domicilios_pelo_menos_um,
+SAFE_CAST(media_moradores_domicilios_particulares_pelo_menos_um AS FLOAT64) media_moradores_domicilios_particulares_pelo_menos_um,
+SAFE_CAST(media_moradores_quilombolas_domicilios_particulares_pelo_menos_um AS FLOAT64) media_moradores_quilombolas_domicilios_particulares_pelo_menos_um,
+SAFE_CAST(localizacao_domicilio AS STRING) localizacao_domicilio,
+FROM basedosdados-dev.br_ibge_censo_2022_staging.quilombolas_domicilios_pelo_menos_um_morador_municipio AS t
+

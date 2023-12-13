@@ -7,7 +7,7 @@ from constants import constants
 import logging
 from tqdm import tqdm
 
-def municipalities_in_chunks(chunk_size: int = 50):
+def municipalities_as_chunks(chunk_size: int = 50):
     query = """
     SELECT * FROM `basedosdados.br_bd_diretorios_brasil.municipio`
     """
@@ -46,7 +46,7 @@ if __name__ == "__main__":
             df = rename_dataframe(df)
             dataframe_to_parquet(df, mkdir = True, table_id=k )
         except:
-            output_list = municipalities_in_chunks()
+            output_list = municipalities_as_chunks()
             logging.info(f"Baixando dados em chunks da tabela: {k}")
             for n in tqdm(range(len(output_list))):
                 munis = ""

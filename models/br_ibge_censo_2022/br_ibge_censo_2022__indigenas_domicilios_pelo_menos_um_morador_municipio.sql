@@ -1,0 +1,11 @@
+{{ config(alias='indigenas_domicilios_pelo_menos_um_morador_municipio',schema='br_ibge_censo_2022') }}
+SELECT
+SAFE_CAST(id_municipio AS STRING) id_municipio,
+SAFE_CAST(localizacao_domicilio AS STRING) localizacao_domicilio,
+SAFE_CAST(domicilios_pelo_menos_um AS INT64) domicilios_pelo_menos_um,
+SAFE_CAST(moradores_domicilios_pelo_menos_um AS INT64) moradores_domicilios_pelo_menos_um,
+SAFE_CAST(moradores_indigenas_domicilios_pelo_menos_um AS INT64) moradores_indigenas_domicilios_pelo_menos_um,
+SAFE_CAST(media_moradores_domicilios_pelo_menos_um AS FLOAT64) media_moradores_domicilios_pelo_menos_um,
+SAFE_CAST(media_moradores_indigenas_domicilios_pelo_menos_um AS FLOAT64) media_moradores_indigenas_domicilios_pelo_menos_um,
+FROM basedosdados-dev.br_ibge_censo_2022_staging.indigenas_domicilios_pelo_menos_um_morador_municipio AS t
+
