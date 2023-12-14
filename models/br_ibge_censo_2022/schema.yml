@@ -118,19 +118,6 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: media_moradores_domicilios_territorios_quilombolas
-        description: Média de moradores em domicílios particulares permanentes ocupados
-            localizados em territórios quilombolas
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: media_moradores_quilombolas_domicilios_territorios_quilombolas
-        description: Média de moradores quilombolas em domicílios particulares permanentes
-            ocupados com pelo menos um morador quilombola localizados em territórios
-            quilombolas
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
   - name: quilombolas_populacao_residente_municipio
     description: Insert `quilombolas_populacao_residente_municipio` table description
         here
@@ -228,12 +215,6 @@ models:
                 at_least: 0.05
       - name: moradores_indigenas_domicilios_terras_indigenas_pelo_menos_um
         description: Moradores indígenas em domicílios particulares permanentes ocupados
-            com pelo menos um morador indígena
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: media_moradores_domicilios_terras_indigenas_pelo_menos_um
-        description: Média de moradores em domicílios particulares permanentes ocupados
             com pelo menos um morador indígena
         tests:
           - dbt_utils.not_null_proportion:
@@ -381,102 +362,16 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_brasil__municipio')
                 field: id
-      - name: particular
-        description: Particular
+      - name: especie
+        description: Espécie
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente
-        description: Particular permanente
+      - name: domicilios_recenseados
+        description: Domicílios Recenseados
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente_ocupado
-        description: Particular permanente ocupado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente_ocupado_com_entrevista
-        description: Particular permanente ocupado - com entrevista
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente_ocupado_sem_entrevista
-        description: Particular permanente ocupado - sem entrevista
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente_nao_ocupado
-        description: Particular permanente não ocupado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente_nao_ocupado_vago
-        description: Particular permanente não ocupado - vago
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_permanente_nao_ocupado_uso_ocasional
-        description: Particular permanente não ocupado - uso ocasional
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: particular_improvisado
-        description: Particular improvisado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: coletivo
-        description: Coletivo
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: coletivo_com_morador
-        description: Coletivo - com morador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: coletivo_sem_morador
-        description: Coletivo - sem morador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
   - name: indigenas_domicilios_moradores_municipio
     description: Insert `indigenas_domicilios_moradores_municipio` table description
         here

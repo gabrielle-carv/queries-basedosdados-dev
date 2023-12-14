@@ -1,17 +1,7 @@
 {{ config(alias='domicilios_recenseados_especie_municipio',schema='br_ibge_censo_2022') }}
 SELECT
 SAFE_CAST(id_municipio AS STRING) id_municipio,
-SAFE_CAST(particular AS INT64) particular,
-SAFE_CAST(particular_permanente AS INT64) particular_permanente,
-SAFE_CAST(particular_permanente_ocupado AS INT64) particular_permanente_ocupado,
-SAFE_CAST(particular_permanente_ocupado_com_entrevista AS INT64) particular_permanente_ocupado_com_entrevista,
-SAFE_CAST(particular_permanente_ocupado_sem_entrevista AS INT64) particular_permanente_ocupado_sem_entrevista,
-SAFE_CAST(particular_permanente_nao_ocupado AS INT64) particular_permanente_nao_ocupado,
-SAFE_CAST(particular_permanente_nao_ocupado_vago AS INT64) particular_permanente_nao_ocupado_vago,
-SAFE_CAST(particular_permanente_nao_ocupado_uso_ocasional AS INT64) particular_permanente_nao_ocupado_uso_ocasional,
-SAFE_CAST(particular_improvisado AS INT64) particular_improvisado,
-SAFE_CAST(coletivo AS INT64) coletivo,
-SAFE_CAST(coletivo_com_morador AS INT64) coletivo_com_morador,
-SAFE_CAST(coletivo_sem_morador AS INT64) coletivo_sem_morador,
+SAFE_CAST(especie AS STRING) especie,
+SAFE_CAST(domicilios_recenseados_domicilios_ AS INT64) domicilios_recenseados,
 FROM basedosdados-dev.br_ibge_censo_2022_staging.domicilios_recenseados_especie_municipio AS t
 
