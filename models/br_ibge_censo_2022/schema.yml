@@ -324,13 +324,21 @@ models:
               - insert unique keys here
     columns:
       - name: id_municipio
-        description: Unidade da Federação
+        description: ID Município IBGE 7 dígitos
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
           - relationships:
                 to: ref('br_bd_diretorios_brasil__municipio')
                 field: id
+      - name: sigla_uf
+        description: Unidade da Federação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__uf')
+                field: sigla                
       - name: indice_envelhecimento
         description: Índice de envelhecimento
         tests:
