@@ -335,11 +335,6 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: media_moradores_domicilios
-        description: Média de moradores em domicílios particulares permanentes ocupados
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
   - name: indice_envelhecimento_municipio
     description: Insert `indice_envelhecimento_municipio` table description here
     tests:
@@ -686,15 +681,6 @@ models:
                 field:
       - name: moradores_indigenas_domicilios_terras_indigenas
         description: Moradores indígenas em domicílios particulares permanentes ocupados
-            localizados em terras indígenas
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to:
-                field:
-      - name: media_moradores_domicilios_terras_indigenas
-        description: Média de moradores em domicílios particulares permanentes ocupados
             localizados em terras indígenas
         tests:
           - dbt_utils.not_null_proportion:
