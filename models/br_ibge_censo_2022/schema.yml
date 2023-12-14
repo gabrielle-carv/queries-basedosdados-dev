@@ -17,6 +17,14 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_brasil__municipio')
                 field: id
+      - name: sigla_uf
+        description: Unidade da Federação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__uf')
+                field: sigla                
       - name: domicilios
         description: Domicílios particulares permanentes ocupados
         tests:
@@ -77,6 +85,11 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05                
       - name: pessoas_residentes_territorios_quilombolas
         description: Pessoas residentes em territórios quilombolas
         tests:
@@ -473,6 +486,14 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_brasil__municipio')
                 field: id
+      - name: sigla_uf
+        description: ID Município IBGE 7 dígitos
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__uf')
+                field: sigla                
       - name: domicilios_pelo menos_um
         description: Domicílios particulares permanentes ocupados com pelo menos um
             morador quilombola
@@ -515,6 +536,11 @@ models:
             combination_of_columns:
               - insert unique keys here
     columns:
+      - name: terra_indigena
+        description: Terra Indígena
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: sigla_uf
         description: Sigla da Unidade da Federação
         tests:
@@ -523,11 +549,6 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_brasil__uf')
                 field: sigla
-      - name: terra_indigena
-        description: Terra Indígena
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: pessoas_residentes_terras_indigenas
         description: Pessoas residentes em terras indígenas
         tests:
