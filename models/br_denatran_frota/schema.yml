@@ -35,8 +35,14 @@ models:
         description: Sigla da Unidade da Federação
       - name: tipo_veiculo
         description: Tipo de veículo
+        tests:
+          - dbt_utils.not_null_proportion:
+                  at_least: 0.05
       - name: quantidade
         description: Quantidade de veículos
+        tests:
+          - dbt_utils.not_null_proportion:
+                  at_least: 0.05
   - name: br_denatran_frota__uf_tipo
     description: Frota de veículos por Unidade da Federação (UF) e tipo
     tests:
@@ -66,5 +72,11 @@ models:
               at_least: 0.05
       - name: tipo_veiculo
         description: Tipo de veículo
+        tests:
+          - dbt_utils.not_null_proportion:
+                  at_least: 0.05
       - name: quantidade
         description: Quantidade de veículos
+        tests:
+          - dbt_utils.not_null_proportion:
+                  at_least: 0.05
