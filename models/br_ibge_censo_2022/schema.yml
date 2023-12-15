@@ -440,36 +440,6 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-  - name: populacao_grupos_idade_uf
-    description: Insert `populacao_grupos_idade_uf` table description here
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-            combination_of_columns:
-              - insert unique keys here
-    columns:
-      - name: ano
-        description: Ano
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: sigla_uf
-        description: Sigla da Unidade da Federação
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to: ref('br_bd_diretorios_brasil__uf')
-                field: sigla
-      - name: grupo_idade
-        description: Grupo de idade
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: populacao
-        description: População
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
   - name: quilombolas_domicilios_pelo_menos_um_morador_municipio
     description: Insert `quilombolas_domicilios_pelo_menos_um_morador_municipio` table
         description here
@@ -720,6 +690,36 @@ models:
                 at_least: 0.05
       - name: populacao_residente
         description: População Residente
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+  - name: populacao_grupos_idade_uf
+    description: Insert `populacao_grupos_idade_uf` table description here
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - insert unique keys here
+    columns:
+      - name: ano
+        description: Ano
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__uf')
+                field: sigla
+      - name: grupo_idade
+        description: Grupo de idade
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: populacao
+        description: População
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
