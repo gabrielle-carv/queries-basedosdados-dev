@@ -1,4 +1,4 @@
-{{ config(alias='domicilios_pelo_menos_um_territorios_quilombolas',schema='br_ibge_censo_2022') }}
+{{ config(alias='indigenas_domicilios_pelo_menos_um_territorios_quilombolas',schema='br_ibge_censo_2022') }}
 SELECT
 SAFE_CAST(TRIM(REGEXP_EXTRACT(territorio_quilombola_por_unidade_da_federacao, r'([^\(]+)')) AS STRING) territorio_quilombola,
 SAFE_CAST(TRIM(REGEXP_EXTRACT(territorio_quilombola_por_unidade_da_federacao, r'\(([^)]+)\)')) AS STRING) sigla_uf,

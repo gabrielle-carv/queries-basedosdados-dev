@@ -1,4 +1,4 @@
-{{ config(alias='domicilios_moradores_territorios_quilombolas',schema='br_ibge_censo_2022') }}
+{{ config(alias='quilombolas_domicilios_moradores_territorios_quilombolas',schema='br_ibge_censo_2022') }}
 SELECT
 SAFE_CAST(territorio_quilombola AS STRING) territorio_quilombola,
 SAFE_CAST(domicilios_pelo_menos_um_territorios_quilombolas AS STRING) domicilios_pelo_menos_um_territorios_quilombolas,
