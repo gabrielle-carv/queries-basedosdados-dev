@@ -1,4 +1,5 @@
 {{ config(alias='domicilios_recenseados_especie_municipio',schema='br_ibge_censo_2022') }}
+WITH ibge as(
 SELECT
 municipio,
 SAFE_CAST(TRIM(REGEXP_EXTRACT(municipio, r'([^\(]+)')) AS STRING) nome_municipio,
