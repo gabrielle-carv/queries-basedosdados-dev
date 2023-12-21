@@ -106,7 +106,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
   - name: br_ibge_censo_2022__quilombolas_populacao_residente_municipio
-    description: 
+    description: População residente por municipio.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
@@ -133,7 +133,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
   - name: br_ibge_censo_2022__quilombolas_domicilio_morador_territorio_quilombola
-    description: 
+    description: Domicílios particulares permanentes ocupados e Moradores, total e quilombolas, em domicílios particulares permanentes, por território quilombola.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
