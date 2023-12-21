@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: tercerizados
+  - name: terceirizados
     description: "dbt model for tercerizados table"
     columns:
       - name: ano
