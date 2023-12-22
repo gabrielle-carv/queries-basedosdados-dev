@@ -1,5 +1,6 @@
 {{ 
   config(
+    alias = 'empenho',
     schema='world_wb_mides',
     materialized='table',
      partition_by={
@@ -10,11 +11,9 @@
         "end": 2022,
         "interval": 1}
     },
-    cluster_by = ["mes", "sigla_uf"],
-    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'},
-    post_hook=['REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"',
-                'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'])
- }}
+    cluster_by = ["ano", "sigla_uf"],
+    labels = {'tema': 'economia'})
+}}
 SELECT
   ano                    INT64,
   mes                    INT64,
