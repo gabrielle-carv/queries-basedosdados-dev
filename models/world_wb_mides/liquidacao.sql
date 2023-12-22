@@ -602,7 +602,7 @@ WITH liquidacao_ce AS (
      SAFE_CAST (CONCAT(RIGHT(nota_empenho, LENGTH(nota_empenho) - 6), ' ', codigo_ug, ' ', codigo_gestao, ' ', '5300108', ' ', (RIGHT(exercicio,2))) AS STRING) AS id_empenho_bd,   
      SAFE_CAST (NULL AS STRING) AS id_empenho,
      SAFE_CAST (nota_empenho AS STRING) AS numero_empenho,
-     SAFE_CAST (CONCAT(RIGHT(nota_lancamento, LENGTH(nota_lancamento) - 6), ' ', codigo_ug, ' ', codigo_gestao, ' ', '5300108', ' ', (RIGHT(exercicio,2))) AS STRING) AS id_liquidacao_bd,
+     CASE WHEN LENGTH(nota_lancamento) = 11 THEN SAFE_CAST (CONCAT(RIGHT(nota_lancamento, LENGTH(nota_lancamento) - 6), ' ', codigo_ug, ' ', codigo_gestao, ' ', '5300108', ' ', (RIGHT(exercicio,2))) AS STRING) END AS id_liquidacao_bd,
      SAFE_CAST (NULL AS STRING) AS id_liquidacao,
      SAFE_CAST (nota_lancamento AS STRING) AS numero,
      SAFE_CAST (credor AS STRING) AS nome_responsavel,
