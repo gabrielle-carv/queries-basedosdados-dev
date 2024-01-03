@@ -237,4 +237,7 @@ models:
     world_wb_mides:
       +materialized: table
       +schema: world_wb_mides
+    br_ibge_censo_2022:
+      +materialized: table
+      +schema: br_ibge_censo_2022      
 
