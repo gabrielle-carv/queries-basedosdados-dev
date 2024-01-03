@@ -1,4 +1,4 @@
-{{ config(alias='microdados',schema='br_datahackers_state_data_science') }}
+{{ config(alias='microdados',schema='br_datahackers_state_data') }}
 SELECT
 SAFE_CAST(p0 AS STRING) p0,
 SAFE_CAST(p1_a AS INT64) p1_a,
@@ -353,5 +353,5 @@ SAFE_CAST(p8_d_8 AS INT64) p8_d_8,
 SAFE_CAST(p8_d_9 AS INT64) p8_d_9,
 SAFE_CAST(p8_d_10 AS INT64) p8_d_10,
 SAFE_CAST(p8_d_11 AS INT64) p8_d_11,
-FROM basedosdados-dev.br_datahackers_state_data_science_staging.microdados AS t
+FROM basedosdados-dev.br_datahackers_state_data_staging.microdados AS t
 

@@ -212,9 +212,9 @@ models:
       +post-hook: 
         - 'REVOKE `roles/bigquery.dataViewer` ON TABLE {{ this }} FROM "specialGroup:allUsers"'
         - 'GRANT `roles/bigquery.dataViewer` ON TABLE {{ this }} TO "group:bd-pro@basedosdados.org"'
-    br_datahackers_state_data_science:
+    br_datahackers_state_data:
       +materialized: table
-      +schema: br_datahackers_state_data_science        
+      +schema: br_datahackers_state_data       
     world_iea_pirls:
       +materialized: table
       +schema: world_iea_pirls

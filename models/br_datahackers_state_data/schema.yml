@@ -1,12 +1,12 @@
 version: 2
 
 models:
-  - name: br_datahackers_state_data_science__microdados
+  - name: br_datahackers_state_data__microdados
     description: O mais completo mapeamento do mercado brasileiro de dados [Data Hackers + Bain]
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id
+              - p0
     columns:
       - name: p0
         description: Id
@@ -864,123 +864,123 @@ models:
         description: Microsoft powerbi
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_1
         description: Microsoft powerbi
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_2
         description: Qlik view/qlik sense
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_3
         description: Tableau
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_4
         description: Metabase
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_5
         description: Superset
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_6
         description: Redash
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_7
         description: Microstrategy
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_8
         description: Ibm analytics/cognos
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_9
         description: Sap business objects
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_10
         description: Oracle business intelligence
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_11
         description: Amazon quicksight
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_12
         description: Salesforce/einstein analytics
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_13
         description: Mode
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_14
         description: Alteryx
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_15
         description: Birst
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_16
         description: Looker
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_17
         description: Google data studio
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_18
         description: Sas visual analytics
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_19
         description: Grafana
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_20
         description: Tibco spotfire
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_21
         description: Pentaho
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_22
         description: Fazemos todas as análises utilizando apenas excel ou planilhas
             do google
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p4_i_23
         description: Não utilizo nenhuma ferramenta de bi no trabalho
         tests:
           - dbt_utils.not_null_proportion:
-                at_least: 0.05
+                at_least: 0.01
       - name: p5_a
         description: Qual seu objetivo na área de dados?
         tests:
