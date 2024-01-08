@@ -1,6 +1,6 @@
 {{
     config(
-        schema='br_tse_eleicoes'
+        schema='br_tse_eleicoes',
         alias = 'candidatos',
         materialized='table',
         partition_by={

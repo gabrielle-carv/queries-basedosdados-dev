@@ -1,7 +1,7 @@
 SELECT 
 {{
     config(
-        schema='br_tse_eleicoes'
+        schema='br_tse_eleicoes',
         alias = 'despesas_candidato',
         materialized='table',
         partition_by={
