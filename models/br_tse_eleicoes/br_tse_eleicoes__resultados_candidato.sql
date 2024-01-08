@@ -1,3 +1,20 @@
+{{
+    config(
+        schema='br_tse_eleicoes'
+        alias = 'resultados_candidato',
+        materialized='table',
+        partition_by={
+            "field": "ano",
+            "data_type": "int64",
+            "range": {
+                "start": 1945,
+                "end": 2022,
+                "interval": 1
+            }
+        }
+    )
+}}
+
 SELECT 
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(turno AS INT64) turno,
