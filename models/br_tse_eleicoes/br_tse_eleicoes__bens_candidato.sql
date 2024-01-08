@@ -1,4 +1,21 @@
-SELECT 
+{{
+    config(
+        schema='br_tse_eleicoes'
+        alias = 'bens_candidato',
+        materialized='table',
+        partition_by={
+            "field": "ano",
+            "data_type": "int64",
+            "range": {
+                "start": 2006,
+                "end": 2022,
+                "interval": 2
+            }
+        }
+    )
+}}
+
+SELECT
 SAFE_CAST(ano AS INT64) ano,
 SAFE_CAST(sigla_uf AS STRING) sigla_uf,
 SAFE_CAST(tipo_eleicao AS STRING) tipo_eleicao,
