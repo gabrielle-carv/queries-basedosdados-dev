@@ -614,7 +614,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
   - name: br_ibge_censo_2022__indigenas_indice_envelhecimento_grupo_idade_municipio
-    description: 
+    description: teste
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
@@ -656,7 +656,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
   - name: br_ibge_censo_2022__indigenas_populacao_grupo_idade_municipio
-    description: 
+    description: teste
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
@@ -694,7 +694,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
   - name: br_ibge_censo_2022__indice_envelhecimento_cor_raca_municipio
-    description: 
+    description: teste
         here
     tests:
       - dbt_utils.unique_combination_of_columns:
@@ -737,7 +737,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
   - name: br_ibge_censo_2022__populacao_residente_cor_raca_municipio
-    description: 
+    description: teste
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
@@ -770,38 +770,6 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: cor_raca
-        description: Cor ou Raça
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: populacao_residente
-        description: População
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-  - name: br_ibge_censo_2022__populacao_residente_cor_raca
-    description: 
-    tests:
-      - dbt_utils.unique_combination_of_columns:
-            combination_of_columns:
-              - ano
-              - id_municipio
-              - cor_raca
-    columns:
-      - name: ano
-        description: Ano
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: id_municipio
-        description: ID Município IBGE 7 dígitos
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to: ref('br_bd_diretorios_brasil__municipio')
-                field: id
       - name: cor_raca
         description: Cor ou Raça
         tests:
