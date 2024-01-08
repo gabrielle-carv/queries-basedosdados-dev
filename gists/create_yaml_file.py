@@ -44,7 +44,7 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
     data['version'] = 2
     data.yaml_set_comment_before_after_key('models', before='\n\n')
     data['models'] = []            
-    exclude = ['(excluido)', '(apagado)', '(deleteado)']
+    exclude = ['(excluded)', '(erased)', '(deleted)']
     if isinstance(table_id, str): 
         table_id = [table_id]
         arq_url = [arq_url]
@@ -57,23 +57,23 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
         dataframe = sheet_to_df(url)
         dataframe.dropna(subset = ['bigquery_type'], inplace= True)
         dataframe = dataframe[~dataframe['bigquery_type'].apply(lambda x: any(palavra in x.lower() for palavra in exclude))]
-        conjunto = yaml.comments.CommentedMap()
-        conjunto['name'] = f'{id}'
-        conjunto['description'] = f"Insert `{id}` table description here"
-        conjunto['tests'] = create_unique_combination(unique_keys_copy)
-        conjunto['columns'] = []
+        dataset = yaml.comments.CommentedMap()
+        dataset['name'] = f'{id}'
+        dataset['description'] = f"Insert `{id}` table description here"
+        dataset['tests'] = create_unique_combination(unique_keys_copy)
+        dataset['columns'] = []
 
         for _, row in dataframe.iterrows():
-            coluna = yaml.comments.CommentedMap()
-            coluna['name'] = row['name']
-            coluna['description'] = row['description']
+            column = yaml.comments.CommentedMap()
+            column['name'] = row['name']
+            column['description'] = row['description']
             tests = []
             tests += create_not_null_proportion(at_least)
             if not pd.isna(row["directory_column"]):
                 directory = row["directory_column"]
                 tests += create_relationships(directory)
-            coluna['tests'] = tests
-            conjunto['columns'].append(coluna)
+            column['tests'] = tests
+            dataset['columns'].append(column)
 
 
         data['models'].append(conjunto)
