@@ -366,12 +366,14 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
 
-  - name: proposicao_autor
+  - name: br_camara_dados_abertos__proposicao_autor
     description: Dados que relacionam identificadores básicos de proposições a identificadores básicos de autores.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - uriProposicao
+              - id_proposicao
+              - tipo_autor
+              - ordem_assinatura
     columns:
       - name: id_proposicao
         description: ID proposição
@@ -389,7 +391,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
       - name: tipo_autor
-        description: Código do autor
+        description: Tipo de Autor (i.e Deputado, Órgão do Poder Legislativo)
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -398,31 +400,13 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: sigla_partido
-        description: Sigla do partido do autor
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: sigla_uf_autor
-        description: Sigla da Unidade da Federação a qual o autor está vinculado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to: ref('br_bd_diretorios_brasil__uf')
-                field: sigla
-      - name: ordem_assinatura
-        description: Ordem assinatura
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: proponente
-        description: Proponente
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: url_autor
         description: URL do autor
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: sigla_partido
+        description: Sigla do partido do autor
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -431,13 +415,27 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-
-  - name: proposicao_microdados
-    description: Arquivos em que cada registro contém dados sobre uma proposição apresentada à Câmara dos Deputados para deliberação, como identificador universal (URI), sigla, número, ano, ementa, temas e keywords, informações sobre a tramitação mais recente, proposições a que se relacionam, etc.
+      - name: sigla_uf_autor
+        description: Sigla da Unidade da Federação a qual o autor está vinculado
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: ordem_assinatura
+        description: Ordem assinatura
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: proponente
+        description: Indica se o autor é o proponente da proposição
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+  - name: br_camara_dados_abertos__proposicao_microdados
+    description: Dados em que cada registro contém dados sobre uma proposição apresentada à Câmara dos Deputados para deliberação, como identificador universal (URI), sigla, número, ano, ementa, temas e keywords, informações sobre a tramitação mais recente, proposições a que se relacionam, etc.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - uriProposicao
+              - id
     columns:
       - name: ano
         description: Ano
@@ -463,28 +461,28 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_data_tempo__hora')
                 field: hora
-      - name: id_proposicao
+      - name: id
         description: ID proposição
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_proposicao
+      - name: url
         description: URL proposição
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: sigla_tipo
-        description: Tipo de proposição
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: numero
-        description: Número
+        description: Número da proposição
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: tipo_descricao
-        description: Tipo de descrição
+      - name: sigla
+        description: Sigla do tipo de proposição
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: tipo
+        description: Especificação do tipo de proposição
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -498,7 +496,7 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: palavras_chave
+      - name: palavra_chave
         description: Palavras-chave
         tests:
           - dbt_utils.not_null_proportion:
@@ -508,18 +506,18 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_proposta_anterior
-        description: URL da proposta anterior, se houver.
+      - name: url_anterior
+        description: URL da proposição anterior, se houver.
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_proposta_principal
-        description: URL da proposta principal, se aplicável.
+      - name: url_principal
+        description: URL da proposição principal, se aplicável.
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_proposta_posterior
-        description: URL da proposta posterior, se houver.
+      - name: url_posterior
+        description: URL da proposição posterior, se houver.
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -538,18 +536,8 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: id_orgao_ultimo_status
-        description: ID do órgão relacionado ao último status.
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: sigla_orgao_ultimo_status
         description: Sigla do órgão relacionado ao último status.
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url_orgao_ultimo_status
-        description: URL do órgão relacionado ao último status.
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -558,22 +546,12 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: id_tipo_tramitacao_ultimo_status
-        description: ID do tipo de tramitação associado ao último status.
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: descricao_tramitacao_ultimo_status
+      - name: tramitacao_ultimo_status
         description: Descrição da tramitação associada ao último status.
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: id_situacao_ultimo_status
-        description: Identificador da situação associada ao último status.
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: descricao_situacao_ultimo_status
+      - name: situacao_ultimo_status
         description: Descrição da situação associada ao último status.
         tests:
           - dbt_utils.not_null_proportion:
@@ -599,12 +577,15 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
 
-  - name: proposicao_tema
-    description: Nestes arquivos, separados por ano de apresentação das proposições, cada registro corresponde a uma área temática na qual uma proposição foi classificada pelo Centro de Documentação e Informação da Câmara.
+  - name: br_camara_dados_abertos__proposicao_tema
+    description: Cada registro corresponde a uma área temática na qual uma proposição foi classificada pelo Centro de Documentação e Informação da Câmara.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id_proposicao
+              - ano
+              - url_proposicao
+              - tema
+              - relevancia
     columns:
       - name: ano
         description: Ano
@@ -613,9 +594,9 @@ models:
                 at_least: 0.05
           - relationships:
                 to: ref('br_bd_diretorios_data_tempo__ano')
-                field: ano
-      - name: id_proposicao
-        description: ID Proposição
+                field: ano.ano  
+      - name: url_proposicao
+        description: URl da Proposição
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -624,18 +605,13 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: id_tema
-        description: Código tema
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: numero
-        description: Número
+        description: Número da proposição
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: relevancia
-        description: Relevância
+      - name: tema
+        description: Descrição do tema
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05

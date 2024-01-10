@@ -15,11 +15,10 @@
 }}
 
 SELECT
-    SAFE_CAST(ano AS STRING) ano,
-    SAFE_CAST(uriProposicao AS STRING) id_proposicao,
-    SAFE_CAST(siglaTipo AS STRING) tipo_proposicao,
-    SAFE_CAST(codTipoAutor AS STRING) tipo_autor,
-    SAFE_CAST(id_tema AS STRING) codTema,
-    SAFE_CAST(numero AS STRING) numero,
-    SAFE_CAST(relevancia AS STRING) relevancia,    
+  SAFE_CAST(ano AS INT64) ano,
+  SAFE_CAST(uriProposicao AS STRING) url_proposicao,
+  SAFE_CAST(siglaTipo AS STRING) tipo_proposicao,
+  SAFE_CAST(numero AS STRING) numero,  
+  SAFE_CAST(codTema AS STRING) tema,    
+  SAFE_CAST(relevancia AS INT64) relevancia,
 FROM basedosdados-dev.br_camara_dados_abertos_staging.proposicao_tema AS t
