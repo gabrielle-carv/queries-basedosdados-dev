@@ -1,6 +1,7 @@
 {{ config(alias='prefect_flow_runs',schema='br_bd_metadados') }}
 SELECT
 SAFE_CAST(id AS STRING) id,
+SAFE_CAST(flow_flow_group_id AS STRING) flow_group_id,
 SAFE_CAST(name AS STRING) name,
 SAFE_CAST(labels AS STRING) labels,
 SAFE_CAST(flow_project_name AS STRING) flow_project_name,
