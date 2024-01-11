@@ -5,9 +5,13 @@ import os
 from typing import List
 
 
-def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, unique_keys: List[str] = ["insert unique keys here"], mkdir=True) -> None:
+def create_yaml_file(arq_url, table_id, 
+                     dataset_id, at_least: float = 0.05, 
+                     unique_keys: List[str] = ["insert unique keys here"], 
+                     mkdir=True, 
+                     preprocessed_staging_column_names=True) -> None:
     """
-    Creates dbt models and schema.yaml files based on the architecture table, with the possibility of including data quality tests automatically.
+    Creates dbt models and schema.yaml files based on the architecture table, including data quality tests automatically.
 
     Args:
         arq_url (str or list): The URL(s) or file path(s) of the input file(s) containing the data.
@@ -17,6 +21,7 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
         unique_keys (list, optional): A list of column names for which the 'dbt_utils.unique_combination_of_columns' test should be applied.
                                       Defaults to ["insert unique keys here"].
         mkdir (bool, optional): If True, creates a directory for the new model(s). Defaults to True.
+        preprocessed_staging_column_names (bool, optional): If False, renames staging column names using the architecture. Defaults to True.
 
     Raises:
         TypeError: If the table_id is not a string or a list.
@@ -97,11 +102,13 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
 
         data['models'].append(table)
 
+        create_model_from_architecture(architecture_df,
+                                        output_path,
+                                        dataset_id, 
+                                        id,
+                                        preprocessed_staging_column_names) 
+
     with open(schema_path, 'w') as file:
         yaml_obj.dump(data, file)
-
-    create_models_from_architectures(arq_url,
-                                        output_dir=output_path,
-                                        dataset_id=dataset_id,
-                                        table_ids=table_id)                       
+                
     print("Files successfully created!")
