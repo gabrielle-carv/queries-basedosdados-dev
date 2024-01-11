@@ -34,36 +34,55 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
     """
     if mkdir:
         os.makedirs(f"./models/{dataset_id}/", exist_ok=True)
+        output_path = f"./models/{dataset_id}" 
     else:
-        print("Directory for the new model has not been created, saving files in /queries-basedosadados-dev/gists/")    
-    
+        print("Directory for the new model has not been created, saving files in /queries-basedosadados-dev/gists/")
+        output_path = f"./gists/"      
+
+    schema_path = f"{output_path}/schema.yml"
+
     yaml_obj = yaml.YAML(typ='rt')
     yaml_obj.indent(mapping=4, sequence=4, offset=2)
 
-    data = yaml.comments.CommentedMap()
-    data['version'] = 2
-    data.yaml_set_comment_before_after_key('models', before='\n\n')
-    data['models'] = []            
-    exclude = ['(excluded)', '(erased)', '(deleted)']
+    if os.path.exists(schema_path):
+        with open(schema_path, 'r') as file:
+            data = yaml_obj.load(file)
+    else: 
+        data = yaml.comments.CommentedMap()
+        data['version'] = 2
+        data.yaml_set_comment_before_after_key('models', before='\n\n')
+        data['models'] = []            
+
+    exclude = ['(excluded)', '(erased)', '(deleted)','(excluido)']
+
     if isinstance(table_id, str): 
         table_id = [table_id]
         arq_url = [arq_url]
+
     # If table_id is a list, assume multiple input files
     if not isinstance(arq_url, list) or len(arq_url) != len(table_id):
         raise ValueError("The number of URLs or file paths must match the number of table IDs.")
 
     for url, id in zip(arq_url, table_id):
-        unique_keys_copy = unique_keys.copy()
-        dataframe = sheet_to_df(url)
-        dataframe.dropna(subset = ['bigquery_type'], inplace= True)
-        dataframe = dataframe[~dataframe['bigquery_type'].apply(lambda x: any(palavra in x.lower() for palavra in exclude))]
-        dataset = yaml.comments.CommentedMap()
-        dataset['name'] = f'{id}'
-        dataset['description'] = f"Insert `{id}` table description here"
-        dataset['tests'] = create_unique_combination(unique_keys_copy)
-        dataset['columns'] = []
 
-        for _, row in dataframe.iterrows():
+        unique_keys_copy = unique_keys.copy()
+        architecture_df = sheet_to_df(url)
+        architecture_df.dropna(subset = ['bigquery_type'], inplace= True)
+        architecture_df = architecture_df[~architecture_df['bigquery_type'].apply(lambda x: any(word in x.lower() for word in exclude))]
+
+        # If model is already in the schema.yaml, delete old model and create new one
+        for model in data['models']:
+            if id == model['name']:
+                data['models'].remove(model)
+                break
+
+        table = yaml.comments.CommentedMap()
+        table['name'] = f'{id}'
+        table['description'] = f"Insert `{id}` table description here"
+        table['tests'] = create_unique_combination(unique_keys_copy)
+        table['columns'] = []
+
+        for _, row in architecture_df.iterrows():
             column = yaml.comments.CommentedMap()
             column['name'] = row['name']
             column['description'] = row['description']
@@ -73,17 +92,12 @@ def create_yaml_file(arq_url, table_id, dataset_id, at_least: float = 0.05, uniq
                 directory = row["directory_column"]
                 tests += create_relationships(directory)
             column['tests'] = tests
-            dataset['columns'].append(column)
+            table['columns'].append(column)
 
 
-        data['models'].append(conjunto)
+        data['models'].append(table)
 
-    if mkdir:
-        output_path = f"./models/{dataset_id}"   
-    else:
-        output_path = f"./gists/"  
-
-    with open(f"{output_path}/schema.yml", 'w') as file:
+    with open(schema_path, 'w') as file:
         yaml_obj.dump(data, file)
 
     create_models_from_architectures(arq_url,
