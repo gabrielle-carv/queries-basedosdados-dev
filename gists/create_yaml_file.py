@@ -5,8 +5,10 @@ import os
 from typing import List
 
 
-def create_yaml_file(arq_url, table_id, 
-                     dataset_id, at_least: float = 0.05, 
+def create_yaml_file(arq_url, 
+                     table_id, 
+                     dataset_id, 
+                     at_least: float = 0.05, 
                      unique_keys: List[str] = ["insert unique keys here"], 
                      mkdir=True, 
                      preprocessed_staging_column_names=True) -> None:
@@ -78,6 +80,7 @@ def create_yaml_file(arq_url, table_id,
         architecture_df = sheet_to_df(url)
         architecture_df.dropna(subset = ['bigquery_type'], inplace= True)
         architecture_df = architecture_df[~architecture_df['bigquery_type'].apply(lambda x: any(word in x.lower() for word in exclude))]
+        
 
         # If model is already in the schema.yaml, delete old model and create new one
         for model in data['models']:
@@ -86,7 +89,7 @@ def create_yaml_file(arq_url, table_id,
                 break
 
         table = yaml.comments.CommentedMap()
-        table['name'] = f'{id}'
+        table['name'] = f"{dataset_id}__{id}"
         table['description'] = f"Insert `{id}` table description here"
         table['tests'] = create_unique_combination(unique_keys_copy)
         table['columns'] = []
