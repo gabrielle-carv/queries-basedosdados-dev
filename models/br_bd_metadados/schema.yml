@@ -1,12 +1,12 @@
 version: 2
 
 models:
-  - name: prefect_flows
+  - name: br_bd_metadados__prefect_flows
     description: Insert `prefect_flows` table description here
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - insert unique keys here
+              - flow_group_id
     columns:
       - name: flow_group_id
         description: Flow group identifier
@@ -98,12 +98,12 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-  - name: prefect_flow_runs
+  - name: br_bd_metadados__prefect_flow_runs
     description: Insert `prefect_flow_runs` table description here
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - insert unique keys here
+              - id
     columns:
       - name: id
         description: Unique identifier for the flow run
