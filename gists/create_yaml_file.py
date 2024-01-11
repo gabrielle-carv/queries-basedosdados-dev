@@ -82,14 +82,17 @@ def create_yaml_file(arq_url,
         architecture_df = architecture_df[~architecture_df['bigquery_type'].apply(lambda x: any(word in x.lower() for word in exclude))]
         
 
-        # If model is already in the schema.yaml, delete old model and create new one
-        for model in data['models']:
-            if id == model['name']:
-                data['models'].remove(model)
-                break
+
 
         table = yaml.comments.CommentedMap()
         table['name'] = f"{dataset_id}__{id}"
+
+        # If model is already in the schema.yaml, delete old model from schema and create a new one
+        for model in data['models']:
+            if id == model['name'] or table['name'] == model['name'] :
+                data['models'].remove(model)
+                break
+
         table['description'] = f"Insert `{id}` table description here"
         table['tests'] = create_unique_combination(unique_keys_copy)
         table['columns'] = []
