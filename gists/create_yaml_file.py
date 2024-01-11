@@ -38,10 +38,14 @@ def create_yaml_file(arq_url, table_id,
 
     """
     if mkdir:
-        os.makedirs(f"./models/{dataset_id}/", exist_ok=True)
-        output_path = f"./models/{dataset_id}" 
+        if os.path.exists("./models"):
+            output_path = f"./models/{dataset_id}" 
+            os.makedirs(output_path, exist_ok=True)
+        else:
+            raise(ValueError("Error: Failed to find the path for the 'models' directory. Ensure that you are running the script within the 'queries-basedosdados-dev' directory."))
+        
     else:
-        print("Directory for the new model has not been created, saving files in /queries-basedosadados-dev/gists/")
+        print(f"Directory for the new model has not been created, saving files in {os.getcwd()}")
         output_path = f"./gists/"      
 
     schema_path = f"{output_path}/schema.yml"
