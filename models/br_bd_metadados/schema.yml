@@ -1,15 +1,117 @@
 version: 2
 
 models:
-  - name: br_bd_metadados__prefect_flow_runs
-    description: Prefect flow runs info
+  - name: prefect_flows
+    description: Insert `prefect_flows` table description here
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id
+              - insert unique keys here
+    columns:
+      - name: flow_group_id
+        description: Flow group identifier
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: name
+        description: Flow's name
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: created
+        description: Timestamp indicating when the flow was initially created
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: latest_version
+        description: Version number of the latest iteration of the flow
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: last_update
+        description: Timestamp of the last update made to the flow
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_type
+        description: Type of scheduling employed for the flow (e.g. CronClock, IntervalClock)
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_cron
+        description: Cron expression defining the flow's scheduling pattern
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_start_date
+        description: Date when the scheduled execution of the flow starts
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_filters
+        description: Filters applied to refine the scheduled execution criteria
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_adjustments
+        description: Adjustments or configurations for the flow's scheduling
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_labels
+        description: Labels in the flow's scheduling
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_all_parameters
+        description: All parameters in the schedule
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_parameters_dataset_id
+        description: Dataset used in scheduling parameters.
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_parameters_table_id
+        description: Table used in scheduling parameters
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_parameters_dbt_alias
+        description: Indicates if the model uses alias in DBT
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_parameters_materialization_mode
+        description: Mode defining where data is materialized
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_parameters_materialize_after_dump
+        description: Indicates if materialization occurs after data dump
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: schedule_parameters_update_metadata
+        description: Indicates if metadata is updated
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+  - name: prefect_flow_runs
+    description: Insert `prefect_flow_runs` table description here
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - insert unique keys here
     columns:
       - name: id
         description: Unique identifier for the flow run
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: flow_group_id
+        description: Unique identifier for the flow group
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
