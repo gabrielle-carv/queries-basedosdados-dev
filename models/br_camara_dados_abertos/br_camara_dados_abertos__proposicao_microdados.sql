@@ -5,8 +5,12 @@
     materialized='table',
     partition_by={
       "field": "ano",
-      "data_type": "int64"
-      },    
+      "data_type": "INT64",
+      "range": {
+        "start": 1935,
+        "end": 2023,
+        "interval": 1}
+    },    
     post_hook = ['CREATE OR REPLACE ROW ACCESS POLICY allusers_filter 
                     ON {{this}}
                     GRANT TO ("allUsers")
@@ -14,13 +18,12 @@
           'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter 
                 ON  {{this}}
                 GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")
-                FILTER USING (True)' ]
+                FILTER USING (True)']
     )
 }}
 
-
 SELECT 
-    SAFE_CAST(ano AS STRING) ano,
+    SAFE_CAST(ano AS INT64) ano,
     SAFE_CAST(SPLIT(FORMAT_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', TIMESTAMP(dataApresentacao)), 'T')[OFFSET(0)] AS DATE) data,
     SAFE_CAST(SPLIT(FORMAT_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', TIMESTAMP(dataApresentacao)), 'T')[OFFSET(1)] AS TIME) horario,
     SAFE_CAST(id AS STRING) id,
@@ -32,7 +35,6 @@ SELECT
     SAFE_CAST(ementaDetalhada AS STRING) ementa_detalhada,
     SAFE_CAST(keywords AS STRING) palavra_chave,
     SAFE_CAST(uriOrgaoNumerador AS STRING) url_orgao_numerador,
-    SAFE_CAST(uriPropAnterior AS STRING) url_anterior,
     SAFE_CAST(uriPropPrincipal AS STRING) url_principal,
     SAFE_CAST(uriPropPosterior AS STRING) url_posterior,
     SAFE_CAST(urlInteiroTeor AS STRING) url_teor_proposicao,
@@ -47,4 +49,3 @@ SELECT
     SAFE_CAST(ultimoStatus_sequencia AS STRING) sequencia_ultimo_status,
     SAFE_CAST(ultimoStatus_url AS STRING) url_ultimo_status,
 FROM basedosdados-dev.br_camara_dados_abertos_staging.proposicao_microdados AS t
-

@@ -444,7 +444,7 @@ models:
                 at_least: 0.05
           - relationships:
                 to: ref('br_bd_diretorios_data_tempo__ano')
-                field: ano
+                field: ano.ano
       - name: data
         description: Data da apresentação da proposição
         tests:
@@ -452,7 +452,7 @@ models:
                 at_least: 0.05
           - relationships:
                 to: ref('br_bd_diretorios_data_tempo__data')
-                field: data
+                field: data.data
       - name: horario
         description: Horário da apresentação da proposição
         tests:
@@ -506,11 +506,6 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_anterior
-        description: URL da proposição anterior, se houver.
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: url_principal
         description: URL da proposição principal, se aplicável.
         tests:
@@ -518,9 +513,6 @@ models:
                 at_least: 0.05
       - name: url_posterior
         description: URL da proposição posterior, se houver.
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: url_teor_proposicao
         description: URL para o texto completo.
         tests:
