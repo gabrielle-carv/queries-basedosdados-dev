@@ -1457,7 +1457,7 @@ models:
       - name: valor
         description: Valor
 
-  - name: be_ibge_pnadc__educacao
+  - name: br_ibge_pnadc__educacao
     description: Microdados da Pesquisa Suplementar Anual referentes a educação
     tests:
       - dbt_utils.unique_combination_of_columns:
