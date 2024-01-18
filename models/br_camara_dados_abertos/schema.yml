@@ -607,3 +607,8 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
+      - name: relevancia
+        description: Relevancia
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
