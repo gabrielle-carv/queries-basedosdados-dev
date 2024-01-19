@@ -15,7 +15,7 @@
 }}
 
 SELECT
-  SAFE_CAST(ano AS INT64) ano,
+  SAFE_CAST(REPLACE(ano, ".0", "") AS INT64) ano,
   SAFE_CAST(uriProposicao AS STRING) url_proposicao,
   SAFE_CAST(siglaTipo AS STRING) tipo_proposicao,
   SAFE_CAST(numero AS STRING) numero,  
