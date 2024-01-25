@@ -1,5 +1,5 @@
 {{ config(alias='orgaos_deputados',schema='br_camara_dados_abertos') }}
-SELECT
+SELECT DISTINCT
 SAFE_CAST(nomeOrgao AS STRING) nome,
 SAFE_CAST(siglaOrgao AS STRING) sigla,
 SAFE_CAST(uriOrgao AS STRING) url,
@@ -9,6 +9,6 @@ SAFE_CAST(siglaUF AS STRING) sigla_uf,
 SAFE_CAST(dataInicio AS DATE) data_inicio,
 SAFE_CAST(dataFim AS DATE) data_final,
 SAFE_CAST(siglaPartido AS STRING) sigla_partido,
-SAFE_CAST(uriDeputado AS STRING) url_deputado,
+SAFE_CAST(uriDeputado AS STRING) url_deputado
 FROM basedosdados-dev.br_camara_dados_abertos_staging.orgaos_deputados AS t
 

@@ -738,7 +738,7 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - insert unique keys here
+              - url_orgao
     columns:
       - name: nome
         description: Nome do orgão
@@ -810,7 +810,11 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - insert unique keys here
+              - nome
+              - nome_deputado
+              - cargo
+              - data_inicio
+              - data_final
     columns:
       - name: nome
         description: Nome do orgão
