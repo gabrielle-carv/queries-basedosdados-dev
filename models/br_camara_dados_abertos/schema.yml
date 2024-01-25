@@ -732,3 +732,147 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_brasil__uf')
                 field: sigla
+
+  - name: br_camara_dados_abertos__orgaos
+    description: Lista com identificadores e dados sobre Plenário, Mesa Diretora, comissões permanentes e temporárias, CPIs, conselhos e demais órgãos da Câmara existentes ou já extintos na Câmara dos Deputados.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - url_orgao
+    columns:
+      - name: nome
+        description: Nome do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: apelido
+        description: Apelido do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: sigla
+        description: Sigla do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: url_orgao
+        description: URL do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: tipo_orgao
+        description: Tipo do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: data_inicio
+        description: Data Inicio
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_data_tempo__data')
+                field: data.data
+      - name: data_instalacao
+        description: Data de instalação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_data_tempo__data')
+                field: data.data
+      - name: data_final
+        description: Data final
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_data_tempo__data')
+                field: data.data
+      - name: situacao
+        description: Situação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: casa
+        description: Casa
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: sala
+        description: Sala
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+
+  - name: br_camara_dados_abertos__orgaos_deputados
+    description: Arquivos com identificadores básicos de órgãos da Câmara e dos deputados que foram seus integrantes, com os cargos que cada um ocupou (inclusive de suplência) e as datas de início e fim do período de exercício de cada cargo.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - nome
+              - nome_deputado
+              - cargo
+              - data_inicio
+              - data_final
+    columns:
+      - name: nome
+        description: Nome do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: sigla
+        description: Sigla do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: url
+        description: URL do orgão
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: nome_deputado
+        description: Nome do deputado
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: cargo
+        description: Cargo
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__uf')
+                field: sigla
+      - name: data_inicio
+        description: Data inicio
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_data_tempo__data')
+                field: data.data
+      - name: data_final
+        description: Data final
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_data_tempo__data')
+                field: data.data
+      - name: sigla_partido
+        description: Sigla do partido
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: url_deputado
+        description: URL do deputado
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+
