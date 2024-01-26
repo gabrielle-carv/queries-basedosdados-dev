@@ -113,30 +113,55 @@ models:
               field: ano.ano
       - name: id_votacao
         description: ID da votação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: data
         description: Data
         tests:
           - relationships:
               to: ref('br_bd_diretorios_data_tempo__data')
               field: data.data
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: horario
         description: Horário
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: voto
         description: Voto
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: id_deputado
         description: ID do deputado
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: nome
         description: Nome do deputado
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: sigla_partido
         description: Sigla do partido
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
       - name: sigla_uf
         description: Sigla da Unidade da Federação
         tests:
           - relationships:
               to: ref('br_bd_diretorios_brasil__uf')
-              field: sigla_uf     
+              field: sigla
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05  
       - name: id_legislatura
         description: ID da legislatura
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
 
   - name: br_camara_dados_abertos__votacao_orientacao_bancada
     description: Para votações de qualquer tipo, os Partidos e Blocos, bem como as lideranças de Governo, Minoria, Maioria e Oposição, podem recomendar a seus Deputados que votem de um jeito ou de outro, ou podem "liberar a bancada".

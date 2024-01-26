@@ -1,6 +1,6 @@
 {{
   config(
-    alias = 'votacao_parlamentar',
+    alias ='votacao_parlamentar',
     schema='br_camara_dados_abertos',
     materialized='table',
     partition_by={
