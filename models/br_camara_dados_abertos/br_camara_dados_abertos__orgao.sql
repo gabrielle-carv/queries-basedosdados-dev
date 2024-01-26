@@ -1,4 +1,4 @@
-{{ config(alias='orgaos',schema='br_camara_dados_abertos') }}
+{{ config(alias='orgao',schema='br_camara_dados_abertos') }}
 SELECT
 SAFE_CAST(nome AS STRING) nome,
 SAFE_CAST(apelido AS STRING) apelido,
@@ -11,5 +11,5 @@ SAFE_CAST(SPLIT(FORMAT_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', TIMESTAMP(dataFim)), 'T'
 SAFE_CAST(descricaoSituacao AS STRING) situacao,
 SAFE_CAST(casa AS STRING) casa,
 SAFE_CAST(sala AS STRING) sala,
-FROM basedosdados-dev.br_camara_dados_abertos_staging.orgaos AS t
+FROM basedosdados-dev.br_camara_dados_abertos_staging.orgao AS t
 
