@@ -147,6 +147,9 @@ models:
     br_ibge_pnadc:
       +materialized: table
       +schema: br_ibge_pnadc
+    br_inep_indicadores_educacionais:
+      +materialized: table
+      +schema: br_inep_indicadores_educacionais      
     br_inep_saeb:
       +materialized: table
       +schema: br_inep_saeb
