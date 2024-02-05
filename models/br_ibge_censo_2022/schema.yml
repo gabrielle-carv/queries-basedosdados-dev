@@ -613,3 +613,50 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
+
+  - name: br_ibge_censo_2022__cnefe
+    description: Insert `cnefe` table description here
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - especie_endereco
+              - nivel_geo_coordenada
+              - latitude
+              - longitude
+    columns:
+      - name: id_municipio
+        description: ID Município IBGE - 7 Dígitos
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__municipio')
+                field: id_municipio
+      - name: sigla_uf
+        description: Sigla da Unidade da Federação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+          - relationships:
+                to: ref('br_bd_diretorios_brasil__uf')
+                field: sigla
+      - name: especie_endereco
+        description: Espécie de endereço
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: nivel_geo_coordenada
+        description: Nível de geocodificação
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: latitude
+        description: Latitude da Coordenada de Localização da Espécie do Endereço
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
+      - name: longitude
+        description: Longitude da Coordenada de Localização da Espécie do Endereço
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
