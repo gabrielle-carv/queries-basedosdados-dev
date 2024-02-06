@@ -4,7 +4,7 @@ schema='br_ibge_censo_2022',
 materialized='table',
     partition_by={
       "field": "id_uf",
-      "data_type": "int64",
+      "data_type": "string",
 },
 cluster_by = ["id_municipio"])}}
 
