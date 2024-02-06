@@ -660,3 +660,8 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
+      - name: ponto
+        description: Ponto geográfico criado a partir das colunas longitude e latitude.
+        tests:
+          - dbt_utils.not_null_proportion:
+                at_least: 0.05
