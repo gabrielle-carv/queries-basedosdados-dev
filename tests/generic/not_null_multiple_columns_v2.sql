@@ -36,9 +36,9 @@
     {% endset %}
     with validation_errors as (
     {%- set errors = dbt_utils.get_query_results_as_dict(pivot_columns_query) -%}
-    {% for linha in errors['column_name'] | unique %}
-        {{ log("LOG: Coluna com porcentagem de nulos maior que " ~ threshold ~ " ---> " ~ linha ~ "  [FAIL]", info = True) }}
-        select '{{linha}}' as coluna
+    {% for e in errors['column_name'] | unique %}
+        {{ log("LOG: Coluna com porcentagem de nulos maior que " ~ threshold ~ " ---> " ~ e ~ "  [FAIL]", info = True) }}
+        select '{{e}}' as column
         {% if not loop.last %}union all {% endif %}
     {% endfor %})
 
