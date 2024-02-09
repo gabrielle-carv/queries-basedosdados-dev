@@ -840,6 +840,7 @@ models:
               - cargo
               - data_inicio
               - data_final
+              - sigla_partido
     columns:
       - name: nome
         description: Nome do orgão
