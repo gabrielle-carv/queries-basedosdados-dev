@@ -12,15 +12,23 @@
             count(*) as total_records
             from {{ model }}        
     ),
-    validation_errors as (
 
-        select
-            COUNT(*) AS columns_with_more_than_5_percent_nulls
+    gather_columns as (
+
+        {% for column in columns -%}
+        select '{{ column.name }}{{ suffix }}' as nome_coluna, {{ column.name }}{{ suffix }} as valor, total_records
         from null_counts
+        {% if not loop.last %}union all {% endif %}
+        {%- endfor %}
+    ),
+
+    validation_errors as (
+        select
+            *
+        from gather_columns
         where
-            {% for column in columns -%}
-            {{ column.name }}{{ suffix }} / total_records > {{ threshold }}  {% if not loop.last %} OR {% endif %}
-            {%- endfor %}
+            valor / total_records > {{ threshold }}
+        
 
     )
     select * from validation_errors
