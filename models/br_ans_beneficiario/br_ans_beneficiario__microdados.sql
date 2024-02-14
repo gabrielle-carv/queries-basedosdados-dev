@@ -1,50 +1,96 @@
-{{ config(
-    schema='br_ans_beneficiario',
-    alias = 'microdados',
-    materialized='incremental',
-    partition_by={
-      "field": "ano",
-      "data_type": "int64",
-      "range": {
-        "start": 2014,
-        "end": 2023,
-        "interval": 1}
-    },    
-    cluster_by = ["id_municipio_6", "mes", "sigla_uf"],    
-    labels = {'project_id': 'basedosdados-dev'})
- }}
+{{
+    config(
+        schema="br_ans_beneficiario",
+        alias="microdados",
+        materialized="incremental",
+        partition_by={
+            "field": "ano",
+            "data_type": "int64",
+            "range": {"start": 2014, "end": 2023, "interval": 1},
+        },
+        cluster_by=["id_municipio_6", "mes", "sigla_uf"],
+        labels={"project_id": "basedosdados-dev"},
+    )
+}}
 
 
-with ans as (
-SELECT
-CAST(ano AS INT64) ano,
-CAST(mes AS INT64) mes,
-CAST(sigla_uf AS STRING) sigla_uf,
-CAST(CD_MUNICIPIO AS STRING) id_municipio_6,
-CAST(CD_OPERADORA AS STRING) codigo_operadora,
-CAST(INITCAP(`basedosdados-dev.functions.convert_latin_characters`(NM_RAZAO_SOCIAL)) AS STRING) razao_social,
-CAST(NR_CNPJ AS STRING) cnpj, modalidade_operadora,
-CAST(TP_SEXO AS STRING) sexo,
-CAST(LOWER(`basedosdados-dev.functions.convert_latin_characters`(DE_FAIXA_ETARIA)) AS STRING) faixa_etaria,
-CAST(LOWER(`basedosdados-dev.functions.convert_latin_characters`(DE_FAIXA_ETARIA_REAJ)) AS STRING) faixa_etaria_reajuste,
-CAST(CD_PLANO AS STRING) codigo_plano,
-CAST(TP_VIGENCIA_PLANO AS STRING) tipo_vigencia_plano,
-CAST(INITCAP(`basedosdados-dev.functions.convert_latin_characters`(DE_CONTRATACAO_PLANO)) AS STRING) contratacao_beneficiario,
-CAST(INITCAP(`basedosdados-dev.functions.convert_latin_characters`(DE_SEGMENTACAO_PLANO)) AS STRING) segmentacao_beneficiario,
-CAST(INITCAP(`basedosdados-dev.functions.convert_latin_characters`(DE_ABRG_GEOGRAFICA_PLANO)) AS STRING) abrangencia_beneficiario,
-CAST(INITCAP(`basedosdados-dev.functions.convert_latin_characters`(COBERTURA_ASSIST_PLAN)) AS STRING) cobertura_assistencia_beneficiario,
-CAST(INITCAP(`basedosdados-dev.functions.convert_latin_characters`(TIPO_VINCULO)) AS STRING) tipo_vinculo,
-CAST(QT_BENEFICIARIO_ATIVO AS INT64) quantidade_beneficiario_ativo,
-CAST(QT_BENEFICIARIO_ADERIDO AS INT64) quantidade_beneficiario_aderido,
-CAST(QT_BENEFICIARIO_CANCELADO AS INT64) quantidade_beneficiario_cancelado,
-CAST(PARSE_DATE('%d/%m/%Y', DT_CARGA) AS DATE) data_carga,
-FROM `basedosdados-dev.br_ans_beneficiario_staging.informacao_consolidada_atualizado`
-where ano = '2014' and mes = '5')
+with
+    ans as (
+        select
+            cast(ano as int64) ano,
+            cast(mes as int64) mes,
+            cast(sigla_uf as string) sigla_uf,
+            cast(cd_municipio as string) id_municipio_6,
+            cast(cd_operadora as string) codigo_operadora,
+            cast(
+                initcap(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        nm_razao_social
+                    )
+                ) as string
+            ) razao_social,
+            cast(nr_cnpj as string) cnpj,
+            modalidade_operadora,
+            cast(tp_sexo as string) sexo,
+            cast(
+                lower(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        de_faixa_etaria
+                    )
+                ) as string
+            ) faixa_etaria,
+            cast(
+                lower(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        de_faixa_etaria_reaj
+                    )
+                ) as string
+            ) faixa_etaria_reajuste,
+            cast(cd_plano as string) codigo_plano,
+            cast(tp_vigencia_plano as string) tipo_vigencia_plano,
+            cast(
+                initcap(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        de_contratacao_plano
+                    )
+                ) as string
+            ) contratacao_beneficiario,
+            cast(
+                initcap(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        de_segmentacao_plano
+                    )
+                ) as string
+            ) segmentacao_beneficiario,
+            cast(
+                initcap(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        de_abrg_geografica_plano
+                    )
+                ) as string
+            ) abrangencia_beneficiario,
+            cast(
+                initcap(
+                    `basedosdados-dev.functions.convert_latin_characters`(
+                        cobertura_assist_plan
+                    )
+                ) as string
+            ) cobertura_assistencia_beneficiario,
+            cast(
+                initcap(
+                    `basedosdados-dev.functions.convert_latin_characters`(tipo_vinculo)
+                ) as string
+            ) tipo_vinculo,
+            cast(qt_beneficiario_ativo as int64) quantidade_beneficiario_ativo,
+            cast(qt_beneficiario_aderido as int64) quantidade_beneficiario_aderido,
+            cast(qt_beneficiario_cancelado as int64) quantidade_beneficiario_cancelado,
+            cast(parse_date('%d/%m/%Y', dt_carga) as date) data_carga,
+        from
+            `basedosdados-dev.br_ans_beneficiario_staging.informacao_consolidada_atualizado`
+        where ano = '2014' and mes = '5'
+    )
 select *
 from ans
 {% if is_incremental() %}
-where
-  data_carga >= (SELECT MAX(data_carga) FROM {{ this }}) 
+    where data_carga >= (select max(data_carga) from {{ this }})
 {% endif %}
-
-

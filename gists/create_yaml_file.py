@@ -5,12 +5,12 @@ import os
 from typing import List
 
 
-def create_yaml_file(arq_url, 
-                     table_id, 
-                     dataset_id, 
-                     at_least: float = 0.05, 
-                     unique_keys: List[str] = ["insert unique keys here"], 
-                     mkdir=True, 
+def create_yaml_file(arq_url,
+                     table_id,
+                     dataset_id,
+                     at_least: float = 0.05,
+                     unique_keys: List[str] = ["insert unique keys here"],
+                     mkdir=True,
                      preprocessed_staging_column_names=True) -> None:
     """
     Creates dbt models and schema.yaml files based on the architecture table, including data quality tests automatically.
@@ -41,14 +41,14 @@ def create_yaml_file(arq_url,
     """
     if mkdir:
         if os.path.exists("./models"):
-            output_path = f"./models/{dataset_id}" 
+            output_path = f"./models/{dataset_id}"
             os.makedirs(output_path, exist_ok=True)
         else:
             raise(ValueError("Error: Failed to find the path for the 'models' directory. Ensure that you are running the script within the 'queries-basedosdados-dev' directory."))
-        
+
     else:
         print(f"Directory for the new model has not been created, saving files in {os.getcwd()}")
-        output_path = f"./gists/"      
+        output_path = f"./gists/"
 
     schema_path = f"{output_path}/schema.yml"
 
@@ -58,15 +58,15 @@ def create_yaml_file(arq_url,
     if os.path.exists(schema_path):
         with open(schema_path, 'r') as file:
             data = yaml_obj.load(file)
-    else: 
+    else:
         data = yaml.comments.CommentedMap()
         data['version'] = 2
         data.yaml_set_comment_before_after_key('models', before='\n\n')
-        data['models'] = []            
+        data['models'] = []
 
     exclude = ['(excluded)', '(erased)', '(deleted)','(excluido)']
 
-    if isinstance(table_id, str): 
+    if isinstance(table_id, str):
         table_id = [table_id]
         arq_url = [arq_url]
 
@@ -80,7 +80,7 @@ def create_yaml_file(arq_url,
         architecture_df = sheet_to_df(url)
         architecture_df.dropna(subset = ['bigquery_type'], inplace= True)
         architecture_df = architecture_df[~architecture_df['bigquery_type'].apply(lambda x: any(word in x.lower() for word in exclude))]
-        
+
 
 
 
@@ -114,11 +114,11 @@ def create_yaml_file(arq_url,
 
         create_model_from_architecture(architecture_df,
                                         output_path,
-                                        dataset_id, 
+                                        dataset_id,
                                         id,
-                                        preprocessed_staging_column_names) 
+                                        preprocessed_staging_column_names)
 
     with open(schema_path, 'w') as file:
         yaml_obj.dump(data, file)
-                
+
     print("Files successfully created!")
