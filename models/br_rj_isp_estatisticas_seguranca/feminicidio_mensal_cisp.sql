@@ -1,9 +1,13 @@
-SELECT 
-SAFE_CAST(ano AS INT64) ano,
-SAFE_CAST(mes AS INT64) mes,
-SAFE_CAST(id_cisp AS STRING) id_cisp,
-SAFE_CAST(quantidade_morte_feminicidio AS INT64) quantidade_morte_feminicidio,
-SAFE_CAST(quantidade_tentativa_feminicidio AS INT64) quantidade_tentativa_feminicidio,
-SAFE_CAST(tipo_fase AS STRING) tipo_fase
+select
+    safe_cast(ano as int64) ano,
+    safe_cast(mes as int64) mes,
+    safe_cast(id_cisp as string) id_cisp,
+    safe_cast(quantidade_morte_feminicidio as int64) quantidade_morte_feminicidio,
+    safe_cast(
+        quantidade_tentativa_feminicidio as int64
+    ) quantidade_tentativa_feminicidio,
+    safe_cast(tipo_fase as string) tipo_fase
 
-FROM basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.feminicidio_mensal_uf AS t
+from
+    basedosdados
+    - dev.br_rj_isp_estatisticas_seguranca_staging.feminicidio_mensal_uf as t

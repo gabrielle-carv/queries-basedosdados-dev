@@ -1,5 +1,5 @@
+---
 version: 2
-
 models:
   - name: br_bd_diretorios_data_tempo__ano
     description: Diretório de ano
