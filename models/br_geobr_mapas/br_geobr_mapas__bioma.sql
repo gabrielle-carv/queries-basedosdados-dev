@@ -1,21 +1,18 @@
-{{ 
-  config(
-    alias='bioma',
-    schema='br_geobr_mapas',
-    materialized='table',
-     partition_by={
-      "field": "ano",
-      "data_type": "int64",
-      "range": {
-        "start": 2004,
-        "end": 2019,
-        "interval": 15}
-    },
+{{
+    config(
+        alias="bioma",
+        schema="br_geobr_mapas",
+        materialized="table",
+        partition_by={
+            "field": "ano",
+            "data_type": "int64",
+            "range": {"start": 2004, "end": 2019, "interval": 15},
+        },
     )
- }}
-SELECT 
-SAFE_CAST(year AS INT64) ano,
-SAFE_CAST(code_biome AS STRING) id_bioma,
-SAFE_CAST(name_biome AS STRING) nome_bioma,
-SAFE.ST_GEOGFROMTEXT(geometry) geometria,
-FROM basedosdados-dev.br_geobr_mapas_staging.bioma as t
+}}
+select
+    safe_cast(year as int64) ano,
+    safe_cast(code_biome as string) id_bioma,
+    safe_cast(name_biome as string) nome_bioma,
+    safe.st_geogfromtext(geometry) geometria,
+from `basedosdados-dev.br_geobr_mapas_staging.bioma` as t
