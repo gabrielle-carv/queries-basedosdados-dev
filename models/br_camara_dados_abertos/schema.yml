@@ -6,7 +6,11 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
+          - ano
           - id_votacao
+          - data
+          - horario
+          - sigla_orgao
     columns:
       - name: ano
         description: Ano
@@ -165,7 +169,7 @@ models:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
           - id_votacao
-          - sigla_bancada
+          - id_proposicao
     columns:
       - name: ano
         description: Ano
@@ -278,11 +282,6 @@ models:
           - relationships:
                 to: ref('br_bd_diretorios_brasil__uf')
                 field: sigla
-      - name: id_deputado
-        description: ID deputado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: sexo
         description: Sexo
         tests:
@@ -299,7 +298,7 @@ models:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
       - name: url_site
-        description: URL do site
+        description: 'URL do site '
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
