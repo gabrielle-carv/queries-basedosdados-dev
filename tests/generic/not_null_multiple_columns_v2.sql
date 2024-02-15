@@ -1,4 +1,4 @@
-{% test not_null_proportion_multiple_columns(model, threshold=0.99) %}
+{% test not_null_multiple_columns_v2(model, threshold=0.01) %}
 
     {%- set columns = adapter.get_columns_in_relation(model) -%}
     {% set suffix = '_nulls' %}
@@ -28,7 +28,7 @@
                 *
             from pivot_columns
             where
-                quantity / total_records > (1 - {{ threshold }})
+                quantity / total_records > {{ threshold }}
             
 
         )
@@ -37,7 +37,7 @@
     with validation_errors as (
     {%- set errors = dbt_utils.get_query_results_as_dict(pivot_columns_query) -%}
     {% for e in errors['column_name'] | unique %}
-        {{ log("LOG: Coluna com porcentagem de não nulos menor que " ~ threshold * 100 ~ "% ---> " ~ e ~ "  [FAIL]", info = True) }}
+        {{ log("LOG: Coluna com porcentagem de nulos maior que " ~ threshold ~ " ---> " ~ e ~ "  [FAIL]", info = True) }}
         select '{{e}}' as column
         {% if not loop.last %}union all {% endif %}
     {% endfor %})
