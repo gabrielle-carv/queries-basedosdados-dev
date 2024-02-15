@@ -68,5 +68,5 @@ select
     safe_cast(taxa_registro_ocorrencia as int64) taxa_registro_ocorrencia,
     safe_cast(tipo_fase as string) tipo_fase
 from
-    `basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.taxa_evolucao_anual_municipio`
-    as t
+    basedosdados
+    - dev.br_rj_isp_estatisticas_seguranca_staging.taxa_evolucao_anual_municipio as t

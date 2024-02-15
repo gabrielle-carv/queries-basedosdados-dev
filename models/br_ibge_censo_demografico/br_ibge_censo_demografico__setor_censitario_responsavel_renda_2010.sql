@@ -145,5 +145,5 @@ select
     safe_cast(v131 as int64) v131,
     safe_cast(v132 as int64) v132
 from
-    `basedosdados-dev.br_ibge_censo_demografico_staging.setor_censitario_responsavel_renda_2010`
-    as t
+    basedosdados
+    - dev.br_ibge_censo_demografico_staging.setor_censitario_responsavel_renda_2010 as t

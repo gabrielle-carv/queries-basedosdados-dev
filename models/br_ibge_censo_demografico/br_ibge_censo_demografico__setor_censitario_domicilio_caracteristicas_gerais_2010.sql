@@ -254,5 +254,6 @@ select
     safe_cast(v240 as int64) v240,
     safe_cast(v241 as int64) v241
 from
-    `basedosdados-dev.br_ibge_censo_demografico_staging.setor_censitario_domicilio_caracteristicas_gerais_2010`
+    basedosdados
+    - dev.br_ibge_censo_demografico_staging.setor_censitario_domicilio_caracteristicas_gerais_2010
     as t

@@ -253,5 +253,6 @@ select
     safe_cast(v239 as int64) v239,
     safe_cast(v240 as int64) v240
 from
-    `basedosdados-dev.br_ibge_censo_demografico_staging.setor_censitario_relacao_parentesco_outros_2010`
+    basedosdados
+    - dev.br_ibge_censo_demografico_staging.setor_censitario_relacao_parentesco_outros_2010
     as t
