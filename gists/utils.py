@@ -1,6 +1,6 @@
 import pandas as pd
 import ruamel.yaml as yaml
-import requests
+import requests 
 from io import StringIO
 
 def sheet_to_df(columns_config_url_or_path):
@@ -14,7 +14,7 @@ def sheet_to_df(columns_config_url_or_path):
         print(
             "Check if your google sheet Share are: Anyone on the internet with this link can view"
         )
-
+        
 def create_model_from_architecture(architecture_df, output_dir, dataset_id, table_id, preprocessed_staging_column_names = True):
 
         if preprocessed_staging_column_names:
@@ -32,7 +32,7 @@ def create_model_from_architecture(architecture_df, output_dir, dataset_id, tabl
 
             sql_last_line = f"FROM basedosdados-dev.{dataset_id}_staging.{table_id} AS t\n\n"
             file.write(sql_last_line)
-
+        
 def transform_string(input_string, delimiter=':', field=bool):
     try:
         parts = input_string.split(delimiter)
@@ -77,7 +77,7 @@ def create_unique_combination(unique_keys):
             "combination_of_columns": unique_keys
         }
         combinations.append(combination)
-        return combinations
+        return combinations        
 
 def create_not_null_proportion(at_least):
         not_null_proportion = []
@@ -90,3 +90,4 @@ def create_not_null_proportion(at_least):
 
 def create_unique():
         return ["unique", "not_null"]
+

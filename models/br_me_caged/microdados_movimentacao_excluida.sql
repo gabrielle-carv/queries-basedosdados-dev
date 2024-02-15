@@ -1,59 +1,46 @@
-{{
-    config(
-        schema="br_me_caged",
-        materialized="table",
-        partition_by={
-            "field": "ano",
-            "data_type": "int64",
-            "range": {"start": 2020, "end": 2023, "interval": 1},
-        },
-        cluster_by=["mes", "sigla_uf"],
-        labels={"project_id": "basedosdados-dev", "tema": "economia"},
-    )
-}}
-select
-    safe_cast(ano as int64) ano,
-    safe_cast(mes as int64) mes,
-    safe_cast(a.sigla_uf as string) sigla_uf,
-    safe_cast(b.id_municipio as string) id_municipio,
-    safe_cast(cnae_2_secao as string) cnae_2_secao,
-    safe_cast(cnae_2_subclasse as string) cnae_2_subclasse,
-    safe_cast(saldo_movimentacao as int64) saldo_movimentacao,
-    safe_cast(cbo_2002 as string) cbo_2002,
-    safe_cast(categoria as string) categoria,
-    safe_cast(grau_instrucao as string) grau_instrucao,
-    safe_cast(replace(idade, '.0', '') as int64) idade,
-    safe_cast(replace(horas_contratuais, ',00', '') as int64) horas_contratuais,
-    safe_cast(raca_cor as string) raca_cor,
-    safe_cast(sexo as string) sexo,
-    safe_cast(tipo_empregador as string) tipo_empregador,
-    safe_cast(tipo_estabelecimento as string) tipo_estabelecimento,
-    safe_cast(tipo_movimentacao as string) tipo_movimentacao,
-    safe_cast(tipo_deficiencia as string) tipo_deficiencia,
-    safe_cast(
-        indicador_trabalho_intermitente as string
-    ) indicador_trabalho_intermitente,
-    safe_cast(indicador_trabalho_parcial as string) indicador_trabalho_parcial,
-    safe_cast(replace(salario_mensal, ',', '.') as float64) salario_mensal,
-    safe_cast(
-        tamanho_estabelecimento_janeiro as string
-    ) tamanho_estabelecimento_janeiro,
-    safe_cast(indicador_aprendiz as string) indicador_aprendiz,
-    safe_cast(origem_informacao as string) origem_informacao,
-    safe_cast(indicador_exclusao as int64) indicador_exclusao,
-    safe_cast(indicador_fora_prazo as int64) indicador_fora_prazo
-from `basedosdados-dev.br_me_caged_staging.microdados_movimentacao_excluida` a
-left join
-    `basedosdados.br_bd_diretorios_brasil.municipio` b
-    on a.id_municipio = b.id_municipio_6
-where
-    (
-        date_diff(
-            current_date(), date(cast(ano as int64), cast(mes as int64), 1), month
-        )
-        > 6
-        or date_diff(
-            date(2023, 5, 1), date(cast(ano as int64), cast(mes as int64), 1), month
-        )
-        > 0
-    )
+{{ 
+  config(
+    schema='br_me_caged',
+    materialized='table',
+     partition_by={
+      "field": "ano",
+      "data_type": "int64",
+      "range": {
+        "start": 2020,
+        "end": 2023,
+        "interval": 1}
+    },
+    cluster_by = ["mes", "sigla_uf"],
+    labels = {'project_id': 'basedosdados-dev', 'tema': 'economia'})
+}} 
+SELECT 
+SAFE_CAST(ano AS INT64) ano,
+SAFE_CAST(mes AS INT64) mes,
+SAFE_CAST(a.sigla_uf AS STRING) sigla_uf,
+SAFE_CAST(b.id_municipio AS STRING) id_municipio,
+SAFE_CAST(cnae_2_secao AS STRING) cnae_2_secao,
+SAFE_CAST(cnae_2_subclasse AS STRING) cnae_2_subclasse,
+SAFE_CAST(saldo_movimentacao AS INT64) saldo_movimentacao,
+SAFE_CAST(cbo_2002 AS STRING) cbo_2002,
+SAFE_CAST(categoria AS STRING) categoria,
+SAFE_CAST(grau_instrucao AS STRING) grau_instrucao,
+SAFE_CAST(REPLACE(idade,'.0','') AS INT64) idade,
+SAFE_CAST(REPLACE(horas_contratuais,',00','') AS INT64) horas_contratuais,
+SAFE_CAST(raca_cor AS STRING) raca_cor,
+SAFE_CAST(sexo AS STRING) sexo,
+SAFE_CAST(tipo_empregador AS STRING) tipo_empregador,
+SAFE_CAST(tipo_estabelecimento AS STRING) tipo_estabelecimento,
+SAFE_CAST(tipo_movimentacao AS STRING) tipo_movimentacao,
+SAFE_CAST(tipo_deficiencia AS STRING) tipo_deficiencia,
+SAFE_CAST(indicador_trabalho_intermitente AS STRING) indicador_trabalho_intermitente,
+SAFE_CAST(indicador_trabalho_parcial AS STRING) indicador_trabalho_parcial,
+SAFE_CAST(REPLACE(salario_mensal,',','.') AS FLOAT64) salario_mensal,
+SAFE_CAST(tamanho_estabelecimento_janeiro AS STRING) tamanho_estabelecimento_janeiro,
+SAFE_CAST(indicador_aprendiz AS STRING) indicador_aprendiz,
+SAFE_CAST(origem_informacao AS STRING) origem_informacao,
+SAFE_CAST(indicador_exclusao AS INT64) indicador_exclusao,
+SAFE_CAST(indicador_fora_prazo AS INT64) indicador_fora_prazo
+FROM `basedosdados-dev.br_me_caged_staging.microdados_movimentacao_excluida` a
+LEFT JOIN `basedosdados.br_bd_diretorios_brasil.municipio` b
+  ON a.id_municipio =  b.id_municipio_6
+WHERE (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6 OR  DATE_DIFF(DATE(2023,5,1),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 0)  

@@ -1,7 +1,7 @@
-{{ config(alias="densidade_brasil", schema="br_anatel_banda_larga_fixa") }}
+{{ config(alias='densidade_brasil', schema='br_anatel_banda_larga_fixa') }}
 
-select
-    safe_cast(ano as int64) ano,
-    safe_cast(mes as int64) mes,
-    safe_cast(densidade as float64) densidade
-from `basedosdados-dev.br_anatel_banda_larga_fixa_staging.densidade_brasil` as t
+SELECT 
+SAFE_CAST(ano AS INT64) ano,
+SAFE_CAST(mes AS INT64) mes,
+SAFE_CAST(densidade AS FLOAT64) densidade
+FROM basedosdados-dev.br_anatel_banda_larga_fixa_staging.densidade_brasil AS t

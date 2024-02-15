@@ -1,8 +1,8 @@
----
 version: 2
+
 models:
   - name: br_fgv_igp__igp_di_mes
-    description: dbt model for igp_di month table
+    description: "dbt model for igp_di month table"
     columns:
       - name: ano
         description: Ano
@@ -17,10 +17,9 @@ models:
       - name: variacao_acumulada_ano
         description: Variação acumulada no ano (a partir de janeiro do ano corrente)
       - name: indice_fechamento_mensal
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.
   - name: br_fgv_igp__igp_di_ano
-    description: dbt model for igp_di year table
+    description: "dbt model for igp_di year table"
     columns:
       - name: ano
         description: Ano
@@ -31,10 +30,9 @@ models:
       - name: variacao_anual
         description: Variação do índice no ano
       - name: indice_fechamento_anual
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.
   - name: br_fgv_igp__igp_m_mes
-    description: dbt model for igp_m month table
+    description: "dbt model for igp_m month table"
     columns:
       - name: ano
         description: Ano
@@ -53,10 +51,9 @@ models:
       - name: variacao_acumulada_ano
         description: Variação acumulada no ano (a partir de janeiro do ano corrente)
       - name: indice_fechamento_mensal
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.
   - name: br_fgv_igp__igp_m_ano
-    description: dbt model for igp_m year table
+    description: "dbt model for igp_m year table"
     columns:
       - name: ano
         description: Ano
@@ -67,10 +64,9 @@ models:
       - name: variacao_anual
         description: Variação do índice no ano
       - name: indice_fechamento_anual
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.
   - name: br_fgv_igp__igp_og_mes
-    description: dbt model for igp_og month table
+    description: "dbt model for igp_og month table"
     columns:
       - name: ano
         description: Ano
@@ -85,10 +81,9 @@ models:
       - name: variacao_acumulada_ano
         description: Variação acumulada no ano (a partir de janeiro do ano corrente)
       - name: indice_fechamento_mensal
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.
   - name: br_fgv_igp__igp_og_ano
-    description: dbt model for igp_og year table
+    description: "dbt model for igp_og year table"
     columns:
       - name: ano
         description: Ano
@@ -99,10 +94,9 @@ models:
       - name: variacao_anual
         description: Variação do índice no ano
       - name: indice_fechamento_anual
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.
   - name: br_fgv_igp__igp_10_mes
-    description: dbt model for igp_10 month table
+    description: "dbt model for igp_10 month table"
     columns:
       - name: ano
         description: Ano
@@ -117,5 +111,4 @@ models:
       - name: variacao_acumulada_ano
         description: Variação acumulada no ano (a partir de janeiro do ano corrente)
       - name: indice_fechamento_mensal
-        description: Elaboração Ipeadata - calculado a partir da média geométrica
-          dos valores dos meses corrente e seguinte da série original do IGP-DI.
+        description: Elaboração Ipeadata - calculado a partir da média geométrica dos valores dos meses corrente e seguinte da série original do IGP-DI.

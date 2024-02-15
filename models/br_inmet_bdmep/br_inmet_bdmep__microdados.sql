@@ -1,24 +1,24 @@
-{{ config(alias="microdados", schema="br_inmet_bdmep") }}
-select
-    safe_cast(ano as int64) ano,
-    safe_cast(data as date) data,
-    safe_cast(hora as time) hora,
-    safe_cast(id_estacao as string) id_estacao,
-    safe_cast(precipitacao_total as float64) precipitacao_total,
-    safe_cast(pressao_atm_hora as float64) pressao_atm_hora,
-    safe_cast(pressao_atm_max as float64) pressao_atm_max,
-    safe_cast(pressao_atm_min as float64) pressao_atm_min,
-    safe_cast(radiacao_global as float64) radiacao_global,
-    safe_cast(temperatura_bulbo_hora as float64) temperatura_bulbo_hora,
-    safe_cast(temperatura_orvalho_hora as float64) temperatura_orvalho_hora,
-    safe_cast(temperatura_max as float64) temperatura_max,
-    safe_cast(temperatura_min as float64) temperatura_min,
-    safe_cast(temperatura_orvalho_max as float64) temperatura_orvalho_max,
-    safe_cast(temperatura_orvalho_min as float64) temperatura_orvalho_min,
-    safe_cast(umidade_rel_max as float64) umidade_rel_max,
-    safe_cast(umidade_rel_min as float64) umidade_rel_min,
-    safe_cast(umidade_rel_hora as float64) umidade_rel_hora,
-    safe_cast(vento_direcao as float64) vento_direcao,
-    safe_cast(vento_rajada_max as float64) vento_rajada_max,
-    safe_cast(vento_velocidade as float64) vento_velocidade
-from `basedosdados-dev.br_inmet_bdmep_staging.microdados` as t
+{{ config(alias='microdados', schema='br_inmet_bdmep') }}
+SELECT 
+SAFE_CAST(ano AS INT64) ano,
+SAFE_CAST(data AS DATE) data,
+SAFE_CAST(hora AS TIME) hora,
+SAFE_CAST(id_estacao AS STRING) id_estacao,
+SAFE_CAST(precipitacao_total AS FLOAT64) precipitacao_total,
+SAFE_CAST(pressao_atm_hora AS FLOAT64) pressao_atm_hora,
+SAFE_CAST(pressao_atm_max AS FLOAT64) pressao_atm_max,
+SAFE_CAST(pressao_atm_min AS FLOAT64) pressao_atm_min,
+SAFE_CAST(radiacao_global AS FLOAT64) radiacao_global,
+SAFE_CAST(temperatura_bulbo_hora AS FLOAT64) temperatura_bulbo_hora,
+SAFE_CAST(temperatura_orvalho_hora AS FLOAT64) temperatura_orvalho_hora,
+SAFE_CAST(temperatura_max AS FLOAT64) temperatura_max,
+SAFE_CAST(temperatura_min AS FLOAT64) temperatura_min,
+SAFE_CAST(temperatura_orvalho_max AS FLOAT64) temperatura_orvalho_max,
+SAFE_CAST(temperatura_orvalho_min AS FLOAT64) temperatura_orvalho_min,
+SAFE_CAST(umidade_rel_max AS FLOAT64) umidade_rel_max,
+SAFE_CAST(umidade_rel_min AS FLOAT64) umidade_rel_min,
+SAFE_CAST(umidade_rel_hora AS FLOAT64) umidade_rel_hora,
+SAFE_CAST(vento_direcao AS FLOAT64) vento_direcao,
+SAFE_CAST(vento_rajada_max AS FLOAT64) vento_rajada_max,
+SAFE_CAST(vento_velocidade AS FLOAT64) vento_velocidade
+FROM basedosdados-dev.br_inmet_bdmep_staging.microdados AS t

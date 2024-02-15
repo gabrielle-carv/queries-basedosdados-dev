@@ -1,4 +1,3 @@
----
 version: '3'
 services:
   dbt:
@@ -6,5 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes: [.:/dbt]
-    environment: [DBT_PROFILES_DIR=/dbt]
+    volumes:
+      - .:/dbt
+    environment:
+      - DBT_PROFILES_DIR=/dbt

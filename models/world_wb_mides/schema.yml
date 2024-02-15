@@ -1,6 +1,5 @@
----
 version: 2
-models:
+models :
   - name: empenho
     description: Dados a nível de empenho.
     columns:

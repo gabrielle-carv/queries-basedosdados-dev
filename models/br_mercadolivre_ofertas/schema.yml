@@ -1,5 +1,5 @@
----
 version: 2
+
 models:
   - name: item
     description: informações de itens em oferta no Mercado Livre
@@ -32,6 +32,7 @@ models:
         description: seção do site onde o item está listado
       - name: caracteristicas
         description: características do item
+
   - name: vendedor
     description: informações de vendedores dos itens na tabela de oferta
     columns:
@@ -51,9 +52,9 @@ models:
         description: opiniões ou avaliações sobre o vendedor
       - name: data
         description: data relacionada ao vendedor, como a data de criação da conta
+
   - name: item_test
-    description: Informações de itens em oferta no Mercado Livre. Valores missing
-      podem se dar por instabiliade do site no momento da coleta.
+    description: Informações de itens em oferta no Mercado Livre. Valores missing podem se dar por instabiliade do site no momento da coleta.
     columns:
       - name: data_consulta
         description: Data consulta da oferta
@@ -82,6 +83,6 @@ models:
       - name: preco_original
         description: Preço original de referência
       - name: desconto
-        description: Desconto percentual em relação ao preço original de referência
+        description: Desconto percentual em relação ao preço original de referência 
       - name: preco_final
         description: Preço de oferta
