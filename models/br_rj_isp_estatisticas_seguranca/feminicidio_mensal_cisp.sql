@@ -9,5 +9,5 @@ select
     safe_cast(tipo_fase as string) tipo_fase
 
 from
-    basedosdados
-    - dev.br_rj_isp_estatisticas_seguranca_staging.feminicidio_mensal_uf as t
+    `basedosdados-dev.br_rj_isp_estatisticas_seguranca_staging.feminicidio_mensal_uf`
+    as t

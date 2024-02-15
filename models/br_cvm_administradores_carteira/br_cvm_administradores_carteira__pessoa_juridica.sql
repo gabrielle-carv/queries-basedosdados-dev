@@ -44,8 +44,8 @@ with
             safe_cast(email as string) email,
             safe_cast(website as string) website
         from
-            basedosdados
-            - dev.br_cvm_administradores_carteira_staging.pessoa_juridica as t
+            `basedosdados-dev.br_cvm_administradores_carteira_staging.pessoa_juridica`
+            as t
     )
 select *
 from tabela

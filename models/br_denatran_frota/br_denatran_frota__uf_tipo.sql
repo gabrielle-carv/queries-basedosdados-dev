@@ -51,7 +51,7 @@ with
                 else tipo_veiculo
             end as tipo_veiculo2,
             quantidade
-        from basedosdados - dev.br_denatran_frota_staging.uf_tipo
+        from `basedosdados-dev.br_denatran_frota_staging.uf_tipo`
     )
 
 select
