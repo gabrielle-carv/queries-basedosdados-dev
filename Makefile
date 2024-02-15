@@ -21,7 +21,3 @@ logs:
 .PHONY: status
 status:
 	docker-compose ps
-
-.PHONY: lint
-lint:
-	pre-commit run --all-files

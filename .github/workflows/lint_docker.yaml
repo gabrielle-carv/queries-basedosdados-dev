@@ -1,15 +1,14 @@
----
-name: CI Docker
+name: Lint Dockerfile
+
 on:
   pull_request:
-    paths: [Dockerfile]
+
 jobs:
-  lint:
-    name: Lint dockerfile
+  docker_lint:
+    name: Lint Dockerfile
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v2
       - name: Run hadolint
         uses: reviewdog/action-hadolint@v1
         with:
