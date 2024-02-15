@@ -41,5 +41,5 @@ select
     ) pessoas_indigenas,
     safe_cast(quesito_de_declaracao_indigena as string) quesito_declaracao_indigena,
 from
-    basedosdados
-    - dev.br_ibge_censo_2022_staging.indigenas_populacao_residente_terra_indigena as t
+    `basedosdados-dev.br_ibge_censo_2022_staging.indigenas_populacao_residente_terra_indigena`
+    as t

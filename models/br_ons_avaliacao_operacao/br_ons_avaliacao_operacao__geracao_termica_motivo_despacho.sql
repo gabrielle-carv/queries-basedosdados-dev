@@ -97,8 +97,8 @@ with
                 geracao_constrained_off_verificada as float64
             ) geracao_constrained_off_verificada
         from
-            basedosdados
-            - dev.br_ons_avaliacao_operacao_staging.geracao_termica_motivo_despacho as t
+            `basedosdados-dev.br_ons_avaliacao_operacao_staging.geracao_termica_motivo_despacho`
+            as t
     )
 select *
 from ons
