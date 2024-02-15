@@ -22,5 +22,5 @@ select
         custo_marginal_operacao_semanal_carga_pesada as float64
     ) custo_marginal_operacao_semanal_carga_pesada
 from
-    basedosdados
-    - dev.br_ons_estimativa_custos_staging.custo_marginal_operacao_semanal as t
+    `basedosdados-dev.br_ons_estimativa_custos_staging.custo_marginal_operacao_semanal`
+    as t
