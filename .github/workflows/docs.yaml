@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Import Secrets
         id: import_secrets
         uses: hashicorp/vault-action@v2.4.1
@@ -18,23 +18,22 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN}}
           secrets: |
             secret/data/queries_credentials/<GCP_PROJECT_NAME>    GCP_SA_KEY | GCP_SA_KEY;
+      - name: Set up poetry
+        run: pipx install poetry
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: 3.9.x
-      - name: Upgrade pip
-        run: |
-          pip install -U pip
-      - name: Install dependencies
-        run: |
-          pip3 install -r requirements-dev.txt -r requirements.txt
+          cache: poetry
+          python-version: '3.10'
+      - name: Install requirements
+        run: poetry install --with=dev
       - name: Setup credentials
         run: |
           echo ${{ steps.import_secrets.outputs.GCP_SA_KEY }} > dbt-sa.json
-          python3 .github/workflows/scripts/modify_profiles.py
+          poetry run python .github/workflows/scripts/modify_profiles.py
       - name: Generate docs
         run: |
-          dbt docs generate --profiles-dir .
+          poetry run dbt docs generate --profiles-dir .
       - name: Delete credentials
         run: |
           rm dbt-sa.json
