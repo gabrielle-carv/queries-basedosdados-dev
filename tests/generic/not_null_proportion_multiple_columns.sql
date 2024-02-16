@@ -36,11 +36,18 @@
     {% endset %}
     with validation_errors as (
     {%- set errors = dbt_utils.get_query_results_as_dict(pivot_columns_query) -%}
-    {% for e in errors['column_name'] | unique %}
-        {{ log("LOG: Coluna com porcentagem de não nulos menor que " ~ threshold * 100 ~ "% ---> " ~ e ~ "  [FAIL]", info = True) }}
-        select '{{e}}' as column
-        {% if not loop.last %}union all {% endif %}
-    {% endfor %})
-
+    {% if errors['column_name'] != () %}   
+        {% for e in errors['column_name'] | unique %}
+            {{ log("LOG: Coluna com porcentagem de não nulos menor que " ~ threshold * 100 ~ "% ---> " ~ e ~ "  [FAIL]", info = True) }}
+            select '{{e}}' as column
+            {% if not loop.last %}union all {% endif %}
+        {% endfor %}
+        )
+        select * from validation_errors
+    {% else %}
+            select 1 as column )
     select * from validation_errors
+    where column != 1
+    {% endif %}
+
 {% endtest %}
