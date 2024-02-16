@@ -1,6 +1,6 @@
 # Builder Image
 
-FROM python:3.10-bookworm AS builder
+FROM python:3.9-bookworm AS builder
 
 RUN pip install --no-cache-dir poetry==1.7.0
 
@@ -14,7 +14,7 @@ RUN poetry install --no-root && poetry run dbt deps && rm -rf $POETRY_CACHE_DIR
 
 # Runner Image
 
-FROM python:3.10-slim-bookworm AS runner
+FROM python:3.9-slim-bookworm AS runner
 
 ENV VIRTUAL_ENV=/app/.venv \
     DBT_PACKAGES=/app/dbt_packages \
