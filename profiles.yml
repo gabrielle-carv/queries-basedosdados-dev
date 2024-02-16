@@ -9,7 +9,7 @@ default:
       dataset: dbt
       location: US
       threads: 2
-      keyfile: /home/laura/.basedosdados/credentials/prod.json
+      keyfile: /credentials-dev/dev.json
     prod:
       type: bigquery
       method: service-account
@@ -17,4 +17,4 @@ default:
       dataset: dbt
       location: US
       threads: 2
-      keyfile: /home/laura/.basedosdados/credentials/prod.json
+      keyfile: /credentials-prod/prod.json
