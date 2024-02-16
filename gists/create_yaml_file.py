@@ -81,9 +81,6 @@ def create_yaml_file(arq_url,
         architecture_df.dropna(subset = ['bigquery_type'], inplace= True)
         architecture_df = architecture_df[~architecture_df['bigquery_type'].apply(lambda x: any(word in x.lower() for word in exclude))]
 
-
-
-
         table = yaml.comments.CommentedMap()
         table['name'] = f"{dataset_id}__{id}"
 
