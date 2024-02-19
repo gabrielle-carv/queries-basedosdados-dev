@@ -43,3 +43,17 @@ models:
         description: Percentual de alunos que se enquadram no nível nove de aprendizagem
       - name: nivel_10
         description: Percentual de alunos que se enquadram no nível dez de aprendizagem
+
+  - name: br_inep_saeb__dicionario
+    description: Dicionário de dados do SAEB
+    columns:
+      - name: id_coluna
+        description: ID da coluna
+      - name: nome_coluna
+        description: Nome da coluna
+      - name: chave
+        description: Chave
+      - name: cobertura_temporal
+        description: Cobertura temporal
+      - name: valor
+        description: Valor
