@@ -45,7 +45,7 @@ models:
         description: Percentual de alunos que se enquadram no nível dez de aprendizagem
 
   - name: br_inep_saeb__dicionario
-    description: Dicionário de dados da tabela de cotações
+    description: Dicionário de dados do SAEB
     columns:
       - name: id_coluna
         description: ID da coluna
