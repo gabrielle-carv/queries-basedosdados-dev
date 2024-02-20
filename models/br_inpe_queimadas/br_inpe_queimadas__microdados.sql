@@ -1,19 +1,20 @@
 {{
-  config(
-    alias = 'microdados',
-    schema = "br_inpe_queimadas",
-    materialized = "table",
-    labels = {"tema": "meio-ambiente"}
-  )
- }}
-SELECT
-SAFE_CAST(ano AS INT64) ano,
-SAFE_CAST(sigla_uf AS STRING) sigla_uf,
-SAFE_CAST(id_municipio AS STRING) id_municipio,
-SAFE_CAST(bioma AS STRING) bioma,
-SAFE_CAST(id_bdq AS STRING) id_bdq,
-SAFE_CAST(id_foco AS STRING) id_foco,
-SAFE_CAST(data_hora AS TIME) data_hora,
-ST_GEOGPOINT(SAFE_CAST (longitude AS FLOAT64), SAFE_CAST (latitude AS FLOAT64)) centroide,
-FROM basedosdados-dev.br_inpe_queimadas_staging.microdados AS t
-
+    config(
+        alias="microdados",
+        schema="br_inpe_queimadas",
+        materialized="table",
+        labels={"tema": "meio-ambiente"},
+    )
+}}
+select
+    safe_cast(ano as int64) ano,
+    safe_cast(sigla_uf as string) sigla_uf,
+    safe_cast(id_municipio as string) id_municipio,
+    safe_cast(bioma as string) bioma,
+    safe_cast(id_bdq as string) id_bdq,
+    safe_cast(id_foco as string) id_foco,
+    safe_cast(data_hora as time) data_hora,
+    st_geogpoint(
+        safe_cast(longitude as float64), safe_cast(latitude as float64)
+    ) centroide,
+from `basedosdados-dev.br_inpe_queimadas_staging.microdados` as t

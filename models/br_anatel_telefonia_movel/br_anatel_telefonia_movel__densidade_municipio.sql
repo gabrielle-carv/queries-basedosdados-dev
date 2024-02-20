@@ -1,10 +1,10 @@
-{{ config(alias='densidade_municipio', schema='br_anatel_telefonia_movel') }}
+{{ config(alias="densidade_municipio", schema="br_anatel_telefonia_movel") }}
 
-SELECT
-SAFE_CAST(ano AS INT64) ano,
-SAFE_CAST(mes AS INT64) mes,
-SAFE_CAST(sigla_uf AS STRING) sigla_uf,
-REPLACE(CAST(id_municipio AS STRING), '.0', '') id_municipio,
-SAFE_CAST(densidade AS FLOAT64) densidade
+select
+    safe_cast(ano as int64) ano,
+    safe_cast(mes as int64) mes,
+    safe_cast(sigla_uf as string) sigla_uf,
+    replace(cast(id_municipio as string), '.0', '') id_municipio,
+    safe_cast(densidade as float64) densidade
 
-FROM basedosdados-dev.br_anatel_telefonia_movel_staging.densidade_municipio AS t
+from `basedosdados-dev.br_anatel_telefonia_movel_staging.densidade_municipio` as t

@@ -1,7 +1,7 @@
-{{ config(alias='evento_orgao',schema='br_camara_dados_abertos') }}
-SELECT
-SAFE_CAST(idEvento AS STRING) id_evento,
-SAFE_CAST(idOrgao AS STRING) id_orgao,
-SAFE_CAST(siglaOrgao AS STRING) sigla_orgao,
-FROM basedosdados-dev.br_camara_dados_abertos_staging.evento_orgao AS t
+{{ config(alias="evento_orgao", schema="br_camara_dados_abertos") }}
+select
+    safe_cast(idevento as string) id,
+    safe_cast(idorgao as string) id_orgao,
+    safe_cast(siglaorgao as string) sigla_orgao,
+from `basedosdados-dev.br_camara_dados_abertos_staging.evento_orgao` as t
 

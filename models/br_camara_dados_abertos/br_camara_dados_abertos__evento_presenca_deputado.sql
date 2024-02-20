@@ -1,9 +1,16 @@
-{{ config(alias='evento_presenca_deputado',schema='br_camara_dados_abertos') }}
-SELECT
-DISTINCT
-SAFE_CAST(idEvento AS STRING) id_evento,
-SAFE_CAST(SPLIT(FORMAT_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', TIMESTAMP(dataHoraInicio)), 'T')[OFFSET(0)] AS DATE) data_inicio,
-SAFE_CAST(SPLIT(FORMAT_TIMESTAMP('%Y-%m-%dT%H:%M:%E*S', TIMESTAMP(dataHoraInicio)), 'T')[OFFSET(1)] AS TIME) horario_inicio,
-SAFE_CAST(idDeputado AS STRING) id_deputado,
-FROM basedosdados-dev.br_camara_dados_abertos_staging.evento_presenca_deputado AS t
+{{ config(alias="evento_presenca_deputado", schema="br_camara_dados_abertos") }}
+select distinct
+    safe_cast(idevento as string) id,
+    safe_cast(
+        split(format_timestamp('%Y-%m-%dT%H:%M:%E*S', timestamp(datahorainicio)), 'T')[
+            offset(0)
+        ] as date
+    ) data_inicio,
+    safe_cast(
+        split(format_timestamp('%Y-%m-%dT%H:%M:%E*S', timestamp(datahorainicio)), 'T')[
+            offset(1)
+        ] as time
+    ) horario_inicio,
+    safe_cast(iddeputado as string) id_deputado,
+from `basedosdados-dev.br_camara_dados_abertos_staging.evento_presenca_deputado` as t
 

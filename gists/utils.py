@@ -23,14 +23,14 @@ def create_model_from_architecture(architecture_df, output_dir, dataset_id, tabl
         with open(f"{output_dir}/{dataset_id}__{table_id}.sql", 'w') as file:
             sql_config = "{{ config(alias=" + f"'{table_id}'," + "schema=" + f"'{dataset_id}'" + ") }}\n"
             file.write(sql_config)
-            sql_first_line = "SELECT\n"
+            sql_first_line = "select\n"
             file.write(sql_first_line)
 
             for _, column in architecture_df.iterrows():
-                sql_line = f"SAFE_CAST({column['original_name']} AS {column['bigquery_type'].upper()}) {column['name']},\n"
+                sql_line = f"safe_cast({column['original_name']} as {column['bigquery_type'].lower()}) {column['name']},\n"
                 file.write(sql_line)
 
-            sql_last_line = f"FROM basedosdados-dev.{dataset_id}_staging.{table_id} AS t\n\n"
+            sql_last_line = f"from `basedosdados-dev.{dataset_id}_staging.{table_id}` as t\n\n"
             file.write(sql_last_line)
         
 def transform_string(input_string, delimiter=':', field=bool):
