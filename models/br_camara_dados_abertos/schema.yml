@@ -915,11 +915,6 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url
-        description: URL
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: url_documento_pauta
         description: URL da pauta
         tests:
@@ -976,16 +971,11 @@ models:
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id
+              - id_evento
               - id_orgao
     columns:
-      - name: id
-        description: 'ID '
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url
-        description: URL
+      - name: id_evento
+        description: ID do evento
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -999,27 +989,17 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_orgao
-        description: URL do órgão
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
 
   - name: br_camara_dados_abertos__evento_presenca_deputado
     description: Lista que liga os identificadores de eventos aos identificadores dos deputados que marcaram presença nos eventos realizados. No caso de eventos futuros já cadastrados, são listados os identificadores dos deputados que, por serem membros dos órgãos realizadores, são esperados como participantes dos eventos.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id
+              - id_evento
               - id_deputado
     columns:
-      - name: id
-        description: ID
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url
-        description: URL
+      - name: id_evento
+        description: ID do evento
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -1041,37 +1021,22 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_deputado
-        description: URL do deputado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
 
   - name: br_camara_dados_abertos__evento_requerimento
     description: Lista que liga os identificadores de eventos aos identificadores dos requerimentos. Eventos como as audiências públicas das comissões são realizados em decorrência da aprovação de um ou mais requerimentos, que são um tipo específico de proposições. Os arquivos deste conjunto permitem identificar os requerimentos de realização de cada evento de um determinado ano.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id
+              - id_evento
               - titulo_requerimento
     columns:
-      - name: id
-        description: ID
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url
-        description: URL
+      - name: id_evento
+        description: ID do evento
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
       - name: titulo_requerimento
         description: Título do requerimento
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url_requerimento
-        description: URL do requerimento
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -1085,11 +1050,6 @@ models:
     columns:
       - name: id
         description: ID
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url
-        description: URL
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -1131,36 +1091,8 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
-      - name: url_coordenador
-        description: URL do coordenador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
       - name: nome_coordenador
         description: Nome do coordenador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: sigla_partido_coordenador
-        description: Sigla do partido do coordenador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url_partido_coordenador
-        description: URL do partido do coordenador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: sigla_uf_coordenador
-        description: Sigla da Unidade da Federação do coordenador
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-                to: ref('br_bd_diretorios_brasil__uf')
-                field: sigla
-      - name: id_legislatura_coordenador
-        description: ID legislatura do coordenador
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -1169,23 +1101,19 @@ models:
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
+
   - name: br_camara_dados_abertos__frente_deputado
     description: Identificadores básicos de cada frente parlamentar são vinculados aos identificadores básicos dos deputados que foram cadastrados como seus integrantes, por terem sido signatários do pedido de criação da frente. São listados os integrantes das frentes criadas a partir do ano de 2010, na legislatura 54.
     tests:
       - dbt_utils.unique_combination_of_columns:
             combination_of_columns:
-              - id
+              - id_frente
               - id_deputado
               - titulo_deputado
               - url_partido_deputado
     columns:
-      - name: id
+      - name: id_frente
         description: ID da frente
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url
-        description: URL da frente
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -1206,29 +1134,6 @@ models:
                 at_least: 0.05
       - name: titulo_deputado
         description: Título do deputado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: sigla_uf_deputado
-        description: Sigla da Unidade da Federação do deputado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-          - relationships:
-              to: ref('br_bd_diretorios_brasil__uf')
-              field: sigla
-      - name: url_deputado
-        description: URL do deputado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url_partido_deputado
-        description: URL do partido do deputado
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: id_legislatura_deputado
-        description: ID da legislatura do deputado
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05
@@ -1301,11 +1206,6 @@ models:
                 at_least: 0.05
       - name: lotacao
         description: Lotação
-        tests:
-          - dbt_utils.not_null_proportion:
-                at_least: 0.05
-      - name: url_lotacao
-        description: URL da lotação
         tests:
           - dbt_utils.not_null_proportion:
                 at_least: 0.05

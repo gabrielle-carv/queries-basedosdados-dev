@@ -9,5 +9,6 @@ SAFE_CAST(situacao AS STRING) situacao,
 SAFE_CAST(urlDocumento AS STRING) url_documento,
 SAFE_CAST(coordenador_id AS STRING) id_coordenador,
 SAFE_CAST(coordenador_nome AS STRING) nome_coordenador,
+safe_cast(coordenador_urlfoto as string) url_foto_coordenador,
 FROM basedosdados-dev.br_camara_dados_abertos_staging.frente AS t
 
