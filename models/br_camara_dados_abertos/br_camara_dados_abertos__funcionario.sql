@@ -11,5 +11,4 @@ SAFE_CAST(grupo AS STRING) grupo,
 SAFE_CAST(ponto AS STRING) ponto,
 SAFE_CAST(atoNomeacao AS STRING) ato_nomeacao,
 SAFE_CAST(lotacao AS STRING) lotacao,
-SAFE_CAST(uriLotacao AS STRING) url_lotacao,
 FROM basedosdados-dev.br_camara_dados_abertos_staging.funcionario AS t
