@@ -1,6 +1,13 @@
+---
 version: 2
-
 models:
+  - name: br_bd_diretorios_data_tempo__ano
+    description: Diretório de ano
+    columns:
+      - name: ano
+        description: Ano
+      - name: bissexto
+        description: Indica se é um ano bissexto
   - name: br_bd_diretorios_data_tempo__data
     description: Diretório de data no formato YYYY-MM-DD do ISO-8601.
     columns:

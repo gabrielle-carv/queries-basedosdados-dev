@@ -1,1 +1,0 @@
-SELECT * FROM `basedosdados-dev.br_sp_saopaulo_dieese_icv_staging.mes`
