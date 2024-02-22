@@ -5,4 +5,3 @@ packages:
   - package: elementary-data/elementary
     version: 0.13.0
     ## Docs: https://docs.elementary-data.com
-
