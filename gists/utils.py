@@ -2,6 +2,8 @@ import pandas as pd
 import ruamel.yaml as yaml
 import requests 
 from io import StringIO
+import re
+
 
 def sheet_to_df(columns_config_url_or_path):
     """
@@ -32,43 +34,44 @@ def create_model_from_architecture(architecture_df, output_dir, dataset_id, tabl
 
             sql_last_line = f"from `basedosdados-dev.{dataset_id}_staging.{table_id}` as t\n\n"
             file.write(sql_last_line)
-        
-def transform_string(input_string, delimiter=':', field=bool):
+
+def extract_column_parts(input_string):
+    pattern_1 = re.compile(r"(\w+)\.(\w+):(\w+)")
+    pattern_2 = re.compile(r"\w+\.(\w+)\.(\w+):(\w+)")
+    
+    if pattern_1.match(input_string):    
+        return pattern_1.findall(input_string)[0]
+    elif pattern_2.match(input_string): 
+        return pattern_2.findall(input_string)[0]
+    else: 
+        raise ValueError(f"Invalid input format on `{input_string}`. Expected format: 'dataset.table:column'")
+
+def extract_relationship_info(input_string):
     try:
-        parts = input_string.split(delimiter)
+        dataset, table, column = extract_column_parts(input_string)
 
-        if len(parts) == 2:
-            dataset_coluna, id_coluna = parts
+        if column == table:
+            column = f'{column}.{column}'
+        
+        field = f"ref('{column}')"
+        table_path = f"ref('{dataset}__{table}')"
 
-            if field:
-                return id_coluna
+        return table_path, field
 
-            try:
-                bucket, dataset, table = dataset_coluna.split(".")
-                resultado = f'{dataset}__{table}'
-                return f"ref('{resultado}')"
-            except ValueError:
-                print(f"Invalid format on `{input_string}`. Bucket id not found.")
-                dataset, table = dataset_coluna.split(".")
-                resultado = f'{dataset}__{table}'
-                return f"ref('{resultado}')"
-        else:
-            print(f"Invalid input format on `{input_string}`. Expected format: 'dataset.column'")
-            return None
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
         return None
 
-
 def create_relationships(directory_column):
-        relationships = []
-        relationship = yaml.comments.CommentedMap()
-        relationship['relationships'] = {
-            "to": transform_string(f"{directory_column}", field=False),
-            "field": transform_string(f"{directory_column}", field=True)
+        relationship_table, relationship_field  = extract_relationship_info(directory_column)
+        list_relationships = []
+        yaml_relationship = yaml.comments.CommentedMap()
+        yaml_relationship['relationships'] = {
+            "to": relationship_table,
+            "field": relationship_field
         }
-        relationships.append(relationship)
-        return relationships
+        list_relationships.append(yaml_relationship)
+        return list_relationships
 
 def create_unique_combination(unique_keys):
         combinations = []
@@ -82,7 +85,7 @@ def create_unique_combination(unique_keys):
 def create_not_null_proportion(at_least):
         not_null_proportion = []
         not_null = yaml.comments.CommentedMap()
-        not_null['dbt_utils.not_null_proportion'] = {
+        not_null['not_null_proportion_multiple_columns'] = {
             "at_least": at_least,
         }
         not_null_proportion.append(not_null)
