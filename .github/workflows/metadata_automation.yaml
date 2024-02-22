@@ -1,18 +1,15 @@
+---
 name: Metadata Automation
-
 on:
   push:
-    branches:
-      - '*'
-
+    branches: ['*']
 jobs:
   update-metadata:
     name: Update metadata from Google Sheets
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v4
       - name: Import Secrets
         id: import_secrets
         uses: hashicorp/vault-action@v2.4.1
@@ -21,28 +18,23 @@ jobs:
           token: ${{ secrets.VAULT_TOKEN}}
           secrets: |
             secret/data/queries_credentials/basedosdados-dev    GCP_SA_KEY_BASE64 | GCP_SA_KEY_BASE64;
-
-      - name: Setup Python version
-        uses: actions/setup-python@v2
+      - name: Set up poetry
+        run: pipx install poetry
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
-
-      - name: Install Python dependencies for actions
-        run: |-
-          pip install -r requirements-actions.txt
-
+          cache: poetry
+          python-version: '3.9'
       - name: Checkout to the head ref
         run: |-
           git fetch --depth=1
           git checkout ${{ github.head_ref }}
-
       - name: Update metadata
         env:
           GCP_SA_KEY_BASE64: ${{ steps.import_secrets.outputs.GCP_SA_KEY_BASE64 }}
         run: |-
-          python3 .github/workflows/scripts/metadata_automation.py
-
+          poetry run python .github/workflows/scripts/metadata_automation.py
       - name: Commit changed files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Update metadata'
+          commit_message: Update metadata

@@ -1,13 +1,8 @@
-{{
-    config(
-        alias = "igp_di_ano",
-        schema  = 'br_fgv_igp'       
-    )
-}}
-SELECT
-SAFE_CAST(ano AS INT64) ano,
-SAFE_CAST(indice_medio AS FLOAT64) indice_medio,
-SAFE_CAST(indice AS FLOAT64) indice,
-SAFE_CAST(variacao_anual AS FLOAT64) variacao_anual,
-SAFE_CAST(indice_fechamento_anual AS FLOAT64) indice_fechamento_anual
-FROM basedosdados-dev.br_fgv_igp_staging.igp_di_ano AS t
+{{ config(alias="igp_di_ano", schema="br_fgv_igp") }}
+select
+    safe_cast(ano as int64) ano,
+    safe_cast(indice_medio as float64) indice_medio,
+    safe_cast(indice as float64) indice,
+    safe_cast(variacao_anual as float64) variacao_anual,
+    safe_cast(indice_fechamento_anual as float64) indice_fechamento_anual
+from `basedosdados-dev.br_fgv_igp_staging.igp_di_ano` as t
