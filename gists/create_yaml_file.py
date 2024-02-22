@@ -95,18 +95,19 @@ def create_yaml_file(arq_url,
 
         table['description'] = f"Insert `{id}` table description here"
         table['tests'] = create_unique_combination(unique_keys_copy)
+        table['tests'] += create_not_null_proportion(at_least)
+    
         table['columns'] = []
 
         for _, row in architecture_df.iterrows():
             column = yaml.comments.CommentedMap()
             column['name'] = row['name']
             column['description'] = row['description']
-            tests = []
-            tests += create_not_null_proportion(at_least)
-            if not pd.isna(row["directory_column"]):
+            if pd.notna(row["directory_column"]):
+                tests = []
                 directory = row["directory_column"]
-                tests += create_relationships(directory)
-            column['tests'] = tests
+                tests = create_relationships(directory)
+                column['tests'] = tests
             table['columns'].append(column)
 
 

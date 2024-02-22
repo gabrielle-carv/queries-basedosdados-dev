@@ -13,4 +13,3 @@ select distinct
     ) horario_inicio,
     safe_cast(iddeputado as string) id_deputado,
 from `basedosdados-dev.br_camara_dados_abertos_staging.evento_presenca_deputado` as t
-

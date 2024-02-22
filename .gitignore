@@ -9,3 +9,5 @@ venv-dbt/
 dbt_packages
 profiles.yml
 gists/test.py
+gists/__pycache__/
+
