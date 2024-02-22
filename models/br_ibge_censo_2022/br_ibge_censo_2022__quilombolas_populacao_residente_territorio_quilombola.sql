@@ -1,4 +1,9 @@
-{{ config(alias='quilombolas_populacao_residente_territorio_quilombola',schema='br_ibge_censo_2022') }}
+{{
+    config(
+        alias="quilombolas_populacao_residente_territorio_quilombola",
+        schema="br_ibge_censo_2022",
+    )
+}}
 select
     safe_cast(cod_ as string) id_territorio_quilombola,
     safe_cast(
@@ -38,15 +43,14 @@ select
         pessoas_residentes_em_territorios_quilombolas_pessoas_ as int64
     ) populacao_residente,
 from
-    basedosdados
-    - dev.br_ibge_censo_2022_staging.quilombolas_populacao_residente_territorio_quilombola
+    `basedosdados-dev.br_ibge_censo_2022_staging.quilombolas_populacao_residente_territorio_quilombola`
     as t
     {{
-    config(
-        alias="quilombolas_populacao_residente_territorio_quilombola",
-        schema="br_ibge_censo_2022",
-    )
-}}
+        config(
+            alias="quilombolas_populacao_residente_territorio_quilombola",
+            schema="br_ibge_censo_2022",
+        )
+    }}
 select
     safe_cast(
         trim(

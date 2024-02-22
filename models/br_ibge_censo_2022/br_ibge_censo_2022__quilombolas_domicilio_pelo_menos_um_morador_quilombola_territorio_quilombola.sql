@@ -1,4 +1,9 @@
-{{ config(alias='quilombolas_domicilio_pelo_menos_um_morador_quilombola_territorio_quilombola',schema='br_ibge_censo_2022') }}
+{{
+    config(
+        alias="quilombolas_domicilio_pelo_menos_um_morador_quilombola_territorio_quilombola",
+        schema="br_ibge_censo_2022",
+    )
+}}
 select
     safe_cast(cod_ as string) id_territorio_quilombola,
     safe_cast(
@@ -44,15 +49,14 @@ select
         as int64
     ) moradores_quilombolas,
 from
-    basedosdados
-    - dev.br_ibge_censo_2022_staging.quilombolas_domicilio_pelo_menos_um_morador_quilombola_territorio_quilombola
+    `basedosdados-dev.br_ibge_censo_2022_staging.quilombolas_domicilio_pelo_menos_um_morador_quilombola_territorio_quilombola`
     as t
     {{
-    config(
-        alias="quilombolas_domicilio_pelo_menos_um_morador_quilombola_territorio_quilombola",
-        schema="br_ibge_censo_2022",
-    )
-}}
+        config(
+            alias="quilombolas_domicilio_pelo_menos_um_morador_quilombola_territorio_quilombola",
+            schema="br_ibge_censo_2022",
+        )
+    }}
 select
     safe_cast(cod_ as string) id_territorio_quilombola,
     safe_cast(
