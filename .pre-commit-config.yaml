@@ -24,4 +24,3 @@ repos:
         types: [yaml]
         language: system
         entry: yamlfix --exclude ".kubernetes/**/*" .
-
