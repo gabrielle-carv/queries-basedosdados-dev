@@ -64,6 +64,7 @@ select
     cast(substr(maportar, 5, 2) as int64) as mes_portaria,
 {% if is_incremental() %}
     where
+
         date(cast(ano as int64), cast(mes as int64), 1)
         > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}

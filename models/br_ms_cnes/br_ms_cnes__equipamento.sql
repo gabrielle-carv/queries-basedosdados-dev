@@ -17,36 +17,42 @@
 }}
 
 
-WITH raw_cnes_equipamento AS (
-  -- 1. Retirar linhas com id_estabelecimento_cnes nulo
-  SELECT *
-  FROM `basedosdados-dev.br_ms_cnes_staging.equipamento`
-  WHERE CNES IS NOT NULL),
-unique_raw_cnes_equipamento as(
+with
+    raw_cnes_equipamento as (
+        -- 1. Retirar linhas com id_estabelecimento_cnes nulo
+        select *
+        from `basedosdados-dev.br_ms_cnes_staging.equipamento`
+        where cnes is not null
+    ),
+    unique_raw_cnes_equipamento as (
         -- 2. distinct nas linhas
         select distinct * from raw_cnes_equipamento
     ),
-cnes_add_muni AS (
-  -- 3. Adicionar id_municipio de 7 dígitos
-  SELECT *
-  FROM unique_raw_cnes_equipamento  
-  LEFT JOIN (SELECT id_municipio, id_municipio_6,
-  FROM `basedosdados-dev.br_bd_diretorios_brasil.municipio`) as mun
-  ON unique_raw_cnes_equipamento.CODUFMUN = mun.id_municipio_6
-)
-SELECT 
-SAFE_CAST(ano AS INT64) AS ano,
-SAFE_CAST(mes AS INT64) AS mes,
-SAFE_CAST(sigla_uf AS STRING) AS sigla_uf,
-SAFE_CAST(id_municipio AS STRING) AS id_municipio,
-SAFE_CAST(CNES AS STRING) AS id_estabelecimento_cnes,
-SAFE_CAST(CODEQUIP AS STRING) AS id_equipamento,
-SAFE_CAST(TIPEQUIP AS STRING) AS tipo_equipamento,
-SAFE_CAST(QT_EXIST AS STRING) AS quantidade_equipamentos,
-SAFE_CAST(QT_USO AS STRING) AS quantidade_equipamentos_ativos,
-SAFE_CAST(IND_SUS AS INT64) AS indicador_equipamento_disponivel_sus,
-SAFE_CAST(IND_NSUS AS INT64) AS indicador_equipamento_indisponivel_sus
-FROM cnes_add_muni 
+    cnes_add_muni as (
+        -- 3. Adicionar id_municipio de 7 dígitos
+        select *
+        from unique_raw_cnes_equipamento
+        left join
+            (
+                select id_municipio, id_municipio_6,
+                from `basedosdados-dev.br_bd_diretorios_brasil.municipio`
+            ) as mun
+            on unique_raw_cnes_equipamento.codufmun = mun.id_municipio_6
+    )
+select
+    safe_cast(ano as int64) as ano,
+    safe_cast(mes as int64) as mes,
+    safe_cast(sigla_uf as string) as sigla_uf,
+    safe_cast(id_municipio as string) as id_municipio,
+    safe_cast(cnes as string) as id_estabelecimento_cnes,
+    safe_cast(codequip as string) as id_equipamento,
+    safe_cast(tipequip as string) as tipo_equipamento,
+    safe_cast(qt_exist as string) as quantidade_equipamentos,
+    safe_cast(qt_uso as string) as quantidade_equipamentos_ativos,
+    safe_cast(ind_sus as int64) as indicador_equipamento_disponivel_sus,
+    safe_cast(ind_nsus as int64) as indicador_equipamento_indisponivel_sus
+from cnes_add_muni
+
 {% if is_incremental() %}
     where
         date(cast(ano as int64), cast(mes as int64), 1)

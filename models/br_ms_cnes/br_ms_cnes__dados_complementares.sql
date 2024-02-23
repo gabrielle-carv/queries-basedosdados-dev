@@ -1,7 +1,7 @@
 {{
     config(
         schema="br_ms_cnes",
-        alias='dados_complementares',
+        alias="dados_complementares",
         materialized="incremental",
         partition_by={
             "field": "ano",
@@ -137,6 +137,7 @@ select
     safe_cast(dialise as int64) indicador_existencia_requisito_dialise,
     safe_cast(quimradi as int64) indicador_existencia_requisito_quimio_radio
 from cnes_add_muni as t
+
 {% if is_incremental() %}
     where
         date(cast(ano as int64), cast(mes as int64), 1)

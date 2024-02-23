@@ -73,6 +73,7 @@ select
             substring(dtportar, 1, 2)
         ) as date
     ) data_portaria,
+
     safe_cast(substr(maportar, 1, 4) as int64) as ano_portaria,
     safe_cast(substr(maportar, 5, 2) as int64) as mes_portaria,
 from cnes_add_muni as t

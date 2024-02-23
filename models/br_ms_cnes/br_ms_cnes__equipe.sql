@@ -67,6 +67,7 @@ select
     safe_cast(pronasci as int64) as indicador_atende_populacao_assistida_pronasci,
 from cnes_add_muni
 {% if is_incremental() %}
+
     where
         date(cast(ano as int64), cast(mes as int64), 1)
         > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})

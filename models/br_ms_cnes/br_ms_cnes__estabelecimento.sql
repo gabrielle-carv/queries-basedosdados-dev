@@ -265,6 +265,7 @@ select
     safe_cast(ap07cv06 as int64) indicador_atendimento_regulacao_plano_saude_privado
 {% if is_incremental() %}
     where
+
         date(cast(ano as int64), cast(mes as int64), 1)
         > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}
