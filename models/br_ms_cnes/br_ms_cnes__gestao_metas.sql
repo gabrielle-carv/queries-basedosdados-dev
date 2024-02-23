@@ -1,11 +1,12 @@
 {{
     config(
         schema="br_ms_cnes",
+        alias="gestao_metas",
         materialized="incremental",
         partition_by={
             "field": "ano",
             "data_type": "int64",
-            "range": {"start": 2005, "end": 2023, "interval": 1},
+            "range": {"start": 2005, "end": 2024, "interval": 1},
         },
         pre_hook="DROP ALL ROW ACCESS POLICIES ON {{ this }}",
         post_hook=[
@@ -15,27 +16,26 @@
     )
 }}
 with
-    raw_cnes_servico_especializado as (
+    raw_cnes_gestao_metas as (
         -- 1. Retirar linhas com id_estabelecimento_cnes nulo
         select *
-        from `basedosdados-dev.br_ms_cnes_staging.servico_especializado`
+        from `basedosdados-dev.br_ms_cnes_staging.gestao_metas`
         where cnes is not null
     ),
-    raw_cnes_servico_especializado_without_duplicates as (
+    raw_cnes_gestao_metas_without_duplicates as (
         -- 2. distinct nas linhas
-        select distinct * from raw_cnes_servico_especializado
+        select distinct * from raw_cnes_gestao_metas
     ),
     cnes_add_muni as (
         -- 3. Adicionar id_municipio e sigla_uf
         select *
-        from raw_cnes_servico_especializado_without_duplicates
+        from raw_cnes_gestao_metas_without_duplicates
         left join
             (
                 select id_municipio, id_municipio_6,
                 from `basedosdados-dev.br_bd_diretorios_brasil.municipio`
             ) as mun
-            on raw_cnes_servico_especializado_without_duplicates.codufmun
-            = mun.id_municipio_6
+            on raw_cnes_gestao_metas_without_duplicates.codufmun = mun.id_municipio_6
     )
 
 select
@@ -44,18 +44,32 @@ select
     safe_cast(sigla_uf as string) sigla_uf,
     safe_cast(id_municipio as string) id_municipio,
     safe_cast(cnes as string) id_estabelecimento_cnes,
-    safe_cast(serv_esp as string) tipo_servico_especializado,
-    safe_cast(class_sr as string) tipo_classificacao,
-    safe_cast(concat(serv_esp, class_sr) as string) tipo_classificacao_bd,
-    safe_cast(srvunico as string) tipo_servico_especializado_unico,
-    safe_cast(caracter as string) tipo_caracterizacao,
-    safe_cast(amb_nsus as int64) indicador_servico_ambulatorial_sus,
-    safe_cast(amb_sus as int64) indicador_servico_nao_sus,
-    safe_cast(hosp_nsus as int64) indicador_servico_hospitalar_nao_sus,
-    safe_cast(hosp_sus as int64) indicador_servico_hospitalar_sus,
-    safe_cast(contsrvu as int64) indicador_servico_especializado_unico,
-    safe_cast(cnesterc as int64) quantidade_nacional_estabelecimento_saude_terceiro
+    cast(substr(cmpt_ini, 1, 4) as int64) as ano_competencia_inicial,
+    cast(substr(cmpt_ini, 5, 2) as int64) as mes_competencia_inicial,
+    cast(substr(cmpt_fim, 1, 4) as int64) as ano_competencia_final,
+    cast(substr(cmpt_fim, 5, 2) as int64) as mes_competencia_final,
+    safe_cast(sgruphab as string) tipo_habilitacao,
+    case
+        when safe_cast(sgruphab as string) in ("7003", "7004", "7005", "7006")
+        then '1'
+        else '2'
+    end as tipo_gestao_metas,
+    safe_cast(portaria as string) portaria,
+    cast(
+        concat(
+            substring(dtportar, -4),
+            '-',
+            substring(dtportar, -7, 2),
+            '-',
+            substring(dtportar, 1, 2)
+        ) as date
+    ) data_portaria,
+    cast(substr(maportar, 1, 4) as int64) as ano_portaria,
+    cast(substr(maportar, 5, 2) as int64) as mes_portaria,
 from cnes_add_muni as t
 {% if is_incremental() %}
-    where concat(ano, mes) > (select max(concat(ano, mes)) from {{ this }})
+    where
+
+        date(cast(ano as int64), cast(mes as int64), 1)
+        > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}

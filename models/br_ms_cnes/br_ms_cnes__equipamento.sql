@@ -1,11 +1,12 @@
 {{
     config(
         schema="br_ms_cnes",
+        alias="equipamento",
         materialized="incremental",
         partition_by={
             "field": "ano",
             "data_type": "int64",
-            "range": {"start": 2005, "end": 2023, "interval": 1},
+            "range": {"start": 2005, "end": 2024, "interval": 1},
         },
         pre_hook="DROP ALL ROW ACCESS POLICIES ON {{ this }}",
         post_hook=[
@@ -20,19 +21,23 @@ with
     raw_cnes_equipamento as (
         -- 1. Retirar linhas com id_estabelecimento_cnes nulo
         select *
-        from `basedosdados-staging.br_ms_cnes_staging.equipamento`
+        from `basedosdados-dev.br_ms_cnes_staging.equipamento`
         where cnes is not null
     ),
+    unique_raw_cnes_equipamento as (
+        -- 2. distinct nas linhas
+        select distinct * from raw_cnes_equipamento
+    ),
     cnes_add_muni as (
-        -- 2. Adicionar id_municipio de 7 dígitos
+        -- 3. Adicionar id_municipio de 7 dígitos
         select *
-        from raw_cnes_equipamento
+        from unique_raw_cnes_equipamento
         left join
             (
                 select id_municipio, id_municipio_6,
                 from `basedosdados-dev.br_bd_diretorios_brasil.municipio`
             ) as mun
-            on raw_cnes_equipamento.codufmun = mun.id_municipio_6
+            on unique_raw_cnes_equipamento.codufmun = mun.id_municipio_6
     )
 select
     safe_cast(ano as int64) as ano,
@@ -47,6 +52,9 @@ select
     safe_cast(ind_sus as int64) as indicador_equipamento_disponivel_sus,
     safe_cast(ind_nsus as int64) as indicador_equipamento_indisponivel_sus
 from cnes_add_muni
+
 {% if is_incremental() %}
-    where concat(ano, mes) > (select max(concat(ano, mes)) from {{ this }})
+    where
+        date(cast(ano as int64), cast(mes as int64), 1)
+        > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}

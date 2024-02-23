@@ -1,11 +1,12 @@
 {{
     config(
         schema="br_ms_cnes",
+        alias="equipe",
         materialized="incremental",
         partition_by={
             "field": "ano",
             "data_type": "int64",
-            "range": {"start": 2005, "end": 2023, "interval": 1},
+            "range": {"start": 2005, "end": 2024, "interval": 1},
         },
         pre_hook="DROP ALL ROW ACCESS POLICIES ON {{ this }}",
         post_hook=[
@@ -58,13 +59,16 @@ select
     safe_cast(tp_desat as string) as tipo_desativacao_equipe,
     safe_cast(substr(dt_desat, 1, 4) as int64) as ano_desativacao_equipe,
     safe_cast(substr(dt_desat, 5, 6) as int64) as mes_desativacao_equipe,
-    safe_cast(quilombo as string) as indicador_atende_populacao_assistida_quilombolas,
-    safe_cast(assentad as string) as indicador_atende_populacao_assistida_assentados,
-    safe_cast(popgeral as string) as indicador_atende_populacao_assistida_geral,
-    safe_cast(escola as string) as indicador_atende_populacao_assistida_escolares,
-    safe_cast(indigena as string) as indicador_atende_populacao_assistida_indigena,
-    safe_cast(pronasci as string) as indicador_atende_populacao_assistida_pronasci,
+    safe_cast(quilombo as int64) as indicador_atende_populacao_assistida_quilombolas,
+    safe_cast(assentad as int64) as indicador_atende_populacao_assistida_assentados,
+    safe_cast(popgeral as int64) as indicador_atende_populacao_assistida_geral,
+    safe_cast(escola as int64) as indicador_atende_populacao_assistida_escolares,
+    safe_cast(indigena as int64) as indicador_atende_populacao_assistida_indigena,
+    safe_cast(pronasci as int64) as indicador_atende_populacao_assistida_pronasci,
 from cnes_add_muni
 {% if is_incremental() %}
-    where concat(ano, mes) > (select max(concat(ano, mes)) from {{ this }})
+
+    where
+        date(cast(ano as int64), cast(mes as int64), 1)
+        > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}
