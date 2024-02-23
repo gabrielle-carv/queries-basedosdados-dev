@@ -1,11 +1,12 @@
 {{
     config(
         schema="br_ms_cnes",
+        alias="estabelecimento",
         materialized="incremental",
         partition_by={
             "field": "ano",
             "data_type": "int64",
-            "range": {"start": 2005, "end": 2023, "interval": 1},
+            "range": {"start": 2005, "end": 2024, "interval": 1},
         },
         pre_hook="DROP ALL ROW ACCESS POLICIES ON {{ this }}",
         post_hook=[
@@ -262,7 +263,8 @@ select
     safe_cast(ap07cv04 as int64) indicador_atendimento_regulacao_plano_seguro_terceiro,
     safe_cast(ap07cv05 as int64) indicador_atendimento_regulacao_plano_saude_publico,
     safe_cast(ap07cv06 as int64) indicador_atendimento_regulacao_plano_saude_privado
-from cnes_add_muni as t
 {% if is_incremental() %}
-    where concat(ano, mes) > (select max(concat(ano, mes)) from {{ this }})
+    where
+        date(cast(ano as int64), cast(mes as int64), 1)
+        > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}

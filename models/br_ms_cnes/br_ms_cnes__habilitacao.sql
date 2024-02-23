@@ -1,17 +1,13 @@
 {{
     config(
         schema="br_ms_cnes",
+        alias="habilitacao",
         materialized="incremental",
         partition_by={
             "field": "ano",
             "data_type": "int64",
-            "range": {"start": 2005, "end": 2023, "interval": 1},
+            "range": {"start": 2005, "end": 2024, "interval": 1},
         },
-        pre_hook="DROP ALL ROW ACCESS POLICIES ON {{ this }}",
-        post_hook=[
-            'CREATE OR REPLACE ROW ACCESS POLICY allusers_filter                     ON {{this}}                     GRANT TO ("allUsers")                     FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) > 6)',
-            'CREATE OR REPLACE ROW ACCESS POLICY bdpro_filter        ON  {{this}}                     GRANT TO ("group:bd-pro@basedosdados.org", "group:sudo@basedosdados.org")                     FILTER USING (DATE_DIFF(CURRENT_DATE(),DATE(CAST(ano AS INT64),CAST(mes AS INT64),1), MONTH) <= 6)',
-        ],
     )
 }}
 with
@@ -44,10 +40,10 @@ select
     safe_cast(id_municipio as string) id_municipio,
     safe_cast(cnes as string) id_estabelecimento_cnes,
     safe_cast(nuleitos as int64) quantidade_leitos,
-    cast(substr(cmpt_ini, 1, 4) as int64) as ano_competencia_inicial,
-    cast(substr(cmpt_ini, 5, 2) as int64) as mes_competencia_inicial,
-    cast(substr(cmpt_fim, 1, 4) as int64) as ano_competencia_final,
-    cast(substr(cmpt_fim, 5, 2) as int64) as mes_competencia_final,
+    safe_cast(substr(cmpt_ini, 1, 4) as int64) as ano_competencia_inicial,
+    safe_cast(substr(cmpt_ini, 5, 2) as int64) as mes_competencia_inicial,
+    safe_cast(substr(cmpt_fim, 1, 4) as int64) as ano_competencia_final,
+    safe_cast(substr(cmpt_fim, 5, 2) as int64) as mes_competencia_final,
     safe_cast(sgruphab as string) tipo_habilitacao,
     case
         when
@@ -77,9 +73,11 @@ select
             substring(dtportar, 1, 2)
         ) as date
     ) data_portaria,
-    cast(substr(maportar, 1, 4) as int64) as ano_portaria,
-    cast(substr(maportar, 5, 2) as int64) as mes_portaria,
+    safe_cast(substr(maportar, 1, 4) as int64) as ano_portaria,
+    safe_cast(substr(maportar, 5, 2) as int64) as mes_portaria,
 from cnes_add_muni as t
 {% if is_incremental() %}
-    where concat(ano, mes) > (select max(concat(ano, mes)) from {{ this }})
+    where
+        date(cast(ano as int64), cast(mes as int64), 1)
+        > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}

@@ -1,11 +1,12 @@
 {{
     config(
         schema="br_ms_cnes",
+        alias="leito",
         materialized="incremental",
         partition_by={
             "field": "ano",
             "data_type": "int64",
-            "range": {"start": 2007, "end": 2023, "interval": 1},
+            "range": {"start": 2007, "end": 2024, "interval": 1},
         },
         pre_hook="DROP ALL ROW ACCESS POLICIES ON {{ this }}",
         post_hook=[
@@ -56,5 +57,7 @@ select
     safe_cast(qt_sus as string) as quantidade_sus
 from leito_x_estabelecimento
 {% if is_incremental() %}
-    where concat(ano, mes) > (select max(concat(ano, mes)) from {{ this }})
+    where
+        date(cast(ano as int64), cast(mes as int64), 1)
+        > (select max(date(cast(ano as int64), cast(mes as int64), 1)) from {{ this }})
 {% endif %}
