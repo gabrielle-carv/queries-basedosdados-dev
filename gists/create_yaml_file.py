@@ -48,7 +48,7 @@ def create_yaml_file(arq_url,
 
     else:
         print(f"Directory for the new model has not been created, saving files in {os.getcwd()}")
-        output_path = f"./gists/"
+        output_path = os.getcwd()
 
     schema_path = f"{output_path}/schema.yml"
 
@@ -96,7 +96,7 @@ def create_yaml_file(arq_url,
         table['description'] = f"Insert `{id}` table description here"
         table['tests'] = create_unique_combination(unique_keys_copy)
         table['tests'] += create_not_null_proportion(at_least)
-    
+
         table['columns'] = []
 
         for _, row in architecture_df.iterrows():
