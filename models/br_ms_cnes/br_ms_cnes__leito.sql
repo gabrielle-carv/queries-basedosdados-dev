@@ -52,9 +52,9 @@ select
     safe_cast(cnes as string) as id_estabelecimento_cnes,
     safe_cast(codleito as string) as tipo_especialidade_leito,
     safe_cast(tp_leito as string) as tipo_leito,
-    safe_cast(qt_exist as string) as quantidade_total,
-    safe_cast(qt_contr as string) as quantidade_contratado,
-    safe_cast(qt_sus as string) as quantidade_sus
+    safe_cast(qt_exist as int64) as quantidade_total,
+    safe_cast(qt_contr as int64) as quantidade_contratado,
+    safe_cast(qt_sus as int64) as quantidade_sus
 from leito_x_estabelecimento
 {% if is_incremental() %}
     where
