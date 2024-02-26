@@ -55,12 +55,12 @@ select
     -- CNS_PROF que indica null
     safe_cast(regexp_replace(cns_prof, '0{15}', '') as string) cartao_nacional_saude,
     safe_cast(cbo as string) cbo_2002,
-    safe_cast(terceiro as string) indicador_estabelecimento_terceiro,
-    safe_cast(vincul_c as string) indicador_vinculo_contratado_sus,
-    safe_cast(vincul_a as string) indicador_vinculo_autonomo_sus,
-    safe_cast(vincul_n as string) indicador_vinculo_outros,
-    safe_cast(prof_sus as string) indicador_atende_sus,
-    safe_cast(profnsus as string) indicador_atende_nao_sus,
+    safe_cast(terceiro as int64) indicador_estabelecimento_terceiro,
+    safe_cast(vincul_c as int64) indicador_vinculo_contratado_sus,
+    safe_cast(vincul_a as int64) indicador_vinculo_autonomo_sus,
+    safe_cast(vincul_n as int64) indicador_vinculo_outros,
+    safe_cast(prof_sus as int64) indicador_atende_sus,
+    safe_cast(profnsus as int64) indicador_atende_nao_sus,
     safe_cast(horaoutr as int64) carga_horaria_outros,
     safe_cast(horahosp as int64) carga_horaria_hospitalar,
     safe_cast(hora_amb as int64) carga_horaria_ambulatorial
