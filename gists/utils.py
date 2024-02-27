@@ -1,6 +1,6 @@
 import pandas as pd
 import ruamel.yaml as yaml
-import requests 
+import requests
 from io import StringIO
 import re
 
@@ -16,7 +16,7 @@ def sheet_to_df(columns_config_url_or_path):
         print(
             "Check if your google sheet Share are: Anyone on the internet with this link can view"
         )
-        
+
 def create_model_from_architecture(architecture_df, output_dir, dataset_id, table_id, preprocessed_staging_column_names = True):
 
         if preprocessed_staging_column_names:
@@ -38,12 +38,12 @@ def create_model_from_architecture(architecture_df, output_dir, dataset_id, tabl
 def extract_column_parts(input_string):
     pattern_1 = re.compile(r"(\w+)\.(\w+):(\w+)")
     pattern_2 = re.compile(r"\w+\.(\w+)\.(\w+):(\w+)")
-    
-    if pattern_1.match(input_string):    
+
+    if pattern_1.match(input_string):
         return pattern_1.findall(input_string)[0]
-    elif pattern_2.match(input_string): 
+    elif pattern_2.match(input_string):
         return pattern_2.findall(input_string)[0]
-    else: 
+    else:
         raise ValueError(f"Invalid input format on `{input_string}`. Expected format: 'dataset.table:column'")
 
 def extract_relationship_info(input_string):
@@ -52,8 +52,9 @@ def extract_relationship_info(input_string):
 
         if column == table:
             column = f'{column}.{column}'
-        
-        field = f"ref('{column}')"
+
+        field = column
+
         table_path = f"ref('{dataset}__{table}')"
 
         return table_path, field
@@ -80,7 +81,7 @@ def create_unique_combination(unique_keys):
             "combination_of_columns": unique_keys
         }
         combinations.append(combination)
-        return combinations        
+        return combinations
 
 def create_not_null_proportion(at_least):
         not_null_proportion = []
@@ -93,4 +94,3 @@ def create_not_null_proportion(at_least):
 
 def create_unique():
         return ["unique", "not_null"]
-
