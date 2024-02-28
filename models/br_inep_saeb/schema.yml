@@ -46,9 +46,9 @@ models:
   - name: br_inep_saeb__dicionario
     description: Dicionário de dados do SAEB
     columns:
-      - name: id_coluna
-        description: ID da coluna
-      - name: nome_coluna
+      - name: id_tabela
+        description: ID da tabela
+      - name: coluna
         description: Nome da coluna
       - name: chave
         description: Chave
