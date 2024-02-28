@@ -227,6 +227,9 @@ models:
     mundo_transfermarkt_competicoes_internacionais:
       +materialized: table
       +schema: mundo_transfermarkt_competicoes_internacionais
+    world_ampas_oscar:
+      +materialized: table
+      +schema: world_ampas_oscar    
 
 tests:
   +severity: warn
