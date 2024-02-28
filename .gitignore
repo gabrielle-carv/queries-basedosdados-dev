@@ -7,3 +7,7 @@ venv-dbt/
 .venv/
 .user.yml
 dbt_packages
+profiles.yml
+.python-version
+gists/test.py
+gists/__pycache__/

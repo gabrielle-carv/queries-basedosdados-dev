@@ -1,3 +1,4 @@
+---
 default:
   target: dev
   outputs:
@@ -8,7 +9,7 @@ default:
       dataset: dbt
       location: US
       threads: 2
-      keyfile: /home/gabrielle-carvalho/.basedosdados/credentials/staging.json
+      keyfile: /credentials-dev/dev.json
     prod:
       type: bigquery
       method: service-account
@@ -16,4 +17,4 @@ default:
       dataset: dbt
       location: US
       threads: 2
-      keyfile: /home/gabrielle-carvalho/.basedosdados/credentials/prod.json
+      keyfile: /credentials-prod/prod.json
